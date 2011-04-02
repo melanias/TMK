@@ -3,10 +3,10 @@ package br.org.aappe.erp.dao;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.persistence.EntityManager;
 
 /**
  * @author Phelipe Melanias

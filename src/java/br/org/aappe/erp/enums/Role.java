@@ -1,7 +1,6 @@
 package br.org.aappe.erp.enums;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
