@@ -1,4 +1,4 @@
-package br.org.aappe.erp.util.jpa;
+package br.org.aappe.erp.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
