@@ -1,3 +1,3 @@
 ## Sistema de Telemarketing da AAPPE.
 
-# Equipe: Jadson, THales, Phelipe
+Equipe: Jadson, Thales e Phelipe
