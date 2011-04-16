@@ -1,4 +1,4 @@
-package br.org.aappe.erp.controllers;
+package br.org.aappe.erp.controller;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;
