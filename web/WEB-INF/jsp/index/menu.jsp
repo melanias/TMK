@@ -3,7 +3,7 @@
                     <ul>
                         <li>
                             <a href="#">Funcionários</a>
-                            <div class="submenu">
+                            <div>
                                 <ul>
                                     <li>Conteúdo do menu 1</li>
                                     <li>Conteúdo do menu 1</li>
@@ -14,7 +14,7 @@
                         </li>
                         <li>
                             <a href="#">Doadores</a>
-                            <div class="submenu">
+                            <div>
                                 <ul>
                                     <li>Conteúdo do menu 2</li>
                                     <li>Conteúdo do menu 2</li>

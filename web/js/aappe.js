@@ -10,4 +10,7 @@ jQuery(function($){
             $(this).find("div:first").hide();
         });
     });
+
+    //Settings
+    $("a[href='#']").live('click', function(e){e.preventDefault();});
 });

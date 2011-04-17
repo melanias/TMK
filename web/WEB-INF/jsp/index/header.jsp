@@ -16,7 +16,7 @@
     </head>
     <body>
         <div id="header">
-            <div id="content">
+            <div class="content">
                 <h1><a href="<c:url value="/" />" title="AAPPE" accesskey="a">AAPPE</a></h1>
                 <%@ include file="menu.jsp" %>
             </div>
@@ -24,3 +24,4 @@
 
         <!-- Conteúdo Principal -->
         <div id="main">
+            <div class="content">

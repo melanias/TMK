@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; outline: none; list-style: none; text-decoration: none; }
 
 body {
-    color: #3d3d3d;
+    color: #4d4d4d;
     font-size: 12px;
     font-family: Arial, Helvetica;
     background-color: white;
@@ -22,46 +22,63 @@ label { font-weight: bold; }
 div#header {
     min-width: 1000px;
     border-bottom: 2px solid #f9920b;
+    background: -o-linear-gradient(#e3e7e8, #ffffff); /* Opera 11.10+ */
+    background: -webkit-linear-gradient(#e3e7e8, #ffffff); /* Safari 5.1+, Chrome 10+ */
+    background: -moz-linear-gradient(100% 100% 90deg, #ffffff, #e3e7e8); /* Firefox 3.6+ */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3e7e8), to(#ffffff)); /* Safari 4-5, Chrome 1-9 */
 }
 
-div#header #content {
+div#header .content {
     width: 80%;
     margin: 0 auto;
 }
-div#header #content h1 {
-    margin: 10px 14px;
+div#header .content h1 {
+    height: 50px;
+    margin: 0 14px;
+    line-height: 52px;
 }
-div#header #content h1 a { color: #f9920b; }
-div#header #content h1 a:hover { color: #c17108; }
+div#header .content h1 a { color: #f9920b; }
+div#header .content h1 a:hover { color: #c17108; }
 
 /* MENU */
-div#header #content #menu { height: 40px; border-top: 2px solid #f9920b; }
-div#header #content #menu ul { margin: 0 14px; }
-div#header #content #menu ul > li { float: left; position: relative; z-index: 99; }
-div#header #content #menu ul > li > a {
+div#header .content #menu { height: 40px; border-top: 2px solid #f9920b; }
+div#header .content #menu ul { margin: 0 14px; }
+div#header .content #menu ul > li { float: left; position: relative; z-index: 99; }
+div#header .content #menu ul > li > a {
     display: block;
     color: #888888;
     font-size: 18px;
     font-weight: bold;
     line-height: 42px;
-    margin-right: 20px;
+    margin-right: 22px;
     letter-spacing: -1px;
 }
-div#header #content #menu ul > li > a.ativo,
-div#header #content #menu ul > li > a:hover {
+div#header .content #menu ul > li > a.ativo,
+div#header .content #menu ul > li > a:hover {
     color: #b0b0b0;
     background: white url('../images/menu-arrow.png') 50% 100% no-repeat;
 }
-div#header #content #menu ul > li > div {
+div#header .content #menu ul > li > div {
     left: 0;
     top: 40px;
     z-index: -1;
     display: none;
     position: absolute;
     background-color: #f9920b;
+
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+
+    box-shadow: 3px 3px 6px #b9b9b9;
+    -moz-box-shadow: 3px 3x 6px #b9b9b9;
+    -webkit-box-shadow: 3px 3px 6px #b9b9b9;
 }
-div#header #content #menu ul > li > div ul { margin: 2px; padding: 10px 4px 4px; background-color: white; }
-div#header #content #menu ul > li > div ul li {
+div#header .content #menu ul > li > div ul { margin: 2px; padding: 10px 4px 4px; background-color: white; }
+div#header .content #menu ul > li > div ul li {
     /*float: left;
     width: 135px;
     display: inline;
@@ -69,12 +86,16 @@ div#header #content #menu ul > li > div ul li {
     margin: 0 5px;
     padding-left: 7px;*/
 }
-div#header #content #menu ul > li > div ul li a {}
-div#header #content #menu ul > li > div ul li a:hover {}
+div#header .content #menu ul > li > div ul li a {}
+div#header .content #menu ul > li > div ul li a:hover {}
 /** HEADER **/
 
 /** MAIN **/
 div#main {
     width: 80%;
-    margin: 20px auto 0;
+    margin: 0 auto;
+}
+
+div#main .content {
+    margin: 18px 14px;
 }
