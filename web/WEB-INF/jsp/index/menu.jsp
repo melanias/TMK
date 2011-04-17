@@ -3,31 +3,24 @@
                     <ul>
                         <li>
                             <a href="#">Funcionários</a>
-                            <div>
-                                <div class="wrapper">
-                                    <ul>
-                                        <li>Conteúdo do menu 1</li>
-                                        <li>Conteúdo do menu 1</li>
-                                        <li>Conteúdo do menu 1</li>
-                                        <li>Conteúdo do menu 1</li>
-                                    </ul>
-                                    <div style="clear: both;"></div>
-                                </div>
+                            <div class="submenu">
+                                <ul>
+                                    <li>Conteúdo do menu 1</li>
+                                    <li>Conteúdo do menu 1</li>
+                                    <li>Conteúdo do menu 1</li>
+                                    <li>Conteúdo do menu 1</li>
+                                </ul>
                             </div>
-                            <div style="clear: both;"></div>
                         </li>
                         <li>
                             <a href="#">Doadores</a>
-                            <div>
-                                <div class="wrapper">
-                                    <ul>
-                                        <li>Conteúdo do menu 2</li>
-                                        <li>Conteúdo do menu 2</li>
-                                        <li>Conteúdo do menu 2</li>
-                                        <li>Conteúdo do menu 2</li>
-                                    </ul>
-                                    <div style="clear: both;"></div>
-                                </div>
+                            <div class="submenu">
+                                <ul>
+                                    <li>Conteúdo do menu 2</li>
+                                    <li>Conteúdo do menu 2</li>
+                                    <li>Conteúdo do menu 2</li>
+                                    <li>Conteúdo do menu 2</li>
+                                </ul>
                             </div>
                         </li>
                     </ul>

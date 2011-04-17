@@ -7,6 +7,13 @@ body {
     background-color: white;
 }
 
+a {
+    transition: color 300ms linear;
+    -o-transition: color 300ms linear;
+    -moz-transition: color 300ms linear;
+    -webkit-transition: color 300ms linear;
+}
+
 hr { width: 100%; margin: 5px 0; border: 1px solid #2882b4; }
 
 label { font-weight: bold; }
@@ -17,44 +24,44 @@ div#header {
     border-bottom: 2px solid #f9920b;
 }
 
-div#header #content, div#main {
+div#header #content {
     width: 80%;
     margin: 0 auto;
 }
-
 div#header #content h1 {
-    margin: 10px 0;
+    margin: 10px 14px;
 }
+div#header #content h1 a { color: #f9920b; }
+div#header #content h1 a:hover { color: #c17108; }
 
 /* MENU */
-div#header #content #menu {
-    height: 40px;
-    border-top: 2px solid #f9920b;
-}
-div#header #content #menu ul > li {
-    float: left; position: relative;
-}
+div#header #content #menu { height: 40px; border-top: 2px solid #f9920b; }
+div#header #content #menu ul { margin: 0 14px; }
+div#header #content #menu ul > li { float: left; position: relative; z-index: 99; }
 div#header #content #menu ul > li > a {
     display: block;
-    line-height: 41px;
-    padding-right: 20px;
+    color: #888888;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 42px;
+    margin-right: 20px;
+    letter-spacing: -1px;
+}
+div#header #content #menu ul > li > a.ativo,
+div#header #content #menu ul > li > a:hover {
+    color: #b0b0b0;
+    background: white url('../images/menu-arrow.png') 50% 100% no-repeat;
 }
 div#header #content #menu ul > li > div {
     left: 0;
-    top: 30px;
-    z-index: 99;
+    top: 40px;
+    z-index: -1;
     display: none;
     position: absolute;
-    background: #c5c5c5;
+    background-color: #f9920b;
 }
-div#header #content #menu ul > li > div .wrapper {
-    /*z-index: 99;*/
-    margin: 3px;
-    padding: 3px;
-    background-color: white;
-}
-div#header #content #menu ul > li > div .wrapper ul {}
-div#header #content #menu ul > li > div .wrapper ul li {
+div#header #content #menu ul > li > div ul { margin: 2px; padding: 10px 4px 4px; background-color: white; }
+div#header #content #menu ul > li > div ul li {
     /*float: left;
     width: 135px;
     display: inline;
@@ -62,11 +69,12 @@ div#header #content #menu ul > li > div .wrapper ul li {
     margin: 0 5px;
     padding-left: 7px;*/
 }
-div#header #content #menu ul > li > div .wrapper ul li a {}
-div#header #content #menu ul > li > div .wrapper ul li a:hover {}
+div#header #content #menu ul > li > div ul li a {}
+div#header #content #menu ul > li > div ul li a:hover {}
 /** HEADER **/
 
 /** MAIN **/
 div#main {
-    margin-top: 20px;
+    width: 80%;
+    margin: 20px auto 0;
 }
