@@ -55,8 +55,8 @@ div#header .content #menu > ul > li > div {
     left: 0;
     top: 40px;
     z-index: -1;
-    width: 228px;
     display: none;
+    min-width: 128px;
     position: absolute;
     background-color: #f9920b;
 
@@ -81,8 +81,9 @@ div#header .content #menu > ul > li > div ul li {
 }
 div#header .content #menu > ul > li > div ul li a {
     color: #aaa;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
+    white-space: nowrap;
 }
 div#header .content #menu > ul > li > div ul li a:hover {
     color: #940000;
