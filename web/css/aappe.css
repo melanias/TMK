@@ -71,22 +71,12 @@ div#header .content #menu > ul > li > div {
     -moz-box-shadow: 3px 3x 6px #b9b9b9;
     -webkit-box-shadow: 3px 3px 6px #b9b9b9;
 }
-div#header .content #menu > ul > li > div ul {
-    margin: 2px;
-    padding: 10px 14px 2px;
-    background-color: white;
-}
-div#header .content #menu > ul > li > div ul li {
-    margin: 4px 0;
-}
-div#header .content #menu > ul > li > div ul li a {
-    color: #aaa;
-    font-size: 14px;
-    font-weight: bold;
-    white-space: nowrap;
-}
+div#header .content #menu > ul > li > div ul { margin: 2px; padding: 10px 8px 2px; background-color: white; }
+div#header .content #menu > ul > li > div ul li { margin: 4px 0; white-space: nowrap; }
+div#header .content #menu > ul > li > div ul li a { color: #aaa; padding: 0 6px; font-size: 14px; font-weight: bold; }
 div#header .content #menu > ul > li > div ul li a:hover {
     color: #940000;
+    background: transparent url('../images/submenu-arrow.png') left center no-repeat;
 }
 /** HEADER **/
 
