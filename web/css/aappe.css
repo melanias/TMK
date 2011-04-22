@@ -14,6 +14,7 @@ a {
     -webkit-transition: color 300ms linear;
 }
 
+h1 { font-size: 24px; }
 hr { width: 100%; margin: 5px 0; border: 1px solid #2882b4; }
 
 label { font-weight: bold; }
@@ -29,12 +30,13 @@ div#header {
 }
 
 div#header .content { width: 80%; margin: 0 auto; }
-div#header .content h1 { height: 50px; margin: 0 14px; line-height: 52px; }
+div#header .content h1 { float: left; height: 50px; margin: 0 14px; line-height: 52px; }
 div#header .content h1 > a { color: #f9920b; }
 div#header .content h1 > a:hover { color: #940000; }
+div#header .content > span { float: right; margin: 2px 14px 0; font-size: 0.9em; }
 
 /* MENU */
-div#header .content #menu { height: 40px; border-top: 2px solid #f9920b; }
+div#header .content #menu { clear: both; height: 40px; border-top: 2px solid #f9920b; }
 div#header .content #menu > ul { margin: 0 14px; }
 div#header .content #menu > ul > li { float: left; position: relative; z-index: 99; }
 div#header .content #menu > ul > li > a {
@@ -42,13 +44,14 @@ div#header .content #menu > ul > li > a {
     color: #b0b0b0;
     font-size: 18px;
     font-weight: bold;
-    line-height: 42px;
+    line-height: 40px;
     margin-right: 22px;
     letter-spacing: -1px;
 }
 div#header .content #menu > ul > li > a.ativo,
 div#header .content #menu > ul > li > a:hover {
     color: #888;
+    height: 42px;
     background: white url('../images/menu-arrow.png') 50% 100% no-repeat;
 }
 div#header .content #menu > ul > li > div {
