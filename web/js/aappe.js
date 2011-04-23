@@ -13,4 +13,10 @@ jQuery(function($){
 
     //Settings
     $("a[href='#']").live('click', function(e){e.preventDefault();});
+
+    //Centralização do nome do módulo - REMOVER SE APROVAREM O NOVO POSICIONAMENTO
+    /*$("#sysInfo").css("left", Math.round(($("html > body").width()-$("#sysInfo").width())/2));
+    $("html").live('mouseenter', function() {
+        $("#sysInfo").css("left", Math.round(($("html > body").width()-$("#sysInfo").width())/2));
+    });*/
 });

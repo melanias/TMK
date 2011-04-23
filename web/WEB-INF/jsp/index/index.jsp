@@ -1,3 +1,3 @@
 <%@ include file="header.jsp" %>
-                <h2>AAPPE - Sistema de Telemarketing!</h2>
+                <h1>Página inicial (Estatísticas do Sistema).</h1>
 <%@ include  file="footer.jsp" %>

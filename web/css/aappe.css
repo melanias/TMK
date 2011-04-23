@@ -22,7 +22,8 @@ label { font-weight: bold; }
 /** HEADER **/
 div#header {
     min-width: 1000px;
-    border-bottom: 2px solid #f9920b;
+    border-bottom: 2px solid #dd7700;
+
     background: -o-linear-gradient(#e3e7e8, #ffffff); /* Opera 11.10+ */
     background: -webkit-linear-gradient(#e3e7e8, #ffffff); /* Safari 5.1+, Chrome 10+ */
     background: -moz-linear-gradient(100% 100% 90deg, #ffffff, #e3e7e8); /* Firefox 3.6+ */
@@ -31,12 +32,12 @@ div#header {
 
 div#header .content { width: 80%; margin: 0 auto; }
 div#header .content h1 { float: left; height: 50px; margin: 0 14px; line-height: 52px; }
-div#header .content h1 > a { color: #f9920b; }
+div#header .content h1 > a { color: #dd7700; }
 div#header .content h1 > a:hover { color: #940000; }
-div#header .content > span { float: right; margin: 2px 14px 0; font-size: 0.9em; }
+div#header .content span { color: #555; float: right; margin: 2px 0 0; font-size: 0.9em; }
 
 /* MENU */
-div#header .content #menu { clear: both; height: 40px; border-top: 2px solid #f9920b; }
+div#header .content #menu { clear: both; height: 40px; border-top: 2px solid #dd7700; }
 div#header .content #menu > ul { margin: 0 14px; }
 div#header .content #menu > ul > li { float: left; position: relative; z-index: 99; }
 div#header .content #menu > ul > li > a {
@@ -61,18 +62,7 @@ div#header .content #menu > ul > li > div {
     display: none;
     min-width: 128px;
     position: absolute;
-    background-color: #f9920b;
-
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    -moz-border-radius-bottomright: 3px;
-    -webkit-border-bottom-left-radius: 3px;
-    -webkit-border-bottom-right-radius: 3px;
-
-    box-shadow: 3px 3px 6px #b9b9b9;
-    -moz-box-shadow: 3px 3x 6px #b9b9b9;
-    -webkit-box-shadow: 3px 3px 6px #b9b9b9;
+    background-color: #dd7700;
 }
 div#header .content #menu > ul > li > div ul { margin: 2px; padding: 10px 8px 2px; background-color: white; }
 div#header .content #menu > ul > li > div ul li { margin: 4px 0; white-space: nowrap; }
@@ -83,7 +73,86 @@ div#header .content #menu > ul > li > div ul li a:hover {
 }
 /** HEADER **/
 
+/** MODULE & VERSION **/
+div#Module {
+    top: 0;
+    left: 0;
+    color: white;
+    position: fixed;
+    font-size: 11px;
+    padding: 2px 6px 3px 4px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: #dd7700;
+}
+
+div#Version {
+    right: 0;
+    bottom: 0;
+    color: white;
+    position: fixed;
+    font-size: 11px;
+    padding: 3px 4px 2px 6px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: #dd7700;
+}
+/** MODULE & VERSION **/
+
 /** MAIN **/
 div#main { width: 80%; margin: 0 auto; }
 div#main .content { margin: 18px 14px; }
+div#main .content h1 { color: #940000; }
 /** MAIN **/
+
+/** BORDERS **/
+.corner-bottom-3, #menu > ul > li > div {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+}
+.corner-bottom-6 {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+.corner-top-left-6 {
+    border-top-left-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -webkit-border-top-left-radius: 6px;
+}
+.corner-top-right-6 {
+    border-top-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    -webkit-border-top-right-radius: 6px;
+}
+.corner-bottom-left-6 {
+    border-bottom-left-radius: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+}
+.corner-bottom-right-6 {
+    border-bottom-right-radius: 6px;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+/** BORDERS **/
+
+/** SHADOWS **/
+.shadow-3 {
+    box-shadow: 0 0 3px 1px #b9b9b9;
+    -moz-box-shadow: 0 0 3px 1px #b9b9b9;
+    -webkit-box-shadow: 0 0 3px 1px #b9b9b9;
+}
+.shadow-bottom-right-6, #menu > ul > li > div {
+    box-shadow: 3px 3px 6px #b9b9b9;
+    -moz-box-shadow: 3px 3x 6px #b9b9b9;
+    -webkit-box-shadow: 3px 3px 6px #b9b9b9;
+}
+/** SHADOWS **/
