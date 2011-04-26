@@ -1,3 +1,3 @@
 ## Sistema de Telemarketing da AAPPE.
 
-Equipe: Jadson, Thales e Phelipe
+Equipe: Jadson Ronald, Thales Imbruglia e Phelipe Melanias.
