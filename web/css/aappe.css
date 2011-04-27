@@ -17,6 +17,8 @@ a {
 h1 { font-size: 24px; }
 hr { width: 100%; margin: 5px 0; border: 1px solid #2882b4; }
 
+img { border: none; }
+
 label { font-weight: bold; }
 
 /** HEADER **/

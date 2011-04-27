@@ -20,7 +20,7 @@
         <div id="Version" class="corner-top-left-6 shadow-3">Versão 0.0.1</div>
         <div id="header">
             <div class="content">
-                <h1><a href="<c:url value="/" />" accesskey="a"><img src="<c:url value="/images/logo.png" />" border="0" title="AAPPE" alt="AAPPE" /></a></h1>
+                <h1><a href="<c:url value="/" />" accesskey="a"><img src="<c:url value="/images/logo.png" />" title="AAPPE" alt="AAPPE" /></a></h1>
                 <c:set var="rightNow" value="<%=new java.util.Date()%>" />
                 <span><fmt:formatDate type="date" dateStyle="full" value="${rightNow}" /></span>
                 <%@ include file="menu.jsp" %>
