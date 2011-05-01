@@ -18,10 +18,12 @@ public class FilialController {
     public FilialController(Result result) {
         this.result = result;
     }
-    
+
     @Get("/filial/nova")
-    public void frmCadastro() {}
-    
+    public void frmCadastro() {
+        result.include("title", "Cadastrar Filial");
+    }
+
     @Transactional
     @Post("/filial/nova")
     public void cadastrar(final Filial filial) {

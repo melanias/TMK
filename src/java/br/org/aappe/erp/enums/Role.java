@@ -1,9 +1,8 @@
 package br.org.aappe.erp.enums;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Phelipe Melanias
@@ -17,15 +16,8 @@ public enum Role implements Serializable {
         this.userRole = userRole;
     }
 
-    //getter
-    public String getUserRole() {
-        return userRole;
-    }
+    //getters
+    public String getUserRole() { return userRole; }
 
-    public static Collection<Role> getAll() {
-        Collection<Role> roles = new ArrayList<Role>();
-        roles.addAll(Arrays.asList(values()));
-
-        return roles;
-    }
+    public static List<Role> getAll() { return Arrays.asList(values()); }
 }
