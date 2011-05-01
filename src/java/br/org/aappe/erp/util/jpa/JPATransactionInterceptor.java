@@ -22,6 +22,7 @@ public class JPATransactionInterceptor implements Interceptor {
         this.validator = validator;
     }
 
+    @Override
     public void intercept(InterceptorStack stack, ResourceMethod method, Object o) {
         EntityTransaction transaction = null;
 
@@ -38,6 +39,7 @@ public class JPATransactionInterceptor implements Interceptor {
         }
     }
 
+    @Override
     public boolean accepts(ResourceMethod method) {
         return method.getMethod().isAnnotationPresent(Transactional.class) ||
                method.getResource().getType().isAnnotationPresent(Transactional.class);

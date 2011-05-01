@@ -9,7 +9,7 @@ import java.util.Collection;
  * @author Phelipe Melanias
  */
 public enum Role implements Serializable {
-    ESTAGIARIO("Estagiário"), DIRETOR("Diretor"), ADMINISTRADOR("Administrador");
+    ESTAGIARIO("Estagiário"), MOTOBOY("Motoboy"), OPERADOR("Operador"), GERENTE("Gerente"), ADMIN("Administrador");
 
     private String userRole;
 

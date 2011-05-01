@@ -1,0 +1,28 @@
+Gerenciar Funcionários; (Jadson)
+
+Criar enum para as funções: ESTAGIARIO("Estagiário"), MOTOBOY("Motoboy"), OPERADOR("Operador"), GERENTE("Gerente"), ADMIN("Administrador"). (Phelipe - Finalizado)
+
+Gerenciar Filiais. (Jadson) 
+
+Gerenciar Setores; (Jadson)
+
+
+Gerenciar Doadores; (Thales)
+
+
+Gerenciar Finanças; - Gerenciar Doações; Recibo; - Gerenciar Combustível*; (Phelipe)
+
+
+Relatórios; (Phelipe)
+
+
+Newsletter (caso o doador tenha e-mail)*; (Phelipe)
+
+
+SMS*; (Phelipe ou Thales)
+
+
+Gerenciamento de Campanhas; (Thales)
+
+
+Google Maps para auxiliar o motoca na localização da residência dos doadores. (Thales)
