@@ -3,6 +3,5 @@
 dist
 test
 build
+private
 .directory
-private.xml
-private.properties
