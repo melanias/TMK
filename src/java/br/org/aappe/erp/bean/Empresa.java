@@ -26,7 +26,7 @@ public class Empresa implements Serializable {
 
     @Id
     @SequenceGenerator(name="id_empresa_seq", sequenceName="id_empresa_seq")
-    @GeneratedValue(generator="id_empresa_seq", strategy= GenerationType.AUTO)
+    @GeneratedValue(generator="id_empresa_seq", strategy=GenerationType.AUTO)
     private int id;
 
     @Temporal(TemporalType.DATE)
