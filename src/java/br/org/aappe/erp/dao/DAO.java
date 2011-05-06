@@ -11,12 +11,12 @@ import javax.persistence.criteria.Root;
 /**
  * @author Phelipe Melanias
  */
-public abstract class Dao<T> {
+public abstract class DAO<T> {
     private final Class<T> classe;
     protected final EntityManager manager;
 
     @SuppressWarnings("unchecked")
-    public Dao(EntityManager manager) {
+    public DAO(EntityManager manager) {
         this.manager = manager;
         this.classe  = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
@@ -25,7 +25,7 @@ public abstract class Dao<T> {
         try {
             return manager.merge(o);
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -33,7 +33,7 @@ public abstract class Dao<T> {
         try {
             return manager.find(classe, id);
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -41,7 +41,7 @@ public abstract class Dao<T> {
         try {
             return manager.find(classe, id);
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -49,7 +49,7 @@ public abstract class Dao<T> {
         try {
             manager.remove(o);
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -57,7 +57,7 @@ public abstract class Dao<T> {
         try {
             manager.persist(o);
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -65,7 +65,7 @@ public abstract class Dao<T> {
         try {
             manager.refresh(o);
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -76,7 +76,7 @@ public abstract class Dao<T> {
 
             return manager.createQuery(c).getResultList();
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -89,7 +89,7 @@ public abstract class Dao<T> {
 
             return manager.createQuery(c.orderBy(cb.asc(root.get("id")))).getResultList();
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 
@@ -102,7 +102,7 @@ public abstract class Dao<T> {
 
             return manager.createQuery(c.orderBy(cb.desc(root.get("id")))).getResultList();
         } catch (Exception e) {
-            throw new DaoException(e);
+            throw new DAOException(e);
         }
     }
 }

@@ -4,19 +4,18 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.org.aappe.erp.annotations.Transactional;
 
+import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Filial;
 
 /**
  * @author Jadson Ronald
  */
 @Resource
-public class FilialController {
-    private final Result result;
+public class FilialController extends MainController {
 
     public FilialController(Result result) {
-        this.result = result;
+        super(result);
     }
 
     @Get("/filial/nova")

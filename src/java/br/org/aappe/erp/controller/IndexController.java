@@ -8,11 +8,10 @@ import br.com.caelum.vraptor.Result;
  * @author Phelipe Melanias
  */
 @Resource
-public class IndexController {
-    private final Result result;
+public class IndexController extends MainController {
 
     public IndexController(Result result) {
-        this.result = result;
+        super(result);
     }
 
     @Get("/")
