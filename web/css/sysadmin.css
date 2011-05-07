@@ -7,15 +7,18 @@ body {
     background-color: white;
 }
 
-h1 { font-size: 22px; }
-h2 { font-size: 18px; }
-
 a {
     transition: color 300ms linear;
     -o-transition: color 300ms linear;
     -moz-transition: color 300ms linear;
     -webkit-transition: color 300ms linear;
 }
+
+h1 { font-size: 22px; }
+h2 { font-size: 18px; }
+
+img { vertical-align: top; }
+img#busy { display: none; margin-left: 5px; }
 
 /** MENU */
 div#menu {

@@ -21,9 +21,6 @@ public class Endereco implements Serializable {
     private int numero;
 
     @Column(length=100)
-    private String pais;
-
-    @Column(length=100)
     private String bairro;
 
     @Column(length=100)
@@ -44,9 +41,6 @@ public class Endereco implements Serializable {
 
     public int getNumero() { return numero; }
     public void setNumero(int numero) { this.numero = numero; }
-
-    public String getPais() { return pais; }
-    public void setPais(String pais) { this.pais = pais.trim(); }
 
     public String getBairro() { return bairro; }
     public void setBairro(String bairro) { this.bairro = bairro.trim(); }

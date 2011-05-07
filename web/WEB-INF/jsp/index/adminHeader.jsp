@@ -32,16 +32,8 @@
                     <a href="#">Empresas</a>
                     <div>
                         <ul>
-                            <li><a href="#">Grupo 1</a></li>
-                            <li><a href="#">Grupo 1</a></li>
-                            <li><a href="#">Grupo 1</a></li>
-                            <li><a href="#">Grupo 1</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Grupo 2</a></li>
-                            <li><a href="#">Grupo 2</a></li>
-                            <li><a href="#">Grupo 2</a></li>
-                            <li><a href="#">Grupo 2</a></li>
+                            <li><a href="<c:url value="/admin/empresa" />">Listar</a></li>
+                            <li><a href="<c:url value="/admin/empresa/nova" />">Cadastrar</a></li>
                         </ul>
                     </div>
                 </li>

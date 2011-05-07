@@ -3,6 +3,7 @@ package br.org.aappe.erp.bean;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 /**
  * @author Jadson Ronald
  */
-//@Entity
+@Entity
 @Table(name="filial")
 public class Filial implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class Filial implements Serializable {
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
+    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=true)
     private Empresa empresa;
 
     //getters e setters

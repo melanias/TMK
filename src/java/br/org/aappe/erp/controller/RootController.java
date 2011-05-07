@@ -28,7 +28,7 @@ public class RootController extends MainController {
     }
 
     @Get("/admin/root")
-    public List<Root> lista() {
+    public List<Root> list() {
         result.include("title", "Lista de Administradores");
         return repository.listAllById();
     }
@@ -68,7 +68,7 @@ public class RootController extends MainController {
 
         //Persistir os dados
         repository.persist(root);
-        result.redirectTo(this).lista();
+        result.redirectTo(this).list();
     }
 
     @Get("/admin/root/{id}")
@@ -78,7 +78,7 @@ public class RootController extends MainController {
         Root root = repository.find(id);
 
         if (root == null)
-            result.redirectTo(this).lista();
+            result.redirectTo(this).list();
 
         return root;
     }
@@ -102,13 +102,17 @@ public class RootController extends MainController {
             //Telefone ou celular
             that(!root.getTelefone().isEmpty() || !root.getCelular().isEmpty(), "", "telefone.ou.celular");
         }});
-        validator.onErrorForwardTo(this).frmAdd();
+
+        if (validator.hasErrors())
+            result.include("title", "Editar Administrador");
+
+        validator.onErrorUsePageOf(this).frmEdit(root.getId());
 
         //Senha do administrador
         root.setSenha(repository.find(root.getId()).getSenha());
 
         //Persistir os dados
         repository.merge(root);
-        result.redirectTo(this).lista();
+        result.redirectTo(this).list();
     }
 }
