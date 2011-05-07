@@ -18,4 +18,9 @@ public class IndexController extends MainController {
     public void index() {
         result.include("title", "AAPPE");
     }
+
+    @Get("/admin")
+    public void admin() {
+        result.include("title", "Módulo Administrativo");
+    }
 }

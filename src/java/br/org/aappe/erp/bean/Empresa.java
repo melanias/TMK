@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import br.org.aappe.erp.enums.Status;
 
 /**
  * @author Phelipe Melanias
@@ -56,7 +60,11 @@ public class Empresa implements Serializable {
 
     @Embedded
     private Endereco endereco;
-    
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="situacao", columnDefinition="smallint", nullable=false)
+    private Status status = Status.ATIVO; //0 - Inativo, 1 - Ativo
+
     @OneToMany(cascade=CascadeType.ALL, mappedBy="empresa")
     private Filial filiais;
 
@@ -90,6 +98,9 @@ public class Empresa implements Serializable {
 
     public Endereco getEndereco() { return endereco; }
     public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+
+    public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
 
     public Filial getFiliais() { return filiais; }
     public void setFiliais(Filial filiais) { this.filiais = filiais; }
