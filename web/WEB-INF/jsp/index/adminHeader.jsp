@@ -12,6 +12,7 @@
         <!-- JS -->
         <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/sysadmin.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/meiomask.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
     </head>
@@ -22,16 +23,8 @@
                     <a href="#">Administradores</a>
                     <div>
                         <ul>
-                            <li><a href="#">Grupo 1</a></li>
-                            <li><a href="#">Grupo 1</a></li>
-                            <li><a href="#">Grupo 1</a></li>
-                            <li><a href="#">Grupo 1</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Grupo 2</a></li>
-                            <li><a href="#">Grupo 2</a></li>
-                            <li><a href="#">Grupo 2</a></li>
-                            <li><a href="#">Grupo 2</a></li>
+                            <li><a href="<c:url value="/admin/root" />">Listar</a></li>
+                            <li><a href="<c:url value="/admin/root/novo" />">Cadastrar</a></li>
                         </ul>
                     </div>
                 </li>
@@ -39,10 +32,16 @@
                     <a href="#">Empresas</a>
                     <div>
                         <ul>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 1 Link 1 Link 1 Link 1</a></li>
+                            <li><a href="#">Grupo 1</a></li>
+                            <li><a href="#">Grupo 1</a></li>
+                            <li><a href="#">Grupo 1</a></li>
+                            <li><a href="#">Grupo 1</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Grupo 2</a></li>
+                            <li><a href="#">Grupo 2</a></li>
+                            <li><a href="#">Grupo 2</a></li>
+                            <li><a href="#">Grupo 2</a></li>
                         </ul>
                     </div>
                 </li>

@@ -19,13 +19,13 @@ public class FilialController extends MainController {
     }
 
     @Get("/filial/nova")
-    public void frmCadastro() {
+    public void frmAdd() {
         result.include("title", "Cadastrar Filial");
     }
 
     @Transactional
     @Post("/filial/nova")
     public void cadastrar(final Filial filial) {
-        result.redirectTo(this).frmCadastro();
+        result.redirectTo(this).frmAdd();
     }
 }

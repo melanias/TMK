@@ -66,4 +66,6 @@ div#menu > ul > li > div ul li a:hover {
 div#main { width: 80%; margin: 3em auto; }
 div#main .content { text-align: justify; }
 div#main .content h1 { color: #940000; margin-bottom: 15px; }
+
+div#main .content > blockquote { margin-bottom: 20px; }
 /** MAIN */
