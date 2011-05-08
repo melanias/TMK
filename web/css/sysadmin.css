@@ -2,7 +2,7 @@
 
 body {
     color: #4d4d4d;
-    font-size: 12px;
+    font-size: 11px;
     font-family: Arial, Helvetica;
     background-color: white;
 }
@@ -16,14 +16,23 @@ a {
 
 h1 { font-size: 22px; }
 h2 { font-size: 18px; }
+hr { border: 0; height: 1px; margin: 14px 0; color: #940000; background-color: #940000; }
 
 img { vertical-align: top; }
 img#busy { display: none; margin-left: 5px; }
 
+label { font-weight: bold; }
+
+textarea, [type='text'], [type='password'] {
+    padding: 1px;
+    border: 1px solid #940000;
+    background-color: #dedede;
+}
+
 /** MENU */
 div#menu {
     height: 30px;
-    background-color: #d9d9d9;
+    background-color: #dedede;
     border-top: 3px solid #940000;
     border-bottom: 1px solid #940000;
 }
@@ -42,7 +51,7 @@ div#menu > ul > li > a.ativo,
 div#menu > ul > li > a:hover {
     color: #555;
     height: 31px;
-    background: #d9d9d9 url('../images/admin-menu-arrow.png') 50% 100% no-repeat;
+    background: #dedede url('../images/admin-menu-arrow.png') 50% 100% no-repeat;
 }
 div#menu > ul > li > div {
     left: 0;
@@ -53,7 +62,7 @@ div#menu > ul > li > div {
     position: absolute;
     background-color: #940000;
     box-shadow: 3px 3px 6px #b9b9b9;
-    -moz-box-shadow: 3px 3x 6px #b9b9b9;
+    -moz-box-shadow: 3px 3px 6px #b9b9b9;
     -webkit-box-shadow: 3px 3px 6px #b9b9b9;
 }
 div#menu > ul > li > div ul { margin: 1px; padding: 10px 8px 2px; background-color: white; }
@@ -68,7 +77,32 @@ div#menu > ul > li > div ul li a:hover {
 /** MAIN */
 div#main { width: 80%; margin: 3em auto; }
 div#main .content { text-align: justify; }
-div#main .content h1 { color: #940000; margin-bottom: 15px; }
 
+div#main .content a { color: #777; font-weight: bold; }
+div#main .content a:hover { text-decoration: underline; }
+div#main .content > h1 { color: #940000; margin-bottom: 15px; }
 div#main .content > blockquote { margin-bottom: 20px; }
+
+/* Listagem */
+div#main .content > table {
+    width: 100%;
+    border: 1px solid #888;
+    border-collapse: collapse;
+}
+div#main .content > table tr th {
+    color: #333;
+    padding: 0.45em;
+    border: 1px dotted #888;
+    background-color: #dedede;
+}
+div#main .content > table tr td {
+    color: #555;
+    padding: 0.45em;
+    border: 1px dotted #888;
+}
+
+/* Formulários */
+div#main .content > form { /*border: 1px solid black;*/ }
+div#main .content > form > table:nth-child(even) { margin-top: 15px; }
+div#main .content > form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }
 /** MAIN */

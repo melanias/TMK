@@ -48,7 +48,7 @@
                             </td>
                         </tr>
                     </table>
-                    <br />
+                    <hr />
                     <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td><label for="cep">CEP:</label></td>
