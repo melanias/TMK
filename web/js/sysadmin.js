@@ -27,6 +27,10 @@ jQuery(function($){
     //Inicializar máscaras
     $(":text").setMask();
 
+    //Botão para fechar os erros de validação
+    $('<a href="#" title="Fechar">X</a>').insertBefore("blockquote > p:first");
+    $("blockquote > a").click(function(){ $(this).parent().remove(); });
+
     //CEP
     $("#cep").live("focusout", function(){
         var cep = $(this).val();
@@ -39,7 +43,7 @@ jQuery(function($){
                 "http://cep.republicavirtual.com.br/web_cep.php",
 
                 //Data
-                { "cep": cep, "formato": "javascript" },
+                {"cep": cep, "formato": "javascript"},
 
                 //Callback
                 function(){
