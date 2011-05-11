@@ -1,6 +1,6 @@
 jQuery(function($){
     //Settings
-    const URLBASE = '/TMK';
+    var URLBASE = '/TMK';
     $(":text[value='']:first").focus();
     $("a[href='#']").live('click', function(e){e.preventDefault();});
 
