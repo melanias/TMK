@@ -30,7 +30,7 @@ input, button, select, textarea {
     background-color: #e8e8e8;
 }
 button, [type='submit'] { color: #555; cursor: pointer; padding: 1px 3px; font-weight: bold;  }
-input:hover, input:focus, button:hover, textarea:focus { background-color: #dedede;}
+input:focus, button:hover, textarea:focus, [type='submit']:hover { background-color: #dedede;}
 
 select option { padding: 0 3px; }
 

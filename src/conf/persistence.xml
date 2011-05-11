@@ -8,14 +8,22 @@
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/aappe" />
             <property name="hibernate.connection.username" value="postgres" />
             <property name="hibernate.connection.password" value="postgres" />
-
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
-            <!--
-                Quando a aplicação for colocada em produção remover as duas linhas abaixo.
-            -->
+            <!-- Quando  a  aplicação  for  colocada  em
+                 produção remover as duas linhas abaixo. -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
+
+            <!-- C3P0 connection pool -->
+            <!--
+            <property name="hibernate.c3p0.timeout" value="60" />
+            <property name="hibernate.c3p0.min_size" value="10" />
+            <property name="hibernate.c3p0.max_size" value="100" />
+            <property name="hibernate.c3p0.max_statements" value="50" />
+            <property name="hibernate.c3p0.acquire_increment" value="1" />
+            <property name="hibernate.c3p0.idle_test_period" value="60" />
+            -->
         </properties>
     </persistence-unit>
 </persistence>
