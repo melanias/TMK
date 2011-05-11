@@ -2,6 +2,7 @@ package br.org.aappe.erp.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
  * @author Phelipe Melanias
  */
 @Entity
+@Cacheable
 @Table(name="root")
 public class Root implements Serializable {
     private static final long serialVersionUID = 1L;

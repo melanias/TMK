@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -25,6 +26,7 @@ import br.org.aappe.erp.enums.Status;
  * @author Phelipe Melanias
  */
 @Entity
+@Cacheable
 @Table(name="empresa")
 public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
