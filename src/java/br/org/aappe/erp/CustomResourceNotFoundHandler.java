@@ -31,7 +31,7 @@ public class CustomResourceNotFoundHandler extends DefaultResourceNotFoundHandle
                 tryMovePermanentlyTo(request, uri + "/");
             }
         } catch (ResourceNotFoundException e) {
-            //TODO: Criar uma página padrão para exibir o erro HTTP Status 404 - Not Found
+            //TODO: Criar uma página padrão para exibir o erro HTTP Status 404
             result.forwardTo(IndexController.class).index();
         }
     }
