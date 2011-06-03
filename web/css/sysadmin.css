@@ -16,21 +16,24 @@ a {
 
 h1 { font-size: 22px; }
 h2 { font-size: 18px; }
-hr { border: 0; height: 1px; margin: 14px 0; color: #940000; background-color: #940000; }
+hr { border: 0; height: 1px; padding: 0; margin: 14px 0; color: #940000; background-color: #940000; }
 
 img { vertical-align: top; }
 img#busy { display: none; margin-left: 5px; }
 
 label { font-weight: bold; }
+table { border-spacing: 0; border-collapse: collapse; }
 
-input, button, select, textarea {
+input, select, textarea { font-size: 100%; font-family: inherit; }
+select { margin: inherit; }
+
+input, select, textarea {
+    color: #555;
     padding: 1px;
-    font-size: 11px;
-    border: 1px solid #940000;
-    background-color: #e8e8e8;
+    border: 1px solid #d3d3d3;
+    background-color: #e6e6e6;
 }
-button, [type='submit'] { color: #555; cursor: pointer; padding: 1px 3px; font-weight: bold;  }
-input:focus, button:hover, textarea:focus, [type='submit']:hover { background-color: #dedede;}
+input:focus, select:focus, textarea:focus { color: #212121; background-color: #dadada; border: 1px solid #999999; }
 
 select option { padding: 0 3px; }
 

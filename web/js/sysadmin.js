@@ -30,7 +30,10 @@ jQuery(function($){
 
     //Botão para fechar os erros de validação
     $('<a href="#" title="Fechar">X</a>').insertBefore("blockquote > p:first");
-    $("blockquote > a").click(function(){ $(this).parent().remove(); });
+    $("blockquote > a").click(function(){$(this).parent().remove();});
+
+    //jQuery UI
+    $("button, :button, :submit").button();
 
     //CEP
     $("#cep").live("focusout", function(){

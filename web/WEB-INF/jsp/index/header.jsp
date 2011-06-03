@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/aappe.css" />" media="screen" charset="utf-8" />
 
         <!-- JS -->
-        <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery.min.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/aappe.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
