@@ -28,8 +28,8 @@
                     <a href="#">Administradores</a>
                     <div>
                         <ul>
-                            <li><a href="<c:url value="/admin/root" />">Listar</a></li>
-                            <li><a href="<c:url value="/admin/root/novo" />">Cadastrar</a></li>
+                            <li><a href="<c:url value="/admin/user" />">Listar</a></li>
+                            <li><a href="<c:url value="/admin/user/novo" />">Cadastrar</a></li>
                         </ul>
                     </div>
                 </li>

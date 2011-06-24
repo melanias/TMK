@@ -14,12 +14,28 @@ a {
     -webkit-transition: color 300ms linear;
 }
 
-h1 { font-size: 24px; }
-hr { width: 100%; margin: 5px 0; border: 1px solid #2882b4; }
+h1 { font-size: 22px; }
+h2 { font-size: 18px; }
+hr { border: 0; height: 1px; padding: 0; margin: 14px 0; color: #940000; background-color: #940000; }
 
-img { border: none; }
+img { vertical-align: top; }
+img#busy { display: none; margin-left: 5px; }
 
 label { font-weight: bold; }
+table { border-spacing: 0; border-collapse: collapse; }
+
+input, select, textarea { font-size: 100%; font-family: inherit; }
+select { margin: inherit; }
+
+input, select, textarea {
+    color: #555;
+    padding: 1px;
+    border: 1px solid #d3d3d3;
+    background-color: #e6e6e6;
+}
+input:focus, select:focus, textarea:focus { color: #212121; background-color: #dadada; border: 1px solid #999999; }
+
+select option { padding: 0 3px; }
 
 /** HEADER **/
 div#header {
@@ -38,7 +54,7 @@ div#header .content h1 > a { width: 99px; height: 100px; display: block; }
 div#header .content span { color: #555; float: right; margin: 2px 0 0; font-size: 0.9em; }
 
 /* MENU */
-div#header .content #menu { clear: both; height: 40px; border-top: 2px solid #dd7700; }
+div#header .content #menu { clear: both; height: 40px; border-top: 2px solid #dd7700;}
 div#header .content #menu > ul { margin: 0 14px; }
 div#header .content #menu > ul > li { float: left; position: relative; z-index: 99; }
 div#header .content #menu > ul > li > a {
@@ -54,14 +70,14 @@ div#header .content #menu > ul > li > a.ativo,
 div#header .content #menu > ul > li > a:hover {
     color: #888;
     height: 42px;
-    background: white url('../images/menu-arrow.png') 50% 100% no-repeat;
+    background: transparent url('../images/menu-arrow.png') 50% 100% no-repeat;
 }
 div#header .content #menu > ul > li > div {
     left: 0;
     top: 40px;
     z-index: -1;
     display: none;
-    min-width: 128px;
+    min-width: 148px;
     position: absolute;
     background-color: #dd7700;
 }
@@ -103,7 +119,41 @@ div#Version {
 /** MAIN **/
 div#main { width: 80%; margin: 0 auto; }
 div#main .content { margin: 18px 14px; text-align: justify; }
-div#main .content h1 { color: #940000; margin-bottom: 15px; }
+
+div#main .content a { color: #777; font-weight: bold; }
+div#main .content a:hover { text-decoration: underline; }
+div#main .content > h1 { color: #940000; margin-bottom: 20px; }
+
+div#main .content > span { float: right; }
+
+/* Erros */
+div#main .content > blockquote {
+    width: 50%;
+    padding: 5px;
+    color: #940000;
+    margin: 0 auto 20px;
+    border: 1px dotted #888;
+    background-color: #e8e8e8;
+}
+div#main .content > blockquote > p {
+    font-weight: bold;
+    padding: 2px 10px 2px 20px;
+    background: transparent url('../images/submenu-arrow.png') 10px 50% no-repeat;
+}
+div#main .content > blockquote > a { float: right; margin-right: 2px; }
+div#main .content > blockquote > a:hover { color: #940000; text-decoration: none; }
+/* Erros */
+
+/* Listagem */
+div#main .content > table { width: 100%; border: 1px solid #888; border-collapse: collapse; }
+div#main .content > table tr th { color: #333; padding: 0.45em; border: 1px dotted #888; background-color: #dedede; }
+div#main .content > table tr td { color: #555; padding: 0.45em; border: 1px dotted #888; }
+/* Listagem */
+
+/* Formulários */
+div#main .content > form {/* border: 1px solid black; */}
+div#main .content > form > table:nth-child(even) { margin-top: 20px; }
+div#main .content > form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }
 /** MAIN **/
 
 /** BORDERS **/

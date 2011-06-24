@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -26,7 +24,6 @@ import br.org.aappe.erp.enums.Status;
  * @author Phelipe Melanias
  */
 @Entity
-@Cacheable
 @Table(name="empresa")
 public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -68,8 +65,11 @@ public class Empresa implements Serializable {
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
     private Status status = Status.ATIVO; //0 = Inativo, 1 = Ativo
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="empresa")
+    @OneToMany(mappedBy="empresa")
     private List<Filial> filiais;
+
+    @OneToMany(mappedBy="empresa")
+    private List<Funcionario> funcionarios;
 
     //getters e setters
     public int getId() { return id; }
@@ -91,7 +91,7 @@ public class Empresa implements Serializable {
     public void setSite(String site) { this.site = site.trim(); }
 
     public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email.trim(); }
+    public void setEmail(String email) { this.email = email.trim().toLowerCase(); }
 
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone.trim(); }
@@ -107,4 +107,7 @@ public class Empresa implements Serializable {
 
     public List<Filial> getFiliais() { return filiais; }
     public void setFiliais(List<Filial> filiais) { this.filiais = filiais; }
+
+    public List<Funcionario> getFuncionarios() { return funcionarios; }
+    public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }
 }

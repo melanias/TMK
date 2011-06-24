@@ -46,13 +46,16 @@ public class EmpresaController extends MainController {
     public void add(final Empresa empresa) {
         validator.checking(new Validations(){{
             //Dados da empresa
-            if (that(!empresa.getCnpj().isEmpty(), "empresa.cnpj", "cnpj"))
-                that(Utilities.cnpj(empresa.getCnpj()), "empresa.cnpj", "cnpj.invalido");
+            if (that(!empresa.getCnpj().isEmpty(), "empresa.cnpj", "cnpj") &&
+                that(Utilities.cnpj(empresa.getCnpj()), "empresa.cnpj", "cnpj.invalido"))
+                that(repository.isUniqueCnpj(empresa), "empresa.cnpj", "cnpj.unico");
 
-            that(!empresa.getRazaoSocial().isEmpty(), "empresa.razaoSocial", "razaoSocial");
+            if (that(!empresa.getRazaoSocial().isEmpty(), "empresa.razaoSocial", "razaoSocial"))
+                that(repository.isUniqueCompanyName(empresa), "empresa.razaoSocial", "razaoSocial.unica");
 
-            if (that(!empresa.getEmail().isEmpty(), "empresa.email", "email"))
-                that(Utilities.mail(empresa.getEmail()), "empresa.email", "email.invalido");
+            if (that(!empresa.getEmail().isEmpty(), "empresa.email", "email") &&
+                that(Utilities.mail(empresa.getEmail()), "empresa.email", "email.invalido"))
+                that(repository.isUniqueMail(empresa), "empresa.email", "email.unico");
 
             that(!empresa.getTelefone().isEmpty() , "empresa.telefone", "telefone");
 
@@ -89,13 +92,16 @@ public class EmpresaController extends MainController {
     public void edit(final Empresa empresa) {
         validator.checking(new Validations(){{
             //Dados da empresa
-            if (that(!empresa.getCnpj().isEmpty(), "empresa.cnpj", "cnpj"))
-                that(Utilities.cnpj(empresa.getCnpj()), "empresa.cnpj", "cnpj.invalido");
+            if (that(!empresa.getCnpj().isEmpty(), "empresa.cnpj", "cnpj") &&
+                that(Utilities.cnpj(empresa.getCnpj()), "empresa.cnpj", "cnpj.invalido"))
+                that(repository.isUniqueCnpj(empresa), "empresa.cnpj", "cnpj.unico");
 
-            that(!empresa.getRazaoSocial().isEmpty(), "empresa.razaoSocial", "razaoSocial");
+            if (that(!empresa.getRazaoSocial().isEmpty(), "empresa.razaoSocial", "razaoSocial"))
+                that(repository.isUniqueCompanyName(empresa), "empresa.razaoSocial", "razaoSocial.unica");
 
-            if (that(!empresa.getEmail().isEmpty(), "empresa.email", "email"))
-                that(Utilities.mail(empresa.getEmail()), "empresa.email", "email.invalido");
+            if (that(!empresa.getEmail().isEmpty(), "empresa.email", "email") &&
+                that(Utilities.mail(empresa.getEmail()), "empresa.email", "email.invalido"))
+                that(repository.isUniqueMail(empresa), "empresa.email", "email.unico");
 
             that(!empresa.getTelefone().isEmpty() , "empresa.telefone", "telefone");
 

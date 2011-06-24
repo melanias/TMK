@@ -16,4 +16,8 @@ public interface EmpresaRepository {
     void persist(Empresa empresa);
 
     Empresa merge(Empresa empresa);
+
+    boolean isUniqueCnpj(Empresa empresa);
+    boolean isUniqueMail(Empresa empresa);
+    boolean isUniqueCompanyName(Empresa empresa);
 }

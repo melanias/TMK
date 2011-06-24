@@ -1,0 +1,34 @@
+* { margin: 0; padding: 0; outline: none; list-style: none; text-decoration: none; }
+
+body {
+    color: #4d4d4d;
+    font-size: 12px;
+    font-family: Arial, Helvetica;
+    background-color: white;
+}
+
+hr { border: 0; height: 1px; padding: 0; margin: 14px 0; color: #940000; background-color: #940000; }
+
+img { vertical-align: top; }
+img#busy { display: none; margin-left: 5px; }
+
+label { font-weight: bold; }
+table { border-spacing: 0; border-collapse: collapse; }
+
+input, select, textarea { font-size: 100%; font-family: inherit; }
+select { margin: inherit; }
+
+input, select, textarea {
+    color: #555;
+    padding: 1px;
+    border: 1px solid #d3d3d3;
+    background-color: #e6e6e6;
+}
+input:focus, select:focus, textarea:focus { color: #212121; background-color: #dadada; border: 1px solid #999999; }
+
+select option { padding: 0 3px; }
+
+/** MAIN **/
+form {/* border: 1px solid black; */}
+form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }
+/** MAIN **/

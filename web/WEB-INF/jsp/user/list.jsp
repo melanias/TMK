@@ -1,7 +1,7 @@
 <%@ include file="../index/adminHeader.jsp" %>
                 <h1>${title}</h1>
 <c:choose>
-            <c:when test="${not empty rootList}">
+            <c:when test="${not empty userList}">
                 <table>
                     <thead>
                         <tr>
@@ -13,13 +13,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${rootList}" var="root">
+                    <c:forEach items="${userList}" var="user">
                     <tr>
-                        <td><a href="<c:url value="/admin/root/${root.id}"/>">${root.cpf}</a></td>
-                        <td>${root.nome}</td>
-                        <td>${root.email}</td>
-                        <td><c:if test="${empty root.telefone}">-</c:if>${root.telefone}</td>
-                        <td><c:if test="${empty root.celular}">-</c:if>${root.celular}</td>
+                        <td><a href="<c:url value="/admin/user/${user.id}"/>">${user.cpf}</a></td>
+                        <td>${user.nome}</td>
+                        <td>${user.email}</td>
+                        <td><c:if test="${empty user.telefone}">-</c:if>${user.telefone}</td>
+                        <td><c:if test="${empty user.celular}">-</c:if>${user.celular}</td>
                     </tr>
                     </c:forEach>
                     </tbody>

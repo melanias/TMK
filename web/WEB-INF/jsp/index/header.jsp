@@ -8,10 +8,21 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/aappe.css" />" media="screen" charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="<c:url value="/js/highslide/highslide.css" />" media="screen" charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/smoothness/smoothness.css" />" media="screen" charset="utf-8" />
 
         <!-- JS -->
-        <script type="text/javascript" src="<c:url value="/js/jquery.min.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/aappe.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/meiomask.js" />" charset="utf-8"></script>
+
+        <!-- jQuery UI -->
+        <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.datepicker-pt-BR.js" />" charset="utf-8"></script>
+
+        <!-- Highslide -->
+        <script type="text/javascript" src="<c:url value="/js/highslide/highslide-full.min.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/highslide/highslide-configuration.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
     </head>

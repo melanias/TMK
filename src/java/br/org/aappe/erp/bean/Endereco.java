@@ -18,7 +18,8 @@ public class Endereco implements Serializable {
     @Column(length=9)
     private String cep;
 
-    private int numero;
+    @Column
+    private Integer numero;
 
     @Column(length=100)
     private String bairro;
@@ -39,8 +40,8 @@ public class Endereco implements Serializable {
     public String getCep() { return cep; }
     public void setCep(String cep) { this.cep = cep.trim(); }
 
-    public int getNumero() { return numero; }
-    public void setNumero(int numero) { this.numero = numero; }
+    public Integer getNumero() { return numero; }
+    public void setNumero(Integer numero) { this.numero = numero; }
 
     public String getBairro() { return bairro; }
     public void setBairro(String bairro) { this.bairro = bairro.trim(); }
