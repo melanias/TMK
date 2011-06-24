@@ -17,6 +17,8 @@ public interface FilialRepository {
     Filial merge(Filial filial);
 
     boolean isUniqueCnpj(Filial filial);
+
     boolean isUniqueMail(Filial filial);
+
     boolean isUniqueCompanyName(Filial filial);
 }
