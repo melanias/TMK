@@ -8,15 +8,7 @@
                             <a href="<c:url value="/setor" />">Setores</a>
                         </li>
                         <li>
-                            <a href="#">Funcionários</a>
-                            <div>
-                                <ul>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1 Link 1 Link 1 Link 1</a></li>
-                                </ul>
-                            </div>
+                            <a href="<c:url value="/funcionario" />">Funcionários</a>
                         </li>
                         <li>
                             <a href="#">Doadores</a>

@@ -1,5 +1,6 @@
 package br.org.aappe.erp.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.caelum.vraptor.Get;
@@ -15,7 +16,6 @@ import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Filial;
 import br.org.aappe.erp.repository.FilialRepository;
 import br.org.aappe.erp.util.Utilities;
-import java.util.Date;
 
 /**
  * @author Jadson Ronald

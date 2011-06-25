@@ -1,7 +1,8 @@
 package br.org.aappe.erp.repository;
 
-import br.org.aappe.erp.bean.Filial;
 import java.util.List;
+
+import br.org.aappe.erp.bean.Filial;
 
 /**
  * @author Phelipe Melanias

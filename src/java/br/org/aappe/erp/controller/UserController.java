@@ -67,7 +67,7 @@ public class UserController extends MainController {
         validator.onErrorForwardTo(this).frmAdd();
 
         //Criptografar a senha
-        user.setSenha(Utilities.md5(user.getCpf()+user.getNome()+user.getSenha()));
+        user.setSenha(Utilities.md5(user.getCpf()+user.getSenha()));
 
         //Persistir os dados
         repository.persist(user);

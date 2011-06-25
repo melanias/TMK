@@ -31,6 +31,18 @@ public class Setor implements Serializable {
     @Column(length=150, nullable=false)
     private String nome;
 
+    @Column(length=20, nullable=false)
+    private String sigla;
+
+    @Column(length=100)
+    private String email;
+
+    @Column(length=14)
+    private String telefone;
+
+    @Column(length=14)
+    private String fax;
+
     @OneToOne
     @JoinColumn(name="id_funcionario", referencedColumnName="id")
     private Funcionario responsavel;
@@ -48,6 +60,18 @@ public class Setor implements Serializable {
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome.trim(); }
+
+    public String getSigla() { return sigla; }
+    public void setSigla(String sigla) { this.sigla = sigla.trim().toUpperCase(); }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email.trim().toLowerCase(); }
+
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone.trim(); }
+
+    public String getFax() { return fax; }
+    public void setFax(String fax) { this.fax = fax.trim(); }
 
     public Funcionario getResponsavel() { return responsavel; }
     public void setResponsavel(Funcionario responsavel) { this.responsavel = responsavel; }

@@ -12,15 +12,14 @@ jQuery(function($){
     });
 
     //Settings
+    $(":text[value='']:first").focus();
     $("a[href='#']").live('click', function(e){e.preventDefault();});
 
     //Configurar máscaras
     $.mask.masks = $.extend($.mask.masks, {
-        //peso      : {mask: '99,999.999', type: 'reverse', defaultValue: '000'},
-        //valor     : {mask: '99,999.999.99', type: 'reverse', defaultValue: '000'},
-        rg        : {mask: '99999999999'},
-        numero    : {mask: '99999999999'}/*,
-        matricula : {mask: '9999999-9'}*/
+        rg     : {mask: '99999999999'},
+        data   : {mask: '39/19/2999'},
+        numero : {mask: '99999999999'}
     });
 
     //Inicializar máscaras
@@ -76,7 +75,7 @@ jQuery(function($){
         }
     });
 
-    /** iframe - code **/
+/** iframe - code **/
     $("#add-filial").live("click", function() {
         $.ajax({
             type: "POST",
@@ -139,5 +138,130 @@ jQuery(function($){
         });
     });
 
-    /** iframe - code **/
+    $("#add-setor").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "setor/add",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "setor/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de setores.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#edit-setor").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "setor/edit",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "setor/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de setores.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#add-funcionario").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "funcionario/add",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "funcionario/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de funcionários.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#edit-funcionario").live("click", function() {
+        alert($("form").serialize());
+
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "funcionario/edit",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "funcionario/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de funcionários.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+/** iframe - code **/
 });

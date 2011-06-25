@@ -6,9 +6,6 @@
         <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
         <meta name="author" content="Phelipe Melanias" />
 
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/iframe.css" />" media="screen" charset="utf-8" />
-
         <title>${title}</title>
     </head>
     <body>

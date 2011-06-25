@@ -42,9 +42,9 @@
                             <td><label for="fax">Fax:</label></td>
                             <td><input type="text" name="filial.fax" value="${filial.fax}" id="fax" size="14" maxlength="14" alt="phone" /></td>
                         </tr>
-                    </table>
-                    <hr />
-                    <table>
+            </table>
+            <hr />
+            <table>
                         <tr>
                             <td><label for="cep">CEP:</label></td>
                             <td>
@@ -74,7 +74,7 @@
                             <td><input type="hidden" name="filial.empresa.id" value="1" /></td>
                             <td><input type="button" value="Salvar" id="add-filial" /></td>
                         </tr>
-                    </table>
+            </table>
         </form>
         <script type="text/javascript">
             //Contexto da aplicação

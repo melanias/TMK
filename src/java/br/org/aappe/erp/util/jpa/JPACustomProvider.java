@@ -6,7 +6,7 @@ import br.com.caelum.vraptor.util.jpa.EntityManagerCreator;
 import br.com.caelum.vraptor.util.jpa.EntityManagerFactoryCreator;
 
 public class JPACustomProvider extends SpringProvider {
-    
+
     @Override
     protected void registerCustomComponents(ComponentRegistry registry) {
         registry.register(EntityManagerCreator.class, EntityManagerCreator.class);

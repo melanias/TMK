@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public abstract class Pessoa {
 
     @Column(unique=true, nullable=false)
-    private long rg;
+    private Long rg;
 
     @Column(length=14, unique=true, nullable=false)
     private String cpf;
@@ -43,8 +43,8 @@ public abstract class Pessoa {
     private Endereco endereco;
 
     //getters e setters
-    public long getRg() { return rg; }
-    public void setRg(long rg) { this.rg = rg; }
+    public Long getRg() { return rg; }
+    public void setRg(Long rg) { this.rg = rg; }
 
     public String getCpf() { return cpf; }
     public void setCpf(String cpf) { this.cpf = cpf.trim(); }
@@ -66,4 +66,14 @@ public abstract class Pessoa {
 
     public Endereco getEndereco() { return endereco; }
     public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+
+    public String getFirstAndLastName() {
+        //TODO: refatorar o código abaixo, não gostei muito.
+        String[] s = nome.split(" ");
+
+        if (s.length > 1 && s[s.length-1].length() > 2)
+            return s[0] +" "+ s[s.length-1];
+        else
+            return s[0];
+    }
 }
