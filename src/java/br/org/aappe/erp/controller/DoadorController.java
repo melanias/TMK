@@ -88,7 +88,7 @@ public class DoadorController extends MainController {
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
-        //Definir data de cadastro da empresa
+        //Definir data de cadastro do doador
         doador.setData(new Date());
 
         repository.persist(doador);
