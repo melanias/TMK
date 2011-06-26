@@ -24,4 +24,6 @@ public interface FuncionarioRepository {
     boolean isUniqueName(Funcionario funcionario);
 
     boolean isUniqueMail(Funcionario funcionario);
+
+    Funcionario authenticate(String cpf, String senha);
 }

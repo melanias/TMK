@@ -1,0 +1,84 @@
+* { margin: 0; padding: 0; outline: none; text-decoration: none; }
+
+body { color: #3d3d3d; text-align: left; font-family: Arial, Helvetica; background-color: #efefef; }
+
+div#warning {
+    top: 0;
+    right: 0;
+    z-index: 99;
+    display: block;
+    color: #ffffff;
+    position: fixed;
+    font-size: 12px;
+    padding: 4px 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: #dd7700;
+}
+
+div#wrapper {
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    font-size: 1em;
+    position: absolute;
+    margin-top: -140px;
+    margin-left: -225px;
+    background-color: #fff;
+    border: 5px solid #d6d6d6;
+}
+div#wrapper span {
+    width: 100%;
+    height: 45px;
+    display: block; border-bottom: 2px solid #d6d6d6; }
+
+div#wrapper span h1 {
+    font-size: 22px;
+    line-height: 45px;
+    padding-left: 10px;
+}
+
+div#wrapper div#lt {
+    top: 90px;
+    left: 15px;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    background: transparent url("../images/login.png") 0% 50% no-repeat;
+}
+
+div#wrapper div#rt { float: right; margin: 15px 8px; }
+div#wrapper div#rt form table tr td { padding: 0; }
+div#wrapper div#rt form table tr td label { font-weight: bold; }
+
+input[type='text'], input[type='password'] { width: 310px; padding: 3px; color: #5c5c5c; font-size: 16px; margin: 2px 0 12px; border: 2px solid #d6d6d6; background-color: #efefef; }
+input[type='text']:focus, input[type='password']:focus { color: #222; border: 2px solid #d0d0d0; background-color: #e3e7e8; }
+
+input[type='submit'] { color: #555; width: auto; float: right; height: auto; padding: 5px; cursor: pointer; font-weight: bold; border: 2px solid #d6d6d6; background-color: #efefef; }
+input[type='submit']:hover { color: #222; border: 2px solid #d0d0d0; background-color: #e3e7e8; }
+
+.corner {
+    border-radius: 5px;         /* CSS3     */
+    -moz-border-radius: 5px;    /* Firefox  */
+    -khtml-border-radius: 5px;  /* TODO: verificar em qual browser isso funciona */
+    -opera-border-radius: 5px;  /* Opera    */
+    -webkit-border-radius: 5px; /* Chromium e Safari */
+}
+
+.corner-bottom {
+    /* CSS3 */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /* Firefox */
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    /* TODO: verificar em qual browser isso funciona
+    -khtml-border-radius-bottomleft: 5px;
+    -khtml-border-radius-bottompright: 5px;*/
+    /* Opera */
+    -opera-border-bottom-left-radius: 5px;
+    -opera-border-bottom-right-radius: 5px;
+    /* Chromium e Safari */
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}

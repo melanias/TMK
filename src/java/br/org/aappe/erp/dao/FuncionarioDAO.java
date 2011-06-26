@@ -1,11 +1,14 @@
 package br.org.aappe.erp.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import br.com.caelum.vraptor.ioc.Component;
 
 import br.org.aappe.erp.bean.Funcionario;
+import br.org.aappe.erp.enums.Status;
 import br.org.aappe.erp.repository.FuncionarioRepository;
+import br.org.aappe.erp.util.Utilities;
 
 /**
  * @author Phelipe Melanias
@@ -15,6 +18,19 @@ public class FuncionarioDAO extends DAO<Funcionario> implements FuncionarioRepos
 
     public FuncionarioDAO(EntityManager manager) {
         super(manager);
+    }
+
+    @Override
+    public Funcionario authenticate(String cpf, String senha) {
+        try {
+            return (Funcionario) manager.createQuery("FROM Funcionario f WHERE f.cpf = ? AND f.senha = ? AND status = ? AND demissao IS NULL")
+                                        .setParameter(1, cpf)
+                                        .setParameter(2, Utilities.md5(cpf+senha))
+                                        .setParameter(3, Status.ATIVO)
+                                        .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
