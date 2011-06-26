@@ -19,7 +19,8 @@ jQuery(function($){
     $.mask.masks = $.extend($.mask.masks, {
         rg     : {mask: '99999999999'},
         data   : {mask: '39/19/2999'},
-        numero : {mask: '99999999999'}
+        numero : {mask: '99999999999'},
+        valor  : {mask: '99,999.999.999.9', type: 'reverse', defaultValue: '000'}
     });
 
     //Inicializar máscaras
@@ -372,6 +373,68 @@ jQuery(function($){
 
                         if (s == "error")
                             alert("Ocorreu um erro ao carregar a lista de campanhas.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#add-doacao").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "doacao/add",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "doacao/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de doações.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#edit-doacao").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "doacao/edit",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "doacao/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de doações.");
                     });
 
                     parent.window.hs.getExpander().close();
