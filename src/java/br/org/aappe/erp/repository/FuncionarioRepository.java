@@ -11,11 +11,11 @@ public interface FuncionarioRepository {
 
     Funcionario find(int id);
 
-    Funcionario merge(Funcionario Funcionario);
-
-    void persist(Funcionario Funcionario);
-
     List<Funcionario> listAllById();
+
+    void persist(Funcionario funcionario);
+
+    Funcionario merge(Funcionario funcionario);
 
     boolean isUniqueRg(Funcionario funcionario);
 

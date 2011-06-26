@@ -232,8 +232,6 @@ jQuery(function($){
     });
 
     $("#edit-funcionario").live("click", function() {
-        alert($("form").serialize());
-
         $.ajax({
             type: "POST",
             url: URLBASE + "funcionario/edit",
@@ -250,6 +248,68 @@ jQuery(function($){
 
                         if (s == "error")
                             alert("Ocorreu um erro ao carregar a lista de funcionários.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#add-doador").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "doador/add",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "doador/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de doadores.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+
+    $("#edit-doador").live("click", function() {
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "doador/edit",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(URLBASE + "doador/refresh", function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista de doadores.");
                     });
 
                     parent.window.hs.getExpander().close();

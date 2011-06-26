@@ -11,7 +11,8 @@
                             <a href="<c:url value="/funcionario" />">Funcionários</a>
                         </li>
                         <li>
-                            <a href="#">Doadores</a>
+                            <a href="<c:url value="/doador" />">Doadores</a>
+                            <!--
                             <div>
                                 <ul>
                                     <li><a href="#">Grupo 1</a></li>
@@ -26,6 +27,7 @@
                                     <li><a href="#">Grupo 2</a></li>
                                 </ul>
                             </div>
+                            -->
                         </li>
                         <li>
                             <a href="#">Campanhas</a>
