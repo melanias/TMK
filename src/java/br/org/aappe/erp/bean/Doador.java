@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.org.aappe.erp.enums.DonorStatus;
+import java.util.List;
+import javax.persistence.OneToMany;
 
 /**
  * @author Thales Imbruglia
@@ -38,6 +40,9 @@ public class Doador extends Pessoa implements Serializable {
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
     private DonorStatus status = DonorStatus.ATIVO; //0 = Inativo, 1 = Ativo, 2 = Novo, 3 = Fidelizado
 
+    @OneToMany(mappedBy="doador")
+    private List<Doacao> doacoes;
+
     //getters e setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -47,4 +52,7 @@ public class Doador extends Pessoa implements Serializable {
 
     public DonorStatus getStatus() { return status; }
     public void setStatus(DonorStatus status) { this.status = status; }
+
+    public List<Doacao> getDoacoes() { return doacoes; }
+    public void setDoacoes(List<Doacao> doacoes) { this.doacoes = doacoes; }
 }

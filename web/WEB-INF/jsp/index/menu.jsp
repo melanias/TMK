@@ -20,10 +20,7 @@
                             <a href="#">Finanças</a>
                             <div>
                                 <ul>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
+                                    <li><a href="<c:url value="/doacao" />">Doações</a></li>
                                 </ul>
                             </div>
                         </li>
