@@ -13,7 +13,7 @@ public interface CampanhaRepository {
 
     List<Campanha> listAllById();
 
-    void persist(Campanha Campanha);
+    void persist(Campanha campanha);
 
-    Campanha merge(Campanha Campanha);
+    Campanha merge(Campanha campanha);
 }
