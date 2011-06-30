@@ -4,9 +4,8 @@
         <!-- Conteúdo Principal -->
 
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
-            hs.graphicsDir = URLBASE + 'js/highslide/graphics/';
+            const URLBASE  = "<%= request.getContextPath() %>";
+            hs.graphicsDir = URLBASE + "/js/highslide/graphics/";
         </script>
     </body>
 </html>

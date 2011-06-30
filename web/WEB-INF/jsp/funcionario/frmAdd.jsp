@@ -132,13 +132,12 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="funcionario.empresa.id" value="1" /></td>
-                    <td><input type="button" value="Salvar" id="add-funcionario" /></td>
+                    <td><input type="button" id="doAll" name="add-funcionario" value="Salvar" /></td>
                 </tr>
             </table>
         </form>
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
+            const URLBASE  = "<%= request.getContextPath() %>";
         </script>
     </body>
 </html>

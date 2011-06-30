@@ -57,13 +57,12 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="doacao.operador.id" value="${employeeSession.id}" /></td>
-                    <td><input type="button" value="Salvar" id="add-doacao" /></td>
+                    <td><input type="button" id="doAll" name="add-doacao" value="Salvar" /></td>
                 </tr>
             </table>
         </form>
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
+            const URLBASE  = "<%= request.getContextPath() %>";
         </script>
     </body>
 </html>

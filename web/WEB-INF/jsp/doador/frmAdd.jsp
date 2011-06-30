@@ -90,13 +90,12 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="button" value="Salvar" id="add-doador" /></td>
+                    <td><input type="button" id="doAll" name="add-doador" value="Salvar" /></td>
                 </tr>
             </table>
         </form>
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
+            const URLBASE  = "<%= request.getContextPath() %>";
         </script>
     </body>
 </html>

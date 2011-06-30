@@ -92,7 +92,7 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="doador.id" value="${doador.id}" /></td>
-                    <td><input type="button" value="Salvar" id="edit-doador" /></td>
+                    <td><input type="button" id="doAll" name="edit-doador" value="Salvar" /></td>
                 </tr>
             </table>
         </form>
@@ -102,8 +102,7 @@
     </c:otherwise>
 </c:choose>
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
+            const URLBASE  = "<%= request.getContextPath() %>";
         </script>
     </body>
 </html>

@@ -62,7 +62,7 @@
                         <input type="hidden" name="doacao.id" value="${doacao.id}" />
                         <input type="hidden" name="doacao.operador.id" value="${doacao.operador.id}" />
                     </td>
-                    <td><input type="button" value="Salvar" id="edit-doacao" /></td>
+                    <td><input type="button" id="doAll" name="edit-doacao" value="Salvar" /></td>
                 </tr>
             </table>
         </form>
@@ -72,8 +72,7 @@
     </c:otherwise>
 </c:choose>
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
+            const URLBASE  = "<%= request.getContextPath() %>";
         </script>
     </body>
 </html>

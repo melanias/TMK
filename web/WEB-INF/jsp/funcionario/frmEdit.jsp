@@ -137,7 +137,7 @@
                         <input type="hidden" name="funcionario.id" value="${funcionario.id}" />
                         <input type="hidden" name="funcionario.empresa.id" value="${funcionario.empresa.id}" />
                     </td>
-                    <td><input type="button" value="Salvar" id="edit-funcionario" /></td>
+                    <td><input type="button" id="doAll" name="edit-funcionario" value="Salvar" /></td>
                 </tr>
             </table>
         </form>
@@ -147,8 +147,7 @@
     </c:otherwise>
 </c:choose>
         <script type="text/javascript">
-            //Contexto da aplicação
-            const URLBASE  = "<c:url value="/" />";
+            const URLBASE  = "<%= request.getContextPath() %>";
         </script>
     </body>
 </html>
