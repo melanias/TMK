@@ -78,16 +78,11 @@ jQuery(function($){
 
     /** iframe - code **/
     $("#doAll").live("click", function() {
-        var id = $(this).attr("name");
-        var of = id.indexOf("-");
-
-        //Resource e Action
-        var p1 = id.slice(++of);
-        var p2 = id.slice(0, --of);
+        var id = $(this).attr("name").split("-");
 
         //URL
-        var fullurl = URLBASE +"/"+ p1 +"/"+ p2;
-        var refresh = URLBASE +"/"+ p1 +"/refresh";
+        var fullurl = URLBASE +"/"+ id[1] +"/"+ id[0];
+        var refresh = URLBASE +"/"+ id[1] +"/refresh";
 
         $.ajax({
             type: "POST",
