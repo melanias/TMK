@@ -76,10 +76,7 @@
                     <td><input type="text" name="filial.endereco.cidade" value="${filial.endereco.cidade}" id="cidade" size="35" maxlength="100" readonly="readonly" /></td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="hidden" name="filial.id" value="${filial.id}" />
-                        <input type="hidden" name="filial.empresa.id" value="${filial.empresa.id}" />
-                    </td>
+                    <td><input type="hidden" name="filial.id" value="${filial.id}" /></td>
                     <td><input type="button" id="doAll" name="edit-filial" value="Salvar" /></td>
                 </tr>
             </table>

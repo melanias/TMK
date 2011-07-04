@@ -54,7 +54,7 @@ public class Filial implements Serializable {
     private Endereco endereco;
 
     @ManyToOne
-    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false)
+    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
     private Empresa empresa;
 
     @OneToMany(mappedBy="filial")

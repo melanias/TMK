@@ -4,10 +4,13 @@ import java.io.Serializable;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
+import br.org.aappe.erp.bean.Empresa;
+import br.org.aappe.erp.bean.Filial;
+
 import br.org.aappe.erp.bean.Funcionario;
+import br.org.aappe.erp.bean.Setor;
 import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.enums.Status;
-import br.org.aappe.erp.util.Utilities;
 
 /**
  * @author Phelipe Melanias
@@ -53,5 +56,17 @@ public class EmployeeSession implements Serializable {
 
     public Status getStatus() {
         return funcionario.getStatus();
+    }
+
+    public Setor getSetor() {
+        return funcionario.getSetor();
+    }
+
+    public Filial getFilial() {
+        return funcionario.getFilial();
+    }
+
+    public Empresa getEmpresa() {
+        return funcionario.getEmpresa();
     }
 }

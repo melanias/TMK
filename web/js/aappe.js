@@ -26,8 +26,15 @@ jQuery(function($){
     //Inicializar máscaras
     $(":text").setMask();
 
+    //Nova Janela
+    $("a[rel='new']").attr({
+        //title  : 'Este link abre uma nova janela',
+        target : '_blank'
+    });
+
     //jQuery UI
     $("button, :button, :submit").button();
+    $(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
     $(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
     $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
     $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
