@@ -27,9 +27,9 @@ jQuery(function($){
     $(":text").setMask();
 
     //Nova Janela
-    $("a[rel='new']").attr({
-        //title  : 'Este link abre uma nova janela',
-        target : '_blank'
+    $("a[rel='externo']").attr({
+        title  : "Este link abre uma nova janela",
+        target : "_blank"
     });
 
     //jQuery UI
@@ -101,6 +101,7 @@ jQuery(function($){
                     parent.$("#main > div.content").load(refresh, function(r, s) {
 
                         //Atualizar botões
+                        parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
                         parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
                         parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
                         parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});

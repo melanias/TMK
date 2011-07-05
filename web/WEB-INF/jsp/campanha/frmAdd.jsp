@@ -25,15 +25,15 @@
             <table>
                 <tr>
                     <td><label for="nome">Nome:</label></td>
-                    <td colspan="3"><input type="text" name="campanha.nome" id="nome" value="${campanha.nome}" size="50" maxlength="200" /></td>
+                    <td><input type="text" name="campanha.nome" value="" id="nome" size="50" maxlength="200" /></td>
                 </tr>
                 <tr>
                     <td><label for="dataInicial">Data Inicial:</label></td>
-                    <td><input type="text" name="campanha.dataInicial" id="dataInicial" value="<fmt:formatDate value="${campanha.dataInicial}" type="date" pattern="dd/MM/yyyy"/>" size="16" maxlength="10" alt="data" /></td>
+                    <td><input type="text" name="campanha.dataInicial" value="" id="dataInicial" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
                     <td><label for="dataFinal">Data Final:</label></td>
-                    <td><input type="text" name="campanha.dataFinal" id="dataFinal" value="<fmt:formatDate value="${campanha.dataFinal}" type="date" pattern="dd/MM/yyyy"/>" size="16" maxlength="10" alt="data" /></td>
+                    <td><input type="text" name="campanha.dataFinal" value="" id="dataFinal" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
                     <td><input type="hidden" name="campanha.funcionario.id" value="${employeeSession.id}" /></td>

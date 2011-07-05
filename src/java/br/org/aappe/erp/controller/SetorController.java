@@ -64,19 +64,8 @@ public class SetorController extends MainController {
     @Transactional
     @Post("/setor/add")
     public void add(final Setor setor) {
-        List<Message> errors = new Validations(){{
-            //Nome do setor
-            if (that(!setor.getNome().isEmpty(), "setor.nome", "nome"))
-                that(repository.isUniqueSection(setor), "setor.nome", "nome.unico");
+        List<Message> errors = validate(setor);
 
-            //Sigla e Filial
-            if (that(!setor.getSigla().isEmpty(), "setor.sigla", "sigla") & that(setor.getFilial().getId() > 0, "setor.filial", "filial_not_selected"))
-                that(repository.isUniqueAcronym(setor), "setor.sigla", "sigla.unica");
-
-            //E-mail
-            if (!setor.getEmail().isEmpty())
-                that(Utilities.mail(setor.getEmail()), "setor.email", "email.invalido");
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
@@ -99,7 +88,21 @@ public class SetorController extends MainController {
     @Transactional
     @Post("/setor/edit")
     public void edit(final Setor setor) {
-        List<Message> errors = new Validations(){{
+        List<Message> errors = validate(setor);
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        //Verificar se algum responsável foi selecionado
+        if (setor.getResponsavel().getId() == 0)
+            setor.setResponsavel(null);
+
+        repository.merge(setor);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
+    private List<Message> validate(final Setor setor) {
+        return new Validations(){{
             //Nome do setor
             if (that(!setor.getNome().isEmpty(), "setor.nome", "nome"))
                 that(repository.isUniqueSection(setor), "setor.nome", "nome.unico");
@@ -112,14 +115,5 @@ public class SetorController extends MainController {
             if (!setor.getEmail().isEmpty())
                 that(Utilities.mail(setor.getEmail()), "setor.email", "email.invalido");
         }}.getErrors();
-        validator.addAll(errors);
-        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
-
-        //Verificar se algum responsável foi selecionado
-        if (setor.getResponsavel().getId() == 0)
-            setor.setResponsavel(null);
-
-        repository.merge(setor);
-        result.use(json()).withoutRoot().from("OK").serialize();
     }
 }

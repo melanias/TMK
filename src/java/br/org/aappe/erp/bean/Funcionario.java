@@ -61,7 +61,7 @@ public class Funcionario extends Pessoa implements Serializable {
     private Filial filial;
 
     @ManyToOne
-    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false)
+    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
     private Empresa empresa;
 
     //getters e setters

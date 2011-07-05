@@ -57,34 +57,8 @@ public class DoadorController extends MainController {
     @Transactional
     @Post("/doador/add")
     public void add(final Doador doador) {
-        List<Message> errors = new Validations(){{
-            //Nome
-            if (that(!doador.getNome().isEmpty(), "doador.nome", "nome"))
-                that(repository.isUniqueName(doador), "doador.nome", "nome.unico");
+        List<Message> errors = validate(doador);
 
-            //RG
-            if (that(doador.getRg() != null, "doador.rg", "rg") &&
-                that(doador.getRg().toString().length() > 5 && doador.getRg().toString().length() < 12, "doador.rg", "rg.invalido", 6, 11))
-                that(repository.isUniqueRg(doador), "doador.rg", "rg.unico");
-
-            //CPF
-            if (that(!doador.getCpf().isEmpty(), "doador.cpf", "cpf") &&
-                that(Utilities.cpf(doador.getCpf()), "doador.cpf", "cpf.invalido"))
-                that(repository.isUniqueCpf(doador), "doador.cpf", "cpf.unico");
-
-            //E-mail
-            if (that(!doador.getEmail().isEmpty(), "doador.email", "email") &&
-                that(Utilities.mail(doador.getEmail()), "doador.email", "email.invalido"))
-                that(repository.isUniqueMail(doador), "doador.email", "email.unico");
-
-            //Telefone ou Celular
-            that(!doador.getCelular().isEmpty() || !doador.getTelefone().isEmpty(), "", "telefone.ou.celular");
-
-            //Endereço
-            if (that(!doador.getEndereco().getCep().isEmpty(), "doador.cep", "cep"))
-                that(!doador.getEndereco().getLogradouro().isEmpty() && !doador.getEndereco().getBairro().isEmpty() &&
-                     !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
@@ -105,7 +79,17 @@ public class DoadorController extends MainController {
     @Transactional
     @Post("/doador/edit")
     public void edit(final Doador doador) {
-        List<Message> errors = new Validations(){{
+        List<Message> errors = validate(doador);
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.merge(doador);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
+    private List<Message> validate(final Doador doador) {
+        return new Validations(){{
             //Nome
             if (that(!doador.getNome().isEmpty(), "doador.nome", "nome"))
                 that(repository.isUniqueName(doador), "doador.nome", "nome.unico");
@@ -133,10 +117,5 @@ public class DoadorController extends MainController {
                 that(!doador.getEndereco().getLogradouro().isEmpty() && !doador.getEndereco().getBairro().isEmpty() &&
                      !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");
         }}.getErrors();
-        validator.addAll(errors);
-        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
-
-        repository.merge(doador);
-        result.use(json()).withoutRoot().from("OK").serialize();
     }
 }

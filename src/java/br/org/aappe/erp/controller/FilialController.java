@@ -72,21 +72,8 @@ public class FilialController extends MainController {
     @Transactional
     @Post("/filial/add")
     public void add(final Filial filial) {
-        List<Message> errors = new Validations(){{
-            //Dados da filial
-            if (that(!filial.getCnpj().isEmpty(), "filial.cnpj", "cnpj") &&
-                that(Utilities.cnpj(filial.getCnpj()), "filial.cnpj", "cnpj.invalido"))
-                that(repository.isUniqueCnpj(filial), "filial.cnpj", "cnpj.unico");
+        List<Message> errors = validate(filial);
 
-            if (that(!filial.getNome().isEmpty(), "filial.nome", "nome"))
-                that(repository.isUniqueCompanyName(filial), "filial.nome", "nome.unico");
-
-            if (!filial.getEmail().isEmpty() &&
-                that(Utilities.mail(filial.getEmail()), "filial.email", "email.invalido"))
-                that(repository.isUniqueMail(filial), "filial.email", "email.unico");
-
-            that(!filial.getTelefone().isEmpty() , "filial.telefone", "telefone");
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
@@ -106,21 +93,8 @@ public class FilialController extends MainController {
     @Transactional
     @Post("/filial/edit")
     public void edit(final Filial filial) {
-        List<Message> errors = new Validations(){{
-            //Dados da filial
-            if (that(!filial.getCnpj().isEmpty(), "filial.cnpj", "cnpj") &&
-                that(Utilities.cnpj(filial.getCnpj()), "filial.cnpj", "cnpj.invalido"))
-                that(repository.isUniqueCnpj(filial), "filial.cnpj", "cnpj.unico");
+        List<Message> errors = validate(filial);
 
-            if (that(!filial.getNome().isEmpty(), "filial.nome", "nome"))
-                that(repository.isUniqueCompanyName(filial), "filial.nome", "nome.unico");
-
-            if (!filial.getEmail().isEmpty() &&
-                that(Utilities.mail(filial.getEmail()), "filial.email", "email.invalido"))
-                that(repository.isUniqueMail(filial), "filial.email", "email.unico");
-
-            that(!filial.getTelefone().isEmpty() , "filial.telefone", "telefone");
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
@@ -222,5 +196,25 @@ public class FilialController extends MainController {
         }
 
         result.nothing();
+    }
+
+    private List<Message> validate(final Filial filial) {
+        return new Validations(){{
+            //CNPJ
+            if (that(!filial.getCnpj().isEmpty(), "filial.cnpj", "cnpj") &&
+                that(Utilities.cnpj(filial.getCnpj()), "filial.cnpj", "cnpj.invalido"))
+                that(repository.isUniqueCnpj(filial), "filial.cnpj", "cnpj.unico");
+
+            //Nome
+            if (that(!filial.getNome().isEmpty(), "filial.nome", "nome"))
+                that(repository.isUniqueCompanyName(filial), "filial.nome", "nome.unico");
+
+            //E-mail
+            if (!filial.getEmail().isEmpty() &&
+                that(Utilities.mail(filial.getEmail()), "filial.email", "email.invalido"))
+                that(repository.isUniqueMail(filial), "filial.email", "email.unico");
+
+            that(!filial.getTelefone().isEmpty() , "filial.telefone", "telefone");
+        }}.getErrors();
     }
 }
