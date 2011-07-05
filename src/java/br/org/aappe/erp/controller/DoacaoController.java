@@ -65,19 +65,8 @@ public class DoacaoController extends MainController {
     @Transactional
     @Post("/doacao/add")
     public void add(final Doacao doacao) {
-        List<Message> errors = new Validations(){{
-            //Doador
-            that(doacao.getDoador().getId() > 0, "doacao.doador", "doador");
+        List<Message> errors = validate(doacao);
 
-            //Valor
-            that(doacao.getValor().compareTo(BigDecimal.ZERO) > 0, "doacao.valor", "valor");
-
-            //Representante
-            that(doacao.getRepresentante().getId() > 0, "doacao.representante", "representante");
-
-            //Data de Recebimento
-            that(doacao.getRecebimento() != null, "doacao.recebimento", "recebimento");
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
@@ -99,7 +88,17 @@ public class DoacaoController extends MainController {
     @Transactional
     @Post("/doacao/edit")
     public void edit(final Doacao doacao) {
-        List<Message> errors = new Validations(){{
+        List<Message> errors = validate(doacao);
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.merge(doacao);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
+    private List<Message> validate(final Doacao doacao) {
+        return new Validations(){{
             //Doador
             that(doacao.getDoador().getId() > 0, "doacao.doador", "doador");
 
@@ -112,10 +111,5 @@ public class DoacaoController extends MainController {
             //Data de Recebimento
             that(doacao.getRecebimento() != null, "doacao.recebimento", "recebimento");
         }}.getErrors();
-        validator.addAll(errors);
-        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
-
-        repository.merge(doacao);
-        result.use(json()).withoutRoot().from("OK").serialize();
     }
 }

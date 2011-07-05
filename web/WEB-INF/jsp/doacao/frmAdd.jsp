@@ -29,14 +29,14 @@
                         <select name="doacao.doador.id" id="doador">
                             <option value="">--</option>
                         <c:forEach items="${doadores}" var="doador">
-                            <option value="${doador.id}"<c:if test="${doacao.doador.id == doador.id}"> selected="selected"</c:if>>${doador.firstAndLastName}</option>
+                            <option value="${doador.id}">${doador.firstAndLastName}</option>
                         </c:forEach>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td><label for="valor">Valor (R$):</label></td>
-                    <td><input type="text" name="doacao.valor" value="${doacao.valor}" id="valor" size="16" maxlength="16" alt="valor" /></td>
+                    <td><input type="text" name="doacao.valor" value="" id="valor" size="16" maxlength="16" alt="valor" /></td>
                 </tr>
                 <tr>
                     <td><label for="representante">Representante:</label></td>
@@ -45,7 +45,7 @@
                             <option value="">--</option>
                         <c:forEach items="${funcionarios}" var="funcionario">
                             <c:if test="${funcionario.perfil == 'REPRESENTANTE'}">
-                            <option value="${funcionario.id}"<c:if test="${doacao.representante.id == funcionario.id}"> selected="selected"</c:if>>${funcionario.firstAndLastName}</option>
+                            <option value="${funcionario.id}">${funcionario.firstAndLastName}</option>
                             </c:if>
                         </c:forEach>
                         </select>
@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td><label for="dataRecebimento">Data de Recebimento:</label></td>
-                    <td><input type="text" name="doacao.recebimento" id="dataRecebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy"/>" size="16" maxlength="10" alt="data" /></td>
+                    <td><input type="text" name="doacao.recebimento" value="" id="dataRecebimento" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
                     <td><input type="hidden" name="doacao.operador.id" value="${employeeSession.id}" /></td>

@@ -45,7 +45,7 @@ public class Doacao implements Serializable {
     private Doador doador;
 
     @ManyToOne
-    @JoinColumn(name="id_operador", referencedColumnName="id", nullable=false)
+    @JoinColumn(name="id_operador", referencedColumnName="id", nullable=false, updatable=false)
     private Funcionario operador;
 
     @ManyToOne

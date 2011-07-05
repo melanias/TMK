@@ -39,6 +39,13 @@ jQuery(function($){
     $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
     $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
 
+    /*$("[alt='data']").datepicker({
+        showOn: "button",
+        buttonImage: URLBASE + "/images/calendar.gif",
+        buttonImageOnly: true,
+        beforeShowDay: $.datepicker.noWeekends
+    });*/
+
     //CEP
     $("#cep").live("focusout", function(){
         var cep = $(this).val();

@@ -55,13 +55,10 @@
                 </tr>
                 <tr>
                     <td><label for="dataRecebimento">Data de Recebimento:</label></td>
-                    <td><input type="text" name="doacao.recebimento" id="dataRecebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy"/>" size="16" maxlength="10" alt="data" /></td>
+                    <td><input type="text" name="doacao.recebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy"/>" id="dataRecebimento" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="hidden" name="doacao.id" value="${doacao.id}" />
-                        <input type="hidden" name="doacao.operador.id" value="${doacao.operador.id}" />
-                    </td>
+                    <td><input type="hidden" name="doacao.id" value="${doacao.id}" /></td>
                     <td><input type="button" id="doAll" name="edit-doacao" value="Salvar" /></td>
                 </tr>
             </table>
