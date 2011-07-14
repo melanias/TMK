@@ -11,6 +11,9 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/js/highslide/highslide.css" />" media="screen" charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/smoothness/smoothness.css" />" media="screen" charset="utf-8" />
 
+        <!-- Font -->
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold" media="screen" />
+
         <!-- JS -->
         <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/aappe.js" />" charset="utf-8"></script>

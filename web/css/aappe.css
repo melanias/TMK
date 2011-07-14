@@ -3,8 +3,9 @@
 body {
     color: #4d4d4d;
     font-size: 12px;
-    font-family: Arial, Helvetica;
-    background-color: white;
+    font-family: 'Ubuntu', arial, helvetica, serif;
+    line-height: 22px;
+    background-color: #fff;
 }
 
 a {
