@@ -25,8 +25,8 @@
                         <td width="10%">${f.cpf}</td>
                         <td>${f.firstAndLastName}</td>
                         <td width="10%">${f.perfil.userRole}</td>
-                        <td width="11%"><fmt:formatDate pattern="dd/MM/yyyy" value="${f.admissao}" /></td>
-                        <td width="11%"><fmt:formatDate pattern="dd/MM/yyyy" value="${f.demissao}" /></td>
+                        <td width="12%"><fmt:formatDate pattern="dd/MM/yyyy" value="${f.admissao}" /></td>
+                        <td width="12%"><c:if test="${empty f.demissao}">-</c:if><fmt:formatDate pattern="dd/MM/yyyy" value="${f.demissao}" /></td>
                         <td>${f.filial.nome}</td>
                         <td>${f.setor.nome}</td>
                         <td width="53" >

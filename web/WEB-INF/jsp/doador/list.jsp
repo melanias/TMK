@@ -8,12 +8,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Data de Cadastro</th>
                             <th>CPF</th>
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Telefone</th>
                             <th>Celular</th>
+                            <th>Data de Cadastro</th>
                             <th>Situação</th>
                             <th></th>
                         </tr>
@@ -21,12 +21,12 @@
                     <tbody>
                     <c:forEach items="${doadorList}" var="d">
                     <tr>
-                        <td width="11%"><fmt:formatDate pattern="dd/MM/yyyy" value="${d.data}" /></td>
                         <td width="10%">${d.cpf}</td>
                         <td>${d.firstAndLastName}</td>
                         <td>${d.email}</td>
                         <td width="10%"><c:if test="${empty d.telefone}">-</c:if>${d.telefone}</td>
                         <td width="10%"><c:if test="${empty d.celular}">-</c:if>${d.celular}</td>
+                        <td width="12%"><fmt:formatDate pattern="dd/MM/yyyy" value="${d.data}" /></td>
                         <td width="10%">${d.status.status}</td>
                         <td width="53">
                             <a class="preview" href="<c:url value="/doador/view/${d.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'680', headingText:'Doador'});">Visualizar</a>

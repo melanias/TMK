@@ -8,7 +8,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Telefone</th>
@@ -21,7 +20,6 @@
                     <tbody>
                     <c:forEach items="${setorList}" var="s">
                     <tr>
-                        <td>${s.id}</td>
                         <td>${s.nome}</td>
                         <td><c:if test="${empty s.email}">-</c:if>${s.email}</td>
                         <td width="10%"><c:if test="${empty s.telefone}">-</c:if>${s.telefone}</td>

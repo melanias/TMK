@@ -22,7 +22,7 @@
                     <tbody>
                     <c:forEach items="${filialList}" var="f">
                     <tr>
-                        <td>${f.cnpj}</td>
+                        <td width="12%">${f.cnpj}</td>
                         <td>${f.nome}</td>
                         <td><c:if test="${empty f.email}">-</c:if>${f.email}</td>
                         <td width="10%">${f.telefone}</td>
