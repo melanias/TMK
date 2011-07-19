@@ -30,7 +30,7 @@ public class Mensagem implements Serializable {
     @GeneratedValue(generator="id_mensagem_seq", strategy= GenerationType.AUTO)
     private int id;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_cadastro", nullable=false, updatable=false)
     private Date data;
 
@@ -44,7 +44,7 @@ public class Mensagem implements Serializable {
     @JoinColumn(name="id_funcionario", referencedColumnName="id", nullable=false, updatable=false)
     private Funcionario funcionario;
 
-    public Mensagem() {}
+    /*public Mensagem() {}
 
     public Mensagem(int id, Date data, String texto, SendType tipo, Funcionario funcionario) {
         this.id = id;
@@ -52,7 +52,7 @@ public class Mensagem implements Serializable {
         this.texto = texto;
         this.tipo = tipo;
         this.funcionario = funcionario;
-    }
+    }*/
 
     //getters e setters
     public int getId() { return id; }

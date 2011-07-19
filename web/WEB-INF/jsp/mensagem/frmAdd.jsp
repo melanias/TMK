@@ -18,6 +18,10 @@
         <!-- jQuery UI -->
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
 
+        <!-- CKEditor -->
+        <script type="text/javascript" src="<c:url value="/js/ckeditor/ckeditor.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/ckeditor/adapters/jquery.js" />" charset="utf-8"></script>
+
         <title>${title}</title>
     </head>
     <body>
@@ -32,17 +36,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="texto">Mensagem:</label></td>
+                    <td><label for="texto">Texto:</label></td>
                     <td><textarea name="mensagem.texto" id="texto" rows="5" cols="50">${mensagem.texto}</textarea></td>
                 </tr>
                 <tr>
                     <td><input type="hidden" name="mensagem.funcionario.id" value="${employeeSession.id}" /></td>
-                    <td><input type="button" value="Salvar" id="add-mensagem" /></td>
+                    <td><input type="button" id="doAll" name="add-mensagem" value="Enviar" /></td>
                 </tr>
             </table>
         </form>
         <script type="text/javascript">
             const URLBASE  = "<%= request.getContextPath() %>";
+
+            //CKEditor
+            $("#texto").ckeditor({skin:"kama", width: 384, height:150});
         </script>
     </body>
 </html>

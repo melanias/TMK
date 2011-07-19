@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/mensagem/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Enviar Mensagem'});">Cadastrar</a>
+                    <a class="add-form" href="<c:url value="/mensagem/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'471', height:'301', headingText:'Enviar Mensagem'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>

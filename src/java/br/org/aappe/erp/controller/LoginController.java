@@ -41,9 +41,9 @@ public class LoginController extends MainController {
         final Funcionario f = repository.authenticate(cpf.trim(), senha.trim());
 
         validator.checking(new Validations(){{
-            if ((that(!cpf.isEmpty(), "funcionario.cpf", "cpf") &&
+            if ((that(!cpf.isEmpty(), "usuario.cpf", "cpf") &&
                  that(Utilities.cpf(cpf), "usuario.cpf", "cpf.invalido")) &&
-                 that(!senha.isEmpty(), "usuario.senha", "usuario.senha.branco"))
+                 that(!senha.isEmpty(), "usuario.senha", "senha"))
                 that(f != null, "login", "login.erro");
         }});
         validator.onErrorRedirectTo(this).frmLogin();

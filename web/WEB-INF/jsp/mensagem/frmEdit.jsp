@@ -18,6 +18,10 @@
         <!-- jQuery UI -->
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
 
+        <!-- CKEditor -->
+        <script type="text/javascript" src="<c:url value="/js/ckeditor/ckeditor.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/ckeditor/adapters/jquery.js" />" charset="utf-8"></script>
+
         <title>${title}</title>
     </head>
     <body>
@@ -42,7 +46,7 @@
                         <input type="hidden" name="mensagem.id" value="${mensagem.id}" />
                         <input type="hidden" name="mensagem.funcionario.id" value="${mensagem.funcionario.id}" />
                     </td>
-                    <td><input type="button" value="Salvar" id="edit-mensagem" /></td>
+                    <td><input type="button" id="doAll" name="edit-mensagem" value="Salvar" /></td>
                 </tr>
             </table>
         </form>

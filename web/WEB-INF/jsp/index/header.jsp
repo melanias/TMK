@@ -31,7 +31,7 @@
     </head>
     <body>
         <div id="Module" class="corner-bottom-right-6 shadow-3">TMK</div>
-        <div id="Version" class="corner-top-left-6 shadow-3">Versão 0.0.2</div>
+        <div id="Version" class="corner-top-left-6 shadow-3">Versão 0.0.3</div>
         <div id="header">
             <div class="content">
                 <h1><a href="<c:url value="/" />" accesskey="i"><img src="<c:url value="/images/logo.png" />" title="AAPPE" alt="AAPPE" /></a></h1>

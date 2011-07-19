@@ -36,15 +36,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#">Newsletter e SMS</a>
-                            <div>
-                                <ul>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                </ul>
-                            </div>
+                            <a href="<c:url value="/mensagem" />">Newsletter e SMS</a>
                         </li>
                     </ul>
                 </div>
