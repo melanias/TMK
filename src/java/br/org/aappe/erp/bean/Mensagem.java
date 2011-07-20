@@ -44,16 +44,6 @@ public class Mensagem implements Serializable {
     @JoinColumn(name="id_funcionario", referencedColumnName="id", nullable=false, updatable=false)
     private Funcionario funcionario;
 
-    /*public Mensagem() {}
-
-    public Mensagem(int id, Date data, String texto, SendType tipo, Funcionario funcionario) {
-        this.id = id;
-        this.data = data;
-        this.texto = texto;
-        this.tipo = tipo;
-        this.funcionario = funcionario;
-    }*/
-
     //getters e setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

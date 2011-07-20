@@ -18,15 +18,19 @@
         <!-- jQuery UI -->
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
 
-        <!-- CKEditor -->
-        <script type="text/javascript" src="<c:url value="/js/ckeditor/ckeditor.js" />" charset="utf-8"></script>
-        <script type="text/javascript" src="<c:url value="/js/ckeditor/adapters/jquery.js" />" charset="utf-8"></script>
+        <!-- TinyMCE -->
+        <script type="text/javascript" src="<c:url value="/js/tinymce/tiny.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/tinymce/jquery.tinymce.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
     </head>
     <body>
         <form action="javascript:;" method="post">
             <table>
+                <tr>
+                    <td><label for="texto">Texto:</label></td>
+                    <td><textarea name="mensagem.texto" id="texto" style="width: 517px; height: 200px;">${mensagem.texto}</textarea></td>
+                </tr>
                 <tr>
                     <td><label for="tipo">Tipo de Envio:</label></td>
                     <td>
@@ -36,10 +40,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="texto">Texto:</label></td>
-                    <td><textarea name="mensagem.texto" id="texto" rows="5" cols="50">${mensagem.texto}</textarea></td>
-                </tr>
-                <tr>
                     <td><input type="hidden" name="mensagem.funcionario.id" value="${employeeSession.id}" /></td>
                     <td><input type="button" id="doAll" name="add-mensagem" value="Enviar" /></td>
                 </tr>
@@ -47,9 +47,6 @@
         </form>
         <script type="text/javascript">
             const URLBASE  = "<%= request.getContextPath() %>";
-
-            //CKEditor
-            $("#texto").ckeditor({skin:"kama", width: 384, height:150});
         </script>
     </body>
 </html>

@@ -30,6 +30,11 @@ select option { padding: 0 3px; }
 
 /** MAIN **/
 form {/* border: 1px solid black; */}
-form > table tr:not(:last-of-type) > td { padding: 0 0 5px 5px; }
-form > table tr:last-of-type > td { padding-left: 5px; }
+
+form > table tr > td { padding: 0 0 5px 5px; }
+form > table tr:last-of-type > td { padding: 0 0 0 5px; }
+
+/*form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }
+form > table tr:last-of-type > td { padding-left: 5px; }*/
+
 /** MAIN **/
