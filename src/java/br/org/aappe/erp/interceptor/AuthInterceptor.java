@@ -1,4 +1,4 @@
-package br.org.aappe.erp.interceptor;
+/*package br.org.aappe.erp.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +14,7 @@ import br.org.aappe.erp.session.EmployeeSession;
 
 /**
  * @author Phelipe Melanias
- */
+ 
 @Intercepts
 public class AuthInterceptor implements Interceptor {
     private final Result result;
@@ -42,4 +42,4 @@ public class AuthInterceptor implements Interceptor {
             result.redirectTo(LoginController.class).frmLogin();
         }
     }
-}
+}*/
