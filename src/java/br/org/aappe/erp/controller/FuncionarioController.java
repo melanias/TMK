@@ -79,7 +79,7 @@ public class FuncionarioController extends MainController {
 
             //RG
             if (that(funcionario.getRg() != null, "funcionario.rg", "rg") &&
-                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 12, "funcionario.rg", "rg.invalido", 6, 11))
+                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 14, "funcionario.rg", "rg.invalido", 6, 13))
                 that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
 
             //CPF
@@ -140,7 +140,7 @@ public class FuncionarioController extends MainController {
 
             //RG
             if (that(funcionario.getRg() != null, "funcionario.rg", "rg") &&
-                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 12, "funcionario.rg", "rg.invalido", 6, 11))
+                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 14, "funcionario.rg", "rg.invalido", 6, 13))
                 that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
 
             //CPF
