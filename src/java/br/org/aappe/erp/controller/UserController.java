@@ -60,6 +60,10 @@ public class UserController extends MainController {
             //Telefone ou celular
             that(!user.getTelefone().isEmpty() || !user.getCelular().isEmpty(), "", "telefone.ou.celular");
 
+            //Login
+            if (that(!user.getLogin().isEmpty(), "user.login", "login"))
+                that(repository.isUniqueLogin(user), "user.login", "login.unico");
+
             //Senha
             if (that(!user.getSenha().isEmpty(), "root.senha", "senha"))
                 that(user.getSenha().length() > 5, "root.senha", "senha.invalida");
@@ -67,7 +71,7 @@ public class UserController extends MainController {
         validator.onErrorForwardTo(this).frmAdd();
 
         //Criptografar a senha
-        user.setSenha(Utilities.md5(user.getCpf()+user.getSenha()));
+        user.setSenha(Utilities.md5(user.getLogin()+user.getSenha()));
 
         //Persistir os dados
         repository.persist(user);
@@ -107,6 +111,10 @@ public class UserController extends MainController {
 
             //Telefone ou celular
             that(!user.getTelefone().isEmpty() || !user.getCelular().isEmpty(), "", "telefone.ou.celular");
+
+            //Login
+            if (that(!user.getLogin().isEmpty(), "user.login", "login"))
+                that(repository.isUniqueLogin(user), "user.login", "login.unico");
         }});
 
         if (validator.hasErrors())
@@ -120,5 +128,53 @@ public class UserController extends MainController {
         //Persistir os dados
         repository.merge(user);
         result.redirectTo(this).list();
+    }
+
+    @Get("/primeiro-usuario")
+    public void firstUser() {
+        if (repository.hasAdmin())
+            result.redirectTo(LoginController.class).frmLogin();
+
+        result.include("title", "Primeiro Usuário");
+    }
+
+    @Transactional
+    @Post("/primeiro-usuario")
+    public void firstUser(final User user) {
+        validator.checking(new Validations(){{
+            //CPF
+            if (that(!user.getCpf().isEmpty(), "user.cpf", "cpf") &&
+                that(Utilities.cpf(user.getCpf()), "user.cpf", "cpf.invalido"))
+                that(repository.isUniqueCpf(user), "user.cpf", "cpf.unico");
+
+            //Nome
+            if (that(!user.getNome().isEmpty(), "user.nome", "nome") &&
+                that(user.getNome().length() > 2, "user.nome", "nome.invalido"))
+                that(repository.isUniqueName(user), "user.nome", "nome.unico");
+
+            //E-mail
+            if (that(!user.getEmail().isEmpty(), "user.email", "email") &&
+                that(Utilities.mail(user.getEmail()), "user.email", "email.invalido"))
+                that(repository.isUniqueMail(user), "user.email", "email.unico");
+
+            //Telefone ou celular
+            that(!user.getTelefone().isEmpty() || !user.getCelular().isEmpty(), "", "telefone.ou.celular");
+
+            //Login
+            if (that(!user.getLogin().isEmpty(), "user.login", "login"))
+                that(repository.isUniqueLogin(user), "user.login", "login.unico");
+
+            //Senha
+            if (that(!user.getSenha().isEmpty(), "root.senha", "senha"))
+                that(user.getSenha().length() > 5, "root.senha", "senha.invalida");
+        }});
+        validator.onErrorForwardTo(this).firstUser();
+
+        //Criptografar a senha
+        user.setSenha(Utilities.md5(user.getLogin()+user.getSenha()));
+
+        //Salvar os dados
+        repository.persist(user);
+        result.redirectTo(LoginController.class).frmLogin();
     }
 }

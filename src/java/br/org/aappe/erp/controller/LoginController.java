@@ -12,7 +12,6 @@ import br.com.caelum.vraptor.validator.Validations;
 import br.org.aappe.erp.bean.Funcionario;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 import br.org.aappe.erp.session.EmployeeSession;
-import br.org.aappe.erp.util.Utilities;
 
 /**
  * @author Phelipe Melanias
@@ -37,14 +36,12 @@ public class LoginController extends MainController {
     }
 
     @Post("/login")
-    public void login(final String cpf, final String senha) {
-        final Funcionario f = repository.authenticate(cpf.trim(), senha.trim());
+    public void login(final String login, final String senha) {
+        final Funcionario f = repository.authenticate(login.trim(), senha.trim());
 
         validator.checking(new Validations(){{
-            if ((that(!cpf.isEmpty(), "usuario.cpf", "cpf") &&
-                 that(Utilities.cpf(cpf), "usuario.cpf", "cpf.invalido")) &&
-                 that(!senha.isEmpty(), "usuario.senha", "senha"))
-                that(f != null, "login", "login.erro");
+            if (that(!login.isEmpty(), "login", "login") & that(!senha.isEmpty(), "senha", "senha"))
+                that(f != null, "", "login.erro");
         }});
         validator.onErrorRedirectTo(this).frmLogin();
 

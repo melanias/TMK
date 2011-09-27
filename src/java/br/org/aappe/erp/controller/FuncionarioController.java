@@ -107,7 +107,7 @@ public class FuncionarioController extends MainController {
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
         //Criptografar a senha
-        funcionario.setSenha(Utilities.md5(funcionario.getCpf()+funcionario.getSenha()));
+        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
 
         repository.persist(funcionario);
         result.use(json()).withoutRoot().from("OK").serialize();
@@ -133,7 +133,7 @@ public class FuncionarioController extends MainController {
 
             //Senha
             if (!funcionario.getSenha().isEmpty() && that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida")) {
-                funcionario.setSenha(Utilities.md5(funcionario.getCpf()+funcionario.getSenha()));
+                funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
             } else {
                 funcionario.setSenha(repository.find(funcionario.getId()).getSenha());
             }

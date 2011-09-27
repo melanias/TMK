@@ -29,6 +29,10 @@
                             <td><label for="celular">Celular:</label></td>
                             <td><input type="text" name="user.celular" value="${user.celular}" id="celular" size="14" maxlength="14" alt="phone" /></td>
                         </tr>
+                        <tr>
+                            <td><label for="login">Login:</label></td>
+                            <td><input type="text" name="user.login" value="${user.login}" id="login" size="40" maxlength="40" /></td>
+                        </tr>
                         <!--
                         <tr>
                             <td><label for="senha">Senha:</label></td>

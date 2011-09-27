@@ -10,7 +10,6 @@
 
         <!-- JS -->
         <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
-        <script type="text/javascript" src="<c:url value="/js/meiomask.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/login.js" />"></script>
 
         <title>${title}</title>
@@ -18,8 +17,8 @@
     <body>
 <c:if test="${not empty errors}">
         <div id="warning">
-    <c:forEach items="${errors}" var="error">
-            ${error.message}
+    <c:forEach items="${errors}" var="error" varStatus="status">
+            <p>${error.message}</p>
     </c:forEach>
         </div>
 </c:if>
@@ -33,10 +32,10 @@
                 <form action="<c:url value="/login" />" method="post">
                     <table cellpadding="0" cellspacing="0">
                         <tr>
-                            <td><label for="cpf">CPF:</label></td>
+                            <td><label for="login">Login:</label></td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="cpf" value="${cpf}" id="cpf" size="16" maxlength="14" alt="cpf" /></td>
+                            <td><input type="text" name="login" value="${login}" id="login" size="16" maxlength="40" /></td>
                         </tr>
                         <tr>
                             <td><label for="senha">Senha:</label></td>

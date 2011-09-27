@@ -17,7 +17,7 @@ $(function(){
     setTimeout(function(){$("#warning").fadeOut('slow');}, 5000);
 
     //Validar login
-    $("form").submit(function(){
+    /*$("form").submit(function(){
         //Campos do form
         var cpf   = $("#cpf");
         var senha = $("#senha");
@@ -45,5 +45,5 @@ $(function(){
             alert(er.join("\n"));
             return false;
         }
-    });
+    });*/
 });

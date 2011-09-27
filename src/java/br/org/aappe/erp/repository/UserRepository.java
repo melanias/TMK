@@ -17,9 +17,13 @@ public interface UserRepository {
 
     List<User> listAllById();
 
+    boolean hasAdmin();
+
     boolean isUniqueCpf(User user);
 
     boolean isUniqueName(User user);
 
     boolean isUniqueMail(User user);
+
+    boolean isUniqueLogin(User user);
 }

@@ -33,6 +33,9 @@ public class Funcionario extends Pessoa implements Serializable {
     @GeneratedValue(generator="id_funcionario_seq", strategy=GenerationType.AUTO)
     private int id;
 
+    @Column(length=40, nullable=false)
+    private String login;
+
     @Column(length=32, nullable=false)
     private String senha;
 
@@ -67,6 +70,9 @@ public class Funcionario extends Pessoa implements Serializable {
     //getters e setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
+    public String getLogin() { return login; }
+    public void setLogin(String login) { this.login = login.trim(); }
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha.trim(); }

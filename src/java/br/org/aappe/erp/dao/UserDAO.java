@@ -18,6 +18,11 @@ public class UserDAO extends DAO<User> implements UserRepository {
     }
 
     @Override
+    public boolean hasAdmin() {
+        return !super.listAllById().isEmpty();
+    }
+
+    @Override
     public boolean isUniqueCpf(User user) {
         return user.getId() > 0 ? manager.createQuery("SELECT user FROM User user WHERE user.id <> ? AND user.cpf = ?")
                                          .setParameter(1, user.getId())
@@ -47,6 +52,17 @@ public class UserDAO extends DAO<User> implements UserRepository {
                                          .getResultList().isEmpty()
                                 : manager.createQuery("SELECT user FROM User user WHERE lower(user.email) = ?")
                                          .setParameter(1, user.getEmail().toLowerCase())
+                                         .getResultList().isEmpty();
+    }
+
+    @Override
+    public boolean isUniqueLogin(User user) {
+        return user.getId() > 0 ? manager.createQuery("SELECT user FROM User user WHERE user.id <> ? AND lower(user.login) = ?")
+                                         .setParameter(1, user.getId())
+                                         .setParameter(2, user.getLogin().toLowerCase())
+                                         .getResultList().isEmpty()
+                                : manager.createQuery("SELECT user FROM User user WHERE lower(user.login) = ?")
+                                         .setParameter(1, user.getLogin().toLowerCase())
                                          .getResultList().isEmpty();
     }
 }

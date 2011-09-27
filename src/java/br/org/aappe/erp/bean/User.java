@@ -31,6 +31,9 @@ public class User implements Serializable {
     @Column(length=200, nullable=false)
     private String nome;
 
+    @Column(length=40, nullable=false)
+    private String login;
+
     @Column(length=32, nullable=false)
     private String senha;
 
@@ -53,6 +56,9 @@ public class User implements Serializable {
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome.replaceAll("\\d", "").trim(); }
 
+    public String getLogin() { return login; }
+    public void setLogin(String login) { this.login = login.trim(); }
+
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha.trim(); }
 
@@ -60,7 +66,7 @@ public class User implements Serializable {
     public void setEmail(String email) { this.email = email.trim().toLowerCase(); }
 
     public String getCelular() { return celular; }
-    public void setCelular(String celular) { this.celular = celular.trim(); }
+    public void setCelular(String celular) { this.celular = celular.trim().toLowerCase(); }
 
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone.trim(); }

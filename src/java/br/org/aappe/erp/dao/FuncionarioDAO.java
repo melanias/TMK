@@ -21,11 +21,11 @@ public class FuncionarioDAO extends DAO<Funcionario> implements FuncionarioRepos
     }
 
     @Override
-    public Funcionario authenticate(String cpf, String senha) {
+    public Funcionario authenticate(String login, String senha) {
         try {
-            return (Funcionario) manager.createQuery("FROM Funcionario f WHERE f.cpf = ? AND f.senha = ? AND status = ? AND demissao IS NULL")
-                                        .setParameter(1, cpf)
-                                        .setParameter(2, Utilities.md5(cpf+senha))
+            return (Funcionario) manager.createQuery("FROM Funcionario f WHERE f.login = ? AND f.senha = ? AND status = ? AND demissao IS NULL")
+                                        .setParameter(1, login)
+                                        .setParameter(2, Utilities.md5(login+senha))
                                         .setParameter(3, Status.ATIVO)
                                         .getSingleResult();
         } catch (NoResultException e) {

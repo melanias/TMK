@@ -7,6 +7,7 @@
                         <tr>
                             <th>CPF</th>
                             <th>Nome</th>
+                            <th>Login</th>
                             <th>E-mail</th>
                             <th>Telefone</th>
                             <th>Celular</th>
@@ -17,6 +18,7 @@
                     <tr>
                         <td><a href="<c:url value="/admin/user/${user.id}"/>">${user.cpf}</a></td>
                         <td>${user.nome}</td>
+                        <td>${user.login}</td>
                         <td>${user.email}</td>
                         <td><c:if test="${empty user.telefone}">-</c:if>${user.telefone}</td>
                         <td><c:if test="${empty user.celular}">-</c:if>${user.celular}</td>
