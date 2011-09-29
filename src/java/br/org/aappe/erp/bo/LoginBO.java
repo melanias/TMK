@@ -2,9 +2,9 @@ package br.org.aappe.erp.bo;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 
 import br.org.aappe.erp.repository.FuncionarioRepository;
-import javax.validation.constraints.AssertTrue;
 
 /**
  * @author Phelipe Melanias
@@ -35,23 +35,4 @@ public class LoginBO {
     public boolean isAuthenticated() {
         return repository.authenticate(login, senha) != null;
     }
-
-    /*@Valid  // pra validar o usuario tb
-    private Usuario usuario;
-    //construtor
-
-    @AssertFalse(message="{usuario.ja.existe}")
-    public boolean usuarioJaExiste() {
-        return repositorio.contains(usuario);
-    }
-
-   @AssertTrue(message="{outra.coisa}")
-   public boolean outraCoisa() {
-       //...
-   }*/
-
-
-
-
-
 }

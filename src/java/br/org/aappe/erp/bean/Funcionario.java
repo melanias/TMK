@@ -72,7 +72,7 @@ public class Funcionario extends Pessoa implements Serializable {
     public void setId(int id) { this.id = id; }
 
     public String getLogin() { return login; }
-    public void setLogin(String login) { this.login = login.trim(); }
+    public void setLogin(String login) { this.login = login.trim().toLowerCase(); }
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha.trim(); }

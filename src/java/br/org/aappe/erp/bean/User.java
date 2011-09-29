@@ -57,7 +57,7 @@ public class User implements Serializable {
     public void setNome(String nome) { this.nome = nome.replaceAll("\\d", "").trim(); }
 
     public String getLogin() { return login; }
-    public void setLogin(String login) { this.login = login.trim(); }
+    public void setLogin(String login) { this.login = login.trim().toLowerCase(); }
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha.trim(); }
@@ -66,7 +66,7 @@ public class User implements Serializable {
     public void setEmail(String email) { this.email = email.trim().toLowerCase(); }
 
     public String getCelular() { return celular; }
-    public void setCelular(String celular) { this.celular = celular.trim().toLowerCase(); }
+    public void setCelular(String celular) { this.celular = celular.trim(); }
 
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone.trim(); }
