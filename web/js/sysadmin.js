@@ -18,11 +18,10 @@ jQuery(function($){
 
     //Configurar máscaras
     $.mask.masks = $.extend($.mask.masks, {
-        //peso      : {mask: '99,999.999', type: 'reverse', defaultValue: '000'},
-        //valor     : {mask: '99,999.999.99', type: 'reverse', defaultValue: '000'},
-        rg        : {mask: '9999999999999'},
-        numero    : {mask: '99999999999'}/*,
-        matricula : {mask: '9999999-9'}*/
+        rg     : {mask: '9999999999999'},
+        data   : {mask: '39/19/2999'},
+        numero : {mask: '99999999999'},
+        valor  : {mask: '99,999.999.999.9', type: 'reverse', defaultValue: '000'}
     });
 
     //Inicializar máscaras

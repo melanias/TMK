@@ -117,5 +117,7 @@ div#main .content > table tr td { color: #555; padding: 0.45em; border: 1px dott
 /* Formulários */
 div#main .content > form {/* border: 1px solid black; */}
 div#main .content > form > table:nth-child(even) { margin-top: 20px; }
-div#main .content > form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }
+/*div#main .content > form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }*/
+div#main .content > form > table tr > td { padding: 0 5px 5px 0; }
+div#main .content > form > table tr:last-of-type > td { padding: 0 5px 0 0; }
 /** MAIN */

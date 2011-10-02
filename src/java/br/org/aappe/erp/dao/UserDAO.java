@@ -18,11 +18,6 @@ public class UserDAO extends DAO<User> implements UserRepository {
     }
 
     @Override
-    public boolean hasAdmin() {
-        return !super.listAllById().isEmpty();
-    }
-
-    @Override
     public boolean isUniqueCpf(User user) {
         return user.getId() > 0 ? manager.createQuery("SELECT user FROM User user WHERE user.id <> ? AND user.cpf = ?")
                                          .setParameter(1, user.getId())

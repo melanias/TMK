@@ -34,6 +34,11 @@ public class FuncionarioDAO extends DAO<Funcionario> implements FuncionarioRepos
     }
 
     @Override
+    public boolean hasEmployee() {
+        return !super.listAllById().isEmpty();
+    }
+
+    @Override
     public boolean isUniqueRg(Funcionario funcionario) {
         return funcionario.getId() > 0 ? manager.createQuery("SELECT f FROM Funcionario f WHERE f.id <> ? AND f.rg = ?")
                                                 .setParameter(1, funcionario.getId())
@@ -75,5 +80,16 @@ public class FuncionarioDAO extends DAO<Funcionario> implements FuncionarioRepos
                                        : manager.createQuery("SELECT f FROM Funcionario f WHERE f.email = ?")
                                                 .setParameter(1, funcionario.getEmail())
                                                 .getResultList().isEmpty();
+    }
+
+    @Override
+    public boolean isUniqueLogin(Funcionario funcionario) {
+        return funcionario.getId() > 0 ? manager.createQuery("SELECT f FROM Funcionario f WHERE f.id <> ? AND lower(f.login) = ?")
+                                         .setParameter(1, funcionario.getId())
+                                         .setParameter(2, funcionario.getLogin().toLowerCase())
+                                         .getResultList().isEmpty()
+                                : manager.createQuery("SELECT f FROM Funcionario f WHERE lower(f.login) = ?")
+                                         .setParameter(1, funcionario.getLogin().toLowerCase())
+                                         .getResultList().isEmpty();
     }
 }

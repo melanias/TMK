@@ -44,14 +44,6 @@
                             <td><input type="password" name="senha" value="" id="senha" size="16" /></td>
                         </tr>
                         <tr>
-                        <tr>
-                            <td>
-                                <select name="module">
-                                    <option value="Administrativo">Administrativo</option>
-                                    <option value="TMK">TMK</option>
-                                </select>
-                            </td>
-                        </tr>
                             <td><input type="submit" value="Entrar" /></td>
                         </tr>
                     </table>

@@ -15,6 +15,8 @@ public interface FuncionarioRepository {
 
     void persist(Funcionario funcionario);
 
+    boolean hasEmployee();
+
     Funcionario merge(Funcionario funcionario);
 
     boolean isUniqueRg(Funcionario funcionario);
@@ -24,6 +26,8 @@ public interface FuncionarioRepository {
     boolean isUniqueName(Funcionario funcionario);
 
     boolean isUniqueMail(Funcionario funcionario);
+
+    boolean isUniqueLogin(Funcionario funcionario);
 
     Funcionario authenticate(String login, String senha);
 }

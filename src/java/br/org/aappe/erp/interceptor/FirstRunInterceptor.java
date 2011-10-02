@@ -9,8 +9,8 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
-import br.org.aappe.erp.controller.UserController;
-import br.org.aappe.erp.repository.UserRepository;
+import br.org.aappe.erp.controller.FuncionarioController;
+import br.org.aappe.erp.repository.FuncionarioRepository;
 
 /**
  * @author Phelipe Melanias
@@ -19,25 +19,25 @@ import br.org.aappe.erp.repository.UserRepository;
 public class FirstRunInterceptor implements Interceptor {
     private final Result result;
     private final HttpServletRequest request;
-    private final UserRepository userRepository;
+    private final FuncionarioRepository repository;
 
-    public FirstRunInterceptor(Result result, HttpServletRequest request, UserRepository userRepository) {
+    public FirstRunInterceptor(Result result, HttpServletRequest request, FuncionarioRepository repository) {
         this.result = result;
         this.request = request;
-        this.userRepository = userRepository;
+        this.repository = repository;
     }
 
     @Override
     public boolean accepts(ResourceMethod method) {
-        return !userRepository.hasAdmin();
+        return !repository.hasEmployee();
     }
 
     @Override
     public void intercept(InterceptorStack stack, ResourceMethod method, Object o) throws InterceptionException {
-        if (request.getRequestURI().contains("/primeiro-usuario")) {
+        if (request.getRequestURI().contains("/setup")) {
             stack.next(method, o);
         } else {
-            result.redirectTo(UserController.class).firstUser();
+            result.redirectTo(FuncionarioController.class).setup();
         }
     }
 }

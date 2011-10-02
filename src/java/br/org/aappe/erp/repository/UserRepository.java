@@ -17,8 +17,6 @@ public interface UserRepository {
 
     List<User> listAllById();
 
-    boolean hasAdmin();
-
     boolean isUniqueCpf(User user);
 
     boolean isUniqueName(User user);

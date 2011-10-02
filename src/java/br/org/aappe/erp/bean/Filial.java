@@ -53,9 +53,9 @@ public class Filial implements Serializable {
     @Embedded
     private Endereco endereco;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
-    private Empresa empresa;
+    private Empresa empresa;*/
 
     @OneToMany(mappedBy="filial")
     private List<Setor> setores;
@@ -88,8 +88,8 @@ public class Filial implements Serializable {
     public Endereco getEndereco() { return endereco; }
     public void setEndereco(Endereco endereco) { this.endereco = endereco; }
 
-    public Empresa getEmpresa() { return empresa; }
-    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+    /*public Empresa getEmpresa() { return empresa; }
+    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }*/
 
     public List<Setor> getSetores() { return setores; }
     public void setSetores(List<Setor> setores) { this.setores = setores; }

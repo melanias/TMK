@@ -56,16 +56,16 @@ public class Funcionario extends Pessoa implements Serializable {
     private Status status = Status.ATIVO; //0 = Inativo, 1 = Ativo
 
     @ManyToOne
-    @JoinColumn(name="id_setor", referencedColumnName="id", nullable=false)
+    @JoinColumn(name="id_setor", referencedColumnName="id"/*, nullable=false*/)
     private Setor setor;
 
     @ManyToOne
-    @JoinColumn(name="id_filial", referencedColumnName="id", nullable=false)
+    @JoinColumn(name="id_filial", referencedColumnName="id"/*, nullable=false*/)
     private Filial filial;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
-    private Empresa empresa;
+    private Empresa empresa;*/
 
     //getters e setters
     public int getId() { return id; }
@@ -95,6 +95,6 @@ public class Funcionario extends Pessoa implements Serializable {
     public Filial getFilial() { return filial; }
     public void setFilial(Filial filial) { this.filial = filial; }
 
-    public Empresa getEmpresa() { return empresa; }
-    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+    /*public Empresa getEmpresa() { return empresa; }
+    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }*/
 }

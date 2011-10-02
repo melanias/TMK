@@ -66,7 +66,7 @@ public class EmployeeSession implements Serializable {
         return funcionario.getFilial();
     }
 
-    public Empresa getEmpresa() {
+    /*public Empresa getEmpresa() {
         return funcionario.getEmpresa();
-    }
+    }*/
 }

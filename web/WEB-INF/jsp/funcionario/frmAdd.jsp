@@ -131,7 +131,7 @@
                     <td><input type="text" name="funcionario.endereco.cidade" value="" id="cidade" size="35" maxlength="100" readonly="readonly" /></td>
                 </tr>
                 <tr>
-                    <td><input type="hidden" name="funcionario.empresa.id" value="${employeeSession.empresa.id}" /></td>
+                    <td></td>
                     <td><input type="button" id="doAll" name="add-funcionario" value="Salvar" /></td>
                 </tr>
             </table>

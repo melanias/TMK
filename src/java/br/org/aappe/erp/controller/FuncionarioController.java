@@ -170,4 +170,64 @@ public class FuncionarioController extends MainController {
         repository.merge(funcionario);
         result.use(json()).withoutRoot().from("OK").serialize();
     }
+
+    @Get("/setup")
+    public void setup() {
+        if (repository.hasEmployee())
+            result.redirectTo(LoginController.class).frmLogin();
+
+        result.include("title", "Cadastrar Responsável");
+    }
+
+    @Transactional
+    @Post("/setup")
+    public void setup(final Funcionario funcionario) {
+        validator.checking(new Validations(){{
+            //Nome
+            if (that(!funcionario.getNome().isEmpty(), "funcionario.nome", "nome"))
+                that(repository.isUniqueName(funcionario), "funcionario.nome", "nome.unico");
+
+            //RG
+            if (that(funcionario.getRg() != null, "funcionario.rg", "rg") &&
+                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 14, "funcionario.rg", "rg.invalido", 6, 13))
+                that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
+
+            //CPF
+            if (that(!funcionario.getCpf().isEmpty(), "funcionario.cpf", "cpf") &&
+                that(Utilities.cpf(funcionario.getCpf()), "funcionario.cpf", "cpf.invalido"))
+                that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
+
+            //E-mail
+            if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
+                that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
+                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
+
+            //Data de admissão
+            that(funcionario.getAdmissao() != null, "funcionario.admissao", "admissao");
+
+            //Telefone ou Celular
+            that(!funcionario.getCelular().isEmpty() || !funcionario.getTelefone().isEmpty(), "", "telefone.ou.celular");
+
+            //Login
+            if (that(!funcionario.getLogin().isEmpty(), "funcionario.login", "login"))
+                that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
+
+            //Senha
+            if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha"))
+                that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida");
+
+            //Endereço
+            if (that(!funcionario.getEndereco().getCep().isEmpty(), "funcionario.cep", "cep"))
+                that(!funcionario.getEndereco().getLogradouro().isEmpty() && !funcionario.getEndereco().getBairro().isEmpty() &&
+                     !funcionario.getEndereco().getUf().isEmpty() && !funcionario.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");
+        }});
+        validator.onErrorForwardTo(this).setup();
+
+        //Criptografar a senha
+        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+
+        //Salvar os dados
+        repository.persist(funcionario);
+        result.redirectTo(LoginController.class).frmLogin();
+    }
 }

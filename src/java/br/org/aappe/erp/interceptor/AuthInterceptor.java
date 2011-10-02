@@ -36,7 +36,7 @@ public class AuthInterceptor implements Interceptor {
     public void intercept(InterceptorStack stack, ResourceMethod method, Object o) throws InterceptionException {
         String uri = request.getRequestURI();
 
-        if (uri.contains("/primeiro-usuario") || uri.contains("/login")) {
+        if (uri.contains("/setup") || uri.contains("/login")) {
             stack.next(method, o);
         } else {
             result.redirectTo(LoginController.class).frmLogin();

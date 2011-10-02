@@ -1,4 +1,4 @@
-package br.org.aappe.erp.bo;
+/*package br.org.aappe.erp.bo;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertFalse;
@@ -8,7 +8,7 @@ import br.org.aappe.erp.repository.FuncionarioRepository;
 
 /**
  * @author Phelipe Melanias
- */
+ *
 public class LoginBO {
     @Valid
     private String login, senha;
@@ -35,4 +35,4 @@ public class LoginBO {
     public boolean isAuthenticated() {
         return repository.authenticate(login, senha) != null;
     }
-}
+}*/

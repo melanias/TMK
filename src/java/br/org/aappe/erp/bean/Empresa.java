@@ -65,11 +65,11 @@ public class Empresa implements Serializable {
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
     private Status status = Status.ATIVO; //0 = Inativo, 1 = Ativo
 
-    @OneToMany(mappedBy="empresa")
+    /*@OneToMany(mappedBy="empresa")
     private List<Filial> filiais;
 
-    @OneToMany(mappedBy="empresa")
-    private List<Funcionario> funcionarios;
+    /*@OneToMany(mappedBy="empresa")
+    private List<Funcionario> funcionarios;*/
 
     //getters e setters
     public int getId() { return id; }
@@ -105,9 +105,9 @@ public class Empresa implements Serializable {
     public Status getStatus() { return status; }
     public void setStatus(Status status) { this.status = status; }
 
-    public List<Filial> getFiliais() { return filiais; }
+    /*public List<Filial> getFiliais() { return filiais; }
     public void setFiliais(List<Filial> filiais) { this.filiais = filiais; }
 
     public List<Funcionario> getFuncionarios() { return funcionarios; }
-    public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }
+    public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }*/
 }
