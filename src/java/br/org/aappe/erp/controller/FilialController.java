@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.util.jpa.extra.Load;
 import br.com.caelum.vraptor.validator.Message;
 import br.com.caelum.vraptor.validator.Validations;
 import static br.com.caelum.vraptor.view.Results.*;

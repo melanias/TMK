@@ -19,3 +19,15 @@ FUNCIONALIDADES
      3. Newsletter;
      4. SMS (será implementado apenas se der tempo).
 
+--
+
+Alguns detalhes da última reunião:
+
+-campo input com ajax para buscar doador
+-combobox p/ alterar tipo de doação
+-cadastrar categoria de doacoes
+-associar companha a doacoes
+-tipo de doador ( fisico ou juridico)
+-link para sair do sistema
+-campo rg em doador espandir para 13 dígitos.
+
