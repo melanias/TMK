@@ -96,7 +96,7 @@ public class DoadorController extends MainController {
 
             //RG
             if (that(doador.getRg() != null, "doador.rg", "rg") &&
-                that(doador.getRg().toString().length() > 5 && doador.getRg().toString().length() < 12, "doador.rg", "rg.invalido", 6, 11))
+                that(doador.getRg().toString().length() > 5 && doador.getRg().toString().length() < 14, "doador.rg", "rg.invalido", 6, 13))
                 that(repository.isUniqueRg(doador), "doador.rg", "rg.unico");
 
             //CPF

@@ -1,3 +1,4 @@
+<%@page import="br.org.aappe.erp.bean.Funcionario"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,7 +37,8 @@
             <div class="content">
                 <h1><a href="<c:url value="/" />" accesskey="i"><img src="<c:url value="/images/logo.png" />" title="AAPPE" alt="AAPPE" /></a></h1>
                 <c:set var="rightNow" value="<%=new java.util.Date()%>" />
-                <span><fmt:formatDate type="date" dateStyle="full" value="${rightNow}" /></span>
+                <!--Aqui em baixo poderia ficar o login e o botão sair do sistema. Ao invez da data! Oq axa?-->
+                <span><fmt:formatDate type="date" dateStyle="full" value="${rightNow}" /></span><br/>
                 <%@ include file="menu.jsp" %>
             </div>
         </div>

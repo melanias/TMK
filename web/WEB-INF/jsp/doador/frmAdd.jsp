@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td><label for="rg">RG:</label></td>
-                    <td><input type="text" name="doador.rg" value="" id="rg" size="16" maxlength="11" alt="rg" /></td>
+                    <td><input type="text" name="doador.rg" value="" id="rg" size="16" maxlength="13" alt="rg" /></td>
 
                     <td><label for="cpf">CPF:</label></td>
                     <td><input type="text" name="doador.cpf" value="" id="cpf" size="16" maxlength="14" alt="cpf" /></td>
