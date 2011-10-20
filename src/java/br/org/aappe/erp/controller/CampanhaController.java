@@ -14,13 +14,17 @@ import static br.com.caelum.vraptor.view.Results.*;
 
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Campanha;
+import br.org.aappe.erp.enums.CampaignType;
+import br.org.aappe.erp.enums.CampaingStatus;
 import br.org.aappe.erp.repository.CampanhaRepository;
+import java.math.BigDecimal;
 
 /**
  * @author Phelipe Melanias
  */
 @Resource
 public class CampanhaController extends MainController {
+
     private final CampanhaRepository repository;
 
     public CampanhaController(Result result, Validator validator, CampanhaRepository repository) {
@@ -49,6 +53,8 @@ public class CampanhaController extends MainController {
     @Get("/campanha/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Campanha");
+       // result.include("CampaingStatus", CampaingStatus.getAll());
+       // result.include("CampaignType", CampaignType.getAll());
     }
 
     @Transactional
@@ -69,6 +75,8 @@ public class CampanhaController extends MainController {
     @Get("/campanha/edit/{id}")
     public Campanha frmEdit(int id) {
         result.include("title", "Editar Campanha");
+        //result.include("CampaingStatus", CampaingStatus.getAll());
+        //result.include("CampaignType", CampaignType.getAll());
         return repository.find(id);
     }
 
@@ -85,17 +93,38 @@ public class CampanhaController extends MainController {
     }
 
     private List<Message> validate(final Campanha campanha) {
-        return new Validations(){{
-            //Nome da campanha
-            that(!campanha.getNome().isEmpty(), "campanha.nome", "nome");
+        return new Validations() {
 
-            //Data inicial e data final da campanha
-            if (that(campanha.getDataInicial() != null, "campanha.dataInicial", "dataInicial") &
-                that(campanha.getDataFinal() != null, "campanha.dataFinal", "dataFinal"))
             {
-                //Verificar se a data final é posterior ou igual a data inicial
-                that(campanha.getDataFinal().compareTo(campanha.getDataInicial()) >= 0, "ata.dataFinal", "dataFinal.maior");
+                //Nome da campanha
+                that(!campanha.getNome().isEmpty(), "campanha.nome", "nome");
+
+             /*   Tipo de Campanha
+                that(campanha.getType() != null, "campanha.type", "type");
+
+                Status de Campanha
+                that(campanha.getStatus() != null, "campanha.status", "status");
+
+                Receita Esperada            
+                that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
+
+                Receita Real            
+                that(campanha.getReceitaReal().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaReal", "receitaReal");
+
+                Custo Previsto            
+                that(campanha.getCustoPrevisto().compareTo(BigDecimal.ZERO) > 0, "campanha.custoPrevisto", "custoPrevisto");
+
+                Custo Real            
+                that(campanha.getCustoReal().compareTo(BigDecimal.ZERO) > 0, "campanha.custoReal", "custoReal");*/
+
+                //Data inicial e data final da campanha
+                if (that(campanha.getDataInicial() != null, "campanha.dataInicial", "dataInicial")
+                        & that(campanha.getDataFinal() != null, "campanha.dataFinal", "dataFinal")) {
+                    //Verificar se a data final é posterior ou igual a data inicial
+                    that(campanha.getDataFinal().compareTo(campanha.getDataInicial()) >= 0, "data.dataFinal", "dataFinal.maior");
+                }
+
             }
-        }}.getErrors();
+        }.getErrors();
     }
 }

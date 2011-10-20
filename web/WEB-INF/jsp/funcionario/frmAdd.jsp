@@ -25,10 +25,9 @@
             <table>
                 <tr>
                     <td><label for="nome">Nome:</label></td>
-                    <td><input type="text" name="funcionario.nome" value="" id="nome" size="50" maxlength="200" /></td>
+                    <td><input type="text" name="funcionario.nome" value="" id="nome" size="40" maxlength="200" /></td>
 
-                    <td><label for="senha">Senha:</label></td>
-                    <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>
+
                 </tr>
                 <tr>
                     <td><label for="rg">RG:</label></td>
@@ -44,12 +43,12 @@
                     <td><label for="filial">Filial:</label></td>
                     <td>
                         <select name="funcionario.filial.id" id="filial">
-                        <c:if test="${empty filiais}">
-                            <option value="">--</option>
-                        </c:if>
-                        <c:forEach items="${filiais}" var="filial">
-                            <option value="${filial.id}">${filial.nome}</option>
-                        </c:forEach>
+                            <c:if test="${empty filiais}">
+                                <option value="">--</option>
+                            </c:if>
+                            <c:forEach items="${filiais}" var="filial">
+                                <option value="${filial.id}">${filial.nome}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -60,12 +59,12 @@
                     <td><label for="setor">Setor:</label></td>
                     <td>
                         <select name="funcionario.setor.id" id="setor">
-                        <c:if test="${empty setores}">
-                            <option value="">--</option>
-                        </c:if>
-                        <c:forEach items="${setores}" var="setor">
-                            <option value="${setor.id}">${setor.sigla}</option>
-                        </c:forEach>
+                            <c:if test="${empty setores}">
+                                <option value="">--</option>
+                            </c:if>
+                            <c:forEach items="${setores}" var="setor">
+                                <option value="${setor.id}">${setor.sigla}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -83,9 +82,9 @@
                     <td><label for="perfil">Perfil:</label></td>
                     <td>
                         <select name="funcionario.perfil" id="perfil">
-                        <c:forEach items="${roles}" var="r">
-                            <option value="${r}">${r.userRole}</option>
-                        </c:forEach>
+                            <c:forEach items="${roles}" var="r">
+                                <option value="${r}">${r.userRole}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -96,9 +95,9 @@
                     <td><label for="status">Situação:</label></td>
                     <td>
                         <select name="funcionario.status" id="status">
-                        <c:forEach items="${status}" var="s">
-                            <option value="${s}"<c:if test="${funcionario.status == s || (empty funcionario.status && s == 'ATIVO')}"> selected="selected"</c:if>>${s.status}</option>
-                        </c:forEach>
+                            <c:forEach items="${status}" var="s">
+                                <option value="${s}"<c:if test="${funcionario.status == s || (empty funcionario.status && s == 'ATIVO')}"> selected="selected"</c:if>>${s.status}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -130,6 +129,19 @@
                     <td><label for="cidade">Cidade:</label></td>
                     <td><input type="text" name="funcionario.endereco.cidade" value="" id="cidade" size="35" maxlength="100" readonly="readonly" /></td>
                 </tr>
+            </table>
+            <hr />
+            <table>
+                <tr>
+                    <td><label for="senha">Login:</label></td>
+                    <td><input type="text" name="funcionario.login" value="" id="login" /></td>
+                    <td><label for="login">Senha:</label></td>
+                    <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>
+                    <!-- Seria interesse colocar isso?
+                    <td><label for="senha">Confirmar Senha:</label></td>
+                    <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>-->
+                    
+                </tr>
                 <tr>
                     <td></td>
                     <td><input type="button" id="doAll" name="add-funcionario" value="Salvar" /></td>
@@ -137,7 +149,7 @@
             </table>
         </form>
         <script type="text/javascript">
-            const URLBASE  = "<%= request.getContextPath() %>";
+            const URLBASE  = "<%= request.getContextPath()%>";
         </script>
     </body>
 </html>

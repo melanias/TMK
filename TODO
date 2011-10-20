@@ -21,6 +21,8 @@ FUNCIONALIDADES
 
 --
 
+REF.
+
 Alguns detalhes da última reunião:
 
 -campo input com ajax para buscar doador
@@ -28,6 +30,15 @@ Alguns detalhes da última reunião:
 -cadastrar categoria de doacoes
 -associar companha a doacoes
 -tipo de doador ( fisico ou juridico)
--link para sair do sistema
--campo rg em doador espandir para 13 dígitos.
 
+-link para sair do sistema. SUGESTÃO: COLOCAR NO LUGAR DA DATA E HORA 
+Nome e link de sair.
+
+-campo rg em doador espandir para 13 dígitos. RESOLVIDO! Motivo: Length.
+-nao é possivel cadastrar outros funcionarios. RESOLVIDO! MoTivo: Falta 
+de input login.
+
+-Não é possivel alterar o perfil de usuario depois de cadastro. E se a 
+pessoa for promovida? 
+
+-melhorar a mascara de data
