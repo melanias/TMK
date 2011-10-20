@@ -41,4 +41,6 @@ de input login.
 -Não é possivel alterar o perfil de usuario depois de cadastro. E se a 
 pessoa for promovida? 
 
+-Emitir erro ao tentar cadastrar funcionario sem filial e setor.
+
 -melhorar a mascara de data

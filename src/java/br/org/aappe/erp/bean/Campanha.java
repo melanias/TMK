@@ -1,7 +1,7 @@
 package br.org.aappe.erp.bean;
 
 import br.org.aappe.erp.enums.CampaignType;
-import br.org.aappe.erp.enums.CampaingStatus;
+import br.org.aappe.erp.enums.CampaignStatus;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -41,7 +41,7 @@ public class Campanha implements Serializable {
     private String nome;
     
    /* @Column(length=200, nullable=false)
-    private String publicoAlvo;*/
+    private String publicoAlvo;
     
     @Enumerated(EnumType.ORDINAL)
     @Column(name="type", columnDefinition="smallint", nullable=false)
@@ -49,7 +49,7 @@ public class Campanha implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="status", columnDefinition="smallint", nullable=false)
-    private CampaingStatus status; //0 = Concluída, 1 = Cancelada, 2 = Em andamento, 3 = Planejando
+    private CampaignStatus status; //0 = Concluída, 1 = Cancelada, 2 = Em andamento, 3 = Planejando
     
     @Column(length=255, nullable=false)
     private String objetivo;
@@ -64,7 +64,7 @@ public class Campanha implements Serializable {
     private BigDecimal receitaEsperada;
     
     @Column(nullable=false, precision=12, scale=2)
-    private BigDecimal receitaReal;
+    private BigDecimal receitaReal;*/
     
     @Temporal(TemporalType.DATE)
     @Column(name="dt_inicial", nullable=false)
@@ -88,14 +88,14 @@ public class Campanha implements Serializable {
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome.trim(); }
 
-    public CampaignType getType() { return type; }
+    /*public CampaignType getType() { return type; }
     public void setType(CampaignType type) { this.type = type; }
    
-    public CampaingStatus getStatus() { return status; }
-    public void setStatus(CampaingStatus status) { this.status = status; }
+    public CampaignStatus getStatus() { return status; }
+    public void setStatus(CampaignStatus status) { this.status = status; }
     
-    /*public String getPublicoAlvo() { return publicoAlvo; }
-    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }*/
+    public String getPublicoAlvo() { return publicoAlvo; }
+    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }
 
     public String getObjetivo() { return objetivo; }
     public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
@@ -110,7 +110,7 @@ public class Campanha implements Serializable {
     public void setReceitaEsperada(BigDecimal receitaEsperada) { this.receitaEsperada = receitaEsperada; }
     
     public BigDecimal getReceitaReal() { return receitaReal; }
-    public void setReceitaReal(BigDecimal receitaReal) { this.receitaReal = receitaReal; }
+    public void setReceitaReal(BigDecimal receitaReal) { this.receitaReal = receitaReal; } */
 
     public Date getDataInicial() { return dataInicial; }
     public void setDataInicial(Date dataInicial) { this.dataInicial = dataInicial; }

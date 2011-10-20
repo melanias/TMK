@@ -15,7 +15,7 @@ import static br.com.caelum.vraptor.view.Results.*;
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Campanha;
 import br.org.aappe.erp.enums.CampaignType;
-import br.org.aappe.erp.enums.CampaingStatus;
+import br.org.aappe.erp.enums.CampaignStatus;
 import br.org.aappe.erp.repository.CampanhaRepository;
 import java.math.BigDecimal;
 
@@ -53,7 +53,7 @@ public class CampanhaController extends MainController {
     @Get("/campanha/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Campanha");
-       // result.include("CampaingStatus", CampaingStatus.getAll());
+       // result.include("CampaignStatus", CampaignStatus.getAll());
        // result.include("CampaignType", CampaignType.getAll());
     }
 
@@ -75,7 +75,7 @@ public class CampanhaController extends MainController {
     @Get("/campanha/edit/{id}")
     public Campanha frmEdit(int id) {
         result.include("title", "Editar Campanha");
-        //result.include("CampaingStatus", CampaingStatus.getAll());
+        //result.include("CampaignStatus", CampaignStatus.getAll());
         //result.include("CampaignType", CampaignType.getAll());
         return repository.find(id);
     }
