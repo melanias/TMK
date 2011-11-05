@@ -24,7 +24,7 @@ input, select, textarea {
     border: 1px solid #d3d3d3;
     background-color: #e6e6e6;
 }
-input:focus, select:focus, textarea:focus { color: #212121; background-color: #dadada; border: 1px solid #999999; }
+input:focus, select:focus, textarea:focus { color: #212121; background-color: #90EE90; border: 1px solid #999999; }
 
 select option { padding: 0 3px; }
 

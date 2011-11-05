@@ -30,7 +30,7 @@ public abstract class Pessoa {
     @Column(length=200, nullable=false)
     private String nome;
 
-    @Column(length=100, nullable=false)
+    @Column(length=100, nullable=true)
     private String email;
 
     @Column(length=14)

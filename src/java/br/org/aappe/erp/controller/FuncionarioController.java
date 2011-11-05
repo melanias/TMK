@@ -88,9 +88,9 @@ public class FuncionarioController extends MainController {
                 that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
 
             //E-mail
-            if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
+            /*if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
                 that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
-                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
+                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");*/
 
             //Telefone ou Celular
             that(!funcionario.getCelular().isEmpty() || !funcionario.getTelefone().isEmpty(), "", "telefone.ou.celular");
@@ -149,9 +149,9 @@ public class FuncionarioController extends MainController {
                 that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
 
             //E-mail
-            if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
+            /*if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
                 that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
-                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
+                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");*/
 
             //Telefone ou Celular
             that(!funcionario.getCelular().isEmpty() || !funcionario.getTelefone().isEmpty(), "", "telefone.ou.celular");
@@ -189,7 +189,7 @@ public class FuncionarioController extends MainController {
 
             //RG
             if (that(funcionario.getRg() != null, "funcionario.rg", "rg") &&
-                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 14, "funcionario.rg", "rg.invalido", 6, 13))
+                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 20, "funcionario.rg", "rg.invalido", 6, 20))
                 that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
 
             //CPF
@@ -198,9 +198,9 @@ public class FuncionarioController extends MainController {
                 that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
 
             //E-mail
-            if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
+            /*if (that(!funcionario.getEmail().isEmpty(), "funcionario.email", "email") &&
                 that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
-                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
+                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");*/
 
             //Data de admissão
             that(funcionario.getAdmissao() != null, "funcionario.admissao", "admissao");

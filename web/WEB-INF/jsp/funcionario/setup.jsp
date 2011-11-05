@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <td><label for="rg">RG:</label></td>
-                            <td><input type="text" name="funcionario.rg" value="${funcionario.rg}" id="rg" size="16" maxlength="13" alt="rg" /></td>
+                            <td><input type="text" name="funcionario.rg" value="${funcionario.rg}" id="rg" size="20" maxlength="20" alt="rg" /></td>
 
                             <td><label for="dataAdmissao">Data de Admissão:</label></td>
                             <td><input type="text" name="funcionario.admissao" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${funcionario.admissao}" />" id="dataAdmissao" size="16" maxlength="10" alt="data" /></td>

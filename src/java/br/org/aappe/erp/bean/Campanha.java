@@ -41,7 +41,7 @@ public class Campanha implements Serializable {
     private String nome;
     
    /* @Column(length=200, nullable=false)
-    private String publicoAlvo;
+    private String publicoAlvo; */
     
     @Enumerated(EnumType.ORDINAL)
     @Column(name="type", columnDefinition="smallint", nullable=false)
@@ -51,7 +51,7 @@ public class Campanha implements Serializable {
     @Column(name="status", columnDefinition="smallint", nullable=false)
     private CampaignStatus status; //0 = Concluída, 1 = Cancelada, 2 = Em andamento, 3 = Planejando
     
-    @Column(length=255, nullable=false)
+   /* @Column(length=255, nullable=false)
     private String objetivo;
     
     @Column(nullable=false, precision=12, scale=2)
@@ -88,16 +88,17 @@ public class Campanha implements Serializable {
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome.trim(); }
 
-    /*public CampaignType getType() { return type; }
-    public void setType(CampaignType type) { this.type = type; }
+    /*public String getPublicoAlvo() { return publicoAlvo; }
+    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }*/
+     
+    public CampaignType getType() { return type; }
+    public void setType(CampaignType type) { this.type = type; } 
    
     public CampaignStatus getStatus() { return status; }
     public void setStatus(CampaignStatus status) { this.status = status; }
     
-    public String getPublicoAlvo() { return publicoAlvo; }
-    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }
 
-    public String getObjetivo() { return objetivo; }
+    /*public String getObjetivo() { return objetivo; }
     public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
 
     public BigDecimal getCustoPrevisto() { return custoPrevisto; }

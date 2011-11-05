@@ -53,8 +53,8 @@ public class CampanhaController extends MainController {
     @Get("/campanha/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Campanha");
-       // result.include("CampaignStatus", CampaignStatus.getAll());
-       // result.include("CampaignType", CampaignType.getAll());
+        result.include("campaignStatus", CampaignStatus.getAll());
+        result.include("campaignType", CampaignType.getAll());
     }
 
     @Transactional
@@ -99,13 +99,7 @@ public class CampanhaController extends MainController {
                 //Nome da campanha
                 that(!campanha.getNome().isEmpty(), "campanha.nome", "nome");
 
-             /*   Tipo de Campanha
-                that(campanha.getType() != null, "campanha.type", "type");
-
-                Status de Campanha
-                that(campanha.getStatus() != null, "campanha.status", "status");
-
-                Receita Esperada            
+             /*   Receita Esperada            
                 that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
 
                 Receita Real            

@@ -27,15 +27,16 @@
                     <td><label for="nome">Nome:</label></td>
                     <td><input type="text" name="campanha.nome" value="" id="nome" size="16" maxlength="200" /></td>
 
-                  <!--  <td><label for="tipo">Tipo:</label></td>
+                   <td><label for="tipo">Tipo:</label></td>
                     <td>
-                        <select name="campanha.type" id="type">
-                            <option value="">-</option>
-                  
+                        <select name="campanha.type" id="tipo">
+                            <c:forEach items="${campaignType}" var="c">
+                                <option value="${c}">${c.type}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td><label for="custoPrevisto">Custo Previsto (R$):</label></td>
                     <td><input type="text" name="camapanha.custoPrevisto" value="" id="custoPrevisto" size="16" maxlength="16" alt="valor" /></td>
 

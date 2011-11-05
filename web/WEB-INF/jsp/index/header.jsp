@@ -37,8 +37,7 @@
             <div class="content">
                 <h1><a href="<c:url value="/" />" accesskey="i"><img src="<c:url value="/images/logo.png" />" title="AAPPE" alt="AAPPE" /></a></h1>
                 <c:set var="rightNow" value="<%=new java.util.Date()%>" />
-                <!--Aqui em baixo poderia ficar o login e o botão sair do sistema. Ao invez da data! Oq axa?! Abaixo ta nojento o codigo + é ideia! koaekae
-                <span>Olá, <%= session.getAttribute("funcionario.login") %>  Fulano de Tal <a href="logout">( Sair )</a></span>--><br/><br/><br/><br/><br/><br/>
+                <span>Olá, ${employeeSession.nome} <a href="${linkTo[LoginController].logout}">( Sair )</a></span><br/><br/><br/><br/><br/><br/>
                 <span><fmt:formatDate type="date" dateStyle="full" value="${rightNow}" /></span><br/>
                 <%@ include file="menu.jsp" %>
             </div>

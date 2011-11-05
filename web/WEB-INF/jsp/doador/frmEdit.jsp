@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td><label for="rg">RG:</label></td>
-                    <td><input type="text" name="doador.rg" value="${doador.rg}" id="rg" size="16" maxlength="13" alt="rg" /></td>
+                    <td><input type="text" name="doador.rg" value="${doador.rg}" id="rg" size="20" maxlength="20" alt="rg" /></td>
 
                     <td><label for="cpf">CPF:</label></td>
                     <td><input type="text" name="doador.cpf" value="${doador.cpf}" id="cpf" size="16" maxlength="14" alt="cpf" /></td>

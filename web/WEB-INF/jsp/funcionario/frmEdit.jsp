@@ -32,7 +32,7 @@
                         </tr>
                         <tr>
                             <td><label for="rg">RG:</label></td>
-                            <td><input type="text" name="funcionario.rg" value="${funcionario.rg}" id="rg" size="16" maxlength="13" alt="rg" /></td>
+                            <td><input type="text" name="funcionario.rg" value="${funcionario.rg}" id="rg" size="20" maxlength="20" alt="rg" /></td>
 
                             <td><label for="cpf">CPF:</label></td>
                             <td><input type="text" name="funcionario.cpf" value="${funcionario.cpf}" id="cpf" size="16" maxlength="14" alt="cpf" /></td>
