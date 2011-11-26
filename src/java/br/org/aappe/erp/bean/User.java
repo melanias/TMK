@@ -1,4 +1,4 @@
-package br.org.aappe.erp.bean;
+/*package br.org.aappe.erp.bean;
 
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 /**
  * @author Phelipe Melanias
- */
+ /
 @Entity
 @Cacheable
 @Table(name="root")
@@ -70,4 +70,4 @@ public class User implements Serializable {
 
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone.trim(); }
-}
+}*/

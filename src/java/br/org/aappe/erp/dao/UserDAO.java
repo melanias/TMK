@@ -1,4 +1,4 @@
-package br.org.aappe.erp.dao;
+/*package br.org.aappe.erp.dao;
 
 import javax.persistence.EntityManager;
 
@@ -9,7 +9,7 @@ import br.org.aappe.erp.repository.UserRepository;
 
 /**
  * @author Phelipe Melanias
- */
+ /
 @Component
 public class UserDAO extends DAO<User> implements UserRepository {
 
@@ -60,4 +60,4 @@ public class UserDAO extends DAO<User> implements UserRepository {
                                          .setParameter(1, user.getLogin().toLowerCase())
                                          .getResultList().isEmpty();
     }
-}
+}*/

@@ -15,7 +15,7 @@ import br.org.aappe.erp.session.EmployeeSession;
 /**
  * @author Phelipe Melanias
  */
-@Intercepts
+@Intercepts(before=AuthorizedInterceptor.class)
 public class AuthInterceptor implements Interceptor {
     private final Result result;
     private final HttpServletRequest request;

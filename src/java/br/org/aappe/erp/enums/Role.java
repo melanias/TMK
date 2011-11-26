@@ -8,7 +8,7 @@ import java.util.List;
  * @author Phelipe Melanias
  */
 public enum Role implements Serializable {
-    ESTAGIARIO("Estagiário(a)"), REPRESENTANTE("Representante"), OPERADOR("Operador(a)"), GERENTE("Gerente");
+    ESTAGIARIO("Estagiário(a)"), REPRESENTANTE("Representante"), OPERADOR("Operador(a)"), GERENTE("Gerente"), ADMINISTRADOR("Administrador");
 
     private String userRole;
 

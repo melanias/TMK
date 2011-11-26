@@ -39,10 +39,10 @@ public class Campanha implements Serializable {
 
     @Column(length=200, nullable=false)
     private String nome;
-    
+
    /* @Column(length=200, nullable=false)
     private String publicoAlvo; */
-    
+
     @Enumerated(EnumType.ORDINAL)
     @Column(name="type", columnDefinition="smallint", nullable=false)
     private CampaignType type; //0 = Telemarketing, 1 = Newsletter, 2 = Email
@@ -50,22 +50,22 @@ public class Campanha implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     @Column(name="status", columnDefinition="smallint", nullable=false)
     private CampaignStatus status; //0 = Concluída, 1 = Cancelada, 2 = Em andamento, 3 = Planejando
-    
+
    /* @Column(length=255, nullable=false)
     private String objetivo;
-    
+
     @Column(nullable=false, precision=12, scale=2)
     private BigDecimal custoPrevisto;
-    
+
     @Column(nullable=false, precision=12, scale=2)
     private BigDecimal custoReal;
-    
+
     @Column(nullable=false, precision=12, scale=2)
     private BigDecimal receitaEsperada;
-    
+
     @Column(nullable=false, precision=12, scale=2)
     private BigDecimal receitaReal;*/
-    
+
     @Temporal(TemporalType.DATE)
     @Column(name="dt_inicial", nullable=false)
     private Date dataInicial;
@@ -73,7 +73,7 @@ public class Campanha implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name="dt_final", nullable=false)
     private Date dataFinal;
-    
+
     @OneToOne
     @JoinColumn(name="id_funcionario", referencedColumnName="id", nullable=false, updatable=false)
     private Funcionario funcionario;
@@ -90,13 +90,13 @@ public class Campanha implements Serializable {
 
     /*public String getPublicoAlvo() { return publicoAlvo; }
     public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }*/
-     
+
     public CampaignType getType() { return type; }
-    public void setType(CampaignType type) { this.type = type; } 
-   
+    public void setType(CampaignType type) { this.type = type; }
+
     public CampaignStatus getStatus() { return status; }
     public void setStatus(CampaignStatus status) { this.status = status; }
-    
+
 
     /*public String getObjetivo() { return objetivo; }
     public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
@@ -109,7 +109,7 @@ public class Campanha implements Serializable {
 
     public BigDecimal getReceitaEsperada() { return receitaEsperada; }
     public void setReceitaEsperada(BigDecimal receitaEsperada) { this.receitaEsperada = receitaEsperada; }
-    
+
     public BigDecimal getReceitaReal() { return receitaReal; }
     public void setReceitaReal(BigDecimal receitaReal) { this.receitaReal = receitaReal; } */
 
@@ -121,7 +121,4 @@ public class Campanha implements Serializable {
 
     public Funcionario getFuncionario() { return funcionario; }
     public void setFuncionario(Funcionario funcionario) { this.funcionario = funcionario; }
-
-
-   
 }

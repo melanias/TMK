@@ -171,7 +171,7 @@ public class FuncionarioController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
-    @Get("/setup")
+    /*@Get("/setup")
     public void setup() {
         if (repository.hasEmployee())
             result.redirectTo(LoginController.class).frmLogin();
@@ -203,7 +203,7 @@ public class FuncionarioController extends MainController {
                 that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");*/
 
             //Data de admissão
-            that(funcionario.getAdmissao() != null, "funcionario.admissao", "admissao");
+            /*that(funcionario.getAdmissao() != null, "funcionario.admissao", "admissao");
 
             //Telefone ou Celular
             that(!funcionario.getCelular().isEmpty() || !funcionario.getTelefone().isEmpty(), "", "telefone.ou.celular");
@@ -229,5 +229,5 @@ public class FuncionarioController extends MainController {
         //Salvar os dados
         repository.persist(funcionario);
         result.redirectTo(LoginController.class).frmLogin();
-    }
+    }*/
 }

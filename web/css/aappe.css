@@ -49,9 +49,15 @@ div#header {
 }
 
 div#header .content { width: 80%; margin: 0 auto; }
+
 div#header .content h1 { float: left; margin: 0 14px; padding: 6px 0; }
-div#header .content h1 > a { width: 99px; height: 100px; display: block; }
-div#header .content span { color: #555; float: right; margin: 2px 0 0; font-size: 0.9em; }
+div#header .content h1 > a { width: 250px; height: 100px; display: block; }
+
+div#header .content #info { float: right; height: 112px; position: relative; white-space: nowrap; }
+div#header .content #info p a { color: #888; font-weight: bold; }
+div#header .content #info p a:hover { color: #940000; }
+div#header .content #info p.data { position: absolute; right: 0; bottom: 3px; }
+div#header .content #info p.greetings { position: absolute; right: 0; top: 3px; }
 
 /* MENU */
 div#header .content #menu { clear: both; height: 40px; border-top: 2px solid #dd7700;}

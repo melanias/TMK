@@ -1,4 +1,4 @@
-package br.org.aappe.erp.controller;
+/*package br.org.aappe.erp.controller;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import br.org.aappe.erp.util.Utilities;
 
 /**
  * @author Phelipe Melanias
- */
+ /
 @Resource
 public class UserController extends MainController {
     private final UserRepository repository;
@@ -129,4 +129,4 @@ public class UserController extends MainController {
         repository.merge(user);
         result.redirectTo(this).list();
     }
-}
+}*/

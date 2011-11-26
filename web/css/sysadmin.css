@@ -34,8 +34,11 @@ input, select, textarea {
     background-color: #e6e6e6;
 }
 input:focus, select:focus, textarea:focus { color: #212121; background-color: #dadada; border: 1px solid #999999; }
+input.error { color: #000; border: 1px solid #940000; background-color: #ffacb5; }
 
 select option { padding: 0 3px; }
+
+span { vertical-align: text-top; }
 
 /** MENU */
 div#menu {
@@ -100,7 +103,7 @@ div#main .content > blockquote {
     background-color: #e8e8e8;
 }
 div#main .content > blockquote > p {
-    font-weight: bold;
+    font-weight: normal;
     padding: 2px 10px 2px 20px;
     background: transparent url('../images/submenu-arrow.png') 10px 50% no-repeat;
 }
@@ -116,8 +119,24 @@ div#main .content > table tr td { color: #555; padding: 0.45em; border: 1px dott
 
 /* Formulários */
 div#main .content > form {/* border: 1px solid black; */}
-div#main .content > form > table:nth-child(even) { margin-top: 20px; }
-/*div#main .content > form > table tr:not(:last-of-type) > td { padding: 0 5px 5px 0; }*/
-div#main .content > form > table tr > td { padding: 0 5px 5px 0; }
-div#main .content > form > table tr:last-of-type > td { padding: 0 5px 0 0; }
+
+div#main .content > form > fieldset { margin-top: 20px; padding: 25px 10px 10px; border: 2px solid #ddd; }
+div#main .content > form > fieldset legend { color: #940000; font-size: 16px; font-weight: bold; margin-left: 12px; padding: 0 3px; }
+
+div#main .content > form > fieldset > table:nth-child(even) {/* margin-top: 20px; */}
+div#main .content > form > fieldset > table tr > td { padding: 0 5px 5px 0; vertical-align: text-top; }
+div#main .content > form > fieldset > table tr:last-of-type > td { padding: 0 5px 0 0; }
+
+div#main .content > form > fieldset > table tr > td > span { color: #940000; margin-left: 5px; }       /* Mensagem de erro */
+div#main .content > form > fieldset > table tr > td > span.nl { display: block; margin: 1px 1px 5px; } /* Mensagem de erro */
+
+div#main .content > form h3 {
+    color: #940000;
+    font-size: 16px;
+    margin: 20px 0;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #940000;
+}
+
+button#setup { margin: 10px 12px 0; }
 /** MAIN */

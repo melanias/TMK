@@ -77,4 +77,32 @@ jQuery(function($){
                 alert("O CEP está incorreto.");
         }
     });
+
+    /** setup - code **/
+    $("#setup").live("click", function() {
+        //Limpar erros
+        $("form").find("span").remove();
+        $('input').removeClass("error");
+
+        $.ajax({
+            type: "POST",
+            url: URLBASE + "/setup",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    location.href = URLBASE;
+                } else {
+                    $.each(response, function(k, i) {
+                        var id = i.category;
+                        var msg = i.message;
+
+                        (id === 'mail' || id === 'nome') ? $("#"+ id).addClass("error").after('<span class="nl">'+ msg +'</span>')
+                                                         : $("#"+ id).addClass("error").after('<span>'+ msg +'</span>');
+                    });
+                }
+            }
+        });
+    });
+    /** setup - code **/
 });

@@ -44,7 +44,7 @@ public class Setor implements Serializable {
     private String fax;
 
     @OneToOne
-    @JoinColumn(name="id_funcionario", referencedColumnName="id")
+    @JoinColumn(name="id_responsavel", referencedColumnName="id")
     private Funcionario responsavel;
 
     @ManyToOne

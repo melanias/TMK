@@ -9,13 +9,13 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
-import br.org.aappe.erp.controller.FuncionarioController;
+import br.org.aappe.erp.controller.SetupController;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 
 /**
  * @author Phelipe Melanias
  */
-@Intercepts(before=AuthInterceptor.class)
+@Intercepts(before={AuthInterceptor.class, AuthorizedInterceptor.class})
 public class FirstRunInterceptor implements Interceptor {
     private final Result result;
     private final HttpServletRequest request;
@@ -37,7 +37,7 @@ public class FirstRunInterceptor implements Interceptor {
         if (request.getRequestURI().contains("/setup")) {
             stack.next(method, o);
         } else {
-            result.redirectTo(FuncionarioController.class).setup();
+            result.redirectTo(SetupController.class).setup();
         }
     }
 }

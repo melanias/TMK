@@ -1,4 +1,3 @@
-<%@page import="br.org.aappe.erp.bean.Funcionario"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -35,10 +34,12 @@
         <div id="Version" class="corner-top-left-6 shadow-3">Versão 0.0.3</div>
         <div id="header">
             <div class="content">
-                <h1><a href="<c:url value="/" />" accesskey="i"><img src="<c:url value="/images/logo.png" />" title="AAPPE" alt="AAPPE" /></a></h1>
-                <c:set var="rightNow" value="<%=new java.util.Date()%>" />
-                <span>Olá, ${employeeSession.nome} <a href="${linkTo[LoginController].logout}">( Sair )</a></span><br/><br/><br/><br/><br/><br/>
-                <span><fmt:formatDate type="date" dateStyle="full" value="${rightNow}" /></span><br/>
+                <h1><a href="${linkTo[IndexController].index}" accesskey="i"><img src="<c:url value="/images/logo.png" />" title="AAPPE" alt="AAPPE" /></a></h1>
+
+                <div id="info">
+                    <p class="data"><fmt:formatDate type="date" dateStyle="full" value="<%=new java.util.Date()%>" /></p>
+                    <p class="greetings">Olá, <strong>${employeeSession.nome}</strong>! <a href="${linkTo[LoginController].logout}">(&nbsp;Sair&nbsp;)</a></p>
+                </div>
                 <%@ include file="menu.jsp" %>
             </div>
         </div>

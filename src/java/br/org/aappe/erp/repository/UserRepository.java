@@ -1,4 +1,4 @@
-package br.org.aappe.erp.repository;
+/*package br.org.aappe.erp.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import br.org.aappe.erp.bean.User;
 
 /**
  * @author Phelipe Melanias
- */
+ /
 public interface UserRepository {
 
     User find(int id);
@@ -24,4 +24,4 @@ public interface UserRepository {
     boolean isUniqueMail(User user);
 
     boolean isUniqueLogin(User user);
-}
+}*/
