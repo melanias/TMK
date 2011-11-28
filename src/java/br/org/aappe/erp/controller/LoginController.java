@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Validations;
 
 import br.org.aappe.erp.bean.Funcionario;
+import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 import br.org.aappe.erp.session.EmployeeSession;
 
@@ -47,7 +48,12 @@ public class LoginController extends MainController {
 
         //Efetuar login
         employeeSession.login(f);
-        result.redirectTo(IndexController.class).index();
+
+        //Redirecionar o funcionário de acordo com seu perfil
+        if (employeeSession.getPerfil().equals(Role.ADMINISTRADOR))
+            result.redirectTo(IndexController.class).admin();
+        else
+            result.redirectTo(IndexController.class).index();
     }
 
     @Get("/logout")
