@@ -2,25 +2,28 @@
                 <div id="menu">
                     <ul>
                         <li>
-                            <a href="<c:url value="/filial" />">Filiais</a>
+                            <a href="${linkTo[IndexController].index}">Início</a>
                         </li>
                         <li>
-                            <a href="<c:url value="/setor" />">Setores</a>
+                            <a href="${linkTo[FilialController].list}">Filiais</a>
                         </li>
                         <li>
-                            <a href="<c:url value="/funcionario" />">Funcionários</a>
+                            <a href="${linkTo[SetorController].list}">Setores</a>
                         </li>
                         <li>
-                            <a href="<c:url value="/doador" />">Doadores</a>
+                            <a href="${linkTo[FuncionarioController].list}">Funcionários</a>
                         </li>
                         <li>
-                            <a href="<c:url value="/campanha" />">Campanhas</a>
+                            <a href="${linkTo[DoadorController].list}">Doadores</a>
+                        </li>
+                        <li>
+                            <a href="${linkTo[CampanhaController].list}">Campanhas</a>
                         </li>
                         <li>
                             <a href="#">Finanças</a>
                             <div>
                                 <ul>
-                                    <li><a href="<c:url value="/doacao" />">Doações</a></li>
+                                    <li><a href="${linkTo[DoacaoController].list}">Doações</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -36,7 +39,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="<c:url value="/mensagem" />">Newsletter e SMS</a>
+                            <a href="${linkTo[MensagemController].list}">Newsletter e SMS</a>
                         </li>
                     </ul>
                 </div>

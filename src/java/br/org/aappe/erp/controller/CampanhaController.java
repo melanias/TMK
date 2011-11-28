@@ -17,7 +17,6 @@ import br.org.aappe.erp.bean.Campanha;
 import br.org.aappe.erp.enums.CampaignType;
 import br.org.aappe.erp.enums.CampaignStatus;
 import br.org.aappe.erp.repository.CampanhaRepository;
-import java.math.BigDecimal;
 
 /**
  * @author Phelipe Melanias
