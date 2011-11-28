@@ -19,12 +19,14 @@ public class SetorDAO extends DAO<Setor> implements SetorRepository {
 
     @Override
     public boolean isUniqueSection(Setor setor) {
-        return setor.getId() > 0 ? manager.createQuery("SELECT setor FROM Setor setor WHERE setor.id <> ? AND lower(setor.nome) = ?")
+        return setor.getId() > 0 ? manager.createQuery("SELECT setor FROM Setor setor WHERE setor.id <> ? AND lower(setor.nome) = ? AND setor.filial.id = ?")
                                           .setParameter(1, setor.getId())
                                           .setParameter(2, setor.getNome().toLowerCase())
+                                          .setParameter(3, setor.getFilial().getId())
                                           .getResultList().isEmpty()
-                                 : manager.createQuery("SELECT setor FROM Setor setor WHERE lower(setor.nome) = ?")
+                                 : manager.createQuery("SELECT setor FROM Setor setor WHERE lower(setor.nome) = ? AND setor.filial.id = ?")
                                           .setParameter(1, setor.getNome().toLowerCase())
+                                          .setParameter(2, setor.getFilial().getId())
                                           .getResultList().isEmpty();
     }
 

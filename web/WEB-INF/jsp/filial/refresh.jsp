@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/filial/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', headingText:'Cadastrar Filial'});">Cadastrar</a>
-                    <a class="pdf" href="<c:url value="/filial/pdf" />" title="PDF">PDF</a>
+                    <a class="add-form" href="${linkTo[FilialController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', headingText:'Cadastrar Filial'});">Cadastrar</a>
+                    <a class="pdf" href="${linkTo[FilialController].pdf}" title="PDF">PDF</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>

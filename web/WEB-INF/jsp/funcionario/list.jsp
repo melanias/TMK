@@ -1,6 +1,6 @@
 <%@ include file="../index/header.jsp" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/funcionario/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'680', headingText:'Cadastrar Funcionário'});">Cadastrar</a>
+                    <a class="add-form" href="${linkTo[FuncionarioController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'680', headingText:'Cadastrar Funcionário'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
@@ -26,11 +26,11 @@
                         <td width="10%">${f.perfil.userRole}</td>
                         <td width="12%"><fmt:formatDate pattern="dd/MM/yyyy" value="${f.admissao}" /></td>
                         <td width="12%"><c:if test="${empty f.demissao}">-</c:if><fmt:formatDate pattern="dd/MM/yyyy" value="${f.demissao}" /></td>
-                        <td>${f.filial.nome}</td>
-                        <td>${f.setor.nome}</td>
+                        <td><c:if test="${empty f.filial}">-</c:if>${f.filial.nome}</td>
+                        <td><c:if test="${empty f.setor}">-</c:if>${f.setor.nome}</td>
                         <td width="53" >
-                            <a class="preview" href="<c:url value="/funcionario/view/${f.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'680', headingText:'Funcionário'});">Visualizar</a>
-                            <a class="edit-form" href="<c:url value="/funcionario/edit/${f.id}" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'680', headingText:'Editar Funcionário'});">Editar</a>
+                            <a class="preview" href="${linkTo[FuncionarioController].view[f.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'680', headingText:'Funcionário'});">Visualizar</a>
+                            <a class="edit-form" href="${linkTo[FuncionarioController].frmEdit[f.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'680', headingText:'Editar Funcionário'});">Editar</a>
                         </td>
                     </tr>
                     </c:forEach>

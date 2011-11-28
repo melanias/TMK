@@ -56,7 +56,7 @@
                 </tr>
                 <tr>
                     <td><label for="logradouro">Logradouro:</label></td>
-                    <td><input type="text" name="filial.endereco.logradouro" value="${filial.endereco.logradouro}" id="logradouro" size="50" maxlength="200" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.logradouro" value="${filial.endereco.logradouro}" id="logradouro" size="50" maxlength="200" /></td>
 
                     <td><label for="numero">Número:</label></td>
                     <td><input type="text" name="filial.endereco.numero" value="${filial.endereco.numero}" id="numero" size="10" maxlength="10" alt="numero" /></td>
@@ -66,14 +66,14 @@
                     <td><input type="text" name="filial.endereco.complemento" value="${filial.endereco.complemento}" id="complemento" size="50" maxlength="150" /></td>
 
                     <td><label for="uf">Estado:</label></td>
-                    <td><input type="text" name="filial.endereco.uf" value="${filial.endereco.uf}" id="uf" size="2" maxlength="2" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.uf" value="${filial.endereco.uf}" id="uf" size="2" maxlength="2" /></td>
                 </tr>
                 <tr>
                     <td><label for="bairro">Bairro:</label></td>
-                    <td><input type="text" name="filial.endereco.bairro" value="${filial.endereco.bairro}" id="bairro" size="50" maxlength="100" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.bairro" value="${filial.endereco.bairro}" id="bairro" size="50" maxlength="100" /></td>
 
                     <td><label for="cidade">Cidade:</label></td>
-                    <td><input type="text" name="filial.endereco.cidade" value="${filial.endereco.cidade}" id="cidade" size="35" maxlength="100" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.cidade" value="${filial.endereco.cidade}" id="cidade" size="30" maxlength="100" /></td>
                 </tr>
                 <tr>
                     <td><input type="hidden" name="filial.id" value="${filial.id}" /></td>

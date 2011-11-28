@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td><strong>E-mail:</strong></td>
-                <td>${funcionario.email}</td>
+                <td><c:if test="${empty funcionario.email}">-</c:if>${funcionario.email}</td>
 
                 <td><strong>Telefone:</strong></td>
                 <td><c:if test="${empty funcionario.telefone}">-</c:if>${funcionario.telefone}</td>
@@ -56,10 +56,10 @@
         <table>
             <tr>
                 <td><strong>Filial:</strong></td>
-                <td>${funcionario.filial.nome}</td>
+                <td><c:if test="${empty funcionario.filial.nome}">-</c:if>${funcionario.filial.nome}</td>
 
                 <td><strong>Telefone:</strong></td>
-                <td>${funcionario.filial.telefone}</td>
+                <td><c:if test="${empty funcionario.filial.telefone}">-</c:if>${funcionario.filial.telefone}</td>
             </tr>
             <tr>
                 <td><strong>E-mail:</strong></td>
@@ -73,7 +73,7 @@
         <table>
             <tr>
                 <td><strong>Setor:</strong></td>
-                <td>${funcionario.setor.nome}</td>
+                <td><c:if test="${empty funcionario.setor.nome}">-</c:if>${funcionario.setor.nome}</td>
 
                 <td><strong>Telefone:</strong></td>
                 <td><c:if test="${empty funcionario.setor.telefone}">-</c:if>${funcionario.setor.telefone}</td>

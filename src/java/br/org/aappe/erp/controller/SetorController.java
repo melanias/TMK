@@ -104,8 +104,8 @@ public class SetorController extends MainController {
     private List<Message> validate(final Setor setor) {
         return new Validations(){{
             //Nome do setor
-            if (that(!setor.getNome().isEmpty(), "setor.nome", "nome"))
-                that(repository.isUniqueSection(setor), "setor.nome", "nome.unico");
+            if (that(!setor.getNome().isEmpty(), "setor.nome", "nome") & that(setor.getFilial().getId() > 0, "setor.filial", "filial_not_selected"))
+                that(repository.isUniqueSection(setor), "setor.nome", "nome.setor.unico");
 
             //Sigla e Filial
             if (that(!setor.getSigla().isEmpty(), "setor.sigla", "sigla") & that(setor.getFilial().getId() > 0, "setor.filial", "filial_not_selected"))

@@ -29,29 +29,15 @@
                             <td><label for="nome">Nome:</label></td>
                             <td><input type="text" name="funcionario.nome" value="${funcionario.nome}" id="nome" size="40" maxlength="200" /></td>
 
-                        </tr>
-                        <tr>
                             <td><label for="rg">RG:</label></td>
                             <td><input type="text" name="funcionario.rg" value="${funcionario.rg}" id="rg" size="20" maxlength="20" alt="rg" /></td>
-
-                            <td><label for="cpf">CPF:</label></td>
-                            <td><input type="text" name="funcionario.cpf" value="${funcionario.cpf}" id="cpf" size="16" maxlength="14" alt="cpf" /></td>
                         </tr>
                         <tr>
                             <td><label for="dataNascimento">Data de Nascimento:</label></td>
                             <td><input type="text" name="funcionario.nascimento" id="dataNascimento" value="<fmt:formatDate value="${funcionario.nascimento}" type="date" pattern="dd/MM/yyyy"/>" size="16" maxlength="10" alt="data" /></td>
 
-                            <td><label for="filial">Filial:</label></td>
-                            <td>
-                                <select name="funcionario.filial.id" id="filial">
-                                    <c:if test="${empty filiais}">
-                                        <option value="">--</option>
-                                    </c:if>
-                                    <c:forEach items="${filiais}" var="filial">
-                                        <option value="${filial.id}"<c:if test="${funcionario.filial.id == filial.id}"> selected="selected"</c:if>>${filial.nome}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
+                            <td><label for="cpf">CPF:</label></td>
+                            <td><input type="text" name="funcionario.cpf" value="${funcionario.cpf}" id="cpf" size="16" maxlength="14" alt="cpf" /></td>
                         </tr>
                         <tr>
                             <td><label for="email">E-mail:</label></td>
@@ -60,12 +46,14 @@
                             <td><label for="setor">Setor:</label></td>
                             <td>
                                 <select name="funcionario.setor.id" id="setor">
-                                    <c:if test="${empty setores}">
-                                        <option value="">--</option>
-                                    </c:if>
-                                    <c:forEach items="${setores}" var="setor">
+                                    <option value="">- -</option>
+                                <c:forEach items="${filiais}" var="filial">
+                                    <optgroup label="${filial.nome}">
+                                    <c:forEach items="${filial.setores}" var="setor">
                                         <option value="${setor.id}"<c:if test="${funcionario.setor.id == setor.id}"> selected="selected"</c:if>>${setor.sigla}</option>
                                     </c:forEach>
+                                    </optgroup>
+                                </c:forEach>
                                 </select>
                             </td>
                         </tr>
@@ -102,6 +90,18 @@
                                 </select>
                             </td>
                         </tr>
+                        <tr>
+                            <td><label for="login">Login:</label></td>
+                            <td><input type="text" name="funcionario.login" value="${funcionario.login}" id="login" size="16" maxlength="40" /></td>
+
+                            <td><label for="senha">Senha:</label></td>
+                            <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td><label for="checkPass">Repetir senha:</label></td>
+                            <td><input type="password" name="funcionario.checkPass" value="" id="checkPass" size="16" /></td>
+                        </tr>
                     </table>
                     <hr />
                     <table>
@@ -114,7 +114,7 @@
                         </tr>
                         <tr>
                             <td><label for="logradouro">Logradouro:</label></td>
-                            <td><input type="text" name="funcionario.endereco.logradouro" value="${funcionario.endereco.logradouro}" id="logradouro" size="50" maxlength="200" readonly="readonly" /></td>
+                            <td><input type="text" name="funcionario.endereco.logradouro" value="${funcionario.endereco.logradouro}" id="logradouro" size="50" maxlength="200" /></td>
                             <td><label for="numero">Número:</label></td>
                             <td><input type="text" name="funcionario.endereco.numero" value="${funcionario.endereco.numero}" id="numero" size="10" maxlength="10" alt="numero" /></td>
                         </tr>
@@ -122,20 +122,13 @@
                             <td><label for="complemento">Complemento:</label></td>
                             <td><input type="text" name="funcionario.endereco.complemento" value="${funcionario.endereco.complemento}" id="complemento" size="50" maxlength="150" /></td>
                             <td><label for="uf">Estado:</label></td>
-                            <td><input type="text" name="funcionario.endereco.uf" value="${funcionario.endereco.uf}" id="uf" size="2" maxlength="2" readonly="readonly" /></td>
+                            <td><input type="text" name="funcionario.endereco.uf" value="${funcionario.endereco.uf}" id="uf" size="2" maxlength="2" /></td>
                         </tr>
                         <tr>
                             <td><label for="bairro">Bairro:</label></td>
-                            <td><input type="text" name="funcionario.endereco.bairro" value="${funcionario.endereco.bairro}" id="bairro" size="50" maxlength="100" readonly="readonly" /></td>
+                            <td><input type="text" name="funcionario.endereco.bairro" value="${funcionario.endereco.bairro}" id="bairro" size="50" maxlength="100" /></td>
                             <td><label for="cidade">Cidade:</label></td>
-                            <td><input type="text" name="funcionario.endereco.cidade" value="${funcionario.endereco.cidade}" id="cidade" size="35" maxlength="100" readonly="readonly" /></td>
-                        </tr>
-                    </table>
-                    <hr />
-                    <table>
-                        <tr>
-                            <td><label for="senha">Senha:</label></td>
-                            <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>
+                            <td><input type="text" name="funcionario.endereco.cidade" value="${funcionario.endereco.cidade}" id="cidade" size="30" maxlength="100" /></td>
                         </tr>
                         <tr>
                             <td><input type="hidden" name="funcionario.id" value="${funcionario.id}" /></td>

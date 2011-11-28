@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                     <td><label for="logradouro">Logradouro:</label></td>
-                    <td><input type="text" name="filial.endereco.logradouro" value="" id="logradouro" size="50" maxlength="200" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.logradouro" value="" id="logradouro" size="50" maxlength="200" /></td>
 
                     <td><label for="numero">Número:</label></td>
                     <td><input type="text" name="filial.endereco.numero" value="" id="numero" size="10" maxlength="10" alt="numero" /></td>
@@ -64,17 +64,17 @@
                     <td><input type="text" name="filial.endereco.complemento" value="" id="complemento" size="50" maxlength="150" /></td>
 
                     <td><label for="uf">Estado:</label></td>
-                    <td><input type="text" name="filial.endereco.uf" value="" id="uf" size="2" maxlength="2" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.uf" value="" id="uf" size="2" maxlength="2" /></td>
                 </tr>
                 <tr>
                     <td><label for="bairro">Bairro:</label></td>
-                    <td><input type="text" name="filial.endereco.bairro" value="" id="bairro" size="50" maxlength="100" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.bairro" value="" id="bairro" size="50" maxlength="100" /></td>
 
                     <td><label for="cidade">Cidade:</label></td>
-                    <td><input type="text" name="filial.endereco.cidade" value="" id="cidade" size="35" maxlength="100" readonly="readonly" /></td>
+                    <td><input type="text" name="filial.endereco.cidade" value="" id="cidade" size="30" maxlength="100" /></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td><input type="hidden" name="filial.empresa.id" value="${employeeSession.empresa.id}" /></td>
                     <td><input type="button" id="doAll" name="add-filial" value="Salvar" /></td>
                 </tr>
             </table>

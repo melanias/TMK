@@ -1,6 +1,6 @@
 <%@ include file="../index/header.jsp" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/setor/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Cadastrar Setor'});">Cadastrar</a>
+                    <a class="add-form" href="${linkTo[SetorController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Cadastrar Setor'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
@@ -27,8 +27,8 @@
                         <td><c:if test="${empty s.responsavel.firstAndLastName}">-</c:if>${s.responsavel.firstAndLastName}</td>
                         <td>${s.filial.nome}</td>
                         <td width="53" >
-                            <a class="preview" href="<c:url value="/setor/view/${s.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Setor'});">Visualizar</a>
-                            <a class="edit-form" href="<c:url value="/setor/edit/${s.id}" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Editar Setor'});">Editar</a>
+                            <a class="preview" href="${linkTo[SetorController].view[s.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Setor'});">Visualizar</a>
+                            <a class="edit-form" href="${linkTo[SetorController].frmEdit[s.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Editar Setor'});">Editar</a>
                         </td>
                     </tr>
                     </c:forEach>

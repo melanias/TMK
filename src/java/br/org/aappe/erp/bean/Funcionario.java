@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 
 import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.enums.Status;
+import javax.persistence.Transient;
 
 /**
  * @author Thales Imbruglia
@@ -38,6 +39,9 @@ public class Funcionario extends Pessoa implements Serializable {
 
     @Column(length=32, nullable=false)
     private String senha;
+
+    @Transient
+    private String checkPass;
 
     @Temporal(TemporalType.DATE)
     @Column(name="dt_admissao", nullable=false)
@@ -76,6 +80,9 @@ public class Funcionario extends Pessoa implements Serializable {
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha.trim(); }
+
+    public String getCheckPass() { return checkPass; }
+    public void setCheckPass(String checkPass) { this.checkPass = checkPass.trim(); }
 
     public Date getAdmissao() { return admissao; }
     public void setAdmissao(Date admissao) { this.admissao = admissao; }

@@ -36,7 +36,7 @@ jQuery(function($){
     $("button, :button, :submit").button();
     $(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
     $(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
-    $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+    $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
     $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
 
     /*$("[alt='data']").datepicker({
@@ -110,7 +110,7 @@ jQuery(function($){
                         //Atualizar botões
                         parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
                         parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
-                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
                         parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
 
                         if (s == "error")

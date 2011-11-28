@@ -39,6 +39,12 @@ public abstract class MainController {
         this.response = response;
     }
 
+    public MainController(Result result, Validator validator, EmployeeSession employeeSession) {
+        this.result = result;
+        this.validator = validator;
+        this.employeeSession = employeeSession;
+    }
+
     public MainController(Result result, Validator validator, HttpServletRequest request, EmployeeSession employeeSession) {
         this.result = result;
         this.validator = validator;
