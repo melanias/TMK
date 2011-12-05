@@ -1,4 +1,4 @@
-<%@ include file="../index/header.jsp" %>
+<%@ include file="../index/adminHeader.jsp" %>
                 <span>
                     <a class="add-form" href="${linkTo[FuncionarioController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'680', headingText:'Cadastrar Funcionário'});">Cadastrar</a>
                 </span>
@@ -41,4 +41,4 @@
                 <p>Nenhum funcionário cadastrado até o momento.</p>
             </c:otherwise>
 </c:choose>
-<%@ include file="../index/footer.jsp" %>
+<%@ include file="../index/adminFooter.jsp" %>

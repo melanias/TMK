@@ -120,5 +120,8 @@
                 <button type="button" id="setup">Salvar</button>
             </div>
         </div>
+        <script type="text/javascript">
+            const URLBASE  = "<%= request.getContextPath() %>";
+        </script>
     </body>
 </html>

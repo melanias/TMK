@@ -1,6 +1,5 @@
 jQuery(function($){
     //Settings
-    var URLBASE = '/TMK';
     $(":text[value='']:first").focus();
     $("a[href='#']").live('click', function(e){e.preventDefault();});
 
@@ -27,12 +26,26 @@ jQuery(function($){
     //Inicializar máscaras
     $(":text").setMask();
 
-    //Botão para fechar os erros de validação
-    $('<a href="#" title="Fechar">X</a>').insertBefore("blockquote > p:first");
-    $("blockquote > a").click(function(){$(this).parent().remove();});
-
     //jQuery UI
     $("button, :button, :submit").button();
+    $(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+    $(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+    $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
+    $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+    //Botão para fechar os erros de validação
+    //$('<a href="#" title="Fechar">X</a>').insertBefore("blockquote > p:first");
+    //$("blockquote > a").click(function(){$(this).parent().remove();});
+
+    //jQuery UI
+    //$("button, :button, :submit").button();
+
+    /*$("[alt='data']").datepicker({
+        showOn: "button",
+        buttonImage: URLBASE + "/images/calendar.gif",
+        buttonImageOnly: true,
+        beforeShowDay: $.datepicker.noWeekends
+    });*/
 
     //CEP
     $("#cep").live("focusout", function(){
@@ -105,4 +118,44 @@ jQuery(function($){
         });
     });
     /** setup - code **/
+
+    /** iframe - code **/
+    $("#doAll").live("click", function() {
+        var id = $(this).attr("name").split("-");
+
+        //URL
+        var fullurl = URLBASE +"/"+ id[1] +"/"+ id[0];
+        var refresh = URLBASE +"/"+ id[1] +"/refresh";
+
+        $.ajax({
+            type: "POST",
+            url: fullurl,
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.toString() == "OK") {
+                    parent.$("#main > div.content").load(refresh, function(r, s) {
+
+                        //Atualizar botões
+                        parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+                        parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
+                        parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                        if (s == "error")
+                            alert("Ocorreu um erro ao carregar a lista.");
+                    });
+
+                    parent.window.hs.getExpander().close();
+                } else {
+                    var errors = new Array();
+
+                    $.each(response, function(k, i) {errors.push(i.message);});
+
+                    alert(errors.join("\n"));
+                }
+            }
+        });
+    });
+    /** iframe - code **/
 });

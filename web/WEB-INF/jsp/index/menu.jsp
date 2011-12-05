@@ -5,15 +5,6 @@
                             <a href="${linkTo[IndexController].index}">Início</a>
                         </li>
                         <li>
-                            <a href="${linkTo[FilialController].list}">Filiais</a>
-                        </li>
-                        <li>
-                            <a href="${linkTo[SetorController].list}">Setores</a>
-                        </li>
-                        <li>
-                            <a href="${linkTo[FuncionarioController].list}">Funcionários</a>
-                        </li>
-                        <li>
                             <a href="${linkTo[DoadorController].list}">Doadores</a>
                         </li>
                         <li>

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -38,7 +39,7 @@ import br.org.aappe.erp.util.Utilities;
 /**
  * @author Jadson Ronald
  */
-@Resource
+@Resource @Path("/admin")
 public class FilialController extends MainController {
     private final FilialRepository repository;
 
