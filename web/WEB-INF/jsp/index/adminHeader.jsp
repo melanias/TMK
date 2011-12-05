@@ -8,6 +8,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/sysadmin.css" />" media="screen" charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="<c:url value="/js/highslide/highslide.css" />" media="screen" charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/smoothness/smoothness.css" />" media="screen" charset="utf-8" />
 
         <!-- Font -->
@@ -22,29 +23,31 @@
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.datepicker-pt-BR.js" />" charset="utf-8"></script>
 
+        <!-- Highslide -->
+        <script type="text/javascript" src="<c:url value="/js/highslide/highslide-full.min.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/highslide/highslide-configuration.js" />" charset="utf-8"></script>
+
         <title>${title}</title>
     </head>
     <body>
         <div id="menu">
             <ul>
                 <li>
-                    <a href="#">Administradores</a>
-                    <div>
-                        <ul>
-                            <li><a href="<c:url value="/admin/user" />">Listar</a></li>
-                            <li><a href="<c:url value="/admin/user/novo" />">Cadastrar</a></li>
-                        </ul>
-                    </div>
+                    <a href="${linkTo[IndexController].admin}">Início</a>
                 </li>
                 <li>
-                    <a href="#">Empresas</a>
-                    <div>
-                        <ul>
-                            <li><a href="<c:url value="/admin/empresa" />">Listar</a></li>
-                            <li><a href="<c:url value="/admin/empresa/nova" />">Cadastrar</a></li>
-                        </ul>
-                    </div>
+                    <a href="${linkTo[FilialController].list}">Filiais</a>
                 </li>
+                <li>
+                    <a href="${linkTo[SetorController].list}">Setores</a>
+                </li>
+                <li>
+                    <a href="${linkTo[FuncionarioController].list}">Funcionários</a>
+                </li>
+                <li>
+                    <a href="${linkTo[LoginController].logout}">Sair</a>
+                </li>
+
             </ul>
         </div>
 

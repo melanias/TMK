@@ -61,8 +61,8 @@ div#menu > ul > li > a {
 div#menu > ul > li > a.ativo,
 div#menu > ul > li > a:hover {
     color: #555;
-    height: 31px;
-    background: #dedede url('../images/admin-menu-arrow.png') 50% 100% no-repeat;
+    height: 30px;
+    background: #dedede url('../images/admin-menu-arrow-down.png') 50% -1px no-repeat;
 }
 div#menu > ul > li > div {
     left: 0;
@@ -92,6 +92,8 @@ div#main .content { text-align: justify; }
 div#main .content a { color: #777; font-weight: bold; }
 div#main .content a:hover { text-decoration: underline; }
 div#main .content > h1 { color: #940000; margin-bottom: 20px; }
+
+div#main .content > span { float: right; }
 
 /* Erros */
 div#main .content > blockquote {

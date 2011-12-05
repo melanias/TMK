@@ -1,4 +1,4 @@
-<%@ include file="../index/header.jsp" %>
+<%@ include file="../index/adminHeader.jsp" %>
                 <span>
                     <a class="add-form" href="${linkTo[FilialController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', headingText:'Cadastrar Filial'});">Cadastrar</a>
                     <a class="pdf" href="${linkTo[FilialController].pdf}" title="PDF">PDF</a>
@@ -40,4 +40,4 @@
                 <p>Nenhuma filial cadastrada até o momento.</p>
             </c:otherwise>
 </c:choose>
-<%@ include file="../index/footer.jsp" %>
+<%@ include file="../index/adminFooter.jsp" %>

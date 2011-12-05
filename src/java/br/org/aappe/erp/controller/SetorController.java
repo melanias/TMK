@@ -3,6 +3,7 @@ package br.org.aappe.erp.controller;
 import java.util.List;
 
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -21,7 +22,7 @@ import br.org.aappe.erp.util.Utilities;
 /**
  * @author Phelipe Melanias
  */
-@Resource
+@Resource @Path("/admin")
 public class SetorController extends MainController {
     private final SetorRepository repository;
     private final FilialRepository filialRepository;
