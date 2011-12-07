@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <span>
                     <a class="add-form" href="${linkTo[SetorController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Cadastrar Setor'});">Cadastrar</a>
+                    <a class="pdf" href="${linkTo[SetorController].pdf}" title="PDF">PDF</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>

@@ -124,8 +124,8 @@ jQuery(function($){
         var id = $(this).attr("name").split("-");
 
         //URL
-        var fullurl = URLBASE +"/"+ id[1] +"/"+ id[0];
-        var refresh = URLBASE +"/"+ id[1] +"/refresh";
+        var fullurl = URLBASE +"/"+ id[0] +"/"+ id[1] +"/"+ id[2];
+        var refresh = URLBASE +"/"+ id[0] +"/"+ id[1] +"/refresh";
 
         $.ajax({
             type: "POST",
