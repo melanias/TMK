@@ -29,8 +29,8 @@
                         <td width="10%"><c:if test="${empty f.fax}">-</c:if>${f.fax}</td>
                         <td width="12%"><fmt:formatDate pattern="dd/MM/yyyy" value="${f.data}"/></td>
                         <td width="53" >
-                            <a class="preview" href="<c:url value="/filial/view/${f.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Filial'});">Visualizar</a>
-                            <a class="edit-form" href="<c:url value="/filial/edit/${f.id}" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', headingText:'Editar Filial'});">Editar</a>
+                            <a class="preview" href="${linkTo[FilialController].view[f.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Filial'});">Visualizar</a>
+                            <a class="edit-form" href="${linkTo[FilialController].frmEdit[f.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', headingText:'Editar Filial'});">Editar</a>
                         </td>
                     </tr>
                     </c:forEach>

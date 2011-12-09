@@ -11,7 +11,7 @@
 
         <!-- JS -->
         <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
-        <script type="text/javascript" src="<c:url value="/js/aappe.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/sysadmin.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/meiomask.js" />" charset="utf-8"></script>
 
         <!-- jQuery UI -->
@@ -75,7 +75,7 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="filial.empresa.id" value="${employeeSession.empresa.id}" /></td>
-                    <td><input type="button" id="doAll" name="add-filial" value="Salvar" /></td>
+                    <td><input type="button" id="doAll" name="admin-filial-add" value="Salvar" /></td>
                 </tr>
             </table>
         </form>

@@ -12,7 +12,7 @@
 
         <!-- JS -->
         <script type="text/javascript" src="<c:url value="/js/jquery.js" />" charset="utf-8"></script>
-        <script type="text/javascript" src="<c:url value="/js/aappe.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/sysadmin.js" />" charset="utf-8"></script>
         <script type="text/javascript" src="<c:url value="/js/meiomask.js" />" charset="utf-8"></script>
 
         <!-- jQuery UI -->
@@ -132,7 +132,7 @@
                         </tr>
                         <tr>
                             <td><input type="hidden" name="funcionario.id" value="${funcionario.id}" /></td>
-                            <td><input type="button" id="doAll" name="edit-funcionario" value="Salvar" /></td>
+                            <td><input type="button" id="doAll" name="admin-funcionario-edit" value="Salvar" /></td>
                         </tr>
                     </table>
                 </form>
