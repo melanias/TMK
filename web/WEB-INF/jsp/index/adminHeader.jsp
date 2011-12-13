@@ -44,6 +44,9 @@
                 <li>
                     <a href="${linkTo[FuncionarioController].list}">Funcionários</a>
                 </li>
+                <li><!-- Como fazer para ir ao sistema? =/-->
+                    <a href="${LinkTo[IndexController].index}">Ir para o Sistema</a>
+                </li>
                 <li>
                     <a href="${linkTo[LoginController].logout}">Sair</a>
                 </li>

@@ -53,7 +53,7 @@
                         </c:forEach>
                         </select>
                     </td>
-
+                </tr>
                     <td><label for="celular">Celular:</label></td>
                     <td><input type="text" name="doador.celular" value="" id="celular" size="16" maxlength="14" alt="phone" /></td>
                 </tr>

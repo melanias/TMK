@@ -51,8 +51,12 @@ public class Doacao implements Serializable {
     @ManyToOne
     @JoinColumn(name="id_representante", referencedColumnName="id", nullable=false)
     private Funcionario representante;
-
-    //getters e setter
+    
+    @ManyToOne
+    @JoinColumn(name="id_campanha", referencedColumnName="id", nullable=false)
+    private Campanha campanha;
+    
+    //getters e setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -73,4 +77,7 @@ public class Doacao implements Serializable {
 
     public Funcionario getRepresentante() { return representante; }
     public void setRepresentante(Funcionario representante) { this.representante = representante; }
+    
+    public Campanha getCampanha() { return campanha;}
+    public void setCampanha (Campanha campanha) { this.campanha = campanha; }
 }
