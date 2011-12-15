@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <td><label for="receitaEsperada">Receita Prevista (R$):</label></td>
-                            <td><input type="text" name="camapanha.receitaEsperada" value="" id="receitaEsperada" size="16" maxlength="16" alt="valor" /></td>
+                            <td><input type="text" name="camapanha.receitaEsperada" value="${campanha.receitaEsperada}" id="receitaReal" size="16" maxlength="16" alt="valor" /></td>
 
                             <td><label for="receitaReal">Receita Real (R$):</label></td>
                             <td><input type="text" name="camapanha.receitaReal" value="${campanha.receitaReal}" id="receitaReal" size="16" maxlength="16" alt="valor" /></td>
@@ -73,16 +73,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <!-- Com o textarea é possível recuperar do banco o texto pra editar? tentei, mas não consegui! ;\ 
-                            Com o input normal ele retorna, mas não está editando ainda! :S
                             <td><label for="objetivo">Objetivo:</label></td>
-                            <td><textarea name="campanha.objetivo" value="${campanha.objetivo}" id="objetivo" alt="objetivo"></textarea></td>    -->
-                            <td><label for="nome">Objetivo:</label></td>
-                            <td><input type="text" name="campanha.objetivo" value="${campanha.objetivo}" id="objetivo" size="16" maxlength="200" /></td>
+                            <!--<td><textarea name="campanha.objetivo" value="{campanha.objetivo}" id="objetivo" alt="objetivo"></textarea></td>-->
+                            <td><input type="text" name="campanha.objetivo" value="${campanha.objetivo}" id="objetivo" size="20" maxlength="100" alt="objetivo" /></td>
                         </tr>
                         <tr>
-                            <td><input type="hidden" name="campanha.funcionario.id" value="${employeeSession.id}" /></td>
-                            <td><input type="button" id="doAll" name="add-campanha" value="Salvar" /></td>
+                            <td><input type="hidden" name="campanha.id" value="${campanha.id}" /></td>
+                            <td><input type="button" id="doAll" name="edit-campanha" value="Salvar" /></td>
                         </tr>
                     </table>
                 </form>

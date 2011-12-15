@@ -51,7 +51,7 @@ public class Campanha implements Serializable {
     @Column(name="status", columnDefinition="smallint", nullable=false)
     private CampaignStatus status = CampaignStatus.PLANEJANDO; //0 = Concluída, 1 = Cancelada, 2 = Em andamento, 3 = Planejando
 
-    @Column(length=500, nullable=false)
+    @Column(columnDefinition="text", nullable=false)
     private String objetivo;
 
     @Column(nullable=false, precision=12, scale=2)

@@ -99,7 +99,7 @@ public class CampanhaController extends MainController {
                 that(!campanha.getNome().isEmpty(), "campanha.nome", "nome");
 
                 //Receita Esperada            
-                that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
+                //that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
 
                 //Receita Real            
                 that(campanha.getReceitaReal().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaReal", "receitaReal");

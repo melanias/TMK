@@ -23,6 +23,8 @@ import br.org.aappe.erp.bean.Mensagem;
 import br.org.aappe.erp.enums.SendType;
 import br.org.aappe.erp.repository.MensagemRepository;
 
+import br.org.aappe.erp.bean.Newsletter;
+
 /**
  * @author Phelipe Melanias
  */
@@ -70,16 +72,17 @@ public class MensagemController extends MainController {
         //TODO: o código abaixo está funcionado, mas está faltando
         //      definir o layout do newsletter.
         try {
-            /*Email email = new HtmlEmail();
-            email.setHostName("smtp.gmail.com");
-            email.setSmtpPort(587);
-            email.setAuthenticator(new DefaultAuthenticator("user", "password"));
-            email.setTLS(true);
+            Email email = new HtmlEmail();
+            Newsletter newsletter = new Newsletter();//É necessario instanciar aki? Da pra fazer de outra maneira?
+            email.setHostName(newsletter.getHostName());
+            email.setSmtpPort(newsletter.getSmtpPort()); 
+            email.setAuthenticator(new DefaultAuthenticator(newsletter.getAccount(), newsletter.getPassword()));
+            email.setTLS(true);//email.setTLS(newsletter.getTls(Boolean.TRUE)); //Ta estranho LOL 
             email.setFrom("de");
-            email.setSubject("AAPPE - Newsletter");
+            email.setSubject("AAPPE - Newsletter");//Acho que isso deve vim no formulário do mensagem!
             email.setMsg(mensagem.getTexto());
-            email.addTo("para");
-            email.send();*/
+            email.addBcc("para"); //BCC Cópia Oculta!
+            email.send();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
