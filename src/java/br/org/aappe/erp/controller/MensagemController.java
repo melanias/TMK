@@ -24,6 +24,7 @@ import br.org.aappe.erp.enums.SendType;
 import br.org.aappe.erp.repository.MensagemRepository;
 
 import br.org.aappe.erp.bean.Newsletter;
+import br.org.aappe.erp.repository.NewsletterRepository;
 
 /**
  * @author Phelipe Melanias
@@ -31,10 +32,12 @@ import br.org.aappe.erp.bean.Newsletter;
 @Resource
 public class MensagemController extends MainController {
     private final MensagemRepository repository;
+    private final NewsletterRepository newsletterRepository;
 
-    public MensagemController(Result result, Validator validator, MensagemRepository repository) {
+    public MensagemController(Result result, Validator validator, MensagemRepository repository, NewsletterRepository newsletterRepository) {
         super(result, validator);
         this.repository = repository;
+        this.newsletterRepository = newsletterRepository;
     }
 
     @Get("/mensagem")
@@ -73,7 +76,7 @@ public class MensagemController extends MainController {
         //      definir o layout do newsletter.
         try {
             Email email = new HtmlEmail();
-            Newsletter newsletter = new Newsletter();//É necessario instanciar aki? Da pra fazer de outra maneira?
+            Newsletter newsletter = new Newsletter(newsletterRepository.find(id));
             email.setHostName(newsletter.getHostName());
             email.setSmtpPort(newsletter.getSmtpPort()); 
             email.setAuthenticator(new DefaultAuthenticator(newsletter.getAccount(), newsletter.getPassword()));

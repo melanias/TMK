@@ -48,6 +48,7 @@ public class NewsletterController extends MainController {
     @Get("/newsletter/add")
     public void frmAdd() {
         result.include("title", "Adicionar Conta");
+        result.include("newsletter", repository.listAllById());
     }
 
     @Transactional
