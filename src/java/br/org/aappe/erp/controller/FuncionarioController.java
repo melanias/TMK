@@ -30,7 +30,6 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Funcionario;
 import br.org.aappe.erp.enums.Role;

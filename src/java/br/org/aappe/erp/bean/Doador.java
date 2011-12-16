@@ -2,6 +2,7 @@ package br.org.aappe.erp.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +11,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.org.aappe.erp.enums.DonorStatus;
-import java.util.List;
-import javax.persistence.OneToMany;
+import br.org.aappe.erp.enums.DonorType;
 
 /**
  * @author Thales Imbruglia
@@ -36,6 +37,13 @@ public class Doador extends Pessoa implements Serializable {
     @Column(name="dt_cadastro", nullable=false, updatable=false)
     private Date data;
 
+    @Column(length=18, unique=true)
+    private String cnpj; //Caso o doador seja uma pessoa jurídica
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="tipo", columnDefinition="smallint", nullable=false)
+    private DonorType tipo = DonorType.FISICA; //0 = Pessoa Física, 1 = Pessoa Jurídica
+
     @Enumerated(EnumType.ORDINAL)
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
     private DonorStatus status = DonorStatus.ATIVO; //0 = Inativo, 1 = Ativo, 2 = Novo, 3 = Fidelizado
@@ -49,6 +57,12 @@ public class Doador extends Pessoa implements Serializable {
 
     public Date getData() { return data; }
     public void setData(Date data) { this.data = data; }
+
+    public String getCnpj() { return cnpj; }
+    public void setCnpj(String cnpj) { this.cnpj = cnpj.trim(); }
+
+    public DonorType getTipo() { return tipo; }
+    public void setTipo(DonorType tipo) { this.tipo = tipo; }
 
     public DonorStatus getStatus() { return status; }
     public void setStatus(DonorStatus status) { this.status = status; }

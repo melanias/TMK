@@ -16,10 +16,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.enums.Status;
-import javax.persistence.Transient;
 
 /**
  * @author Thales Imbruglia

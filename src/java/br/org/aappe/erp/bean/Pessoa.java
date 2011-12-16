@@ -17,10 +17,10 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa {
 
-    @Column(unique=true, nullable=false)
+    @Column(unique=true)
     private Long rg;
 
-    @Column(length=14, unique=true, nullable=false)
+    @Column(length=14, unique=true)
     private String cpf;
 
     @Temporal(TemporalType.DATE)
