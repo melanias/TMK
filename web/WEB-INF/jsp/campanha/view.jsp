@@ -9,46 +9,52 @@
         <title>${title}</title>
     </head>
     <body>
-<c:choose>
-    <c:when test="${not empty campanha}">
-        <table>
-            <tr>
-                <td><strong>Nome:</strong></td>
-                <td>${campanha.nome}</td>
-            </tr>
-            <tr>
-                <td><strong>Data inicial:</strong></td>
-                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${campanha.dataInicial}" /></td>
+        <c:choose>
+            <c:when test="${not empty campanha}">
+                <table>
+                    <tr>
+                        <td><strong>Nome:</strong></td>
+                        <td>${campanha.nome}</td>
+                        <td><strong>Tipo:</strong></td>
+                        <td>${campanha.type}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data inicial:</strong></td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${campanha.dataInicial}" /></td>
 
-                <td><strong>Data final:</strong></td>
-                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${campanha.dataFinal}" /></td>
-            </tr>
-        </table>
-        <hr />
-        <table>
-            <tr>
-                <td><strong>Funcionário:</strong></td>
-                <td>${campanha.funcionario.nome}</td>
-                <td><strong>E-mail:</strong></td>
-                <td>${campanha.funcionario.email}</td>
-            </tr>
-            <tr>
-                <td><strong>Telefone:</strong></td>
-                <td><c:if test="${empty campanha.funcionario.telefone}">-</c:if>${campanha.funcionario.telefone}</td>
-                <td><strong>Celular:</strong></td>
-                <td><c:if test="${empty campanha.funcionario.celular}">-</c:if>${campanha.funcionario.celular}</td>
-            </tr>
-            <tr>
-                <td><strong>Perfil:</strong></td>
-                <td>${campanha.funcionario.perfil.userRole}</td>
-                <td><strong>Situação:</strong></td>
-                <td>${campanha.funcionario.status.status}</td>
-            </tr>
-        </table>
-    </c:when>
-    <c:otherwise>
-        <p>Esta campanha não existe ou foi excluída.</p>
-    </c:otherwise>
-</c:choose>
+                        <td><strong>Data final:</strong></td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${campanha.dataFinal}" /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Objetivo:</strong></td>
+                        <td>${campanha.objetivo}</td>
+                    </tr>
+                </table>
+                <hr />
+                <table>
+                    <tr>
+                        <td><strong>Funcionário:</strong></td>
+                        <td>${campanha.funcionario.nome}</td>
+                        <td><strong>E-mail:</strong></td>
+                        <td>${campanha.funcionario.email}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Telefone:</strong></td>
+                        <td><c:if test="${empty campanha.funcionario.telefone}">-</c:if>${campanha.funcionario.telefone}</td>
+                        <td><strong>Celular:</strong></td>
+                        <td><c:if test="${empty campanha.funcionario.celular}">-</c:if>${campanha.funcionario.celular}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perfil:</strong></td>
+                        <td>${campanha.funcionario.perfil.userRole}</td>
+                        <td><strong>Situação:</strong></td>
+                        <td>${campanha.funcionario.status.status}</td>
+                    </tr>
+                </table>
+            </c:when>
+            <c:otherwise>
+                <p>Esta campanha não existe ou foi excluída.</p>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>

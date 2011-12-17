@@ -48,6 +48,9 @@ public class Doador extends Pessoa implements Serializable {
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
     private DonorStatus status = DonorStatus.ATIVO; //0 = Inativo, 1 = Ativo, 2 = Novo, 3 = Fidelizado
 
+    @Column(columnDefinition="text")
+    private String observacao;
+
     @OneToMany(mappedBy="doador")
     private List<Doacao> doacoes;
 
@@ -66,6 +69,9 @@ public class Doador extends Pessoa implements Serializable {
 
     public DonorStatus getStatus() { return status; }
     public void setStatus(DonorStatus status) { this.status = status; }
+
+    public String getObservacao() { return observacao; }
+    public void setObservacao(String observacao) { this.observacao = observacao.trim(); }
 
     public List<Doacao> getDoacoes() { return doacoes; }
     public void setDoacoes(List<Doacao> doacoes) { this.doacoes = doacoes; }

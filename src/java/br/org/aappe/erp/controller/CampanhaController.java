@@ -17,6 +17,7 @@ import br.org.aappe.erp.bean.Campanha;
 import br.org.aappe.erp.enums.CampaignType;
 import br.org.aappe.erp.enums.CampaignStatus;
 import br.org.aappe.erp.repository.CampanhaRepository;
+import java.math.BigDecimal;
 
 /**
  * @author Phelipe Melanias
@@ -52,8 +53,8 @@ public class CampanhaController extends MainController {
     @Get("/campanha/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Campanha");
-        result.include("campaignStatus", CampaignStatus.getAll());
-        result.include("campaignType", CampaignType.getAll());
+        result.include("status", CampaignStatus.getAll());
+        result.include("type", CampaignType.getAll());
     }
 
     @Transactional
@@ -74,8 +75,8 @@ public class CampanhaController extends MainController {
     @Get("/campanha/edit/{id}")
     public Campanha frmEdit(int id) {
         result.include("title", "Editar Campanha");
-        //result.include("CampaignStatus", CampaignStatus.getAll());
-        //result.include("CampaignType", CampaignType.getAll());
+        result.include("status", CampaignStatus.getAll());
+        result.include("type", CampaignType.getAll());
         return repository.find(id);
     }
 
@@ -92,23 +93,22 @@ public class CampanhaController extends MainController {
     }
 
     private List<Message> validate(final Campanha campanha) {
-        return new Validations() {
-
-            {
+        return new Validations() {{
+            
                 //Nome da campanha
                 that(!campanha.getNome().isEmpty(), "campanha.nome", "nome");
 
-             /*   Receita Esperada            
-                that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
+                //Receita Esperada            
+                //that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
 
-                Receita Real            
+                //Receita Real            
                 that(campanha.getReceitaReal().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaReal", "receitaReal");
 
-                Custo Previsto            
+                //Custo Previsto            
                 that(campanha.getCustoPrevisto().compareTo(BigDecimal.ZERO) > 0, "campanha.custoPrevisto", "custoPrevisto");
 
-                Custo Real            
-                that(campanha.getCustoReal().compareTo(BigDecimal.ZERO) > 0, "campanha.custoReal", "custoReal");*/
+                //Custo Real            
+                that(campanha.getCustoReal().compareTo(BigDecimal.ZERO) > 0, "campanha.custoReal", "custoReal");
 
                 //Data inicial e data final da campanha
                 if (that(campanha.getDataInicial() != null, "campanha.dataInicial", "dataInicial")
@@ -117,7 +117,6 @@ public class CampanhaController extends MainController {
                     that(campanha.getDataFinal().compareTo(campanha.getDataInicial()) >= 0, "data.dataFinal", "dataFinal.maior");
                 }
 
-            }
-        }.getErrors();
+            }}.getErrors();
     }
 }

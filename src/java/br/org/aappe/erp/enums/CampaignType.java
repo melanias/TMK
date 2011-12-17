@@ -8,8 +8,8 @@ import java.util.List;
  * @author Thales Imbruglia
  */
 public enum CampaignType implements Serializable {
-    TELEMARKETING("Telemarketing"), NEWSLETTER("Newsletter"), EMAIL("Email");
-    
+    TELEMARKETING("Telemarketing"), NEWSLETTER("Newsletter"), EMAIL("E-mail");
+
     private String type;
 
     private CampaignType(String type) {

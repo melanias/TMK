@@ -19,6 +19,7 @@ jQuery(function($){
     $.mask.masks = $.extend($.mask.masks, {
         rg     : {mask: '99999999999999999999'},
         data   : {mask: '39/19/2999'},
+        porta  : {mask: '99999'},
         numero : {mask: '99999999999'},
         valor  : {mask: '99,999.999.999.9', type: 'reverse', defaultValue: '000'}
     });

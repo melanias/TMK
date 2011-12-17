@@ -45,6 +45,12 @@
                     <a href="${linkTo[FuncionarioController].list}">Funcionários</a>
                 </li>
                 <li>
+                    <a href="${linkTo[SmtpController].list}">SMTP</a>
+                </li>
+                <li>
+                    <a href="${linkTo[IndexController].index}">Ir para o Sistema</a>
+                </li>
+                <li>
                     <a href="${linkTo[LoginController].logout}">Sair</a>
                 </li>
 

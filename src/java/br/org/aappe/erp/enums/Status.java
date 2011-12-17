@@ -8,7 +8,7 @@ import java.util.List;
  * @author Phelipe Melanias
  */
 public enum Status implements Serializable {
-    INATIVO("Inativo(a)"), ATIVO("Ativo(a)");
+    INATIVO("Inativo"), ATIVO("Ativo");
 
     private String status;
 
