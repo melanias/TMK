@@ -15,6 +15,7 @@ import static br.com.caelum.vraptor.view.Results.*;
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Doador;
 import br.org.aappe.erp.enums.DonorStatus;
+import br.org.aappe.erp.enums.DonorType;
 import br.org.aappe.erp.repository.DoadorRepository;
 import br.org.aappe.erp.util.Utilities;
 
@@ -51,6 +52,7 @@ public class DoadorController extends MainController {
     @Get("/doador/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Doador");
+        result.include("types", DonorType.getAll());
         result.include("status", DonorStatus.getAll());
     }
 
@@ -72,6 +74,7 @@ public class DoadorController extends MainController {
     @Get("/doador/edit/{id}")
     public Doador frmEdit(int id) {
         result.include("title", "Editar Funcionário");
+        result.include("types", DonorType.getAll());
         result.include("status", DonorStatus.getAll());
         return repository.find(id);
     }
@@ -95,27 +98,28 @@ public class DoadorController extends MainController {
                 that(repository.isUniqueName(doador), "doador.nome", "nome.unico");
 
             //RG
-            if (that(doador.getRg() != null, "doador.rg", "rg") &&
-                that(doador.getRg().toString().length() > 5 && doador.getRg().toString().length() < 14, "doador.rg", "rg.invalido", 6, 13))
+            if (doador.getRg() != null && that(doador.getRg().toString().length() > 5 && doador.getRg().toString().length() < 14, "doador.rg", "rg.invalido", 6, 13))
                 that(repository.isUniqueRg(doador), "doador.rg", "rg.unico");
 
             //CPF
-            if (that(!doador.getCpf().isEmpty(), "doador.cpf", "cpf") &&
-                that(Utilities.cpf(doador.getCpf()), "doador.cpf", "cpf.invalido"))
+            if (doador.getCpf() != null && !doador.getCpf().isEmpty() && that(Utilities.cpf(doador.getCpf()), "doador.cpf", "cpf.invalido"))
                 that(repository.isUniqueCpf(doador), "doador.cpf", "cpf.unico");
 
+            //CNPJ
+            if (doador.getCnpj() != null && !doador.getCnpj().isEmpty() && that(Utilities.cnpj(doador.getCnpj()), "empresa.cnpj", "cnpj.invalido"))
+                that(repository.isUniqueCnpj(doador), "empresa.cnpj", "cnpj.unico");
+
             //E-mail
-            if (that(!doador.getEmail().isEmpty(), "doador.email", "email") &&
-                that(Utilities.mail(doador.getEmail()), "doador.email", "email.invalido"))
+            if (!doador.getEmail().isEmpty() && that(Utilities.mail(doador.getEmail()), "doador.email", "email.invalido"))
                 that(repository.isUniqueMail(doador), "doador.email", "email.unico");
 
             //Telefone ou Celular
             that(!doador.getCelular().isEmpty() || !doador.getTelefone().isEmpty(), "", "telefone.ou.celular");
 
             //Endereço
-            if (that(!doador.getEndereco().getCep().isEmpty(), "doador.cep", "cep"))
+            /*if (that(!doador.getEndereco().getCep().isEmpty(), "doador.cep", "cep"))
                 that(!doador.getEndereco().getLogradouro().isEmpty() && !doador.getEndereco().getBairro().isEmpty() &&
-                     !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");
+                     !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
         }}.getErrors();
     }
 }

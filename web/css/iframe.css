@@ -12,7 +12,7 @@ hr { border: 0; height: 1px; padding: 0; margin: 14px 0; color: #940000; backgro
 img { vertical-align: top; }
 img#busy { display: none; margin-left: 5px; }
 
-label { font-weight: bold; }
+label { font-weight: bold; vertical-align: middle; }
 table { border-spacing: 0; border-collapse: collapse; }
 
 input, select, textarea { font-size: 100%; font-family: inherit; }
@@ -21,6 +21,7 @@ select { margin: inherit; }
 input, select, textarea {
     color: #555;
     padding: 1px;
+    vertical-align: middle;
     border: 1px solid #d3d3d3;
     background-color: #e6e6e6;
 }
@@ -33,4 +34,6 @@ form {/* border: 1px solid black; */}
 
 form > table tr > td { padding: 0 0 5px 5px; }
 form > table tr:last-of-type > td { padding: 0 0 0 5px; }
+
+form > table tr > td span { font-weight: bold; vertical-align: middle; }
 /** MAIN **/

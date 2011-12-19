@@ -37,7 +37,7 @@ public class Doador extends Pessoa implements Serializable {
     @Column(name="dt_cadastro", nullable=false, updatable=false)
     private Date data;
 
-    @Column(length=18, unique=true)
+    @Column(length=18)
     private String cnpj; //Caso o doador seja uma pessoa jurídica
 
     @Enumerated(EnumType.ORDINAL)

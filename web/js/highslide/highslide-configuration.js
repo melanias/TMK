@@ -13,7 +13,7 @@ hs.wrapperClassName       = 'draggable-header';
 //Efeitos
 hs.easing         = 'linearTween';
 hs.fadeInOut      = true;
-hs.dimmingOpacity = 0.1;
+hs.dimmingOpacity = 0.4;
 hs.onDimmerClick  = function() { return false; }
 
 //Tradução

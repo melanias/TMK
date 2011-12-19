@@ -46,6 +46,37 @@ jQuery(function($){
         beforeShowDay: $.datepicker.noWeekends
     });*/
 
+    //Tipo de doador
+    $("input[name='doador.tipo']").live("change", function(){
+        var tipo  = $(this).val();
+        var rg    = $("#rg");
+        var doc   = $("#cpfoucnpj");
+        var label = $("label[for='cpfoucnpj']");
+
+        if (tipo == 'FISICA') {
+            //Ativar o campo RG
+            rg.removeAttr("disabled");
+
+            //Mudar os atributos do campo
+            label.html("CPF:");
+            doc.attr("alt", "cpf");
+            doc.attr("name", "doador.cpf");
+            doc.attr("maxlength", "14");
+        } else {
+            //Desativar o campo RG
+            rg.attr("disabled", "disabled");
+
+            //Mudar os atributos do campo
+            label.html("CNPJ:");
+            doc.attr("alt", "cnpj");
+            doc.attr("name", "doador.cnpj");
+            doc.attr("maxlength", "18");
+        }
+
+        //Recarregar as máscaras
+        $(":text").setMask();
+    });
+
     //CEP
     $("#cep").live("focusout", function(){
         var cep = $(this).val();

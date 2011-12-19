@@ -13,6 +13,10 @@
     <c:when test="${not empty doador}">
         <table>
             <tr>
+                <td><strong>Tipo:</strong></td>
+                <td>${doador.tipo.type}</td>
+            </tr>
+            <tr>
                 <td><strong>Nome:</strong></td>
                 <td>${doador.nome}</td>
 
@@ -21,14 +25,14 @@
             </tr>
             <tr>
                 <td><strong>RG:</strong></td>
-                <td>${doador.rg}</td>
+                <td><c:if test="${empty doador.rg}">-</c:if>${doador.rg}</td>
 
-                <td><strong>CPF:</strong></td>
-                <td>${doador.cpf}</td>
+                <td><strong>CPF/CNPJ:</strong></td>
+                <td><c:if test="${empty doador.cpf && empty doador.cnpj}">-</c:if>${doador.cpf}${doador.cnpj}</td>
             </tr>
             <tr>
                 <td><strong>E-mail:</strong></td>
-                <td>${doador.email}</td>
+                <td><c:if test="${empty doador.email}">-</c:if>${doador.email}</td>
 
                 <td><strong>Telefone:</strong></td>
                 <td><c:if test="${empty doador.telefone}">-</c:if>${doador.telefone}</td>
@@ -40,12 +44,16 @@
                 <td><strong>Celular:</strong></td>
                 <td><c:if test="${empty doador.celular}">-</c:if>${doador.celular}</td>
             </tr>
+            <tr>
+                <td><strong>Observação:</strong></td>
+                <td colspan="3"><c:if test="${empty doador.observacao}">-</c:if>${doador.observacao}</td>
+            </tr>
         </table>
         <hr />
         <table>
             <tr>
                 <td><strong>Logradouro:</strong></td>
-                <td>${doador.endereco.logradouro}</td>
+                <td><c:if test="${empty doador.endereco.logradouro}">-</c:if>${doador.endereco.logradouro}</td>
 
                 <td><strong>Número:</strong></td>
                 <td><c:if test="${empty doador.endereco.numero}">-</c:if>${doador.endereco.numero}</td>
@@ -55,18 +63,18 @@
                 <td><c:if test="${empty doador.endereco.complemento}">-</c:if>${doador.endereco.complemento}</td>
 
                 <td><strong>Estado:</strong></td>
-                <td>${doador.endereco.uf}</td>
+                <td><c:if test="${empty doador.endereco.uf}">-</c:if>${doador.endereco.uf}</td>
             </tr>
             <tr>
                 <td><strong>Bairro:</strong></td>
-                <td>${doador.endereco.bairro}</td>
+                <td><c:if test="${empty doador.endereco.bairro}">-</c:if>${doador.endereco.bairro}</td>
 
                 <td><strong>Cidade:</strong></td>
-                <td>${doador.endereco.cidade}</td>
+                <td><c:if test="${empty doador.endereco.cidade}">-</c:if>${doador.endereco.cidade}</td>
             </tr>
             <tr>
                 <td><strong>CEP:</strong></td>
-                <td>${doador.endereco.cep}</td>
+                <td><c:if test="${empty doador.endereco.cep}">-</c:if>${doador.endereco.cep}</td>
             </tr>
         </table>
     </c:when>

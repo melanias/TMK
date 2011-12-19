@@ -17,10 +17,9 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa {
 
-    @Column(unique=true)
     private Long rg;
 
-    @Column(length=14, unique=true)
+    @Column(length=14)
     private String cpf;
 
     @Temporal(TemporalType.DATE)
@@ -68,12 +67,8 @@ public abstract class Pessoa {
     public void setEndereco(Endereco endereco) { this.endereco = endereco; }
 
     public String getFirstAndLastName() {
-        //TODO: refatorar o código abaixo, não gostei muito.
         String[] s = nome.split(" ");
 
-        if (s.length > 1 && s[s.length-1].length() > 2)
-            return s[0] +" "+ s[s.length-1];
-        else
-            return s[0];
+        return ((s.length > 2) ? s[0] +" "+ s[s.length-1] : nome);
     }
 }

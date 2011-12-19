@@ -8,7 +8,7 @@ import java.util.List;
  * @author Phelipe Melanias
  */
 public enum DonorStatus implements Serializable {
-    INATIVO("Inativo(a)"), ATIVO("Ativo(a)"), NOVO("Novo(a)"), FIDELIZADO("Fidelizado(a)");
+    INATIVO("Inativo"), ATIVO("Ativo"), NOVO("Novo"), FIDELIZADO("Fidelizado");
 
     private String status;
 

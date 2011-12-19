@@ -21,6 +21,8 @@ public interface DoadorRepository {
 
     boolean isUniqueCpf(Doador doador);
 
+    boolean isUniqueCnpj(Doador doador);
+
     boolean isUniqueName(Doador doador);
 
     boolean isUniqueMail(Doador doador);

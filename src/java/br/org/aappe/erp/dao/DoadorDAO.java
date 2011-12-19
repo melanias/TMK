@@ -40,6 +40,17 @@ public class DoadorDAO extends DAO<Doador> implements DoadorRepository {
     }
 
     @Override
+    public boolean isUniqueCnpj(Doador doador) {
+        return doador.getId() > 0 ? manager.createQuery("SELECT doador FROM Doador doador WHERE doador.id <> ? AND doador.cnpj = ?")
+                                           .setParameter(1, doador.getId())
+                                           .setParameter(2, doador.getCnpj())
+                                           .getResultList().isEmpty()
+                                  : manager.createQuery("SELECT doador FROM Doador doador WHERE doador.cnpj = ?")
+                                           .setParameter(1, doador.getCnpj())
+                                           .getResultList().isEmpty();
+    }
+
+    @Override
     public boolean isUniqueName(Doador doador) {
         return doador.getId() > 0 ? manager.createQuery("SELECT doador FROM Doador doador WHERE doador.id <> ? AND lower(doador.nome) = ?")
                                                 .setParameter(1, doador.getId())
