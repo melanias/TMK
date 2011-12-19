@@ -73,7 +73,7 @@ public class DoadorController extends MainController {
 
     @Get("/doador/edit/{id}")
     public Doador frmEdit(int id) {
-        result.include("title", "Editar Funcionário");
+        result.include("title", "Editar Doador");
         result.include("types", DonorType.getAll());
         result.include("status", DonorStatus.getAll());
         return repository.find(id);
