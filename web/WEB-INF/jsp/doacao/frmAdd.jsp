@@ -28,9 +28,20 @@
                     <td>
                         <select name="doacao.doador.id" id="doador">
                             <option value="">--</option>
-                        <c:forEach items="${doadores}" var="doador">
-                            <option value="${doador.id}">${doador.firstAndLastName}</option>
-                        </c:forEach>
+                            <c:forEach items="${doadores}" var="doador">
+                                <option value="${doador.id}">${doador.firstAndLastName}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="campanha">Campanha:</label></td>
+                    <td>
+                        <select name="doacao.campanha.id" id="campanha">
+                            <option value="">--</option>
+                            <c:forEach items="${campanha}" var="doador">
+                                <option value="${campanha.id}"<c:if test="${doacao.campanha.id == doador.id}"> selected="selected"</c:if>>${campanha.nome}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -43,11 +54,11 @@
                     <td>
                         <select name="doacao.representante.id" id="representante">
                             <option value="">--</option>
-                        <c:forEach items="${funcionarios}" var="funcionario">
-                            <c:if test="${funcionario.perfil == 'REPRESENTANTE'}">
-                            <option value="${funcionario.id}">${funcionario.firstAndLastName}</option>
-                            </c:if>
-                        </c:forEach>
+                            <c:forEach items="${funcionarios}" var="funcionario">
+                                <c:if test="${funcionario.perfil == 'REPRESENTANTE'}">
+                                    <option value="${funcionario.id}">${funcionario.firstAndLastName}</option>
+                                </c:if>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -62,7 +73,7 @@
             </table>
         </form>
         <script type="text/javascript">
-            const URLBASE  = "<%= request.getContextPath() %>";
+            const URLBASE  = "<%= request.getContextPath()%>";
         </script>
     </body>
 </html>

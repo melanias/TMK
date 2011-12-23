@@ -102,13 +102,13 @@ public class CampanhaController extends MainController {
                 //that(campanha.getReceitaEsperada().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaEsperada", "receitaEsperada");
 
                 //Receita Real            
-                that(campanha.getReceitaReal().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaReal", "receitaReal");
+                //that(campanha.getReceitaReal().compareTo(BigDecimal.ZERO) > 0, "campanha.receitaReal", "receitaReal");
 
                 //Custo Previsto            
-                that(campanha.getCustoPrevisto().compareTo(BigDecimal.ZERO) > 0, "campanha.custoPrevisto", "custoPrevisto");
+               // that(campanha.getCustoPrevisto().compareTo(BigDecimal.ZERO) > 0, "campanha.custoPrevisto", "custoPrevisto");
 
                 //Custo Real            
-                that(campanha.getCustoReal().compareTo(BigDecimal.ZERO) > 0, "campanha.custoReal", "custoReal");
+               // that(campanha.getCustoReal().compareTo(BigDecimal.ZERO) > 0, "campanha.custoReal", "custoReal");
 
                 //Data inicial e data final da campanha
                 if (that(campanha.getDataInicial() != null, "campanha.dataInicial", "dataInicial")

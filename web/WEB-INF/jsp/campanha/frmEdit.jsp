@@ -75,7 +75,7 @@
                         <tr>
                             <td><label for="objetivo">Objetivo:</label></td>
                             <!--<td><textarea name="campanha.objetivo" value="{campanha.objetivo}" id="objetivo" alt="objetivo"></textarea></td>-->
-                            <td><input type="text" name="campanha.objetivo" value="${campanha.objetivo}" id="objetivo" size="20" maxlength="100" alt="objetivo" /></td>
+                            <td><input type="text" name="campanha.objetivo" value="${campanha.objetivo}" id="objetivo" size="20" alt="objetivo" /></td>
                         </tr>
                         <tr>
                             <td><input type="hidden" name="campanha.id" value="${campanha.id}" /></td>
