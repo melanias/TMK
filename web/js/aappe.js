@@ -160,4 +160,27 @@ jQuery(function($){
         });
     });
     /** iframe - code **/
+
+    /** Procurar doador **/
+    $("#donor").autocomplete({
+        minLength: 2,
+        source: URLBASE + "/doador/search",
+        open: function(event, ui) {
+            $(".ui-autocomplete").outerWidth($(this).outerWidth());
+            return false;
+        },
+        search: function(event, ui) {
+            $("#doador").val("");
+        },
+        select: function(event, ui) {
+            $("#donor").val(ui.item.nome);
+            $("#doador").val(ui.item.id);
+            return false;
+        }
+    }).data("autocomplete")._renderItem = function(ul, item) {
+        return $("<li></li>").data("item.autocomplete", item)
+			     .append("<a><strong>"+ item.nome +"</strong><br />"+ ((item.tipo == 'FISICA') ? 'Pessoa Física' : 'Pessoa Jurídica') +"</a>")
+                             .appendTo(ul);
+    };
+    /** Procurar Doador **/
 });

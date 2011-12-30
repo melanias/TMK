@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                     <td><label for="observacao">Observação:</label></td>
-                    <td colspan="3"><textarea name="doador.observacao" rows="4" style="width: 529px; height: 60px"></textarea></td>
+                    <td colspan="3"><textarea name="doador.observacao" id="observacao" rows="4" cols="50"></textarea></td>
                 </tr>
             </table>
             <hr />

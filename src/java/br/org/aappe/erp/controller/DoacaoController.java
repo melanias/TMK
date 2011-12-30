@@ -15,8 +15,8 @@ import static br.com.caelum.vraptor.view.Results.*;
 
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Doacao;
+import br.org.aappe.erp.repository.CampanhaRepository;
 import br.org.aappe.erp.repository.DoacaoRepository;
-import br.org.aappe.erp.repository.DoadorRepository;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 
 /**
@@ -25,16 +25,16 @@ import br.org.aappe.erp.repository.FuncionarioRepository;
 @Resource
 public class DoacaoController extends MainController {
     private final DoacaoRepository repository;
-    private final DoadorRepository doadorRepository;
+    private final CampanhaRepository campanhaRepository;
     private final FuncionarioRepository funcionarioRepository;
 
     public DoacaoController(Result result, Validator validator, DoacaoRepository repository,
-                            DoadorRepository doadorRepository, FuncionarioRepository funcionarioRepository)
+                            CampanhaRepository campanhaRepository, FuncionarioRepository funcionarioRepository)
     {
         super(result, validator);
 
         this.repository = repository;
-        this.doadorRepository = doadorRepository;
+        this.campanhaRepository = campanhaRepository;
         this.funcionarioRepository = funcionarioRepository;
     }
 
@@ -58,7 +58,7 @@ public class DoacaoController extends MainController {
     @Get("/doacao/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Doação");
-        result.include("doadores", doadorRepository.listAllById());
+        result.include("campanhas", campanhaRepository.listAllById());
         result.include("funcionarios", funcionarioRepository.listAllById());
     }
 
@@ -73,6 +73,10 @@ public class DoacaoController extends MainController {
         //Definir data de cadastro da ligação
         doacao.setLigacao(new Date());
 
+        //Definir campanha
+        if (doacao.getCampanha().getId() == 0)
+            doacao.setCampanha(null);
+
         repository.persist(doacao);
         result.use(json()).withoutRoot().from("OK").serialize();
     }
@@ -80,7 +84,7 @@ public class DoacaoController extends MainController {
     @Get("/doacao/edit/{id}")
     public Doacao frmEdit(long id) {
         result.include("title", "Editar Doação");
-        result.include("doadores", doadorRepository.listAllById());
+        result.include("campanhas", campanhaRepository.listAllById());
         result.include("funcionarios", funcionarioRepository.listAllById());
         return repository.find(id);
     }
@@ -92,6 +96,10 @@ public class DoacaoController extends MainController {
 
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        //Definir campanha
+        if (doacao.getCampanha().getId() == 0)
+            doacao.setCampanha(null);
 
         repository.merge(doacao);
         result.use(json()).withoutRoot().from("OK").serialize();

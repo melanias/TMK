@@ -1,5 +1,6 @@
 package br.org.aappe.erp.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -70,5 +71,12 @@ public class DoadorDAO extends DAO<Doador> implements DoadorRepository {
                                   : manager.createQuery("SELECT doador FROM Doador doador WHERE doador.email = ?")
                                            .setParameter(1, doador.getEmail())
                                            .getResultList().isEmpty();
+    }
+
+    @Override
+    public List<Doador> search(String nome) {
+        return manager.createQuery("FROM Doador d WHERE LOWER(d.nome) LIKE :nome AND d.status <> 0 ORDER BY d.nome")
+                      .setParameter("nome", ""+ nome.toLowerCase() +"%")
+                      .getResultList();
     }
 }

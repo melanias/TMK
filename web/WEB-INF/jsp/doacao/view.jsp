@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td><strong>E-mail:</strong></td>
-                <td>${doacao.doador.email}</td>
+                <td><c:if test="${empty doacao.doador.email}">-</c:if>${doacao.doador.email}</td>
 
                 <td><strong>Situação:</strong></td>
                 <td>${doacao.doador.status.status}</td>
@@ -41,7 +41,7 @@
                 <td><strong>Operador:</strong></td>
                 <td>${doacao.operador.nome}</td>
                 <td><strong>E-mail:</strong></td>
-                <td>${doacao.operador.email}</td>
+                <td><c:if test="${empty doacao.operador.email}">-</c:if>${doacao.operador.email}</td>
             </tr>
             <tr>
                 <td><strong>Telefone:</strong></td>
@@ -62,7 +62,7 @@
                 <td><strong>Representante:</strong></td>
                 <td>${doacao.representante.nome}</td>
                 <td><strong>E-mail:</strong></td>
-                <td>${doacao.representante.email}</td>
+                <td><c:if test="${empty doacao.representante.email}">-</c:if>${doacao.representante.email}</td>
             </tr>
             <tr>
                 <td><strong>Telefone:</strong></td>

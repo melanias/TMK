@@ -1,6 +1,9 @@
 package br.org.aappe.erp.util;
 
+import java.io.UnsupportedEncodingException;
+
 import java.math.BigInteger;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -31,6 +34,17 @@ public class Utilities {
         return mail.matches(".+@.+\\.[a-zA-Z]+");
     }
 
+    public static String decodeText(String text) {
+        try {
+            byte[] bytes = text.getBytes("ISO-8859-1");
+            text = new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            return text;
+        }
+
+        return text;
+    }
+
     //TODO: melhorar o código de validação do CNPJ
     public static boolean cnpj(String cnpj) {
         cnpj = cnpj.trim().replaceAll("\\D", "");
@@ -42,18 +56,18 @@ public class Utilities {
         String cnpj_calc = cnpj.substring(0, 12);
 
         char[] chr_cnpj = cnpj.toCharArray();
-        
+
         //Primeira parte
         for (int i = 0; i < 4; i++)
             if (chr_cnpj[i]-48 >=0 && chr_cnpj[i]-48 <=9)
                 soma += (chr_cnpj[i] - 48 ) * (6 - (i + 1));
-        
+
         for (int i = 0; i < 8; i++)
             if ( chr_cnpj[i+4]-48 >=0 && chr_cnpj[i+4]-48 <=9 )
                 soma += (chr_cnpj[i+4] - 48 ) * (10 - (i + 1)) ;
 
         dig = 11 - (soma % 11);
-        
+
         cnpj_calc += ( dig == 10 || dig == 11 ) ? "0" : Integer.toString(dig);
 
        //Segunda parte
@@ -61,13 +75,13 @@ public class Utilities {
        for ( int i = 0; i < 5; i++ )
            if ( chr_cnpj[i]-48 >=0 && chr_cnpj[i]-48 <=9 )
                soma += (chr_cnpj[i] - 48 ) * (7 - (i + 1)) ;
-       
+
        for ( int i = 0; i < 8; i++ )
            if ( chr_cnpj[i+5]-48 >=0 && chr_cnpj[i+5]-48 <=9 )
                soma += (chr_cnpj[i+5] - 48 ) * (10 - (i + 1));
 
        dig = 11 - (soma % 11);
-       
+
        cnpj_calc += ( dig == 10 || dig == 11 ) ? "0" : Integer.toString(dig);
 
        return cnpj.equals(cnpj_calc);

@@ -49,6 +49,13 @@ public class DoadorController extends MainController {
         return repository.find(id);
     }
 
+    @Get("/doador/search")
+    public void search(String term) {
+        String nome = ((term == null) ? "" : Utilities.decodeText(term.trim()));
+
+        result.use(json()).withoutRoot().from(repository.search(nome)).exclude("data").serialize();
+    }
+
     @Get("/doador/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Doador");
