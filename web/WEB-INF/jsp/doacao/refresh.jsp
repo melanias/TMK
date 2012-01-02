@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/doacao/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Cadastrar Doação'});">Cadastrar</a>
+                    <a class="add-form" href="${linkTo[DoacaoController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'450', headingText:'Cadastrar Doação'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
@@ -28,8 +28,8 @@
                         <td width="14%"><fmt:formatDate pattern="dd/MM/yyyy" value="${d.recebimento}" /></td>
                         <td>${d.representante.firstAndLastName}</td>
                         <td width="53" >
-                            <a class="preview" href="<c:url value="/doacao/view/${d.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Doação'});">Visualizar</a>
-                            <a class="edit-form" href="<c:url value="/doacao/edit/${d.id}" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Editar Doação'});">Editar</a>
+                            <a class="preview" href="${linkTo[DoacaoController].view[d.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Doação'});">Visualizar</a>
+                            <a class="edit-form" href="${linkTo[DoacaoController].frmEdit[d.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'450', headingText:'Editar Doação'});">Editar</a>
                         </td>
                     </tr>
                     </c:forEach>

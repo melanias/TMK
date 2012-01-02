@@ -37,3 +37,20 @@ form > table tr:last-of-type > td { padding: 0 0 0 5px; }
 
 form > table tr > td span { font-weight: bold; vertical-align: middle; }
 /** MAIN **/
+
+
+
+input#uf { width: 30px; } /* 2 */
+
+input#cep, input#numero { width: 75px; } /* 9, 10 */
+
+input#logradouro, input#complemento, input#bairro, input#nome { width: 280px; } /* 50 */
+
+input#dataNascimento, input#dataRecebimento, input#cpfoucnpj, input#valor, input#fone, input#celular { width: 120px; } /* 18 */
+
+input#rg { width: 130px; } /* 20 */
+
+input#email, input#cidade { width: 180px; } /* 30, 35 */
+
+textarea#observacao { width: 531px; height: 60px; }
+textarea#descricao { width: 279px; height: 60px; }

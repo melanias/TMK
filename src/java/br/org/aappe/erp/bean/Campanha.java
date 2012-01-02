@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -41,7 +43,7 @@ public class Campanha implements Serializable {
     private String nome;
 
     /*@Column(length=200, nullable=false)
-    private String publicoAlvo;*/ 
+    private String publicoAlvo;*/
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="type", columnDefinition="smallint", nullable=false)
@@ -78,6 +80,9 @@ public class Campanha implements Serializable {
     @JoinColumn(name="id_funcionario", referencedColumnName="id", nullable=false, updatable=false)
     private Funcionario funcionario;
 
+    @OneToMany(mappedBy="campanha")
+    private List<Doacao> doacoes;
+
     //getters e setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -110,7 +115,7 @@ public class Campanha implements Serializable {
     public void setReceitaEsperada(BigDecimal receitaEsperada) { this.receitaEsperada = receitaEsperada; }
 
     public BigDecimal getReceitaReal() { return receitaReal; }
-    public void setReceitaReal(BigDecimal receitaReal) { this.receitaReal = receitaReal; } 
+    public void setReceitaReal(BigDecimal receitaReal) { this.receitaReal = receitaReal; }
 
     public Date getDataInicial() { return dataInicial; }
     public void setDataInicial(Date dataInicial) { this.dataInicial = dataInicial; }
@@ -120,4 +125,7 @@ public class Campanha implements Serializable {
 
     public Funcionario getFuncionario() { return funcionario; }
     public void setFuncionario(Funcionario funcionario) { this.funcionario = funcionario; }
+
+    public List<Doacao> getDoacoes() { return doacoes; }
+    public void setDoacoes(List<Doacao> doacoes) { this.doacoes = doacoes; }
 }

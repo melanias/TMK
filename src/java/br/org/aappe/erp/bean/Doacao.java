@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -40,22 +41,25 @@ public class Doacao implements Serializable {
     @Column(nullable=false, precision=12, scale=2)
     private BigDecimal valor;
 
-    @ManyToOne
+    @Column(columnDefinition="text")
+    private String descricao;
+
+    @OneToOne
     @JoinColumn(name="id_doador", referencedColumnName="id", nullable=false)
     private Doador doador;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="id_operador", referencedColumnName="id", nullable=false, updatable=false)
     private Funcionario operador;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="id_representante", referencedColumnName="id", nullable=false)
     private Funcionario representante;
-    
-    @ManyToOne
-    @JoinColumn(name="id_campanha", referencedColumnName="id", nullable=false)
+
+    @OneToOne
+    @JoinColumn(name="id_campanha", referencedColumnName="id")
     private Campanha campanha;
-    
+
     //getters e setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -69,6 +73,9 @@ public class Doacao implements Serializable {
     public BigDecimal getValor() { return valor; }
     public void setValor(BigDecimal valor) { this.valor = valor; }
 
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao.trim(); }
+
     public Doador getDoador() { return doador; }
     public void setDoador(Doador doador) { this.doador = doador; }
 
@@ -77,7 +84,7 @@ public class Doacao implements Serializable {
 
     public Funcionario getRepresentante() { return representante; }
     public void setRepresentante(Funcionario representante) { this.representante = representante; }
-    
+
     public Campanha getCampanha() { return campanha;}
     public void setCampanha (Campanha campanha) { this.campanha = campanha; }
 }

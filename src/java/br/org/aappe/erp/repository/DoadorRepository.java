@@ -17,6 +17,8 @@ public interface DoadorRepository {
 
     Doador merge(Doador doador);
 
+    List<Doador> search(String nome);
+
     boolean isUniqueRg(Doador doador);
 
     boolean isUniqueCpf(Doador doador);
