@@ -42,9 +42,6 @@ public class Campanha implements Serializable {
     @Column(length=200, nullable=false)
     private String nome;
 
-    /*@Column(length=200, nullable=false)
-    private String publicoAlvo;*/
-
     @Enumerated(EnumType.ORDINAL)
     @Column(name="type", columnDefinition="smallint", nullable=false)
     private CampaignType type; //0 = Telemarketing, 1 = Newsletter, 2 = Email
@@ -92,9 +89,6 @@ public class Campanha implements Serializable {
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome.trim(); }
-
-    /*public String getPublicoAlvo() { return publicoAlvo; }
-    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }*/
 
     public CampaignType getType() { return type; }
     public void setType(CampaignType type) { this.type = type; }

@@ -25,8 +25,7 @@
             <table>
                 <tr>
                     <td><label for="nome">Nome:</label></td>
-                    <td><input type="text" name="campanha.nome" value="" id="nome" size="16" maxlength="200" /></td>
-
+                    <td><input type="text" name="campanha.nome" value="" id="" maxlength="200" size="16" /></td>
                     <td><label for="tipo">Tipo:</label></td>
                     <td>
                         <select name="campanha.type" id="tipo">
@@ -58,9 +57,10 @@
                     <td><input type="text" name="campanha.dataFinal" value="" id="dataFinal" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
-                    <!--<td><label for="publicoAlvo">Público Alvo:</label></td>
-                    <td><input type="text" name="campanha.publicoAlvo" value="" id="publicoAlvo" size="16" maxlength="200" /></td>-->
-
+                    <td><label for="objetivo">Objetivo:</label></td>
+                    <td colspan="3"><textarea name="campanha.objetivo" id="objetivo" rows="3" cols="50" alt="objetivo"></textarea></td>    
+                </tr>
+                <tr>
                     <td><label for="status">Status:</label></td>
                     <td> 
                         <select name="campanha.status" id="status">
@@ -69,10 +69,6 @@
                             </c:forEach>
                         </select>
                     </td>
-                </tr>
-                <tr>
-                    <td><label for="objetivo">Objetivo:</label></td>
-                    <td><textarea name="campanha.objetivo" value="" id="objetivo" alt="objetivo"></textarea></td>    
                 </tr>
                 <tr>
                     <td><input type="hidden" name="campanha.funcionario.id" value="${employeeSession.id}" /></td>

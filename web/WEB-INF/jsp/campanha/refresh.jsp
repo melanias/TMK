@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/campanha/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'500', headingText:'Cadastrar Campanha'});">Cadastrar</a>
+                    <a class="add-form" href="<c:url value="/campanha/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'550', headingText:'Cadastrar Campanha'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
@@ -27,7 +27,7 @@
                         <td>${c.funcionario.firstAndLastName}</td>
                         <td width="53" >
                             <a class="preview" href="<c:url value="/campanha/view/${c.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Campanha'});">Visualizar</a>
-                            <a class="edit-form" href="<c:url value="/campanha/edit/${c.id}" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'500', headingText:'Editar Campanha'});">Editar</a>
+                            <a class="edit-form" href="<c:url value="/campanha/edit/${c.id}" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'550', headingText:'Editar Campanha'});">Editar</a>
                         </td>
                     </tr>
                     </c:forEach>

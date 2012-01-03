@@ -1,6 +1,6 @@
 <%@ include file="../index/adminHeader.jsp" %>
                 <span>
-                    <a class="add-form" href="${linkTo[SmtpController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Cadastrar SMTP'});">Cadastrar</a>
+                    <a class="add-form" href="${linkTo[SmtpController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'400', headingText:'Cadastrar SMTP'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
@@ -30,8 +30,8 @@
                         </td>
                         <td>${smtp.status.status}</td>
                         <td width="53" >
-                            <a class="preview" href="${linkTo[SmtpController].view[smtp.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'384', headingText:'SMTP'});">Visualizar</a>
-                            <a class="edit-form" href="${linkTo[SmtpController].frmEdit[smtp.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Editar SMTP'});">Editar</a>
+                            <a class="preview" href="${linkTo[SmtpController].view[smtp.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'400', headingText:'SMTP'});">Visualizar</a>
+                            <a class="edit-form" href="${linkTo[SmtpController].frmEdit[smtp.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'400', headingText:'Editar SMTP'});">Editar</a>
                         </td>
                     </tr>
                     </c:forEach>

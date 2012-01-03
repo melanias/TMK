@@ -27,7 +27,7 @@
                     <table>
                         <tr>
                             <td><label for="nome">Nome:</label></td>
-                            <td><input type="text" name="campanha.nome" value="${campanha.nome}" id="nome" size="16" maxlength="200" /></td>
+                            <td><input type="text" name="campanha.nome" value="${campanha.nome}" id="" size="16" maxlength="200" /></td>
 
                             <td><label for="tipo">Tipo:</label></td>
                             <td>
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <td><label for="custoPrevisto">Custo Previsto (R$):</label></td>
-                            <td><input type="text" name="camapanha.custoPrevisto" value="${campanha.custoPrevisto}" id="custoPrevisto" size="16" maxlength="16" alt="valor" /></td>
+                            <td><input type="text" name="camapanha.custoPrevisto" value="${campanha.custoPrevisto}" id="custoPrevisto" size="16" maxlength="16" alt="custoprevisto" /></td>
 
                             <td><label for="custoReal">Custo Real (R$):</label></td>
                             <td><input type="text" name="camapanha.custoReal" value="${campanha.custoReal}" id="custoReal" size="16" maxlength="16" alt="valor" /></td>
@@ -60,9 +60,10 @@
                             <td><input type="text" name="campanha.dataFinal" value="${campanha.dataFinal}" id="dataFinal" size="16" maxlength="10" alt="data" /></td>
                         </tr>
                         <tr>
-                            <!--<td><label for="publicoAlvo">Público Alvo:</label></td>
-                            <td><input type="text" name="campanha.publicoAlvo" value="" id="publicoAlvo" size="16" maxlength="200" /></td>-->
-
+                            <td><label for="objetivo">Objetivo:</label></td>
+                            <td colspan="3"><textarea name="campanha.objetivo" id="objetivo" rows="3" cols="50" alt="objetivo">${campanha.objetivo}</textarea></td>
+                        </tr>
+                        <tr>
                             <td><label for="status">Status:</label></td>
                             <td> 
                                 <select name="campanha.status" id="status">
@@ -71,11 +72,6 @@
                                     </c:forEach>
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><label for="objetivo">Objetivo:</label></td>
-                            <!--<td><textarea name="campanha.objetivo" value="{campanha.objetivo}" id="objetivo" alt="objetivo"></textarea></td>-->
-                            <td><input type="text" name="campanha.objetivo" value="${campanha.objetivo}" id="objetivo" size="20" alt="objetivo" /></td>
                         </tr>
                         <tr>
                             <td><input type="hidden" name="campanha.id" value="${campanha.id}" /></td>
