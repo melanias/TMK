@@ -1,5 +1,6 @@
 package br.org.aappe.erp.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,9 +14,10 @@ import br.com.caelum.vraptor.validator.Validations;
 import static br.com.caelum.vraptor.view.Results.*;
 
 import br.org.aappe.erp.annotations.Transactional;
-import br.org.aappe.erp.bean.Empresa;
-import br.org.aappe.erp.repository.EmpresaRepository;
+import br.org.aappe.erp.bean.Funcionario;
+import br.org.aappe.erp.bean.Unidade;
 import br.org.aappe.erp.repository.FuncionarioRepository;
+import br.org.aappe.erp.repository.UnidadeRepository;
 import br.org.aappe.erp.util.Utilities;
 
 /**
@@ -23,13 +25,13 @@ import br.org.aappe.erp.util.Utilities;
  */
 @Resource
 public class SetupController extends MainController {
-    private final EmpresaRepository empresaRepository;
+    private final UnidadeRepository unidadeRepository;
     private final FuncionarioRepository funcionarioRepository;
 
-    public SetupController(Result result, Validator validator, EmpresaRepository empresaRepository, FuncionarioRepository funcionarioRepository) {
+    public SetupController(Result result, Validator validator, UnidadeRepository unidadeRepository, FuncionarioRepository funcionarioRepository) {
         super(result, validator);
 
-        this.empresaRepository = empresaRepository;
+        this.unidadeRepository = unidadeRepository;
         this.funcionarioRepository = funcionarioRepository;
     }
 
@@ -43,59 +45,64 @@ public class SetupController extends MainController {
 
     @Transactional
     @Post("/setup")
-    public void setup(final Empresa empresa) {
+    public void setup(final Unidade unidade, final Funcionario funcionario) {
         List<Message> errors = new Validations(){{
-            //Empresa
-            if (that(!empresa.getCnpj().isEmpty(), "cnpj", "cnpj"))
-                that(Utilities.cnpj(empresa.getCnpj()), "cnpj", "cnpj.invalido");
+            //Unidade
+            if (that(!unidade.getCnpj().isEmpty(), "cnpj", "cnpj"))
+                that(Utilities.cnpj(unidade.getCnpj()), "cnpj", "cnpj.invalido");
 
-            that(!empresa.getRazaoSocial().isEmpty(), "razaoSocial", "razaoSocial");
+            that(!unidade.getRazaoSocial().isEmpty(), "razaoSocial", "razaoSocial");
 
-            if (that(!empresa.getEmail().isEmpty(), "email", "email"))
-                that(Utilities.mail(empresa.getEmail()), "email", "email.invalido");
+            if (!unidade.getEmail().isEmpty())
+                that(Utilities.mail(unidade.getEmail()), "email", "setup.email.invalido");
 
-            that(!empresa.getTelefone().isEmpty() , "telefone", "telefone");
+            //Administrador
+            if (that(!funcionario.getNome().isEmpty(), "nome", "setup.nome"))
+                that(funcionario.getNome().length() > 2, "nome", "setup.nome.invalido");
 
-            //Funcionário responsável (Gerente)
-            if (that(!empresa.getFuncionarios().get(0).getNome().isEmpty(), "nome", "setup.nome"))
-                that(empresa.getFuncionarios().get(0).getNome().length() > 2, "nome", "setup.nome.invalido");
+            if (funcionario.getRg() == null && funcionario.getCpf().isEmpty()) {
+                that(false, "rg", "setup.rg.ou.cpf");
+                that(false, "cpf", "setup.rg.ou.cpf");
+            } else {
+                //RG
+                if (funcionario.getRg() != null)
+                    that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 20, "rg", "rg.invalido", 6, 20);
 
-            if (that(empresa.getFuncionarios().get(0).getRg() != null, "rg", "setup.rg"))
-                that(empresa.getFuncionarios().get(0).getRg().toString().length() > 5 &&
-                     empresa.getFuncionarios().get(0).getRg().toString().length() < 20, "rg", "rg.invalido", 6, 20);
-
-            if (that(!empresa.getFuncionarios().get(0).getCpf().isEmpty(), "cpf", "setup.cpf"))
-                that(Utilities.cpf(empresa.getFuncionarios().get(0).getCpf()), "cpf", "cpf.invalido");
-
-            if (!empresa.getFuncionarios().get(0).getEmail().isEmpty())
-                that(Utilities.mail(empresa.getFuncionarios().get(0).getEmail()), "mail", "setup.email.invalido");
-
-            that(empresa.getFuncionarios().get(0).getAdmissao() != null, "dataAdmissao", "setup.admissao");
-
-            if (empresa.getFuncionarios().get(0).getTelefone().isEmpty() && empresa.getFuncionarios().get(0).getCelular().isEmpty()) {
-                that(false, "phone", "setup.telefone.ou.celular");
-                that(false, "cellphone", "setup.telefone.ou.celular");
+                //CPF
+                if (!funcionario.getCpf().isEmpty())
+                    that(Utilities.cpf(funcionario.getCpf()), "cpf", "cpf.invalido");
             }
 
-            that(!empresa.getFuncionarios().get(0).getLogin().isEmpty(), "login", "setup.login");
+            if (!funcionario.getEmail().isEmpty())
+                that(Utilities.mail(funcionario.getEmail()), "mail", "setup.email.invalido");
 
-            if (that(!empresa.getFuncionarios().get(0).getSenha().isEmpty(), "senha", "setup.senha"))
-                that(empresa.getFuncionarios().get(0).getSenha().length() > 5, "senha", "setup.senha.invalida");
+            if (funcionario.getTelefone().isEmpty() && funcionario.getCelular().isEmpty()) {
+                that(false, "phone", "setup.fone.ou.celular");
+                that(false, "cellphone", "setup.fone.ou.celular");
+            }
+
+            that(!funcionario.getLogin().isEmpty(), "login", "setup.login");
+
+            if (that(!funcionario.getSenha().isEmpty(), "senha", "setup.senha"))
+                that(funcionario.getSenha().length() > 5, "senha", "setup.senha.invalida");
         }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).serialize();
 
-        //Definir data de cadastro da empresa
-        empresa.setData(new Date());
+        //Definir data de cadastro da Unidade
+        unidade.setData(new Date());
 
         //Criptografar a senha
-        empresa.getFuncionarios().get(0).setSenha(Utilities.md5(empresa.getFuncionarios().get(0).getLogin()+empresa.getFuncionarios().get(0).getSenha()));
+        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
 
-        //Definir relacionamento do responsável com a empresa
-        empresa.getFuncionarios().get(0).setEmpresa(empresa);
+        //Definir relacionamento do funcionário com a Unidade
+        funcionario.setUnidade(unidade);
+
+        unidade.setFuncionarios(new ArrayList<Funcionario>());
+        unidade.getFuncionarios().add(funcionario);
 
         //Salvar os dados
-        empresaRepository.persist(empresa);
+        unidadeRepository.persist(unidade);
 
         result.use(json()).withoutRoot().from("OK").serialize();
     }

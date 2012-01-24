@@ -1,4 +1,4 @@
-package br.org.aappe.erp.dao;
+/*package br.org.aappe.erp.dao;
 
 import javax.persistence.EntityManager;
 
@@ -10,7 +10,7 @@ import br.org.aappe.erp.repository.FilialRepository;
 /**
  * @author Phelipe Melanias
  */
-@Component
+/*@Component
 public class FilialDAO extends DAO<Filial> implements FilialRepository {
 
     public FilialDAO(EntityManager manager) {
@@ -49,4 +49,4 @@ public class FilialDAO extends DAO<Filial> implements FilialRepository {
                                            .setParameter(1, filial.getEmail())
                                            .getResultList().isEmpty();
     }
-}
+}*/

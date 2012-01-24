@@ -1,4 +1,4 @@
-package br.org.aappe.erp.controller;
+/*package br.org.aappe.erp.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -20,7 +20,7 @@ import br.org.aappe.erp.util.Utilities;
 /**
  * @author Phelipe Melanias
  */
-@Resource
+/*@Resource
 public class EmpresaController extends MainController {
     private final EmpresaRepository repository;
 
@@ -122,4 +122,4 @@ public class EmpresaController extends MainController {
         repository.merge(empresa);
         result.redirectTo(this).list();
     }
-}
+}*/

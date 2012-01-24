@@ -1,4 +1,4 @@
-package br.org.aappe.erp.repository;
+/*package br.org.aappe.erp.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import br.org.aappe.erp.bean.Empresa;
 /**
  * @author Phelipe Melanias
  */
-public interface EmpresaRepository {
+/*public interface EmpresaRepository {
 
     Empresa find(int id);
 
@@ -20,4 +20,4 @@ public interface EmpresaRepository {
     boolean isUniqueCnpj(Empresa empresa);
     boolean isUniqueMail(Empresa empresa);
     boolean isUniqueCompanyName(Empresa empresa);
-}
+}*/

@@ -14,7 +14,7 @@
                             <th>Telefone</th>
                             <th>Fax</th>
                             <th>Responsável</th>
-                            <th>Filial</th>
+                            <th>Unidade</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -26,8 +26,8 @@
                         <td width="10%"><c:if test="${empty s.telefone}">-</c:if>${s.telefone}</td>
                         <td width="10%"><c:if test="${empty s.fax}">-</c:if>${s.fax}</td>
                         <td><c:if test="${empty s.responsavel.firstAndLastName}">-</c:if>${s.responsavel.firstAndLastName}</td>
-                        <td>${s.filial.nome}</td>
-                        <td width="53" >
+                        <td>${s.unidade.razaoSocial}<c:if test="${s.unidade.matriz == true}"> - Matriz</c:if></td>
+                        <td width="53">
                             <a class="preview" href="${linkTo[SetorController].view[s.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Setor'});">Visualizar</a>
                             <a class="edit-form" href="${linkTo[SetorController].frmEdit[s.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'384', headingText:'Editar Setor'});">Editar</a>
                         </td>

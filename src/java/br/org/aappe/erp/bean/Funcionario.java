@@ -44,7 +44,7 @@ public class Funcionario extends Pessoa implements Serializable {
     private String checkPass;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="dt_admissao", nullable=false)
+    @Column(name="dt_admissao")
     private Date admissao;
 
     @Temporal(TemporalType.DATE)
@@ -53,23 +53,19 @@ public class Funcionario extends Pessoa implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="perfil", columnDefinition="smallint", nullable=false)
-    private Role perfil; //0 = Estagiário(a), 1 = Representante, 2 = Operador(a), 3 = Gerente, 4 = Administrador
+    private Role perfil;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
-    private Status status = Status.ATIVO; //0 = Inativo, 1 = Ativo
+    private Status status = Status.ATIVO;
 
     @ManyToOne
     @JoinColumn(name="id_setor", referencedColumnName="id")
     private Setor setor;
 
     @ManyToOne
-    @JoinColumn(name="id_filial", referencedColumnName="id")
-    private Filial filial;
-
-    @ManyToOne
-    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
-    private Empresa empresa;
+    @JoinColumn(name="id_unidade", referencedColumnName="id")
+    private Unidade unidade;
 
     //getters e setters
     public int getId() { return id; }
@@ -99,9 +95,6 @@ public class Funcionario extends Pessoa implements Serializable {
     public Setor getSetor() { return setor; }
     public void setSetor(Setor setor) { this.setor = setor; }
 
-    public Filial getFilial() { return filial; }
-    public void setFilial(Filial filial) { this.filial = filial; }
-
-    public Empresa getEmpresa() { return empresa; }
-    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+    public Unidade getUnidade() { return unidade; }
+    public void setUnidade(Unidade unidade) { this.unidade = unidade; }
 }

@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 import br.com.caelum.vraptor.ioc.Component;
 
 import br.org.aappe.erp.bean.Funcionario;
+import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.enums.Status;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 import br.org.aappe.erp.util.Utilities;
@@ -23,10 +24,11 @@ public class FuncionarioDAO extends DAO<Funcionario> implements FuncionarioRepos
     @Override
     public Funcionario authenticate(String login, String senha) {
         try {
-            return (Funcionario) manager.createQuery("FROM Funcionario f WHERE f.login = ? AND f.senha = ? AND status = ? AND demissao IS NULL")
+            return (Funcionario) manager.createQuery("FROM Funcionario f WHERE f.login = ? AND f.senha = ? AND status = ? AND perfil <> ? AND demissao IS NULL")
                                         .setParameter(1, login)
                                         .setParameter(2, Utilities.md5(login+senha))
                                         .setParameter(3, Status.ATIVO)
+                                        .setParameter(4, Role.REPRESENTANTE)
                                         .getSingleResult();
         } catch (NoResultException e) {
             return null;

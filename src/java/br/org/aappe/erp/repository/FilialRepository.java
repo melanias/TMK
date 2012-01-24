@@ -1,4 +1,4 @@
-package br.org.aappe.erp.repository;
+/*package br.org.aappe.erp.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import br.org.aappe.erp.bean.Filial;
 /**
  * @author Phelipe Melanias
  */
-public interface FilialRepository {
+/*public interface FilialRepository {
 
     Filial find(int id);
 
@@ -22,4 +22,4 @@ public interface FilialRepository {
     boolean isUniqueMail(Filial filial);
 
     boolean isUniqueCompanyName(Filial filial);
-}
+}*/

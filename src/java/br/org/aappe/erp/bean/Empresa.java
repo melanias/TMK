@@ -1,4 +1,4 @@
-package br.org.aappe.erp.bean;
+/*package br.org.aappe.erp.bean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -24,7 +24,7 @@ import br.org.aappe.erp.enums.Status;
 /**
  * @author Phelipe Melanias
  */
-@Entity
+/*@Entity
 @Table(name="empresa")
 public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -111,4 +111,4 @@ public class Empresa implements Serializable {
 
     public List<Funcionario> getFuncionarios() { return funcionarios; }
     public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }
-}
+}*/

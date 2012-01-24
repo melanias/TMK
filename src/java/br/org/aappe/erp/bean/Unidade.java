@@ -1,34 +1,24 @@
-/*package br.org.aappe.erp.bean;
+package br.org.aappe.erp.bean;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+
+import br.org.aappe.erp.enums.Status;
 
 /**
- * @author Jadson Ronald
+ * @author Phelipe Melanias
  */
-/*@Entity
-@Table(name="filial")
-public class Filial implements Serializable {
+@Entity
+@Table(name="unidade")
+public class Unidade implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name="id_filial_seq", sequenceName="id_filial_seq")
-    @GeneratedValue(generator="id_filial_seq", strategy=GenerationType.AUTO)
+    @SequenceGenerator(name="id_unidade_seq", sequenceName="id_unidade_seq")
+    @GeneratedValue(generator="id_unidade_seq", strategy=GenerationType.AUTO)
     private int id;
 
     @Temporal(TemporalType.DATE)
@@ -39,7 +29,13 @@ public class Filial implements Serializable {
     private String cnpj;
 
     @Column(length=200, nullable=false)
-    private String nome;
+    private String razaoSocial;
+
+    @Column(length=200)
+    private String nomeFantasia;
+
+    @Column(length=200)
+    private String site;
 
     @Column(length=100)
     private String email;
@@ -53,14 +49,18 @@ public class Filial implements Serializable {
     @Embedded
     private Endereco endereco;
 
-    @ManyToOne
-    @JoinColumn(name="id_empresa", referencedColumnName="id", nullable=false, updatable=false)
-    private Empresa empresa;
+    @Column(nullable=false)
+    private boolean matriz;
 
-    @OneToMany(mappedBy="filial")
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="situacao", columnDefinition="smallint", nullable=false)
+    private Status status = Status.ATIVO;
+
+    @OrderBy
+    @OneToMany(mappedBy="unidade")
     private List<Setor> setores;
 
-    @OneToMany(mappedBy="filial")
+    @OneToMany(mappedBy="unidade", cascade=CascadeType.ALL)
     private List<Funcionario> funcionarios;
 
     //getters e setters
@@ -73,8 +73,14 @@ public class Filial implements Serializable {
     public String getCnpj() { return cnpj; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj.trim(); }
 
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome.trim(); }
+    public String getRazaoSocial() { return razaoSocial; }
+    public void setRazaoSocial(String razaoSocial) { this.razaoSocial = razaoSocial.trim(); }
+
+    public String getNomeFantasia() { return nomeFantasia; }
+    public void setNomeFantasia(String nomeFantasia) { this.nomeFantasia = nomeFantasia.trim(); }
+
+    public String getSite() { return site; }
+    public void setSite(String site) { this.site = site.trim().toLowerCase(); }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email.trim().toLowerCase(); }
@@ -88,12 +94,15 @@ public class Filial implements Serializable {
     public Endereco getEndereco() { return endereco; }
     public void setEndereco(Endereco endereco) { this.endereco = endereco; }
 
-    public Empresa getEmpresa() { return empresa; }
-    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+    public boolean isMatriz() { return matriz; }
+    public void setMatriz(boolean matriz) { this.matriz = matriz; }
+
+    public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
 
     public List<Setor> getSetores() { return setores; }
     public void setSetores(List<Setor> setores) { this.setores = setores; }
 
     public List<Funcionario> getFuncionarios() { return funcionarios; }
     public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }
-}*/
+}

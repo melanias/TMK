@@ -36,7 +36,7 @@
                     <a href="${linkTo[IndexController].admin}">Início</a>
                 </li>
                 <li>
-                    <a href="${linkTo[FilialController].list}">Filiais</a>
+                    <a href="${linkTo[UnidadeController].list}">Unidades</a>
                 </li>
                 <li>
                     <a href="${linkTo[SetorController].list}">Setores</a>

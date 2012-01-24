@@ -8,15 +8,10 @@
                             <a href="${linkTo[DoadorController].list}">Doadores</a>
                         </li>
                         <li>
-                            <a href="${linkTo[CampanhaController].list}">Campanhas</a>
+                            <a href="${linkTo[DoacaoController].list}">Doações</a>
                         </li>
                         <li>
-                            <a href="#">Finanças</a>
-                            <div>
-                                <ul>
-                                    <li><a href="${linkTo[DoacaoController].list}">Doações</a></li>
-                                </ul>
-                            </div>
+                            <a href="${linkTo[CampanhaController].list}">Campanhas</a>
                         </li>
                         <li>
                             <a href="#">Relatórios</a>
@@ -30,7 +25,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="${linkTo[MensagemController].list}">Newsletter e SMS</a>
+                            <a href="${linkTo[MensagemController].list}">Newsletter</a>
                         </li>
                     </ul>
                 </div>

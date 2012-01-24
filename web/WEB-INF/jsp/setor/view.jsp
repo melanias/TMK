@@ -36,16 +36,25 @@
         <hr />
         <table>
             <tr>
-                <td><strong>Filial:</strong></td>
-                <td><c:if test="${empty setor.filial.nome}">-</c:if>${setor.filial.nome}</td>
+                <td><strong>Unidade:</strong></td>
+                <td><c:if test="${empty setor.unidade.razaoSocial}">-</c:if>${setor.unidade.razaoSocial}</td>
                 <td><strong>E-mail:</strong></td>
-                <td><c:if test="${empty setor.filial.email}">-</c:if>${setor.filial.email}</td>
+                <td><c:if test="${empty setor.unidade.email}">-</c:if>${setor.unidade.email}</td>
             </tr>
             <tr>
                 <td><strong>Telefone:</strong></td>
-                <td>${setor.filial.telefone}</td>
+                <td><c:if test="${empty setor.unidade.telefone}">-</c:if>${setor.unidade.telefone}</td>
                 <td><strong>Fax:</strong></td>
-                <td><c:if test="${empty setor.filial.fax}">-</c:if>${setor.filial.fax}</td>
+                <td><c:if test="${empty setor.unidade.fax}">-</c:if>${setor.unidade.fax}</td>
+            </tr>
+            <tr>
+                <td><strong>Matriz:</strong></td>
+                <td>
+                <c:choose>
+                    <c:when test="${setor.unidade.matriz == true}">Sim</c:when>
+                    <c:otherwise>Não</c:otherwise>
+                </c:choose>
+                </td>
             </tr>
         </table>
         <hr />

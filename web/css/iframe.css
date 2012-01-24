@@ -10,7 +10,7 @@ body {
 hr { border: 0; height: 1px; padding: 0; margin: 14px 0; color: #940000; background-color: #940000; }
 
 img { vertical-align: top; }
-img#busy { display: none; margin-left: 5px; }
+img#busy, img#loading { display: none; margin-left: 2px; }
 
 label { font-weight: bold; vertical-align: middle; }
 table { border-spacing: 0; border-collapse: collapse; }
@@ -42,15 +42,16 @@ form > table tr > td span { font-weight: bold; vertical-align: middle; }
 
 input#uf { width: 30px; } /* 2 */
 
-input#cep, input#numero { width: 75px; } /* 9, 10 */
+input#cep, input#numero { width: 75px; } /* 9-10 */
 
-input#logradouro, input#complemento, input#bairro, input#nome { width: 280px; } /* 50 */
+input#logradouro, input#complemento, input#bairro, input#nome, input#razaoSocial, input#nomeFantasia, input#site { width: 280px; } /* 50 */
 
-input#dataNascimento, input#dataRecebimento, input#cpfoucnpj, input#valor, input#fone, input#celular { width: 120px; } /* 18 */
+input#dataAdmissao, input#dataDemissao, input#dataNascimento, input#dataRecebimento,
+input#cpfoucnpj, input#cnpj, input#rg, input#cpf, input#valor, input#fone, input#fax, input#celular, input#login, input#senha, input#checkPass { width: 130px; } /* 18-20 */
 
-input#rg { width: 130px; } /* 20 */
-
-input#email, input#cidade { width: 180px; } /* 30, 35 */
+input#email, input#cidade { width: 180px; } /* 30-35 */
 
 textarea#observacao { width: 531px; height: 60px; }
 textarea#descricao { width: 279px; height: 60px; }
+
+select { width: 134px; }

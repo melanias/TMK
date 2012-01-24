@@ -43,14 +43,14 @@
                     <td><input type="text" name="setor.fax" value="" id="fax" size="14" maxlength="14" alt="phone" /></td>
                 </tr>
                 <tr>
-                    <td><label for="filial">Filial:</label></td>
+                    <td><label for="unidade">Unidade:</label></td>
                     <td>
-                        <select name="setor.filial.id" id="filial">
-                        <c:if test="${empty filiais}">
+                        <select name="setor.unidade.id" id="unidade">
+                        <c:if test="${empty unidades}">
                             <option value="">--</option>
                         </c:if>
-                        <c:forEach items="${filiais}" var="filial">
-                            <option value="${filial.id}">${filial.nome}</option>
+                        <c:forEach items="${unidades}" var="unidade">
+                            <option value="${unidade.id}">${unidade.razaoSocial}<c:if test="${unidade.matriz == true}"> - Matriz</c:if></option>
                         </c:forEach>
                         </select>
                     </td>
@@ -59,7 +59,7 @@
                     <td><label for="responsavel">Responsável:</label></td>
                     <td>
                         <select name="setor.responsavel.id" id="responsavel">
-                            <option value="0">--</option>
+                            <option value="">--</option>
                         <c:forEach items="${funcionarios}" var="funcionario">
                             <option value="${funcionario.id}">${funcionario.firstAndLastName}</option>
                         </c:forEach>

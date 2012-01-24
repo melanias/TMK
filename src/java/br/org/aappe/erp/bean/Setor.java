@@ -48,8 +48,8 @@ public class Setor implements Serializable {
     private Funcionario responsavel;
 
     @ManyToOne
-    @JoinColumn(name="id_filial", referencedColumnName="id", nullable=false)
-    private Filial filial;
+    @JoinColumn(name="id_unidade", referencedColumnName="id", nullable=false)
+    private Unidade unidade;
 
     @OneToMany(mappedBy="setor")
     private List<Funcionario> funcionarios;
@@ -76,8 +76,8 @@ public class Setor implements Serializable {
     public Funcionario getResponsavel() { return responsavel; }
     public void setResponsavel(Funcionario responsavel) { this.responsavel = responsavel; }
 
-    public Filial getFilial() { return filial; }
-    public void setFilial(Filial filial) { this.filial = filial; }
+    public Unidade getUnidade() { return unidade; }
+    public void setUnidade(Unidade unidade) { this.unidade = unidade; }
 
     public List<Funcionario> getFuncionarios() { return funcionarios; }
     public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }

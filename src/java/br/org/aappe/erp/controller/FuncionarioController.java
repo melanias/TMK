@@ -34,9 +34,9 @@ import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Funcionario;
 import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.enums.Status;
-import br.org.aappe.erp.repository.FilialRepository;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 import br.org.aappe.erp.repository.SetorRepository;
+import br.org.aappe.erp.repository.UnidadeRepository;
 import br.org.aappe.erp.session.EmployeeSession;
 import br.org.aappe.erp.util.Utilities;
 
@@ -47,17 +47,17 @@ import br.org.aappe.erp.util.Utilities;
 public class FuncionarioController extends MainController {
     private final SetorRepository setorRepository;
     private final FuncionarioRepository repository;
-    private final FilialRepository filialRepository;
+    private final UnidadeRepository unidadeRepository;
 
     public FuncionarioController(Result result, Validator validator, HttpServletResponse response,
                                  EmployeeSession employeeSession, SetorRepository setorRepository,
-                                 FuncionarioRepository repository, FilialRepository filialRepository)
+                                 FuncionarioRepository repository, UnidadeRepository unidadeRepository)
     {
         super(result, validator, response, employeeSession);
 
         this.repository = repository;
         this.setorRepository = setorRepository;
-        this.filialRepository = filialRepository;
+        this.unidadeRepository = unidadeRepository;
     }
 
     @Get("/funcionario")
@@ -82,61 +82,20 @@ public class FuncionarioController extends MainController {
         result.include("title", "Cadastrar Funcionário");
         result.include("roles", Role.getAll());
         result.include("status", Status.getAll());
-        result.include("filiais", filialRepository.listAllById());
+        result.include("unidades", unidadeRepository.listAllById());
     }
 
     @Transactional
     @Post("/funcionario/add")
     public void add(final Funcionario funcionario) {
-        List<Message> errors = new Validations(){{
-            //Nome
-            if (that(!funcionario.getNome().isEmpty(), "funcionario.nome", "nome"))
-                that(repository.isUniqueName(funcionario), "funcionario.nome", "nome.unico");
+        List<Message> errors = validate(funcionario);
 
-            //RG
-            if (that(funcionario.getRg() != null, "funcionario.rg", "rg") &&
-                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 14, "funcionario.rg", "rg.invalido", 6, 13))
-                that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
-
-            //CPF
-            if (that(!funcionario.getCpf().isEmpty(), "funcionario.cpf", "cpf") &&
-                that(Utilities.cpf(funcionario.getCpf()), "funcionario.cpf", "cpf.invalido"))
-                that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
-
-            //E-mail
-            if (!funcionario.getEmail().isEmpty() && that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
-                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
-
-            //Telefone ou Celular
-            that(!funcionario.getCelular().isEmpty() || !funcionario.getTelefone().isEmpty(), "", "telefone.ou.celular");
-
-            //Data de admissão
-            that(funcionario.getAdmissao() != null, "funcionario.admissao", "admissao");
-
-            //Login
-            if (that(!funcionario.getLogin().isEmpty(), "funcionario.login", "login"))
-                that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
-
-            //Senha
-            if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") && that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida"))
-                that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente");
-
-            //Endereço
-            /*if (that(!funcionario.getEndereco().getCep().isEmpty(), "funcionario.cep", "cep"))
-                that(!funcionario.getEndereco().getLogradouro().isEmpty() && !funcionario.getEndereco().getBairro().isEmpty() &&
-                     !funcionario.getEndereco().getUf().isEmpty() && !funcionario.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
-        //Definir filial
-        if (funcionario.getSetor().getId() > 0)
-            funcionario.setFilial(setorRepository.find(funcionario.getSetor().getId()).getFilial());
-        else
+        //Verificar se algum setor foi selecionado
+        if (funcionario.getSetor().getId() == 0)
             funcionario.setSetor(null);
-
-        //Criptografar a senha
-        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
 
         repository.persist(funcionario);
         result.use(json()).withoutRoot().from("OK").serialize();
@@ -147,71 +106,21 @@ public class FuncionarioController extends MainController {
         result.include("title", "Editar Funcionário");
         result.include("roles", Role.getAll());
         result.include("status", Status.getAll());
-        result.include("filiais", filialRepository.listAllById());
+        result.include("unidades", unidadeRepository.listAllById());
         return repository.find(id);
     }
 
     @Transactional
     @Post("/funcionario/edit")
     public void edit(final Funcionario funcionario) {
-        List<Message> errors = new Validations(){{
-            //Nome
-            if (that(!funcionario.getNome().isEmpty(), "funcionario.nome", "nome"))
-                that(repository.isUniqueName(funcionario), "funcionario.nome", "nome.unico");
+        List<Message> errors = validate(funcionario);
 
-            //RG
-            if (that(funcionario.getRg() != null, "funcionario.rg", "rg") &&
-                that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 14, "funcionario.rg", "rg.invalido", 6, 13))
-                that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
-
-            //CPF
-            if (that(!funcionario.getCpf().isEmpty(), "funcionario.cpf", "cpf") &&
-                that(Utilities.cpf(funcionario.getCpf()), "funcionario.cpf", "cpf.invalido"))
-                that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
-
-            //E-mail
-            if (!funcionario.getEmail().isEmpty() && that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
-                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
-
-            //Telefone ou Celular
-            that(!funcionario.getCelular().isEmpty() || !funcionario.getTelefone().isEmpty(), "", "telefone.ou.celular");
-
-            //Data de admissão
-            that(funcionario.getAdmissao() != null, "funcionario.admissao", "admissao");
-
-            //Login
-            if (that(!funcionario.getLogin().isEmpty(), "funcionario.login", "login"))
-                that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
-
-            //Senha
-            if (funcionario.getSenha().isEmpty()) {
-                funcionario.setSenha(repository.find(funcionario.getId()).getSenha());
-            } else {
-                if ((funcionario.getId() == employeeSession.getId() || employeeSession.getPerfil().equals(Role.ADMINISTRADOR)) &
-                    (that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
-                     that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente")))
-                {
-                    funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
-                } else {
-                    funcionario.setSenha(repository.find(funcionario.getId()).getSenha());
-                }
-            }
-
-            //Endereço
-            /*if (that(!funcionario.getEndereco().getCep().isEmpty(), "funcionario.cep", "cep"))
-                that(!funcionario.getEndereco().getLogradouro().isEmpty() && !funcionario.getEndereco().getBairro().isEmpty() &&
-                     !funcionario.getEndereco().getUf().isEmpty() && !funcionario.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
-        }}.getErrors();
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
-        //Definir filial
-        if (funcionario.getSetor().getId() > 0) {
-            funcionario.setFilial(setorRepository.find(funcionario.getSetor().getId()).getFilial());
-        } else {
+        //Verificar se algum setor foi selecionado
+        if (funcionario.getSetor().getId() == 0)
             funcionario.setSetor(null);
-            funcionario.setFilial(null);
-        }
 
         repository.merge(funcionario);
         result.use(json()).withoutRoot().from("OK").serialize();
@@ -282,7 +191,7 @@ public class FuncionarioController extends MainController {
                 cell.setPaddingTop(4);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase("FILIAL", header));
+                cell = new PdfPCell(new Phrase("UNIDADE", header));
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 cell.setPaddingTop(4);
                 table.addCell(cell);
@@ -292,7 +201,7 @@ public class FuncionarioController extends MainController {
                 cell.setPaddingTop(4);
                 table.addCell(cell);
 
-                for (Funcionario f : repository.listAllById()) {
+                for (Funcionario f : funcionarios) {
                     table.addCell(new Phrase(f.getCpf(), normal));
                     table.addCell(new Phrase(f.getNome(), normal));
                     table.addCell(new Phrase(f.getPerfil().getUserRole(), normal));
@@ -303,8 +212,8 @@ public class FuncionarioController extends MainController {
                     else
                         table.addCell(new Phrase("-", normal));
 
-                    if (f.getFilial() != null)
-                        table.addCell(new Phrase(f.getFilial().getNome(), normal));
+                    if (f.getUnidade() != null)
+                        table.addCell(new Phrase(f.getUnidade().getNomeFantasia(), normal));
                     else
                         table.addCell(new Phrase("-", normal));
 
@@ -335,5 +244,59 @@ public class FuncionarioController extends MainController {
         }
 
         result.nothing();
+    }
+
+    private List<Message> validate(final Funcionario funcionario) {
+        return new Validations(){{
+            //Nome
+            if (that(!funcionario.getNome().isEmpty(), "funcionario.nome", "nome"))
+                that(repository.isUniqueName(funcionario), "funcionario.nome", "nome.unico");
+
+            //RG ou CPF
+            that(funcionario.getRg() != null || !funcionario.getCpf().isEmpty(), "", "rg.ou.cpf");
+
+            //RG válido e único
+            if (funcionario.getRg() != null && that(funcionario.getRg().toString().length() > 5 && funcionario.getRg().toString().length() < 20, "funcionario.rg", "rg.invalido", 6, 20))
+                that(repository.isUniqueRg(funcionario), "funcionario.rg", "rg.unico");
+
+            //CPF válido e único
+            if (!funcionario.getCpf().isEmpty() && that(Utilities.cpf(funcionario.getCpf()), "funcionario.cpf", "cpf.invalido"))
+                that(repository.isUniqueCpf(funcionario), "funcionario.cpf", "cpf.unico");
+
+            //E-mail
+            if (!funcionario.getEmail().isEmpty() && that(Utilities.mail(funcionario.getEmail()), "funcionario.email", "email.invalido"))
+                that(repository.isUniqueMail(funcionario), "funcionario.email", "email.unico");
+
+            //Telefone ou Celular
+            that(!funcionario.getTelefone().isEmpty() || !funcionario.getCelular().isEmpty(), "", "telefone.ou.celular");
+
+            //Unidade
+            that(funcionario.getUnidade().getId() > 0, "funcionario.unidade", "unidade_not_selected");
+
+            //Login
+            if (that(!funcionario.getLogin().isEmpty(), "login", "setup.login"))
+                that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
+
+            //Senha
+            if (funcionario.getId() > 0) {
+                if (funcionario.getSenha().isEmpty()) {
+                    funcionario.setSenha(repository.find(funcionario.getId()).getSenha());
+                } else {
+                    if (that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                        that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
+                        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+                }
+            } else {
+                if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
+                    that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                    that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
+                    funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+            }
+
+            //Endereço
+            /*if (that(!funcionario.getEndereco().getCep().isEmpty(), "funcionario.cep", "cep"))
+                that(!funcionario.getEndereco().getLogradouro().isEmpty() && !funcionario.getEndereco().getBairro().isEmpty() &&
+                     !funcionario.getEndereco().getUf().isEmpty() && !funcionario.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
+        }}.getErrors();
     }
 }

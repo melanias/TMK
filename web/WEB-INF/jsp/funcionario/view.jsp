@@ -21,30 +21,30 @@
             </tr>
             <tr>
                 <td><strong>RG:</strong></td>
-                <td>${funcionario.rg}</td>
-
-                <td><strong>CPF:</strong></td>
-                <td>${funcionario.cpf}</td>
-            </tr>
-            <tr>
-                <td><strong>E-mail:</strong></td>
-                <td><c:if test="${empty funcionario.email}">-</c:if>${funcionario.email}</td>
+                <td><c:if test="${empty funcionario.rg}">-</c:if>${funcionario.rg}</td>
 
                 <td><strong>Telefone:</strong></td>
                 <td><c:if test="${empty funcionario.telefone}">-</c:if>${funcionario.telefone}</td>
             </tr>
             <tr>
-                <td><strong>Perfil:</strong></td>
-                <td>${funcionario.perfil.userRole}</td>
+                <td><strong>CPF:</strong></td>
+                <td><c:if test="${empty funcionario.cpf}">-</c:if>${funcionario.cpf}</td>
 
                 <td><strong>Celular:</strong></td>
                 <td><c:if test="${empty funcionario.celular}">-</c:if>${funcionario.celular}</td>
             </tr>
             <tr>
-                <td><strong>Data de Admissão:</strong></td>
-                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${funcionario.admissao}" /></td>
+                <td><strong>E-mail:</strong></td>
+                <td><c:if test="${empty funcionario.email}">-</c:if>${funcionario.email}</td>
 
-                <td><strong>Data de Demissão</strong></td>
+                <td><strong>Data de Admissão:</strong></td>
+                <td><c:if test="${empty funcionario.admissao}">-</c:if><fmt:formatDate pattern="dd/MM/yyyy" value="${funcionario.admissao}" /></td>
+            </tr>
+            <tr>
+                <td><strong>Perfil:</strong></td>
+                <td>${funcionario.perfil.userRole}</td>
+
+                <td><strong>Data de Demissão:</strong></td>
                 <td><c:if test="${empty funcionario.demissao}">-</c:if><fmt:formatDate pattern="dd/MM/yyyy" value="${funcionario.demissao}" /></td>
             </tr>
             <tr>
@@ -55,18 +55,50 @@
         <hr />
         <table>
             <tr>
-                <td><strong>Filial:</strong></td>
-                <td><c:if test="${empty funcionario.filial.nome}">-</c:if>${funcionario.filial.nome}</td>
-
-                <td><strong>Telefone:</strong></td>
-                <td><c:if test="${empty funcionario.filial.telefone}">-</c:if>${funcionario.filial.telefone}</td>
+                <td><strong>Logradouro:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.logradouro}">-</c:if>${funcionario.endereco.logradouro}</td>
+                <td><strong>Número:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.numero}">-</c:if>${funcionario.endereco.numero}</td>
             </tr>
             <tr>
+                <td><strong>Complemento:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.complemento}">-</c:if>${funcionario.endereco.complemento}</td>
+                <td><strong>Estado:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.uf}">-</c:if>${funcionario.endereco.uf}</td>
+            </tr>
+            <tr>
+                <td><strong>Bairro:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.bairro}">-</c:if>${funcionario.endereco.bairro}</td>
+                <td><strong>Cidade:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.cidade}">-</c:if>${funcionario.endereco.cidade}</td>
+            </tr>
+            <tr>
+                <td><strong>CEP:</strong></td>
+                <td><c:if test="${empty funcionario.endereco.cep}">-</c:if>${funcionario.endereco.cep}</td>
+            </tr>
+        </table>
+        <hr />
+        <table>
+            <tr>
+                <td><strong>Unidade:</strong></td>
+                <td><c:if test="${empty funcionario.unidade.razaoSocial}">-</c:if>${funcionario.unidade.razaoSocial}</td>
                 <td><strong>E-mail:</strong></td>
-                <td><c:if test="${empty funcionario.filial.email}">-</c:if>${funcionario.filial.email}</td>
-
+                <td><c:if test="${empty funcionario.unidade.email}">-</c:if>${funcionario.unidade.email}</td>
+            </tr>
+            <tr>
+                <td><strong>Telefone:</strong></td>
+                <td><c:if test="${empty funcionario.unidade.telefone}">-</c:if>${funcionario.unidade.telefone}</td>
                 <td><strong>Fax:</strong></td>
-                <td><c:if test="${empty funcionario.filial.fax}">-</c:if>${funcionario.filial.fax}</td>
+                <td><c:if test="${empty funcionario.unidade.fax}">-</c:if>${funcionario.unidade.fax}</td>
+            </tr>
+            <tr>
+                <td><strong>Matriz:</strong></td>
+                <td>
+                <c:choose>
+                    <c:when test="${funcionario.unidade.matriz == true}">Sim</c:when>
+                    <c:otherwise>Não</c:otherwise>
+                </c:choose>
+                </td>
             </tr>
         </table>
         <hr />

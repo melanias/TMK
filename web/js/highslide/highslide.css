@@ -18,9 +18,12 @@
 .highslide-container div > table tr:nth-child(even) {
     background-color: #e4e4e4;
 }
-.highslide-container div > table td:nth-child(odd) {
+.highslide-container div > table td {
     padding: 4px 8px;
 }
+/*.highslide-container div > table td:nth-child(odd) {
+    padding: 4px 8px;
+}*/
 .highslide-container div > table td strong {
     color: #4d4d4d;
 }

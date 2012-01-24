@@ -1,4 +1,4 @@
-package br.org.aappe.erp.dao;
+/*package br.org.aappe.erp.dao;
 
 import javax.persistence.EntityManager;
 
@@ -10,7 +10,7 @@ import br.org.aappe.erp.repository.EmpresaRepository;
 /**
  * @author Phelipe Melanias
  */
-@Component
+/*@Component
 public class EmpresaDAO extends DAO<Empresa> implements EmpresaRepository {
 
     public EmpresaDAO(EntityManager manager) {
@@ -49,4 +49,4 @@ public class EmpresaDAO extends DAO<Empresa> implements EmpresaRepository {
                                          .setParameter(1, empresa.getEmail())
                                          .getResultList().isEmpty();
     }
-}
+}*/

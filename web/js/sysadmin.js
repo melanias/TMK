@@ -41,12 +41,13 @@ jQuery(function($){
     //jQuery UI
     //$("button, :button, :submit").button();
 
-    /*$("[alt='data']").datepicker({
+    //Calendário
+    $("[alt='data']").datepicker({
         showOn: "button",
         buttonImage: URLBASE + "/images/calendar.gif",
-        buttonImageOnly: true,
-        beforeShowDay: $.datepicker.noWeekends
-    });*/
+        buttonImageOnly: true/*,
+        beforeShowDay: $.datepicker.noWeekends*/
+    });
 
     //CEP
     $("#cep").live("focusout", function(){
@@ -88,7 +89,7 @@ jQuery(function($){
             );
         } else {
             if (cep.length)
-                alert("O CEP está incorreto.");
+                alert("CEP inválido.");
         }
     });
 
@@ -159,4 +160,18 @@ jQuery(function($){
         });
     });
     /** iframe - code **/
+
+    /** Combobox de setores **/
+    $("#unidade").live("change", function() {
+        $("#loading").show();
+
+        //Carregar combobox
+        $("#setor").load(URLBASE +"/admin/unidade/filterSectorsPerUnit/"+ (($.trim($(this).val()) === "") ? 0 : $(this).val()), function(r, s) {
+            $("#loading").hide();
+
+            if (s == "error")
+                alert("Ocorreu um erro ao carregar a lista de setores.");
+        });
+    });
+    /** Combobox de setores **/
 });

@@ -1,4 +1,4 @@
-/*package br.org.aappe.erp.controller;
+package br.org.aappe.erp.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -9,101 +9,97 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.Message;
-import br.com.caelum.vraptor.validator.Validations;
-import static br.com.caelum.vraptor.view.Results.*;
-
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Phrase;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import br.com.caelum.vraptor.*;
+import br.com.caelum.vraptor.validator.Message;
+import br.com.caelum.vraptor.validator.Validations;
+import static br.com.caelum.vraptor.view.Results.*;
+
 import br.org.aappe.erp.annotations.Transactional;
-import br.org.aappe.erp.bean.Filial;
-import br.org.aappe.erp.repository.FilialRepository;
+import br.org.aappe.erp.bean.Setor;
+import br.org.aappe.erp.bean.Unidade;
+import br.org.aappe.erp.repository.UnidadeRepository;
 import br.org.aappe.erp.util.Utilities;
 
 /**
- * @author Jadson Ronald
+ * @author Phelipe Melanias
  */
-/*@Resource @Path("/admin")
-public class FilialController extends MainController {
-    private final FilialRepository repository;
+@Resource @Path("/admin")
+public class UnidadeController extends MainController {
+    private final UnidadeRepository repository;
 
-    public FilialController(Result result, Validator validator, HttpServletResponse response, FilialRepository repository) {
+    public UnidadeController(Result result, Validator validator, HttpServletResponse response, UnidadeRepository repository) {
         super(result, validator, response);
         this.repository = repository;
     }
 
-    @Get("/filial")
-    public List<Filial> list() {
-        result.include("title", "Filiais");
+    @Get("/unidade")
+    public List<Unidade> list() {
+        result.include("title", "Unidades");
         return repository.listAllById();
     }
 
-    @Get("/filial/refresh")
-    public List<Filial> refresh() {
+    @Get("/unidade/refresh")
+    public List<Unidade> refresh() {
         return list();
     }
 
-    @Get("/filial/view/{id}")
-    public Filial view(int id) {
-        result.include("title", "Informações da Filial");
+    @Get("/unidade/view/{id}")
+    public Unidade view(int id) {
+        result.include("title", "Informações da Unidade");
         return repository.find(id);
     }
 
-    @Get("/filial/add")
+    @Get("/unidade/filterSectorsPerUnit/{id}")
+    public List<Setor> filterSectorsPerUnit(int id) {
+        Unidade unidade = repository.find(id);
+
+        return ((unidade == null) ? null : unidade.getSetores());
+    }
+
+    @Get("/unidade/add")
     public void frmAdd() {
-        result.include("title", "Cadastrar Filial");
+        result.include("title", "Cadastrar Unidade");
     }
 
     @Transactional
-    @Post("/filial/add")
-    public void add(final Filial filial) {
-        List<Message> errors = validate(filial);
+    @Post("/unidade/add")
+    public void add(final Unidade unidade) {
+        List<Message> errors = validate(unidade);
 
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
-        //Definir data de cadastro da filial
-        filial.setData(new Date());
+        //Definir data de cadastro da Unidade
+        unidade.setData(new Date());
 
-        repository.persist(filial);
+        repository.persist(unidade);
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
-    @Get("/filial/edit/{id}")
-    public Filial frmEdit(int id) {
-        result.include("title", "Editar Filial");
+    @Get("/unidade/edit/{id}")
+    public Unidade frmEdit(int id) {
+        result.include("title", "Editar Unidade");
         return repository.find(id);
     }
 
     @Transactional
-    @Post("/filial/edit")
-    public void edit(final Filial filial) {
-        List<Message> errors = validate(filial);
+    @Post("/unidade/edit")
+    public void edit(final Unidade unidade) {
+        List<Message> errors = validate(unidade);
 
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
-        repository.merge(filial);
+        repository.merge(unidade);
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
-    @Get("/filial/pdf")
+    @Get("/unidade/pdf")
     public void pdf() throws IOException {
         try {
             Document document = new Document(PageSize.A3, 18, 18, 18, 18);
@@ -128,17 +124,17 @@ public class FilialController extends MainController {
             Font normal = FontFactory.getFont(FontFactory.HELVETICA, 7);
 
             //Título da tabela
-            cell = new PdfPCell(new Phrase("FILIAIS", title));
+            cell = new PdfPCell(new Phrase("UNIDADES", title));
             cell.setBackgroundColor(BaseColor.GRAY);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setPaddingTop(4);
             cell.setColspan(5);
             table.addCell(cell);
 
-            List<Filial> filiais = repository.listAllById();
+            List<Unidade> unidades = repository.listAllById();
 
-            if (filiais.isEmpty()) {
-                cell = new PdfPCell(new Phrase("Nenhuma filial cadastrada até o momento.", normal));
+            if (unidades.isEmpty()) {
+                cell = new PdfPCell(new Phrase("Nenhuma unidade cadastrada até o momento.", normal));
                 cell.setPadding(6);
                 cell.setColspan(5);
                 table.addCell(cell);
@@ -148,7 +144,7 @@ public class FilialController extends MainController {
                 cell.setPaddingTop(4);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase("NOME", header));
+                cell = new PdfPCell(new Phrase("RAZÃO SOCIAL", header));
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 cell.setPaddingTop(4);
                 table.addCell(cell);
@@ -168,12 +164,12 @@ public class FilialController extends MainController {
                 cell.setPaddingTop(4);
                 table.addCell(cell);
 
-                for (Filial f : repository.listAllById()) {
-                    table.addCell(new Phrase(f.getCnpj(), normal));
-                    table.addCell(new Phrase(f.getNome(), normal));
-                    table.addCell(new Phrase(f.getEmail(), normal));
-                    table.addCell(new Phrase(f.getTelefone(), normal));
-                    table.addCell(new Phrase(f.getFax(), normal));
+                for (Unidade u : unidades) {
+                    table.addCell(new Phrase(u.getCnpj(), normal));
+                    table.addCell(new Phrase(u.getRazaoSocial() + (u.isMatriz() ? " - Matriz" : ""), normal));
+                    table.addCell(new Phrase(u.getEmail(), normal));
+                    table.addCell(new Phrase(u.getTelefone(), normal));
+                    table.addCell(new Phrase(u.getFax(), normal));
                 }
             }
 
@@ -185,7 +181,7 @@ public class FilialController extends MainController {
             response.setHeader("Expires", "0");
             response.setHeader("Cache-Control", "must-revalidate, post-check=0, pre-check=0");
             response.setHeader("Pragma", "public");
-            response.setHeader("Content-Disposition", "attachment;filename=Filiais.pdf");
+            response.setHeader("Content-Disposition", "attachment;filename=Unidades.pdf");
             response.setContentLength(baos.size());
 
             OutputStream os = response.getOutputStream();
@@ -199,23 +195,27 @@ public class FilialController extends MainController {
         result.nothing();
     }
 
-    private List<Message> validate(final Filial filial) {
+    private List<Message> validate(final Unidade unidade) {
         return new Validations(){{
             //CNPJ
-            if (that(!filial.getCnpj().isEmpty(), "filial.cnpj", "cnpj") &&
-                that(Utilities.cnpj(filial.getCnpj()), "filial.cnpj", "cnpj.invalido"))
-                that(repository.isUniqueCnpj(filial), "filial.cnpj", "cnpj.unico");
+            if (that(!unidade.getCnpj().isEmpty(), "unidade.cnpj", "cnpj") && that(Utilities.cnpj(unidade.getCnpj()), "unidade.cnpj", "cnpj.invalido"))
+                that(repository.isUniqueCnpj(unidade), "unidade.cnpj", "cnpj.invalido");
 
-            //Nome
-            if (that(!filial.getNome().isEmpty(), "filial.nome", "nome"))
-                that(repository.isUniqueCompanyName(filial), "filial.nome", "nome.unico");
+            //Razão Social
+            if (that(!unidade.getRazaoSocial().isEmpty(), "unidade.razaoSocial", "razaoSocial"))
+                that(repository.isUniqueCompanyName(unidade), "unidade.razaoSocial", "razaoSocial.unica");
+
+            //Nome Fantasia
+            if (!unidade.getNomeFantasia().isEmpty())
+                that(repository.isUniqueFancyName(unidade), "unidade.nomeFantasia", "nomeFantasia.unico");
 
             //E-mail
-            if (!filial.getEmail().isEmpty() &&
-                that(Utilities.mail(filial.getEmail()), "filial.email", "email.invalido"))
-                that(repository.isUniqueMail(filial), "filial.email", "email.unico");
+            if (!unidade.getEmail().isEmpty())
+                that(Utilities.mail(unidade.getEmail()), "unidade.email", "email.invalido");
 
-            that(!filial.getTelefone().isEmpty() , "filial.telefone", "telefone");
+            //Matriz
+            if (unidade.isMatriz())
+                that(repository.isUniqueMatrixActive(unidade), "unidade.matriz", "matriz.unica");
         }}.getErrors();
     }
-}*/
+}

@@ -32,9 +32,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Setor;
-import br.org.aappe.erp.repository.FilialRepository;
 import br.org.aappe.erp.repository.FuncionarioRepository;
 import br.org.aappe.erp.repository.SetorRepository;
+import br.org.aappe.erp.repository.UnidadeRepository;
 import br.org.aappe.erp.util.Utilities;
 
 /**
@@ -43,16 +43,16 @@ import br.org.aappe.erp.util.Utilities;
 @Resource @Path("/admin")
 public class SetorController extends MainController {
     private final SetorRepository repository;
-    private final FilialRepository filialRepository;
+    private final UnidadeRepository unidadeRepository;
     private final FuncionarioRepository funcionarioRepository;
 
     public SetorController(Result result, Validator validator, HttpServletResponse response, SetorRepository repository,
-                           FilialRepository filialRepository, FuncionarioRepository funcionarioRepository)
+                           UnidadeRepository unidadeRepository, FuncionarioRepository funcionarioRepository)
     {
         super(result, validator, response);
 
         this.repository = repository;
-        this.filialRepository = filialRepository;
+        this.unidadeRepository = unidadeRepository;
         this.funcionarioRepository = funcionarioRepository;
     }
 
@@ -76,7 +76,7 @@ public class SetorController extends MainController {
     @Get("/setor/add")
     public void frmAdd() {
         result.include("title", "Cadastrar Setor");
-        result.include("filiais", filialRepository.listAllById());
+        result.include("unidades", unidadeRepository.listAllById());
         result.include("funcionarios", funcionarioRepository.listAllById());
     }
 
@@ -99,7 +99,7 @@ public class SetorController extends MainController {
     @Get("/setor/edit/{id}")
     public Setor frmEdit(int id) {
         result.include("title", "Editar Setor");
-        result.include("filiais", filialRepository.listAllById());
+        result.include("unidades", unidadeRepository.listAllById());
         result.include("funcionarios", funcionarioRepository.listAllById());
         return repository.find(id);
     }
@@ -185,12 +185,12 @@ public class SetorController extends MainController {
                 cell.setPaddingTop(4);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase("FILIAL", header));
+                cell = new PdfPCell(new Phrase("UNIDADE", header));
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 cell.setPaddingTop(4);
                 table.addCell(cell);
 
-                for (Setor s : repository.listAllById()) {
+                for (Setor s : setores) {
                     table.addCell(new Phrase(s.getNome(), normal));
                     table.addCell(new Phrase(s.getEmail(), normal));
                     table.addCell(new Phrase(s.getTelefone(), normal));
@@ -201,7 +201,7 @@ public class SetorController extends MainController {
                     else
                         table.addCell(new Phrase("-", normal));
 
-                    table.addCell(new Phrase(s.getFilial().getNome(), normal));
+                    table.addCell(new Phrase(s.getUnidade().getRazaoSocial()+ (s.getUnidade().isMatriz() ? " - Matriz" : ""), normal));
                 }
             }
 
@@ -229,13 +229,12 @@ public class SetorController extends MainController {
 
     private List<Message> validate(final Setor setor) {
         return new Validations(){{
-            //Nome do setor
-            if (that(!setor.getNome().isEmpty(), "setor.nome", "nome") & that(setor.getFilial().getId() > 0, "setor.filial", "filial_not_selected"))
+            //Nome, sigla e unidade
+            if ((that(!setor.getNome().isEmpty(), "setor.nome", "nome") & that(!setor.getSigla().isEmpty(), "setor.sigla", "sigla")) &
+                 that(setor.getUnidade().getId() > 0, "setor.unidade", "unidade_not_selected")) {
                 that(repository.isUniqueSection(setor), "setor.nome", "nome.setor.unico");
-
-            //Sigla e Filial
-            if (that(!setor.getSigla().isEmpty(), "setor.sigla", "sigla") & that(setor.getFilial().getId() > 0, "setor.filial", "filial_not_selected"))
                 that(repository.isUniqueAcronym(setor), "setor.sigla", "sigla.unica");
+            }
 
             //E-mail
             if (!setor.getEmail().isEmpty())
