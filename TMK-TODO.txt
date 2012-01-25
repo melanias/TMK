@@ -1,0 +1,67 @@
+Sistema Geral
+* Abas de acordo com o perfil
+    - Se for administrador acessa mais funções
+* Representante não loga no sistema            = OK
+
+
+Módulo de administração
+* Campos não obrigatórios:
+    - Data de admissão           = OK
+    - RG-CPF: Apenas um ou outro = OK
+    - Telefone ou celular        = OK
+
+* Adicionar perfil Marketing = OK
+
+* Mudar "filiais" para "Unidades"
+    - A unidade matriz, inicialmente cadastrada, já seria listada. = OK
+
+* Cadastro de Unidade
+    - Campos obrigatórios: CNPJ e Nome da unidade = OK
+
+* Exclusão de usuários, setores, etc:
+    - Deve acontecer uma validação antes de deletar;
+
+* Combobox de unidades para filtrar os setores; = OK
+
+Módulo Normal do sistema
+* Mudar "Finanças" para "Doações" = OK
+
+* Mudar ordem do menu
+    - Início, Doadores, Doações, Campanhas, Relatórios, Newsletter = OK
+
+* Doadores
+    - Adicionar endereço como obrigatório;
+
+* Campos de data
+    - Doação: inserir apenas via calendário 
+    - Todos os outros campos de data do sistema: As duas opções = OK
+
+Permissões
+
+* Doadores
+    Estagiário - leitura
+    Operador - leitura e escrita
+    Gerente - leitura e escrita
+    Administrador - leitura e escrita
+
+* Campanhas
+    Estagiário - leitura
+    Operador - leitura
+    Marketing - leitura e escrita
+    Gerente - leitura e escrita
+    Administrador - leitura e escrita
+
+* Doações
+    Estagiário - leitura, escrita, no edit
+    Operador - leitura, escrita, no edit
+    Gerente - leitura e escrita
+    Administrador - leitura e escrita
+
+* Relatórios
+    Gerente - leitura e escrita
+    Administrador - leitura e escrita
+
+* Newsletter
+    Marketing - leitura e escrita
+    Gerente - leitura e escrita
+    Administrador - leitura e escrita
