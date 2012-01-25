@@ -3,6 +3,7 @@ package br.org.aappe.erp.repository;
 import java.util.List;
 
 import br.org.aappe.erp.bean.Doador;
+import br.org.aappe.erp.bean.Unidade;
 
 /**
  * @author Phelipe Melanias
@@ -28,4 +29,6 @@ public interface DoadorRepository {
     boolean isUniqueName(Doador doador);
 
     boolean isUniqueMail(Doador doador);
+
+    List<Doador> listAllByUnitId(Unidade unidade);
 }

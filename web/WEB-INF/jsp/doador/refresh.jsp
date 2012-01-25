@@ -5,7 +5,7 @@
                 </span>
                 <h1>${title}</h1>
 <c:choose>
-            <c:when test="${not empty doadorList}">
+    <c:when test="${not empty doadorList}">
                 <table>
                     <thead>
                         <tr>
@@ -37,8 +37,8 @@
                     </c:forEach>
                     </tbody>
                 </table>
-            </c:when>
-            <c:otherwise>
+    </c:when>
+    <c:otherwise>
                 <p>Nenhum doador cadastrado até o momento.</p>
-            </c:otherwise>
+    </c:otherwise>
 </c:choose>

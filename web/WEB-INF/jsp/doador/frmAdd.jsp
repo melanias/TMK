@@ -101,7 +101,7 @@
                     <td><input type="text" name="doador.endereco.cidade" value="" id="cidade" size="30" maxlength="100" /></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td><input type="hidden" name="doador.unidade.id" value="${employeeSession.unidade.id}" /></td>
                     <td><input type="button" id="doAll" name="add-doador" value="Salvar" /></td>
                 </tr>
             </table>

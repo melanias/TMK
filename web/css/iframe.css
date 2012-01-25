@@ -51,7 +51,7 @@ input#cpfoucnpj, input#cnpj, input#rg, input#cpf, input#valor, input#fone, input
 
 input#email, input#cidade { width: 180px; } /* 30-35 */
 
-textarea#observacao { width: 531px; height: 60px; }
+textarea#observacao { width: 541px; height: 60px; }
 textarea#descricao { width: 279px; height: 60px; }
 
 select { width: 134px; }

@@ -60,6 +60,9 @@ public class Unidade implements Serializable {
     @OneToMany(mappedBy="unidade")
     private List<Setor> setores;
 
+    @OneToMany(mappedBy="unidade")
+    private List<Doador> doadores;
+
     @OneToMany(mappedBy="unidade", cascade=CascadeType.ALL)
     private List<Funcionario> funcionarios;
 
@@ -102,6 +105,9 @@ public class Unidade implements Serializable {
 
     public List<Setor> getSetores() { return setores; }
     public void setSetores(List<Setor> setores) { this.setores = setores; }
+
+    public List<Doador> getDoadores() { return doadores; }
+    public void setDoadores(List<Doador> doadores) { this.doadores = doadores; }
 
     public List<Funcionario> getFuncionarios() { return funcionarios; }
     public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios = funcionarios; }

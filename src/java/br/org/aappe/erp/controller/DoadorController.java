@@ -28,7 +28,6 @@ public class DoadorController extends MainController {
 
     public DoadorController(Result result, Validator validator, DoadorRepository repository) {
         super(result, validator);
-
         this.repository = repository;
     }
 
@@ -125,8 +124,8 @@ public class DoadorController extends MainController {
 
             //Endereço
             /*if (that(!doador.getEndereco().getCep().isEmpty(), "doador.cep", "cep"))
-                that(!doador.getEndereco().getLogradouro().isEmpty() && !doador.getEndereco().getBairro().isEmpty() &&
-                     !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
+            that(!doador.getEndereco().getLogradouro().isEmpty() && !doador.getEndereco().getBairro().isEmpty() &&
+                         !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
         }}.getErrors();
     }
 }

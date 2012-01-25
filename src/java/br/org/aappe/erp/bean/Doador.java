@@ -4,18 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import br.org.aappe.erp.enums.DonorStatus;
 import br.org.aappe.erp.enums.DonorType;
@@ -38,21 +27,25 @@ public class Doador extends Pessoa implements Serializable {
     private Date data;
 
     @Column(length=18)
-    private String cnpj; //Caso o doador seja uma pessoa jurídica
+    private String cnpj;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="tipo", columnDefinition="smallint", nullable=false)
-    private DonorType tipo = DonorType.FISICA; //0 = Pessoa Física, 1 = Pessoa Jurídica
+    private DonorType tipo = DonorType.FISICA;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="situacao", columnDefinition="smallint", nullable=false)
-    private DonorStatus status = DonorStatus.ATIVO; //0 = Inativo, 1 = Ativo, 2 = Novo, 3 = Fidelizado
+    private DonorStatus status = DonorStatus.ATIVO;
 
     @Column(columnDefinition="text")
     private String observacao;
 
     @OneToMany(mappedBy="doador")
     private List<Doacao> doacoes;
+
+    @ManyToOne
+    @JoinColumn(name="id_unidade", referencedColumnName="id", nullable=false)
+    private Unidade unidade;
 
     //getters e setters
     public int getId() { return id; }
@@ -75,4 +68,7 @@ public class Doador extends Pessoa implements Serializable {
 
     public List<Doacao> getDoacoes() { return doacoes; }
     public void setDoacoes(List<Doacao> doacoes) { this.doacoes = doacoes; }
+
+    public Unidade getUnidade() { return unidade; }
+    public void setUnidade(Unidade unidade) { this.unidade = unidade; }
 }
