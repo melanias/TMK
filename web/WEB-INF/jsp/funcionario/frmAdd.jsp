@@ -17,6 +17,7 @@
 
         <!-- jQuery UI -->
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.datepicker-pt-BR.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
     </head>

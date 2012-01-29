@@ -30,7 +30,7 @@
                 <td><strong>Funcionário:</strong></td>
                 <td>${mensagem.funcionario.nome}</td>
                 <td><strong>E-mail:</strong></td>
-                <td>${mensagem.funcionario.email}</td>
+                <td><c:if test="${empty mensagem.funcionario.email}">-</c:if>${mensagem.funcionario.email}</td>
             </tr>
             <tr>
                 <td><strong>Telefone:</strong></td>

@@ -46,12 +46,19 @@ input#cep, input#numero { width: 75px; } /* 9-10 */
 
 input#logradouro, input#complemento, input#bairro, input#nome, input#razaoSocial, input#nomeFantasia, input#site { width: 280px; } /* 50 */
 
-input#dataAdmissao, input#dataDemissao, input#dataNascimento, input#dataRecebimento,
-input#cpfoucnpj, input#cnpj, input#rg, input#cpf, input#valor, input#fone, input#fax, input#celular, input#login, input#senha, input#checkPass { width: 130px; } /* 18-20 */
+input#dataAdmissao, input#dataDemissao, input#dataRecebimento, input#dataInicial, input#dataFinal, input#custoReal,
+input#custoPrevisto, input#receitaReal, input#receitaEsperada, input#dataNascimento, input#celular, input#fone, input#fax,
+input#cpfoucnpj, input#cnpj, input#rg, input#cpf, input#valor, input#login, input#senha, input#checkPass { width: 130px; } /* 18-20 */
 
 input#email, input#cidade { width: 180px; } /* 30-35 */
 
-textarea#observacao { width: 541px; height: 60px; }
+input#campanha,
+textarea#objetivo { width: 374px; }
+
+textarea#objetivo { height: 60px; }
 textarea#descricao { width: 279px; height: 60px; }
+textarea#observacao { width: 541px; height: 60px; }
+
+textarea#texto { width: 517px; height: 200px; }
 
 select { width: 134px; }

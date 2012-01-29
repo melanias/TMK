@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <span>
-                    <a class="add-form" href="<c:url value="/mensagem/add" />" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', height:'294', headingText:'Enviar Mensagem'});">Cadastrar</a>
+                    <a class="add-form" href="${linkTo[MensagemController].add}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', height:'280', headingText:'Enviar Mensagem'});">Cadastrar</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
-            <c:when test="${not empty mensagemList}">
+    <c:when test="${not empty mensagemList}">
                 <table>
                     <thead>
                         <tr>
@@ -23,15 +23,15 @@
                         <td width="10%">${m.tipo.type}</td>
                         <td>${m.texto}</td>
                         <td>${m.funcionario.firstAndLastName}</td>
-                        <td width="15" >
-                            <a class="preview" href="<c:url value="/mensagem/view/${m.id}" />" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Mensagem'});">Visualizar</a>
+                        <td width="15">
+                            <a class="preview" href="${linkTo[MensagemController].view[m.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Mensagem'});">Visualizar</a>
                         </td>
                     </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-            </c:when>
-            <c:otherwise>
+    </c:when>
+    <c:otherwise>
                 <p>Nenhuma mensagem cadastrada até o momento.</p>
-            </c:otherwise>
+    </c:otherwise>
 </c:choose>

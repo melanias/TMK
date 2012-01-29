@@ -39,12 +39,33 @@ jQuery(function($){
     $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
     $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
 
-    /*$("[alt='data']").datepicker({
+    //Calendário
+    $("input[alt='data']").datepicker({
         showOn: "button",
         buttonImage: URLBASE + "/images/calendar.gif",
-        buttonImageOnly: true,
-        beforeShowDay: $.datepicker.noWeekends
-    });*/
+        buttonImageOnly: true/*,
+        beforeShowDay: $.datepicker.noWeekends*/
+    });
+
+    $.datepicker.regional['pt-BR'] = {
+        closeText: 'Fechar',
+        prevText: 'Anterior',
+        nextText: 'Pr&oacute;ximo',
+        currentText: 'Hoje',
+        monthNames: ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        dayNames: ['Domingo','Segunda-feira','Ter&ccedil;a-feira','Quarta-feira','Quinta-feira','Sexta-feira','S&aacute;bado'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','S&aacute;b'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+        firstDay: 0,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''};
+
+    $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+    //Calendário
 
     //Tipo de doador
     $("input[name='doador.tipo']").live("change", function(){
@@ -76,6 +97,7 @@ jQuery(function($){
         //Recarregar as máscaras
         $(":text").setMask();
     });
+    //Tipo de doador
 
     //CEP
     $("#cep").live("focusout", function(){
@@ -120,6 +142,7 @@ jQuery(function($){
                 alert("O CEP está incorreto.");
         }
     });
+    //CEP
 
     /** iframe - code **/
     $("#doAll").live("click", function() {
@@ -162,25 +185,27 @@ jQuery(function($){
     /** iframe - code **/
 
     /** Procurar doador **/
-    $("#donor").autocomplete({
-        minLength: 2,
-        source: URLBASE + "/doador/search",
-        open: function(event, ui) {
-            $(".ui-autocomplete").outerWidth($(this).outerWidth());
-            return false;
-        },
-        search: function(event, ui) {
-            $("#doador").val("");
-        },
-        select: function(event, ui) {
-            $("#donor").val(ui.item.nome);
-            $("#doador").val(ui.item.id);
-            return false;
-        }
-    }).data("autocomplete")._renderItem = function(ul, item) {
-        return $("<li></li>").data("item.autocomplete", item)
-			     .append("<a><strong>"+ item.nome +"</strong><br />"+ ((item.tipo == 'FISICA') ? 'Pessoa Física' : 'Pessoa Jurídica') +"</a>")
-                             .appendTo(ul);
-    };
-    /** Procurar Doador **/
+    if ($("#donor").is(":visible")) {
+        $("#donor").autocomplete({
+            minLength: 1,
+            source: URLBASE + "/doador/search",
+            open: function(event, ui) {
+                $(".ui-autocomplete").outerWidth($(this).outerWidth());
+                return false;
+            },
+            search: function(event, ui) {
+                $("#doador").val("");
+            },
+            select: function(event, ui) {
+                $("#donor").val(ui.item.nome);
+                $("#doador").val(ui.item.id);
+                return false;
+            }
+        }).data("autocomplete")._renderItem = function(ul, item) {
+            return $("<li></li>").data("item.autocomplete", item)
+                                .append("<a><strong>"+ item.nome +"</strong><br />"+ ((item.tipo == 'FISICA') ? 'Pessoa Física' : 'Pessoa Jurídica') +"</a>")
+                                .appendTo(ul);
+        };
+    }
+    /** Procurar doador **/
 });

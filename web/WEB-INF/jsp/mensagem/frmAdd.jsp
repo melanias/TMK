@@ -25,19 +25,13 @@
         <title>${title}</title>
     </head>
     <body>
+<c:choose>
+    <c:when test="${not empty servidor}">
         <form action="javascript:;" method="post">
             <table>
                 <tr>
                     <td><label for="texto">Texto:</label></td>
-                    <td><textarea name="mensagem.texto" id="texto" style="width: 517px; height: 200px;">${mensagem.texto}</textarea></td>
-                </tr>
-                <tr>
-                    <td><label for="tipo">Tipo de Envio:</label></td>
-                    <td>
-                        <c:forEach items="${types}" var="tipo">
-                            <input type="radio" name="mensagem.tipo" value="${tipo}" id="tipo" />&nbsp;${tipo.type}&nbsp;&nbsp;&nbsp;&nbsp;
-                        </c:forEach>
-                    </td>
+                    <td><textarea name="mensagem.texto" id="texto" rows="4" cols="50">${mensagem.texto}</textarea></td>
                 </tr>
                 <tr>
                     <td><input type="hidden" name="mensagem.funcionario.id" value="${employeeSession.id}" /></td>
@@ -45,6 +39,11 @@
                 </tr>
             </table>
         </form>
+    </c:when>
+    <c:otherwise>
+        <p>Nenhum servidor SMTP cadastrado e/ou ativo.</p>
+    </c:otherwise>
+</c:choose>
         <script type="text/javascript">
             const URLBASE  = "<%= request.getContextPath() %>";
         </script>

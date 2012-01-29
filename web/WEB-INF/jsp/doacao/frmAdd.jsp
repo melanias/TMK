@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td><label for="dataRecebimento">Data de Recebimento:</label></td>
-                    <td><input type="text" name="doacao.recebimento" value="" id="dataRecebimento" size="18" maxlength="10" alt="data" /></td>
+                    <td><input type="text" name="doacao.recebimento" value="" id="dataRecebimento" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                 </tr>
                 <tr>
                     <td><label for="descricao">Descrição:</label></td>
@@ -66,7 +66,7 @@
                 <tr>
                     <td>
                         <input type="hidden" name="doacao.doador.id" value="" id="doador" />
-                        <input type="hidden" name="doacao.operador.id" value="${employeeSession.id}" />
+                        <input type="hidden" name="doacao.funcionario.id" value="${employeeSession.id}" />
                     </td>
                     <td><input type="button" id="doAll" name="add-doacao" value="Salvar" /></td>
                 </tr>

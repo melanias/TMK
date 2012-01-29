@@ -3,17 +3,7 @@ package br.org.aappe.erp.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import br.org.aappe.erp.enums.SendType;
 
@@ -38,7 +28,7 @@ public class Mensagem implements Serializable {
     private String texto;
 
     @Column(length=10, nullable=false)
-    private SendType tipo;
+    private SendType tipo = SendType.NEWSLETTER;
 
     @ManyToOne
     @JoinColumn(name="id_funcionario", referencedColumnName="id", nullable=false, updatable=false)

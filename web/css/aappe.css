@@ -22,7 +22,7 @@ img { vertical-align: top; }
 img#busy { display: none; margin-left: 5px; }
 
 label { font-weight: bold; }
-table { border-spacing: 0; border-collapse: collapse; }
+table { border-spacing: 0; border-collapse: collapse; /*white-space: nowrap;*/ }
 
 input, select, textarea { font-size: 100%; font-family: inherit; }
 select { margin: inherit; }

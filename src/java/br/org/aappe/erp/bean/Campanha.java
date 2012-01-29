@@ -1,26 +1,14 @@
 package br.org.aappe.erp.bean;
 
-import br.org.aappe.erp.enums.CampaignType;
-import br.org.aappe.erp.enums.CampaignStatus;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import javax.persistence.*;
+
+import br.org.aappe.erp.enums.CampaignType;
+import br.org.aappe.erp.enums.CampaignStatus;
 
 /**
  * @author Phelipe Melanias
@@ -44,13 +32,13 @@ public class Campanha implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="type", columnDefinition="smallint", nullable=false)
-    private CampaignType type; //0 = Telemarketing, 1 = Newsletter, 2 = Email
+    private CampaignType type;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="status", columnDefinition="smallint", nullable=false)
-    private CampaignStatus status = CampaignStatus.PLANEJANDO; //0 = Concluída, 1 = Cancelada, 2 = Em andamento, 3 = Planejando
+    private CampaignStatus status = CampaignStatus.PLANEJANDO;
 
-    @Column(columnDefinition="text", nullable=false)
+    @Column(columnDefinition="text")
     private String objetivo;
 
     @Column(nullable=false, precision=12, scale=2)

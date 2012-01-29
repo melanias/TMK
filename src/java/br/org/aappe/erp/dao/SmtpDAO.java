@@ -1,6 +1,7 @@
 package br.org.aappe.erp.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import br.com.caelum.vraptor.ioc.Component;
 
@@ -20,9 +21,11 @@ public class SmtpDAO extends DAO<Smtp> implements SmtpRepository {
 
     @Override
     public Smtp getActiveServer() {
-        return (Smtp) manager.createQuery("FROM Smtp WHERE status = ?")
-                             .setParameter(1, Status.ATIVO)
-                             .getSingleResult();
+        try {
+            return (Smtp) manager.createQuery("FROM Smtp WHERE status = ?").setParameter(1, Status.ATIVO).getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override

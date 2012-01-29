@@ -21,69 +21,69 @@
         <title>${title}</title>
     </head>
     <body>
-        <c:choose>
-            <c:when test="${not empty campanha}">
-                <form action="javascript:;" method="post">
-                    <table>
-                        <tr>
-                            <td><label for="nome">Nome:</label></td>
-                            <td><input type="text" name="campanha.nome" value="${campanha.nome}" id="" size="16" maxlength="200" /></td>
+<c:choose>
+    <c:when test="${not empty campanha}">
+        <form action="javascript:;" method="post">
+            <table>
+                <tr>
+                    <td><label for="campanha">Nome:</label></td>
+                    <td colspan="3"><input type="text" name="campanha.nome" value="${campanha.nome}" id="campanha" size="50" maxlength="200" /></td>
+                </tr>
+                <tr>
+                    <td><label for="custoPrevisto">Custo Previsto (R$):</label></td>
+                    <td><input type="text" name="campanha.custoPrevisto" value="${campanha.custoPrevisto}" id="custoPrevisto" size="18" maxlength="16" alt="valor" /></td>
 
-                            <td><label for="tipo">Tipo:</label></td>
-                            <td>
-                                <select name="campanha.type" id="tipo">
-                                    <c:forEach items="${type}" var="c">
-                                        <option value="${c}">${c.type}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="custoPrevisto">Custo Previsto (R$):</label></td>
-                            <td><input type="text" name="camapanha.custoPrevisto" value="${campanha.custoPrevisto}" id="custoPrevisto" size="16" maxlength="16" alt="custoprevisto" /></td>
+                    <td><label for="custoReal">Custo Real (R$):</label></td>
+                    <td><input type="text" name="campanha.custoReal" value="${campanha.custoReal}" id="custoReal" size="18" maxlength="16" alt="valor" /></td>
+                </tr>
+                <tr>
+                    <td><label for="receitaEsperada">Receita Esperada (R$):</label></td>
+                    <td><input type="text" name="campanha.receitaEsperada" value="${campanha.receitaEsperada}" id="receitaEsperada" size="18" maxlength="16" alt="valor" /></td>
 
-                            <td><label for="custoReal">Custo Real (R$):</label></td>
-                            <td><input type="text" name="camapanha.custoReal" value="${campanha.custoReal}" id="custoReal" size="16" maxlength="16" alt="valor" /></td>
-                        </tr>
-                        <tr>
-                            <td><label for="receitaEsperada">Receita Prevista (R$):</label></td>
-                            <td><input type="text" name="camapanha.receitaEsperada" value="${campanha.receitaEsperada}" id="receitaReal" size="16" maxlength="16" alt="valor" /></td>
+                    <td><label for="receitaReal">Receita Real (R$):</label></td>
+                    <td><input type="text" name="campanha.receitaReal" value="${campanha.receitaReal}" id="receitaReal" size="18" maxlength="16" alt="valor" /></td>
+                </tr>
+                <tr>
+                    <td><label for="tipo">Tipo:</label></td>
+                    <td>
+                        <select name="campanha.type" id="tipo">
+                        <c:forEach items="${type}" var="c">
+                            <option value="${c}"<c:if test="${campanha.type == c}"> selected="selected"</c:if>>${c.type}</option>
+                        </c:forEach>
+                        </select>
+                    </td>
 
-                            <td><label for="receitaReal">Receita Real (R$):</label></td>
-                            <td><input type="text" name="camapanha.receitaReal" value="${campanha.receitaReal}" id="receitaReal" size="16" maxlength="16" alt="valor" /></td>
-                        </tr> 
-                        <tr>
-                            <td><label for="dataInicial">Data Inicial:</label></td>
-                            <td><input type="text" name="campanha.dataInicial" value="${campanha.dataInicial}" id="dataInicial" size="16" maxlength="10" alt="data" /></td>
+                    <td><label for="dataInicial">Data Inicial:</label></td>
+                    <td><input type="text" name="campanha.dataInicial" value="<fmt:formatDate value="${campanha.dataInicial}" type="date" pattern="dd/MM/yyyy" />" id="dataInicial" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td><label for="status">Situação:</label></td>
+                    <td>
+                        <select name="campanha.status" id="status">
+                        <c:forEach items="${status}" var="s">
+                            <option value="${s}"<c:if test="${campanha.status == s}"> selected="selected"</c:if>>${s.status}</option>
+                        </c:forEach>
+                        </select>
+                    </td>
 
-                            <td><label for="dataFinal">Data Final:</label></td>
-                            <td><input type="text" name="campanha.dataFinal" value="${campanha.dataFinal}" id="dataFinal" size="16" maxlength="10" alt="data" /></td>
-                        </tr>
-                        <tr>
-                            <td><label for="objetivo">Objetivo:</label></td>
-                            <td colspan="3"><textarea name="campanha.objetivo" id="objetivo" rows="3" cols="50" alt="objetivo">${campanha.objetivo}</textarea></td>
-                        </tr>
-                        <tr>
-                            <td><label for="status">Status:</label></td>
-                            <td> 
-                                <select name="campanha.status" id="status">
-                                    <c:forEach items="${status}" var="s">
-                                        <option value="${s}"<c:if test="${campanha.status == s || (empty campanha.status && s == 'PLANEJANDO')}"> selected="selected"</c:if>>${s.status}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="hidden" name="campanha.id" value="${campanha.id}" /></td>
-                            <td><input type="button" id="doAll" name="edit-campanha" value="Salvar" /></td>
-                        </tr>
-                    </table>
-                </form>
-            </c:when>
-            <c:otherwise>
-                <p>Esta campanha não existe ou foi excluída.</p>
-            </c:otherwise>
-        </c:choose>
+                    <td><label for="dataFinal">Data Final:</label></td>
+                    <td><input type="text" name="campanha.dataFinal" value="<fmt:formatDate value="${campanha.dataFinal}" type="date" pattern="dd/MM/yyyy" />" id="dataFinal" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td><label for="objetivo">Objetivo:</label></td>
+                    <td colspan="3"><textarea name="campanha.objetivo" id="objetivo" rows="4" cols="50">${campanha.objetivo}</textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" name="campanha.id" value="${campanha.id}" /></td>
+                    <td><input type="button" id="doAll" name="edit-campanha" value="Salvar" /></td>
+                </tr>
+            </table>
+        </form>
+    </c:when>
+    <c:otherwise>
+        <p>Esta campanha não existe ou foi excluída.</p>
+    </c:otherwise>
+</c:choose>
         <script type="text/javascript">
             const URLBASE  = "<%= request.getContextPath()%>";
         </script>

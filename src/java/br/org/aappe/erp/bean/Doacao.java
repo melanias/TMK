@@ -4,18 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 /**
  * @author Phelipe Melanias
@@ -49,8 +38,8 @@ public class Doacao implements Serializable {
     private Doador doador;
 
     @OneToOne
-    @JoinColumn(name="id_operador", referencedColumnName="id", nullable=false, updatable=false)
-    private Funcionario operador;
+    @JoinColumn(name="id_funcionario", referencedColumnName="id", nullable=false, updatable=false)
+    private Funcionario funcionario;
 
     @OneToOne
     @JoinColumn(name="id_representante", referencedColumnName="id", nullable=false)
@@ -79,8 +68,8 @@ public class Doacao implements Serializable {
     public Doador getDoador() { return doador; }
     public void setDoador(Doador doador) { this.doador = doador; }
 
-    public Funcionario getOperador() { return operador; }
-    public void setOperador(Funcionario operador) { this.operador = operador; }
+    public Funcionario getFuncionario() { return funcionario; }
+    public void setFuncionario(Funcionario funcionario) { this.funcionario = funcionario; }
 
     public Funcionario getRepresentante() { return representante; }
     public void setRepresentante(Funcionario representante) { this.representante = representante; }

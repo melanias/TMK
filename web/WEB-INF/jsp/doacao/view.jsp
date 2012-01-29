@@ -34,26 +34,30 @@
                 <td><strong>Situação:</strong></td>
                 <td>${doacao.doador.status.status}</td>
             </tr>
+            <tr>
+                <td><strong>Descrição:</strong></td>
+                <td colspan="3"><c:if test="${empty doacao.descricao}">-</c:if>${doacao.descricao}</td>
+            </tr>
         </table>
         <hr />
         <table>
             <tr>
-                <td><strong>Operador:</strong></td>
-                <td>${doacao.operador.nome}</td>
+                <td><strong>Funcionário:</strong></td>
+                <td>${doacao.funcionario.nome}</td>
                 <td><strong>E-mail:</strong></td>
-                <td><c:if test="${empty doacao.operador.email}">-</c:if>${doacao.operador.email}</td>
+                <td><c:if test="${empty doacao.funcionario.email}">-</c:if>${doacao.funcionario.email}</td>
             </tr>
             <tr>
                 <td><strong>Telefone:</strong></td>
-                <td><c:if test="${empty doacao.operador.telefone}">-</c:if>${doacao.operador.telefone}</td>
+                <td><c:if test="${empty doacao.funcionario.telefone}">-</c:if>${doacao.funcionario.telefone}</td>
                 <td><strong>Celular:</strong></td>
-                <td><c:if test="${empty doacao.operador.celular}">-</c:if>${doacao.operador.celular}</td>
+                <td><c:if test="${empty doacao.funcionario.celular}">-</c:if>${doacao.funcionario.celular}</td>
             </tr>
             <tr>
                 <td><strong>Perfil:</strong></td>
-                <td>${doacao.operador.perfil.userRole}</td>
+                <td>${doacao.funcionario.perfil.userRole}</td>
                 <td><strong>Situação:</strong></td>
-                <td>${doacao.operador.status.status}</td>
+                <td>${doacao.funcionario.status.status}</td>
             </tr>
         </table>
         <hr />

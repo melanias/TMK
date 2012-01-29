@@ -123,9 +123,8 @@ public class DoadorController extends MainController {
             that(!doador.getCelular().isEmpty() || !doador.getTelefone().isEmpty(), "", "telefone.ou.celular");
 
             //Endereço
-            /*if (that(!doador.getEndereco().getCep().isEmpty(), "doador.cep", "cep"))
             that(!doador.getEndereco().getLogradouro().isEmpty() && !doador.getEndereco().getBairro().isEmpty() &&
-                         !doador.getEndereco().getUf().isEmpty() && !doador.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
+                 !doador.getEndereco().getCidade().isEmpty() && !doador.getEndereco().getUf().isEmpty(), "", "incomplete_address");
         }}.getErrors();
     }
 }

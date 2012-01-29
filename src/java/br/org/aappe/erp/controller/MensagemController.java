@@ -12,9 +12,7 @@ import br.com.caelum.vraptor.validator.Message;
 import br.com.caelum.vraptor.validator.Validations;
 import br.org.aappe.erp.annotations.Transactional;
 import static br.com.caelum.vraptor.view.Results.*;
-import static org.hamcrest.Matchers.*;
 
-import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.HtmlEmail;
@@ -41,8 +39,7 @@ public class MensagemController extends MainController {
 
     @Get("/mensagem")
     public List<Mensagem> list() {
-        result.include("title", "Newsletter e SMS");
-
+        result.include("title", "Newsletter");
         return repository.listAllById();
     }
 
@@ -61,6 +58,7 @@ public class MensagemController extends MainController {
     public void frmAdd() {
         result.include("title", "Enviar Mensagem");
         result.include("types", SendType.getAll());
+        result.include("servidor", smtpRepository.getActiveServer());
     }
 
     @Transactional
@@ -72,44 +70,53 @@ public class MensagemController extends MainController {
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
 
         //Servidor SMTP
-        //Smtp smtp = smtpRepository.getActiveServer();
+        Smtp smtp = smtpRepository.getActiveServer();
 
-        //TODO: o código abaixo está funcionado, mas está faltando
-        //      definir o layout do newsletter.
-        /*try {
-            //TODO: Melhorar essa exceção, não permitindo o envio de mensagens
-            //      sem um servidor configurado ou ativo.
-            if (smtp == null)
-                throw new Exception("Nenhum servidor SMTP ativo ou configurado.");
+        if (smtp != null) {
+            //Funcionando corretamente, só precisamos definir algumas coisas
+            //antes de colocar realmente para funcionar.
+            try {
+                /*Email email = new HtmlEmail();
+                email.setHostName(smtp.getHostName());
+                email.setSmtpPort(smtp.getPort());
+                email.setAuthenticator(new DefaultAuthenticator(smtp.getAccount(), smtp.getPassword()));
+                email.setTLS(smtp.isTls());
+                email.setFrom("aappe@aappe.org.br");
 
-            Email email = new HtmlEmail();
-            email.setHostName(smtp.getHostName());
-            email.setSmtpPort(smtp.getPort());
-            email.setAuthenticator(new DefaultAuthenticator(smtp.getAccount(), smtp.getPassword()));
-            email.setTLS(smtp.isTls());
-            email.setFrom("de");
-            email.setSubject("AAPPE - Newsletter");//Acho que isso deve vim no formulário do mensagem!
-            email.setMsg(mensagem.getTexto());
-            email.addBcc("para");//BCC Cópia Oculta!
-            email.send();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
+                //Acho que isso deve vim no formulário da mensagem
+                email.setSubject("AAPPE - Newsletter");
 
-        //Definir data de envio da mensagem
-        mensagem.setData(new Date());
+                //Mensagem
+                email.setMsg(mensagem.getTexto());
 
-        repository.persist(mensagem);
-        result.use(json()).withoutRoot().from("OK").serialize();
+                //E-mail de todos os doadores cadastrados
+                //email.addTo("phelipe.melanias@gmail.com");
+
+                //Verificar se é realmente necessário uma cópia oculta
+                //email.addBcc("para");
+
+                email.send();*/
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            //Definir data de envio da mensagem
+            mensagem.setData(new Date());
+
+            repository.persist(mensagem);
+            result.use(json()).withoutRoot().from("OK").serialize();
+        } else {
+            result.nothing();
+        }
     }
 
     private List<Message> validate(final Mensagem mensagem) {
         return new Validations(){{
-            //Tipo de envio
-            that(mensagem.getTipo(), is(notNullValue()), "mensagem.tipo", "mensagem.tipo");
-
             //Texto
             that(!mensagem.getTexto().isEmpty(), "mensagem.texto", "mensagem.texto");
+
+            //Tipo de envio
+            //that(mensagem.getTipo(), is(notNullValue()), "mensagem.tipo", "mensagem.tipo");
         }}.getErrors();
     }
 }

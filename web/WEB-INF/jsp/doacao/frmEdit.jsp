@@ -59,7 +59,7 @@
                         </tr>
                         <tr>
                             <td><label for="dataRecebimento">Data de Recebimento:</label></td>
-                            <td><input type="text" name="doacao.recebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy" />" id="dataRecebimento" size="18" maxlength="10" alt="data" /></td>
+                            <td><input type="text" name="doacao.recebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy" />" id="dataRecebimento" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                         </tr>
                         <tr>
                             <td><label for="descricao">Descrição:</label></td>
