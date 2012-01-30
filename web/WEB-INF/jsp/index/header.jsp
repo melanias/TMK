@@ -30,7 +30,8 @@
         <title>${title}</title>
     </head>
     <body>
-        <div id="Module" class="corner-bottom-right-6 shadow-3">TMK</div>
+        <div id="Module" class="corner-bottom-right-6 shadow-3"><a href="${linkTo[IndexController].admin}">ADMIN</a></div>
+        <div id="Module2" class="corner-bottom-right-6 shadow-3"><a href="${linkTo[IndexController].index}">TMK</a></div>
         <div id="Version" class="corner-top-left-6 shadow-3">Versão 0.0.3</div>
         <div id="header">
             <div class="content">

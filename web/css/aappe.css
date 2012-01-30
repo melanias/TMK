@@ -100,15 +100,32 @@ div#header .content #menu > ul > li > div ul li a:hover {
 div#Module {
     top: 0;
     left: 0;
-    color: white;
     position: fixed;
     font-size: 11px;
     padding: 2px 6px 3px 4px;
     font-weight: bold;
     letter-spacing: 2px;
-    background-color: #dd7700;
+    background-color: #CD3333;
 }
 
+div#Module a{
+    color: #FFFFFF;
+}
+
+div#Module2 {
+    top: 0;
+    left: 58px;
+    position: fixed;
+    font-size: 11px;
+    padding: 2px 6px 3px 4px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: #DD7700;
+}
+
+div#Module2 a{
+    color: #FFFFFF;
+}
 div#Version {
     right: 0;
     bottom: 0;
