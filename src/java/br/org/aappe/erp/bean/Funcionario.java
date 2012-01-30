@@ -34,10 +34,10 @@ public class Funcionario extends Pessoa implements Serializable {
     @GeneratedValue(generator="id_funcionario_seq", strategy=GenerationType.AUTO)
     private int id;
 
-    @Column(length=40, nullable=false)
+    @Column(length=40)
     private String login;
 
-    @Column(length=32, nullable=false)
+    @Column(length=32)
     private String senha;
 
     @Transient

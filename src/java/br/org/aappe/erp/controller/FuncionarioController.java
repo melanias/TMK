@@ -273,30 +273,41 @@ public class FuncionarioController extends MainController {
             //Unidade
             that(funcionario.getUnidade().getId() > 0, "funcionario.unidade", "unidade_not_selected");
 
+            //TODO: No momento está atendendo as nossas necessidades, mas o código abaixo pode e deve ser melhorado.
             //Login
-            if (that(!funcionario.getLogin().isEmpty(), "login", "setup.login"))
+            if (!funcionario.getPerfil().equals(Role.REPRESENTANTE) && that(!funcionario.getLogin().isEmpty(), "login", "setup.login"))
                 that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
+            else
+                funcionario.setLogin("");
 
             //Senha
             if (funcionario.getId() > 0) {
-                if (funcionario.getSenha().isEmpty()) {
-                    funcionario.setSenha(repository.find(funcionario.getId()).getSenha());
+                Funcionario old = repository.find(funcionario.getId());
+
+                if (old.getPerfil().equals(Role.REPRESENTANTE) && !funcionario.getPerfil().equals(Role.REPRESENTANTE)) {
+                    if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
+                        that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                        that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
+                        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
                 } else {
-                    if (that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                    if (funcionario.getSenha().isEmpty()) {
+                        funcionario.setSenha(old.getSenha());
+                    } else {
+                        if (that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                            that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
+                            funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+                    }
+                }
+            } else {
+                if (funcionario.getPerfil().equals(Role.REPRESENTANTE)) {
+                    funcionario.setSenha("");
+                } else {
+                    if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
+                        that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
                         that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
                         funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
                 }
-            } else {
-                if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
-                    that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
-                    that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
-                    funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
             }
-
-            //Endereço
-            /*if (that(!funcionario.getEndereco().getCep().isEmpty(), "funcionario.cep", "cep"))
-                that(!funcionario.getEndereco().getLogradouro().isEmpty() && !funcionario.getEndereco().getBairro().isEmpty() &&
-                     !funcionario.getEndereco().getUf().isEmpty() && !funcionario.getEndereco().getCidade().isEmpty(), "", "address_is_not_complete");*/
         }}.getErrors();
     }
 }
