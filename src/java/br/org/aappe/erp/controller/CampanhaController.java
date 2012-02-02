@@ -12,10 +12,12 @@ import br.com.caelum.vraptor.validator.Message;
 import br.com.caelum.vraptor.validator.Validations;
 import static br.com.caelum.vraptor.view.Results.*;
 
+import br.org.aappe.erp.annotations.Authorized;
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Campanha;
 import br.org.aappe.erp.enums.CampaignType;
 import br.org.aappe.erp.enums.CampaignStatus;
+import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.CampanhaRepository;
 
 /**
@@ -29,25 +31,29 @@ public class CampanhaController extends MainController {
         super(result, validator);
         this.repository = repository;
     }
-
+    
     @Get("/campanha")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Campanha> list() {
         result.include("title", "Campanhas");
         return repository.listAllById();
     }
 
     @Get("/campanha/refresh")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Campanha> refresh() {
         return list();
     }
 
     @Get("/campanha/view/{id}")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
     public Campanha view(int id) {
         result.include("title", "Informações da Campanha");
         return repository.find(id);
     }
 
     @Get("/campanha/add")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
     public void frmAdd() {
         result.include("title", "Cadastrar Campanha");
         result.include("type", CampaignType.getAll());
@@ -56,6 +62,7 @@ public class CampanhaController extends MainController {
 
     @Transactional
     @Post("/campanha/add")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
     public void add(final Campanha campanha) {
         List<Message> errors = validate(campanha);
 
@@ -70,6 +77,7 @@ public class CampanhaController extends MainController {
     }
 
     @Get("/campanha/edit/{id}")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
     public Campanha frmEdit(int id) {
         result.include("title", "Editar Campanha");
         result.include("type", CampaignType.getAll());
@@ -80,6 +88,7 @@ public class CampanhaController extends MainController {
 
     @Transactional
     @Post("/campanha/edit")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
     public void edit(final Campanha campanha) {
         List<Message> errors = validate(campanha);
 

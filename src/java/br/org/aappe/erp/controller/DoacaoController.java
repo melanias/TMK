@@ -13,8 +13,10 @@ import br.com.caelum.vraptor.validator.Message;
 import br.com.caelum.vraptor.validator.Validations;
 import static br.com.caelum.vraptor.view.Results.*;
 
+import br.org.aappe.erp.annotations.Authorized;
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Doacao;
+import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.CampanhaRepository;
 import br.org.aappe.erp.repository.DoacaoRepository;
 import br.org.aappe.erp.repository.FuncionarioRepository;
@@ -37,25 +39,29 @@ public class DoacaoController extends MainController {
         this.campanhaRepository = campanhaRepository;
         this.funcionarioRepository = funcionarioRepository;
     }
-
+    
     @Get("/doacao")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Doacao> list() {
         result.include("title", "Doações");
         return repository.listAllById();
     }
 
     @Get("/doacao/refresh")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Doacao> refresh() {
         return list();
     }
 
     @Get("/doacao/view/{id}")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public Doacao view(long id) {
         result.include("title", "Informações da Doação");
         return repository.find(id);
     }
 
     @Get("/doacao/add")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public void frmAdd() {
         result.include("title", "Cadastrar Doação");
         result.include("campanhas", campanhaRepository.listAllById());
@@ -64,6 +70,7 @@ public class DoacaoController extends MainController {
 
     @Transactional
     @Post("/doacao/add")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public void add(final Doacao doacao) {
         List<Message> errors = validate(doacao);
 
@@ -82,6 +89,7 @@ public class DoacaoController extends MainController {
     }
 
     @Get("/doacao/edit/{id}")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE})
     public Doacao frmEdit(long id) {
         result.include("title", "Editar Doação");
         result.include("campanhas", campanhaRepository.listAllById());
@@ -91,6 +99,7 @@ public class DoacaoController extends MainController {
 
     @Transactional
     @Post("/doacao/edit")
+    @Authorized({Role.ADMINISTRADOR, Role.GERENTE})    
     public void edit(final Doacao doacao) {
         List<Message> errors = validate(doacao);
 

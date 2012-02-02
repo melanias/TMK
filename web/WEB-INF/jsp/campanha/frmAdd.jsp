@@ -24,7 +24,7 @@
         <form action="javascript:;" method="post">
             <table>
                 <tr>
-                    <td><label for="campanha">Nome:</label></td>
+                    <td><label for="campanha">Nome*:</label></td>
                     <td colspan="3"><input type="text" name="campanha.nome" value="" id="campanha" size="50" maxlength="200" /></td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                     <td><input type="text" name="campanha.receitaReal" value="" id="receitaReal" size="18" maxlength="16" alt="valor" /></td>
                 </tr>
                 <tr>
-                    <td><label for="tipo">Tipo:</label></td>
+                    <td><label for="tipo">Tipo*:</label></td>
                     <td>
                         <select name="campanha.type" id="tipo">
                         <c:forEach items="${type}" var="c">
@@ -51,11 +51,11 @@
                         </select>
                     </td>
 
-                    <td><label for="dataInicial">Data Inicial:</label></td>
+                    <td><label for="dataInicial">Data Inicial*:</label></td>
                     <td><input type="text" name="campanha.dataInicial" value="" id="dataInicial" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                 </tr>
                 <tr>
-                    <td><label for="status">Situação:</label></td>
+                    <td><label for="status">Situação*:</label></td>
                     <td>
                         <select name="campanha.status" id="status">
                         <c:forEach items="${status}" var="s">
@@ -64,7 +64,7 @@
                         </select>
                     </td>
 
-                    <td><label for="dataFinal">Data Final:</label></td>
+                    <td><label for="dataFinal">Data Final*:</label></td>
                     <td><input type="text" name="campanha.dataFinal" value="" id="dataFinal" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                 </tr>
                 <tr>

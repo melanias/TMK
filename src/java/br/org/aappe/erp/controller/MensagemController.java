@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Message;
 import br.com.caelum.vraptor.validator.Validations;
+import br.org.aappe.erp.annotations.Authorized;
 import br.org.aappe.erp.annotations.Transactional;
 import static br.com.caelum.vraptor.view.Results.*;
 
@@ -19,14 +20,17 @@ import org.apache.commons.mail.HtmlEmail;
 
 import br.org.aappe.erp.bean.Mensagem;
 import br.org.aappe.erp.enums.SendType;
+import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.MensagemRepository;
 import br.org.aappe.erp.bean.Smtp;
 import br.org.aappe.erp.repository.SmtpRepository;
+
 
 /**
  * @author Phelipe Melanias
  */
 @Resource
+@Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
 public class MensagemController extends MainController {
     private final MensagemRepository repository;
     private final SmtpRepository smtpRepository;

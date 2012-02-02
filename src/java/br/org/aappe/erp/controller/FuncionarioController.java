@@ -308,6 +308,9 @@ public class FuncionarioController extends MainController {
                         funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
                 }
             }
+            //Comparando Admissão, Demissão e Nascimento
+            //if (that(funcionario.getDemissao().compareTo(funcionario.getAdmissao()) >= 0 , "", "dataDemissao.maior") &&
+            //    that(funcionario.getAdmissao().compareTo(funcionario.getNascimento())>= 0, "", "dataNascimento.maior"));
         }}.getErrors();
     }
 }

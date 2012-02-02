@@ -24,7 +24,7 @@
         <form action="javascript:;" method="post">
             <table>
                 <tr>
-                    <td><label for="donor">Doador:</label></td>
+                    <td><label for="donor">Doador*:</label></td>
                     <td><input type="text" value="" id="donor" size="50" maxlength="200" /></td>
                 </tr>
                 <tr>
@@ -39,11 +39,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="valor">Valor (R$):</label></td>
+                    <td><label for="valor">Valor (R$)*:</label></td>
                     <td><input type="text" name="doacao.valor" value="" id="valor" size="18" maxlength="16" alt="valor" /></td>
                 </tr>
                 <tr>
-                    <td><label for="representante">Representante:</label></td>
+                    <td><label for="representante">Representante*:</label></td>
                     <td>
                         <select name="doacao.representante.id" id="representante">
                             <option value="">--</option>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="dataRecebimento">Data de Recebimento:</label></td>
+                    <td><label for="dataRecebimento">Data de Recebimento*:</label></td>
                     <td><input type="text" name="doacao.recebimento" value="" id="dataRecebimento" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                 </tr>
                 <tr>
