@@ -1,6 +1,7 @@
 package br.org.aappe.erp.controller;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,10 +21,6 @@ import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.CampanhaRepository;
 import br.org.aappe.erp.repository.DoacaoRepository;
 import br.org.aappe.erp.repository.FuncionarioRepository;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import org.joda.time.DateTime;
 
 /**
  * @author Phelipe Melanias
@@ -130,7 +127,11 @@ public class DoacaoController extends MainController {
             that(doacao.getRepresentante().getId() > 0, "doacao.representante", "representante");
 
             //Data de Recebimento
-            that(doacao.getRecebimento() != null, "doacao.recebimento", "recebimento");
+            if (that(doacao.getRecebimento() != null, "doacao.recebimento", "recebimento")) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                that(sdf.format(doacao.getRecebimento()).compareTo(sdf.format(new Date())) >= 0, "doacao.recebimento", "recebimento.menor");
+            }
         }}.getErrors();
     }
 }
