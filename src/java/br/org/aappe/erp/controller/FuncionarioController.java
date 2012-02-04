@@ -45,18 +45,15 @@ import br.org.aappe.erp.util.Utilities;
  */
 @Resource @Path("/admin")
 public class FuncionarioController extends MainController {
-    private final SetorRepository setorRepository;
     private final FuncionarioRepository repository;
     private final UnidadeRepository unidadeRepository;
 
     public FuncionarioController(Result result, Validator validator, HttpServletResponse response,
-                                 EmployeeSession employeeSession, SetorRepository setorRepository,
-                                 FuncionarioRepository repository, UnidadeRepository unidadeRepository)
+                                 EmployeeSession employeeSession, FuncionarioRepository repository, UnidadeRepository unidadeRepository)
     {
         super(result, validator, response, employeeSession);
 
         this.repository = repository;
-        this.setorRepository = setorRepository;
         this.unidadeRepository = unidadeRepository;
     }
 
@@ -308,9 +305,14 @@ public class FuncionarioController extends MainController {
                         funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
                 }
             }
-            //Comparando Admissão, Demissão e Nascimento
-            //if (that(funcionario.getDemissao().compareTo(funcionario.getAdmissao()) >= 0 , "", "dataDemissao.maior") &&
-            //    that(funcionario.getAdmissao().compareTo(funcionario.getNascimento())>= 0, "", "dataNascimento.maior"));
+
+            //Data de nascimento
+            if (funcionario.getNascimento() != null && funcionario.getAdmissao() != null)
+                that(funcionario.getNascimento().compareTo(funcionario.getAdmissao()) < 0, "funcionario.nascimento", "dataNascimento.maior");
+
+            //Data de demissão
+            if (funcionario.getAdmissao() != null && funcionario.getDemissao() != null)
+                that(funcionario.getDemissao().compareTo(funcionario.getAdmissao()) > 0, "funcionario.demissao", "dataDemissao.menor");
         }}.getErrors();
     }
 }

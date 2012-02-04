@@ -44,7 +44,7 @@
                     <td><input type="text" name="campanha.receitaReal" value="${campanha.receitaReal}" id="receitaReal" size="18" maxlength="16" alt="valor" /></td>
                 </tr>
                 <tr>
-                    <td><label for="tipo">Tipo*:</label></td>
+                    <td><label for="tipo">Tipo:</label></td>
                     <td>
                         <select name="campanha.type" id="tipo">
                         <c:forEach items="${type}" var="c">
@@ -57,7 +57,7 @@
                     <td><input type="text" name="campanha.dataInicial" value="<fmt:formatDate value="${campanha.dataInicial}" type="date" pattern="dd/MM/yyyy" />" id="dataInicial" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                 </tr>
                 <tr>
-                    <td><label for="status">Situação*:</label></td>
+                    <td><label for="status">Situação:</label></td>
                     <td>
                         <select name="campanha.status" id="status">
                         <c:forEach items="${status}" var="s">

@@ -31,29 +31,29 @@ public class CampanhaController extends MainController {
         super(result, validator);
         this.repository = repository;
     }
-    
+
     @Get("/campanha")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Campanha> list() {
         result.include("title", "Campanhas");
         return repository.listAllById();
     }
 
     @Get("/campanha/refresh")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Campanha> refresh() {
         return list();
     }
 
     @Get("/campanha/view/{id}")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.MARKETING, Role.OPERADOR, Role.ESTAGIARIO})
     public Campanha view(int id) {
         result.include("title", "Informações da Campanha");
         return repository.find(id);
     }
 
     @Get("/campanha/add")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
+    @Authorized({Role.GERENTE, Role.MARKETING})
     public void frmAdd() {
         result.include("title", "Cadastrar Campanha");
         result.include("type", CampaignType.getAll());
@@ -62,7 +62,7 @@ public class CampanhaController extends MainController {
 
     @Transactional
     @Post("/campanha/add")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
+    @Authorized({Role.GERENTE, Role.MARKETING})
     public void add(final Campanha campanha) {
         List<Message> errors = validate(campanha);
 
@@ -77,7 +77,7 @@ public class CampanhaController extends MainController {
     }
 
     @Get("/campanha/edit/{id}")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
+    @Authorized({Role.GERENTE, Role.MARKETING})
     public Campanha frmEdit(int id) {
         result.include("title", "Editar Campanha");
         result.include("type", CampaignType.getAll());
@@ -88,7 +88,7 @@ public class CampanhaController extends MainController {
 
     @Transactional
     @Post("/campanha/edit")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
+    @Authorized({Role.GERENTE, Role.MARKETING})
     public void edit(final Campanha campanha) {
         List<Message> errors = validate(campanha);
 

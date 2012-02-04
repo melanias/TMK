@@ -32,29 +32,29 @@ public class DoadorController extends MainController {
         super(result, validator);
         this.repository = repository;
     }
-    
+
     @Get("/doador")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Doador> list() {
         result.include("title", "Doadores");
         return repository.listAllById();
     }
 
     @Get("/doador/refresh")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public List<Doador> refresh() {
         return list();
     }
 
     @Get("/doador/view/{id}")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public Doador view(int id) {
         result.include("title", "Informações do Doador");
         return repository.find(id);
     }
 
     @Get("/doador/search")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
+    @Authorized({Role.GERENTE, Role.OPERADOR, Role.ESTAGIARIO})
     public void search(String term) {
         String nome = ((term == null) ? "" : Utilities.decodeText(term.trim()));
 
@@ -62,7 +62,7 @@ public class DoadorController extends MainController {
     }
 
     @Get("/doador/add")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR})
+    @Authorized({Role.GERENTE, Role.OPERADOR})
     public void frmAdd() {
         result.include("title", "Cadastrar Doador");
         result.include("types", DonorType.getAll());
@@ -71,7 +71,7 @@ public class DoadorController extends MainController {
 
     @Transactional
     @Post("/doador/add")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR})
+    @Authorized({Role.GERENTE, Role.OPERADOR})
     public void add(final Doador doador) {
         List<Message> errors = validate(doador);
 
@@ -86,7 +86,7 @@ public class DoadorController extends MainController {
     }
 
     @Get("/doador/edit/{id}")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR})
+    @Authorized({Role.GERENTE, Role.OPERADOR})
     public Doador frmEdit(int id) {
         result.include("title", "Editar Doador");
         result.include("types", DonorType.getAll());
@@ -96,7 +96,7 @@ public class DoadorController extends MainController {
 
     @Transactional
     @Post("/doador/edit")
-    @Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.OPERADOR})
+    @Authorized({Role.GERENTE, Role.OPERADOR})
     public void edit(final Doador doador) {
         List<Message> errors = validate(doador);
 

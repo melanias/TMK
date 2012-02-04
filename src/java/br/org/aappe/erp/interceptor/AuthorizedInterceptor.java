@@ -37,18 +37,23 @@ public class AuthorizedInterceptor implements Interceptor {
 
     @Override
     public void intercept(InterceptorStack stack, ResourceMethod method, Object o) throws InterceptionException {
+        String uri   = request.getRequestURI();
         Authorized a = whereIsTheAnnotation(method);
 
-        if (isAuthorized(a) || employeeSession.getPerfil().equals(Role.ADMINISTRADOR))
+        if (isAuthorized(a) || isAdministrator()) {
             stack.next(method, o);
-        else
-            result.redirectTo(IndexController.class).index();
+        } else {
+            if (uri.contains("/add") || uri.contains("/edit") || uri.contains("/view"))
+                result.redirectTo(IndexController.class).unauthorizedAccess();
+            else
+                result.redirectTo(IndexController.class).index();
+        }
     }
 
     private boolean isAuthorized(Authorized a) {
         if (a != null) {
             for (Role role : a.value()) {
-                if (role.equals(employeeSession.getPerfil())/* || employeeSession.getPerfil().equals(Role.ADMINISTRADOR)*/)
+                if (role.equals(employeeSession.getPerfil()))
                     return true;
             }
         }
@@ -59,5 +64,9 @@ public class AuthorizedInterceptor implements Interceptor {
     private Authorized whereIsTheAnnotation(ResourceMethod method) {
         return method.containsAnnotation(Authorized.class) ? method.getMethod().getAnnotation(Authorized.class)
                                                            : method.getResource().getType().getAnnotation(Authorized.class);
+    }
+
+    private boolean isAdministrator() {
+        return employeeSession.getPerfil().equals(Role.ADMINISTRADOR);
     }
 }

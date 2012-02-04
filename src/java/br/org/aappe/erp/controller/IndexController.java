@@ -23,4 +23,9 @@ public class IndexController extends MainController {
     public void admin() {
         result.include("title", "Módulo Administrativo");
     }
+
+    @Get("/unauthorizedAccess")
+    public void unauthorizedAccess() {
+        result.include("title", "Acesso não autorizado!");
+    }
 }

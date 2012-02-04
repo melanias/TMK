@@ -30,7 +30,7 @@ import br.org.aappe.erp.repository.SmtpRepository;
  * @author Phelipe Melanias
  */
 @Resource
-@Authorized({Role.ADMINISTRADOR, Role.GERENTE, Role.MARKETING})
+@Authorized({Role.GERENTE, Role.MARKETING})
 public class MensagemController extends MainController {
     private final MensagemRepository repository;
     private final SmtpRepository smtpRepository;
