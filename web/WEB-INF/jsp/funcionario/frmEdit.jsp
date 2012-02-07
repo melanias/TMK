@@ -27,21 +27,21 @@
         <form action="javascript:;" method="post">
             <table>
                 <tr>
-                    <td><label for="nome">Nome:</label></td>
+                    <td><label for="nome">Nome*:</label></td>
                     <td><input type="text" name="funcionario.nome" value="${funcionario.nome}" id="nome" size="50" maxlength="200" /></td>
 
                     <td><label for="dataNascimento">Data de Nascimento:</label></td>
                     <td><input type="text" name="funcionario.nascimento" value="<fmt:formatDate value="${funcionario.nascimento}" type="date" pattern="dd/MM/yyyy"/>" id="dataNascimento" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
-                    <td><label for="rg">RG:</label></td>
+                    <td><label for="rg">RG*:</label></td>
                     <td><input type="text" name="funcionario.rg" value="${funcionario.rg}" id="rg" size="20" maxlength="20" alt="rg" /></td>
 
                     <td><label for="dataAdmissao">Data de Admissão:</label></td>
                     <td><input type="text" name="funcionario.admissao" value="<fmt:formatDate value="${funcionario.admissao}" type="date" pattern="dd/MM/yyyy"/>" id="dataAdmissao" size="16" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
-                    <td><label for="cpf">CPF:</label></td>
+                    <td><label for="cpf">CPF*:</label></td>
                     <td><input type="text" name="funcionario.cpf" value="${funcionario.cpf}" id="cpf" size="16" maxlength="14" alt="cpf" /></td>
 
                     <td><label for="dataDemissao">Data de Demissão:</label></td>
@@ -51,7 +51,7 @@
                     <td><label for="email">E-mail:</label></td>
                     <td><input type="text" name="funcionario.email" value="${funcionario.email}" id="email" size="35" maxlength="100" /></td>
 
-                    <td><label for="unidade">Unidade:</label></td>
+                    <td><label for="unidade">Unidade*:</label></td>
                     <td>
                         <select name="funcionario.unidade.id" id="unidade">
                             <option value="">--</option>
@@ -62,7 +62,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="fone">Telefone:</label></td>
+                    <td><label for="fone">Telefone*:</label></td>
                     <td><input type="text" name="funcionario.telefone" value="${funcionario.telefone}" id="fone" size="18" maxlength="14" alt="phone" /></td>
 
                     <td><label for="setor">Setor:</label></td>
@@ -80,7 +80,7 @@
                     <td><label for="celular">Celular:</label></td>
                     <td><input type="text" name="funcionario.celular" value="${funcionario.celular}" id="celular" size="18" maxlength="14" alt="phone" /></td>
 
-                    <td><label for="perfil">Perfil:</label></td>
+                    <td><label for="perfil">Perfil*:</label></td>
                     <td>
                         <select name="funcionario.perfil" id="perfil">
                         <c:forEach items="${roles}" var="r">
@@ -90,10 +90,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="login">Login:</label></td>
+                    <td><label for="login">Login*:</label></td>
                     <td><input type="text" name="funcionario.login" value="${funcionario.login}" id="login" size="16" maxlength="40" /></td>
 
-                    <td><label for="status">Situação:</label></td>
+                    <td><label for="status">Situação*:</label></td>
                     <td>
                         <select name="funcionario.status" id="status">
                         <c:forEach items="${status}" var="s">
@@ -103,10 +103,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="senha">Senha:</label></td>
+                    <td><label for="senha">Senha*:</label></td>
                     <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>
 
-                    <td><label for="checkPass">Repetir senha:</label></td>
+                    <td><label for="checkPass">Repetir senha*:</label></td>
                     <td><input type="password" name="funcionario.checkPass" value="" id="checkPass" size="16" /></td>
                 </tr>
             </table>

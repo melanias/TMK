@@ -25,11 +25,11 @@
         <form action="javascript:;" method="post">
             <table>
                 <tr>
-                    <td><label for="cnpj">CNPJ:</label></td>
+                    <td><label for="cnpj">CNPJ*:</label></td>
                     <td><input type="text" name="unidade.cnpj" value="${unidade.cnpj}" id="cnpj" size="18" maxlength="18" alt="cnpj" /></td>
                 </tr>
                 <tr>
-                    <td><label for="razaoSocial">Razão Social:</label></td>
+                    <td><label for="razaoSocial">Razão Social*:</label></td>
                     <td><input type="text" name="unidade.razaoSocial" value="${unidade.razaoSocial}" id="razaoSocial" size="50" maxlength="200" /></td>
                 </tr>
                 <tr>

@@ -25,11 +25,11 @@
         <form action="javascript:;" method="post">
             <table>
                 <tr>
-                    <td><label for="nome">Nome:</label></td>
+                    <td><label for="nome">Nome*:</label></td>
                     <td><input type="text" name="setor.nome" value="${setor.nome}" id="nome" size="50" maxlength="200" /></td>
                 </tr>
                 <tr>
-                    <td><label for="sigla">Sigla:</label></td>
+                    <td><label for="sigla">Sigla*:</label></td>
                     <td><input type="text" name="setor.sigla" value="${setor.sigla}" id="sigla" size="20" maxlength="20" /></td>
                 </tr>
                 <tr>

@@ -26,7 +26,7 @@
                 <form action="javascript:;" method="post">
                     <table>
                         <tr>
-                            <td><label for="donor">Doador:</label></td>
+                            <td><label for="donor">Doador*:</label></td>
                             <td><input type="text" value="${doacao.doador.nome}" id="donor" size="50" maxlength="200" /></td>
                         </tr>
                         <tr>
@@ -41,7 +41,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="valor">Valor (R$):</label></td>
+                            <td><label for="valor">Valor (R$)*:</label></td>
                             <td><input type="text" name="doacao.valor" value="${doacao.valor}" id="valor" size="18" maxlength="16" alt="valor" /></td>
                         </tr>
                         <tr>
@@ -58,7 +58,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="dataRecebimento">Data de Recebimento:</label></td>
+                            <td><label for="dataRecebimento">Data de Recebimento*:</label></td>
                             <td><input type="text" name="doacao.recebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy" />" id="dataRecebimento" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
                         </tr>
                         <tr>

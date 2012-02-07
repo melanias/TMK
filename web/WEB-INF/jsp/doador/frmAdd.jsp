@@ -32,7 +32,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="nome">Nome:</label></td>
+                    <td><label for="nome">Nome*:</label></td>
                     <td><input type="text" name="doador.nome" value="" id="nome" size="50" maxlength="200" /></td>
 
                     <td><label for="dataNascimento">Data de Nascimento:</label></td>
@@ -49,11 +49,11 @@
                     <td><label for="email">E-mail:</label></td>
                     <td><input type="text" name="doador.email" value="" id="email" size="35" maxlength="100" /></td>
 
-                    <td><label for="fone">Telefone:</label></td>
+                    <td><label for="fone">Telefone*:</label></td>
                     <td><input type="text" name="doador.telefone" value="" id="fone" size="18" maxlength="14" alt="phone" /></td>
                 </tr>
                 <tr>
-                    <td><label for="status">Situação:</label></td>
+                    <td><label for="status">Situação*:</label></td>
                     <td>
                         <select name="doador.status" id="status">
                         <c:forEach items="${status}" var="s">
@@ -62,7 +62,7 @@
                         </select>
                     </td>
 
-                    <td><label for="celular">Celular:</label></td>
+                    <td><label for="celular">Celular*:</label></td>
                     <td><input type="text" name="doador.celular" value="" id="celular" size="18" maxlength="14" alt="phone" /></td>
                 </tr>
                 <tr>
@@ -80,7 +80,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="logradouro">Logradouro:</label></td>
+                    <td><label for="logradouro">Logradouro*:</label></td>
                     <td><input type="text" name="doador.endereco.logradouro" value="" id="logradouro" size="50" maxlength="200" /></td>
 
                     <td><label for="numero">Número:</label></td>
@@ -90,14 +90,14 @@
                     <td><label for="complemento">Complemento:</label></td>
                     <td><input type="text" name="doador.endereco.complemento" value="" id="complemento" size="50" maxlength="150" /></td>
 
-                    <td><label for="uf">Estado:</label></td>
+                    <td><label for="uf">Estado*:</label></td>
                     <td><input type="text" name="doador.endereco.uf" value="" id="uf" size="2" maxlength="2" /></td>
                 </tr>
                 <tr>
-                    <td><label for="bairro">Bairro:</label></td>
+                    <td><label for="bairro">Bairro*:</label></td>
                     <td><input type="text" name="doador.endereco.bairro" value="" id="bairro" size="50" maxlength="100" /></td>
 
-                    <td><label for="cidade">Cidade:</label></td>
+                    <td><label for="cidade">Cidade*:</label></td>
                     <td><input type="text" name="doador.endereco.cidade" value="" id="cidade" size="30" maxlength="100" /></td>
                 </tr>
                 <tr>
