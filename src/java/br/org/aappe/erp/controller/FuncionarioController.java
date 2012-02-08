@@ -35,7 +35,6 @@ import br.org.aappe.erp.bean.Funcionario;
 import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.enums.Status;
 import br.org.aappe.erp.repository.FuncionarioRepository;
-import br.org.aappe.erp.repository.SetorRepository;
 import br.org.aappe.erp.repository.UnidadeRepository;
 import br.org.aappe.erp.session.EmployeeSession;
 import br.org.aappe.erp.util.Utilities;
@@ -270,12 +269,13 @@ public class FuncionarioController extends MainController {
             //Unidade
             that(funcionario.getUnidade().getId() > 0, "funcionario.unidade", "unidade_not_selected");
 
-            //TODO: No momento está atendendo as nossas necessidades, mas o código abaixo pode e deve ser melhorado.
+            System.out.println("##LOGIN: "+ funcionario.getLogin());
+            System.out.println("##SENHA: "+ funcionario.getSenha());
+            System.out.println("##CHECK: "+ funcionario.getCheckPass());
+
             //Login
-            if (!funcionario.getPerfil().equals(Role.REPRESENTANTE) && that(!funcionario.getLogin().isEmpty(), "login", "setup.login"))
+            if (funcionario.getLogin() != null && that(!funcionario.getLogin().isEmpty(), "login", "setup.login"))
                 that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
-            else
-                funcionario.setLogin("");
 
             //Senha
             if (funcionario.getId() > 0) {
@@ -287,23 +287,20 @@ public class FuncionarioController extends MainController {
                         that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
                         funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
                 } else {
-                    if (funcionario.getSenha().isEmpty()) {
-                        funcionario.setSenha(old.getSenha());
+                    if ((funcionario.getSenha() != null && funcionario.getCheckPass() != null) &&
+                        (!funcionario.getSenha().isEmpty() && that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                         that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))) {
+                        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
                     } else {
-                        if (that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
-                            that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
-                            funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+                        funcionario.setSenha(old.getSenha());
                     }
                 }
             } else {
-                if (funcionario.getPerfil().equals(Role.REPRESENTANTE)) {
-                    funcionario.setSenha("");
-                } else {
-                    if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
-                        that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
-                        that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
-                        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
-                }
+                if ((funcionario.getSenha() != null && funcionario.getCheckPass() != null) &&
+                    (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
+                     that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
+                     that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente")))
+                    funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
             }
 
             //Data de nascimento

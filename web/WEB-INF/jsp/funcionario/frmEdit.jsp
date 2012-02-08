@@ -91,7 +91,7 @@
                 </tr>
                 <tr>
                     <td><label for="login">Login*:</label></td>
-                    <td><input type="text" name="funcionario.login" value="${funcionario.login}" id="login" size="16" maxlength="40" /></td>
+                    <td><input type="text" name="funcionario.login" value="${funcionario.login}" id="login" size="16" maxlength="40" <c:if test="${funcionario.perfil == 'REPRESENTANTE'}">disabled="disabled" </c:if>/></td>
 
                     <td><label for="status">Situação*:</label></td>
                     <td>
@@ -104,10 +104,10 @@
                 </tr>
                 <tr>
                     <td><label for="senha">Senha*:</label></td>
-                    <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" /></td>
+                    <td><input type="password" name="funcionario.senha" value="" id="senha" size="16" <c:if test="${funcionario.perfil == 'REPRESENTANTE'}">disabled="disabled" </c:if>/></td>
 
                     <td><label for="checkPass">Repetir senha*:</label></td>
-                    <td><input type="password" name="funcionario.checkPass" value="" id="checkPass" size="16" /></td>
+                    <td><input type="password" name="funcionario.checkPass" value="" id="checkPass" size="16" <c:if test="${funcionario.perfil == 'REPRESENTANTE'}">disabled="disabled" </c:if>/></td>
                 </tr>
             </table>
             <hr />

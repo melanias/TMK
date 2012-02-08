@@ -174,4 +174,23 @@ jQuery(function($){
         });
     });
     /** Combobox de setores **/
+
+    /** Combobox de perfis **/
+    $("#perfil").live("change", function() {
+        var perfil = $(this).val();
+        var login  = $("#login");
+        var senha  = $("#senha");
+        var check  = $("#checkPass");
+
+        if (perfil == 'REPRESENTANTE') {
+            login.attr("disabled", "disabled");
+            senha.attr("disabled", "disabled");
+            check.attr("disabled", "disabled");
+        } else {
+            login.removeAttr("disabled");
+            senha.removeAttr("disabled");
+            check.removeAttr("disabled");
+        }
+    });
+    /** Combobox de perfis **/
 });
