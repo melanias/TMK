@@ -76,7 +76,7 @@ jQuery(function($){
         var label = $("label[for='cpfoucnpj']");
 
         if (tipo == 'FISICA') {
-            //Ativar os campo RG e Data de Nascimento
+            //Ativar os campos RG e Data de Nascimento
             rg.removeAttr("disabled");
             nasc.removeAttr("disabled");
 
@@ -86,7 +86,7 @@ jQuery(function($){
             doc.attr("name", "doador.cpf");
             doc.attr("maxlength", "14");
         } else {
-            //Desativar os campo RG e Data de Nascimento
+            //Desativar os campos RG e Data de Nascimento
             rg.attr("disabled", "disabled");
             nasc.attr("disabled", "disabled");
 

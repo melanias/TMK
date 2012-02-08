@@ -8,4 +8,3 @@ private
 ant-deploy.xml
 build-impl.xml
 genfiles.properties
-nbproject/project.properties
