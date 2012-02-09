@@ -198,10 +198,14 @@ public class FuncionarioController extends MainController {
                 table.addCell(cell);
 
                 for (Funcionario f : funcionarios) {
-                    table.addCell(new Phrase(f.getCpf(), normal));
+                    table.addCell(new Phrase(f.getCpf().isEmpty() ? "-" : f.getCpf(), normal));
                     table.addCell(new Phrase(f.getNome(), normal));
                     table.addCell(new Phrase(f.getPerfil().getUserRole(), normal));
-                    table.addCell(new Phrase(f.getAdmissao().toString(), normal));
+
+                    if (f.getAdmissao() != null)
+                        table.addCell(new Phrase(f.getAdmissao().toString(), normal));
+                    else
+                        table.addCell(new Phrase("-", normal));
 
                     if (f.getDemissao() != null)
                         table.addCell(new Phrase(f.getDemissao().toString(), normal));
@@ -209,12 +213,12 @@ public class FuncionarioController extends MainController {
                         table.addCell(new Phrase("-", normal));
 
                     if (f.getUnidade() != null)
-                        table.addCell(new Phrase(f.getUnidade().getNomeFantasia(), normal));
+                        table.addCell(new Phrase(f.getUnidade().getRazaoSocial(), normal));
                     else
                         table.addCell(new Phrase("-", normal));
 
                     if (f.getSetor() != null)
-                        table.addCell(new Phrase(f.getSetor().getNome(), normal));
+                        table.addCell(new Phrase(f.getSetor().getSigla(), normal));
                     else
                         table.addCell(new Phrase("-", normal));
                 }
