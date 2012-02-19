@@ -28,9 +28,10 @@
                             <td width="10%"><c:if test="${empty u.telefone}">-</c:if>${u.telefone}</td>
                             <td width="10%"><c:if test="${empty u.fax}">-</c:if>${u.fax}</td>
                             <td width="12%"><fmt:formatDate pattern="dd/MM/yyyy" value="${u.data}" /></td>
-                            <td width="53">
+                            <td width="81">
                                 <a class="preview" href="${linkTo[UnidadeController].view[u.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Unidade'});">Visualizar</a>
                                 <a class="edit-form" href="${linkTo[UnidadeController].frmEdit[u.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'640', headingText:'Editar Unidade'});">Editar</a>
+                                <a class="delete" href="javascript:;" rel="${linkTo[UnidadeController].delete[u.id]}">Excluir</a>
                             </td>
                         </tr>
                     </c:forEach>

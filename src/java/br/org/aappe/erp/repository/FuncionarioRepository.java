@@ -9,13 +9,13 @@ import br.org.aappe.erp.bean.Funcionario;
  */
 public interface FuncionarioRepository {
 
+    boolean hasEmployee();
+
     Funcionario find(int id);
 
     List<Funcionario> listAllById();
 
     void persist(Funcionario funcionario);
-
-    boolean hasEmployee();
 
     Funcionario merge(Funcionario funcionario);
 

@@ -29,9 +29,10 @@
                             </c:choose>
                         </td>
                         <td>${smtp.status.status}</td>
-                        <td width="53" >
+                        <td width="81">
                             <a class="preview" href="${linkTo[SmtpController].view[smtp.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'400', headingText:'SMTP'});">Visualizar</a>
                             <a class="edit-form" href="${linkTo[SmtpController].frmEdit[smtp.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'400', headingText:'Editar SMTP'});">Editar</a>
+                            <a class="delete" href="javascript:;" rel="${linkTo[SmtpController].delete[smtp.id]}">Excluir</a>
                         </td>
                     </tr>
                     </c:forEach>

@@ -14,6 +14,8 @@ public interface DoadorRepository {
 
     List<Doador> listAllById();
 
+    void remove(Doador doador);
+
     void persist(Doador doador);
 
     Doador merge(Doador doador);

@@ -35,6 +35,7 @@ jQuery(function($){
     //jQuery UI
     $("button, :button, :submit").button();
     $(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+    $(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
     $(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
     $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
     $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
@@ -166,6 +167,7 @@ jQuery(function($){
 
                         //Atualizar botões
                         parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+                        parent.$(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
                         parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
                         parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
                         parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
@@ -174,6 +176,7 @@ jQuery(function($){
                             alert("Ocorreu um erro ao carregar a lista.");
                     });
 
+                    //Fechar iframe
                     parent.window.hs.getExpander().close();
                 } else {
                     var errors = new Array();
@@ -186,6 +189,50 @@ jQuery(function($){
         });
     });
     /** iframe - code **/
+
+    /** Delete - code **/
+    $(".delete").live("click", function() {
+        //URL
+        var fullurl = $(this).attr("rel");
+        var refresh = URLBASE +"/"+ fullurl.split("/")[2] +"/refresh";
+
+        if (window.confirm("Deseja realmente excluir?")) {
+            $.ajax({
+                type: "POST",
+                url: fullurl,
+                //data: $("form").serialize(),
+                dataType: "json",
+                success: function(response) {
+                    if (response.toString() == "OK") {
+                        parent.$("#main > div.content").load(refresh, function(r, s) {
+
+                            //Atualizar botões
+                            parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+                            parent.$(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
+                            parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                            parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
+                            parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+
+                            if (s == "error")
+                                alert("Ocorreu um erro ao carregar a lista.");
+                        });
+
+                        //Fechar iframe
+                        parent.window.hs.getExpander().close();
+                    } else {
+                        var errors = new Array();
+
+                        $.each(response, function(k, i) {errors.push(i.message);});
+
+                        alert(errors.join("\n"));
+                    }
+                }
+            });
+        }
+
+        return false;
+    });
+    /** Delete - code **/
 
     /** Procurar doador **/
     if ($("#donor").is(":visible")) {

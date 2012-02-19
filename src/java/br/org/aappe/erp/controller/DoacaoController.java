@@ -115,6 +115,22 @@ public class DoacaoController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
+    @Transactional
+    @Post("/doacao/delete/{id}")
+    @Authorized(Role.GERENTE)
+    public void delete(int id) {
+        final Doacao doacao = repository.find(id);
+
+        List<Message> errors = new Validations(){{
+            that(doacao != null, "doacao", "doacao.nao.cadastrada");
+        }}.getErrors();
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.remove(doacao);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
     private List<Message> validate(final Doacao doacao) {
         return new Validations(){{
             //Doador

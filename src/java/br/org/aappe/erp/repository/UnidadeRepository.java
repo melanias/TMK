@@ -13,6 +13,8 @@ public interface UnidadeRepository {
 
     List<Unidade> listAllById();
 
+    void remove(Unidade unidade);
+
     void persist(Unidade unidade);
 
     Unidade merge(Unidade unidade);

@@ -107,6 +107,24 @@ public class DoadorController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
+    @Transactional
+    @Post("/doador/delete/{id}")
+    @Authorized(Role.GERENTE)
+    public void delete(int id) {
+        final Doador doador = repository.find(id);
+
+        List<Message> errors = new Validations(){{
+            if (that(doador != null, "doador", "doador.nao.cadastrado"))
+                that(doador.getDoacoes().isEmpty(), "doador", "doador.tem.doacao");
+        }}.getErrors();
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.remove(doador);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
     private List<Message> validate(final Doador doador) {
         return new Validations(){{
             //Nome

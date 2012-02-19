@@ -13,6 +13,8 @@ public interface SetorRepository {
 
     Setor merge(Setor setor);
 
+    void remove(Setor setor);
+
     void persist(Setor setor);
 
     List<Setor> listAllById();

@@ -120,6 +120,23 @@ public class SetorController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
+    @Transactional
+    @Post("/setor/delete/{id}")
+    public void delete(int id) {
+        final Setor setor = repository.find(id);
+
+        List<Message> errors = new Validations(){{
+            if (that(setor != null, "setor", "setor.nao.cadastrado"))
+                that(setor.getFuncionarios().isEmpty(), "setor", "setor.com.funcionario");
+        }}.getErrors();
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.remove(setor);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
     @Get("/setor/pdf")
     public void pdf() throws IOException {
         try {

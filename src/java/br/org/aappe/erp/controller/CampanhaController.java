@@ -99,6 +99,24 @@ public class CampanhaController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
+    @Transactional
+    @Post("/campanha/delete/{id}")
+    @Authorized(Role.GERENTE)
+    public void delete(int id) {
+        final Campanha campanha = repository.find(id);
+
+        List<Message> errors = new Validations(){{
+            if (that(campanha != null, "campanha", "campanha.nao.cadastrada"))
+                that(campanha.getDoacoes().isEmpty(), "campanha", "campanha.tem.doacao");
+        }}.getErrors();
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.remove(campanha);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
     private List<Message> validate(final Campanha campanha) {
         return new Validations() {{
             //Nome da campanha

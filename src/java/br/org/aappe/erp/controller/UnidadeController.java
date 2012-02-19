@@ -99,6 +99,31 @@ public class UnidadeController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
+    @Transactional
+    @Post("/unidade/delete/{id}")
+    public void delete(int id) {
+        final Unidade unidade = repository.find(id);
+
+        List<Message> errors = new Validations(){{
+            if (that(unidade != null, "unidade", "unidade.nao.cadastrada")) {
+                //Verificar se a unidade tem algum setor
+                that(unidade.getSetores().isEmpty(), "unidade", "unidade.com.setor");
+
+                //Verificar se a unidade tem algum doador
+                that(unidade.getDoadores().isEmpty(), "unidade", "unidade.com.doador");
+
+                //Verificar se a unidade tem algum funcionário
+                that(unidade.getFuncionarios().isEmpty(), "unidade", "unidade.com.funcionario");
+            }
+        }}.getErrors();
+
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.remove(unidade);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
     @Get("/unidade/pdf")
     public void pdf() throws IOException {
         try {

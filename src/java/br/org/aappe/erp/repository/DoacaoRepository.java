@@ -13,6 +13,8 @@ public interface DoacaoRepository {
 
     List<Doacao> listAllById();
 
+    void remove(Doacao doacao);
+
     void persist(Doacao doacao);
 
     Doacao merge(Doacao doacao);

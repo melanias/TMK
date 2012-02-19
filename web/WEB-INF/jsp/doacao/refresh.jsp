@@ -27,9 +27,10 @@
                         <td><fmt:formatNumber type="currency" value="${d.valor}" minFractionDigits="2" maxFractionDigits="2" /></td>
                         <td width="14%"><fmt:formatDate pattern="dd/MM/yyyy" value="${d.recebimento}" /></td>
                         <td>${d.representante.firstAndLastName}</td>
-                        <td width="53">
+                        <td width="81">
                             <a class="preview" href="${linkTo[DoacaoController].view[d.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'640', headingText:'Doação'});">Visualizar</a>
                             <a class="edit-form" href="${linkTo[DoacaoController].frmEdit[d.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'450', headingText:'Editar Doação'});">Editar</a>
+                            <a class="delete" href="javascript:;" rel="${linkTo[DoacaoController].delete[d.id]}">Excluir</a>
                         </td>
                     </tr>
                     </c:forEach>

@@ -11,13 +11,15 @@ public interface SmtpRepository {
 
     Smtp find(int id);
 
+    Smtp merge(Smtp smtp);
+
     Smtp getActiveServer();
 
+    void remove(Smtp smtp);
+
+    void persist(Smtp smtp);
+
     List<Smtp> listAllById();
-
-    void persist(Smtp newsletter);
-
-    Smtp merge(Smtp newsletter);
 
     boolean isUniqueServerActive(Smtp smtp);
 }

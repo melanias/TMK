@@ -88,6 +88,21 @@ public class SmtpController extends MainController {
         result.use(json()).withoutRoot().from("OK").serialize();
     }
 
+    @Transactional
+    @Post("/smtp/delete/{id}")
+    public void delete(int id) {
+        final Smtp smtp = repository.find(id);
+
+        List<Message> errors = new Validations(){{
+            that(smtp != null, "smtp", "smtp.nao.cadastrado");
+        }}.getErrors();
+        validator.addAll(errors);
+        validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
+
+        repository.remove(smtp);
+        result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
     private List<Message> validate(final Smtp smtp) {
         return new Validations() {{
             //Hostname
