@@ -28,9 +28,10 @@
                         <td width="10%"><c:if test="${empty d.celular}">-</c:if>${d.celular}</td>
                         <td width="12%"><fmt:formatDate pattern="dd/MM/yyyy" value="${d.data}" /></td>
                         <td width="10%">${d.status.status}</td>
-                        <td width="81">
+                        <td width="142">
                             <a class="preview" href="${linkTo[DoadorController].view[d.id]}" onclick="return hs.htmlExpand(this, {objectType:'ajax', align:'center', width:'680', headingText:'Doador'});">Visualizar</a>
                             <a class="edit-form" href="${linkTo[DoadorController].frmEdit[d.id]}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'680', headingText:'Editar Doador'});">Editar</a>
+                            <a class="pdf" href="${linkTo[DoadorController].pdf[d.id]}" title="PDF">PDF</a>
                             <a class="delete" href="javascript:;" rel="${linkTo[DoadorController].delete[d.id]}">Excluir</a>
                         </td>
                     </tr>

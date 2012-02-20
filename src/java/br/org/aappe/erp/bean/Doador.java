@@ -1,6 +1,10 @@
 package br.org.aappe.erp.bean;
 
 import java.io.Serializable;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 
@@ -71,4 +75,13 @@ public class Doador extends Pessoa implements Serializable {
 
     public Unidade getUnidade() { return unidade; }
     public void setUnidade(Unidade unidade) { this.unidade = unidade; }
+
+    public BigDecimal getTotalValueOfDonations() {
+        BigDecimal total = new BigDecimal(BigInteger.ZERO);
+
+        for (Doacao doacao : doacoes)
+            total = total.add(doacao.getValor());
+
+        return total;
+    }
 }

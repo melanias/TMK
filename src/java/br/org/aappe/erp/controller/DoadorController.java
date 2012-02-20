@@ -1,7 +1,21 @@
 package br.org.aappe.erp.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import java.util.Date;
 import java.util.List;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletResponse;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -14,6 +28,7 @@ import static br.com.caelum.vraptor.view.Results.*;
 
 import br.org.aappe.erp.annotations.Authorized;
 import br.org.aappe.erp.annotations.Transactional;
+import br.org.aappe.erp.bean.Doacao;
 import br.org.aappe.erp.bean.Doador;
 import br.org.aappe.erp.enums.DonorStatus;
 import br.org.aappe.erp.enums.DonorType;
@@ -28,8 +43,8 @@ import br.org.aappe.erp.util.Utilities;
 public class DoadorController extends MainController {
     private final DoadorRepository repository;
 
-    public DoadorController(Result result, Validator validator, DoadorRepository repository) {
-        super(result, validator);
+    public DoadorController(Result result, Validator validator, HttpServletResponse response, DoadorRepository repository) {
+        super(result, validator, response);
         this.repository = repository;
     }
 
@@ -123,6 +138,230 @@ public class DoadorController extends MainController {
 
         repository.remove(doador);
         result.use(json()).withoutRoot().from("OK").serialize();
+    }
+
+    @Get("/doacao/pdf")
+    @Authorized(Role.GERENTE)
+    public void pdfAll() throws IOException {
+        List<Doador> doadores = repository.listAllById();
+
+        if (doadores.isEmpty())
+            result.redirectTo(this).list();
+
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+            Document document = new Document(PageSize.A4.rotate(), 18, 18, 18, 18);
+            PdfWriter.getInstance(document, baos);
+
+            document.open();
+
+            //Formatação do texto
+            Font header = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.DARK_GRAY);
+            Font label  = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.DARK_GRAY);
+            Font text   = FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.DARK_GRAY);
+            Font aviso  = FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.RED);
+
+            //Parágrafo
+            Paragraph p;
+
+            //Título
+            p = new Paragraph("Relatório de Doações", header);
+            p.setAlignment(Element.ALIGN_CENTER);
+            p.setSpacingAfter(20);
+            document.add(p);
+
+            PdfPTable table = new PdfPTable(5);
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(20);
+
+            table.getDefaultCell().setPaddingTop(4);
+            table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
+
+            //Célula
+            PdfPCell cell;
+
+            cell = new PdfPCell(new Phrase("DATA DE CADASTRO", label));
+            cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell.setPaddingTop(4);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("NOME", label));
+            cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell.setPaddingTop(4);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("TIPO", label));
+            cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell.setPaddingTop(4);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("SITUAÇÃO", label));
+            cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell.setPaddingTop(4);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("VALOR TOTAL", label));
+            cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell.setPaddingTop(4);
+            table.addCell(cell);
+
+            //Dados da tabela
+            for (Doador doador : doadores) {
+                table.addCell(new Phrase(new SimpleDateFormat("dd/MM/yyyy").format(doador.getData()), text));
+                table.addCell(new Phrase(doador.getFirstAndLastName(), text));
+                table.addCell(new Phrase(doador.getTipo().getType(), text));
+                table.addCell(new Phrase(doador.getStatus().getStatus(), text));
+                table.addCell(new Phrase(DecimalFormat.getCurrencyInstance().format(doador.getTotalValueOfDonations()), text));
+            }
+
+            document.add(table);
+            document.close();
+
+            //Salvar PDF
+            response.setContentType("application/pdf");
+            response.setHeader("Expires", "0");
+            response.setHeader("Cache-Control", "must-revalidate, post-check=0, pre-check=0");
+            response.setHeader("Pragma", "public");
+            response.setHeader("Content-Disposition", "attachment;filename=Doações.pdf");
+            response.setContentLength(baos.size());
+
+            OutputStream os = response.getOutputStream();
+            baos.writeTo(os);
+            os.flush();
+            os.close();
+        } catch (DocumentException e) {
+            throw new IOException(e.getMessage());
+        }
+
+        result.nothing();
+    }
+
+    @Get("/doador/pdf/{id}")
+    @Authorized(Role.GERENTE)
+    public void pdf(int id) throws IOException {
+        Doador doador = repository.find(id);
+
+        if (doador == null)
+            result.redirectTo(this).list();
+
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+            Document document = new Document(PageSize.A4.rotate(), 18, 18, 18, 18);
+            PdfWriter.getInstance(document, baos);
+
+            document.open();
+
+            //Formatação do texto
+            Font header = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.DARK_GRAY);
+            Font label  = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.DARK_GRAY);
+            Font text   = FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.DARK_GRAY);
+            Font aviso  = FontFactory.getFont(FontFactory.HELVETICA, 8, BaseColor.RED);
+
+            //Parágrafo
+            Paragraph p;
+
+            //Título
+            p = new Paragraph("Histórico de Doações", header);
+            p.setAlignment(Element.ALIGN_CENTER);
+            p.setSpacingAfter(20);
+            document.add(p);
+
+            //Doador
+            p = new Paragraph();
+            p.add(new Phrase("Doador: ", label));
+            p.add(new Phrase(doador.getNome() +" ("+ doador.getTipo().getType() +")", text));
+            document.add(p);
+
+            p = new Paragraph();
+            p.add(new Phrase("Unidade: ", label));
+            p.add(new Phrase(doador.getUnidade().getRazaoSocial(), text));
+            document.add(p);
+
+            if (doador.getDoacoes().isEmpty()) {
+                Paragraph warning = new Paragraph("Nenhuma doação até o momento.", aviso);
+                warning.setSpacingBefore(20);
+
+                document.add(warning);
+            } else {
+                PdfPTable table = new PdfPTable(7);
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(20);
+
+                table.getDefaultCell().setPaddingTop(4);
+                table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
+
+                //Célula
+                PdfPCell cell;
+
+                cell = new PdfPCell(new Phrase("DATA DA LIGAÇÃO", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase("FUNCIONÁRIO", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase("VALOR", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase("DATA DE RECEBIMENTO", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase("REPRESENTANTE", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase("CAMPANHA", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase("DESCRIÇÃO", label));
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setPaddingTop(4);
+                table.addCell(cell);
+
+                for (Doacao doacao : doador.getDoacoes()) {
+                    table.addCell(new Phrase(new SimpleDateFormat("dd/MM/yyyy").format(doacao.getLigacao()), text));
+                    table.addCell(new Phrase(doacao.getFuncionario().getFirstAndLastName(), text));
+                    table.addCell(new Phrase(DecimalFormat.getCurrencyInstance().format(doacao.getValor()), text));
+                    table.addCell(new Phrase(new SimpleDateFormat("dd/MM/yyyy").format(doacao.getRecebimento()), text));
+                    table.addCell(new Phrase(doacao.getRepresentante().getFirstAndLastName(), text));
+                    table.addCell(new Phrase(doacao.getCampanha() == null ? "-" : doacao.getCampanha().getNome(), text));
+                    table.addCell(new Phrase(doacao.getDescricao().isEmpty() ? "-" : doacao.getDescricao(), text));
+                }
+
+                document.add(table);
+            }
+
+            document.close();
+
+            //Salvar PDF
+            response.setContentType("application/pdf");
+            response.setHeader("Expires", "0");
+            response.setHeader("Cache-Control", "must-revalidate, post-check=0, pre-check=0");
+            response.setHeader("Pragma", "public");
+            response.setHeader("Content-Disposition", "attachment;filename="+ doador.getFirstAndLastName() +".pdf");
+            response.setContentLength(baos.size());
+
+            OutputStream os = response.getOutputStream();
+            baos.writeTo(os);
+            os.flush();
+            os.close();
+        } catch (DocumentException e) {
+            throw new IOException(e.getMessage());
+        }
+
+        result.nothing();
     }
 
     private List<Message> validate(final Doador doador) {

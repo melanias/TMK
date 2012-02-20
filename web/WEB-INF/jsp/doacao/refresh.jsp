@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <span>
                     <a class="add-form" href="${linkTo[DoacaoController].frmAdd}" onclick="return hs.htmlExpand(this, {objectType:'iframe', align:'center', width:'450', headingText:'Cadastrar Doação'});">Cadastrar</a>
+                    <a class="pdf" href="${linkTo[DoadorController].pdfAll}" title="PDF">PDF</a>
                 </span>
                 <h1>${title}</h1>
 <c:choose>
