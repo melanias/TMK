@@ -258,4 +258,27 @@ jQuery(function($){
         };
     }
     /** Procurar doador **/
+
+    /** Combobox referente aos anos **/
+    $("select#year").live("change", function() {
+        var year  = ($.trim($(this).val()) === "") ? 0 : $(this).val();
+        var month = $("select#months");
+
+        //Exibir gif
+        $("#busy").show();
+
+        //Carregar combobox
+        $(month).load(URLBASE +"/doacao/filterMonthsOfTheYear/"+ year, function(r, s) {
+            //Remover gif
+            $("#busy").hide();
+
+            //Desativar combobox caso seja necessário
+            year ? month.removeAttr("disabled") : month.attr("disabled", "disabled");
+
+            if (s == "error")
+                alert("Ocorreu um erro ao carregar a lista dos meses.");
+        });
+
+    });
+    /** Combobox referente aos anos **/
 });

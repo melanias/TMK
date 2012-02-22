@@ -17,6 +17,7 @@ import static br.com.caelum.vraptor.view.Results.*;
 import br.org.aappe.erp.annotations.Authorized;
 import br.org.aappe.erp.annotations.Transactional;
 import br.org.aappe.erp.bean.Doacao;
+import br.org.aappe.erp.enums.Month;
 import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.CampanhaRepository;
 import br.org.aappe.erp.repository.DoacaoRepository;
@@ -59,6 +60,12 @@ public class DoacaoController extends MainController {
     public Doacao view(long id) {
         result.include("title", "Informações da Doação");
         return repository.find(id);
+    }
+
+    @Get("/doacao/filterMonthsOfTheYear/{year}")
+    public List<Integer> filterMonthsOfTheYear(int year) {
+        result.include("months", Month.getAll());
+        return repository.getMonthsOfTheYear(year);
     }
 
     @Get("/doacao/add")

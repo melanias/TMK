@@ -26,6 +26,24 @@ public class Utilities {
         }
     }
 
+    public static String implode(Object[] pieces, String glue) {
+        String output = "";
+
+        if (pieces != null && pieces.length > 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(pieces[0]);
+
+            for (int i = 1; i < pieces.length; i++) {
+                sb.append(glue);
+                sb.append(pieces[i]);
+            }
+
+            output = sb.toString();
+        }
+
+        return output;
+    }
+
     public static boolean mail(String mail) {
         if (mail.trim().isEmpty())
             return false;

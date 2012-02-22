@@ -17,10 +17,7 @@
                             <a href="#">Relatórios</a>
                             <div>
                                 <ul>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 1</a></li>
+                                    <li><a href="${linkTo[ReportController].donationsByPeriod}">Doações por período</a></li>
                                 </ul>
                             </div>
                         </li>

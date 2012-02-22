@@ -18,4 +18,8 @@ public interface DoacaoRepository {
     void persist(Doacao doacao);
 
     Doacao merge(Doacao doacao);
+
+    List<Integer> getYears();
+    List<Integer> getMonthsOfTheYear(int year);
+    List<Doacao> getDonationsByPeriod(int year, String months);
 }
