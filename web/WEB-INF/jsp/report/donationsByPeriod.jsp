@@ -3,8 +3,8 @@
                 <form action="${linkTo[ReportController].pdf}" method="post">
                     <table>
                         <tr>
-                            <td><label>Ano</label></td>
-                            <td><label>Mês</label></td>
+                            <th>Ano</th>
+                            <th>Mês</th>
                         </tr>
                         <tr>
                             <td valign="top">
@@ -25,9 +25,9 @@
                                 <img src="<c:url value="/images/loader.gif" />" id="busy" alt="Procurando..." title="Procurando..." />
                             </td>
                             <c:if test="${not empty errors}">
-                            <td valign="top">
+                            <td class="error">
                                 <c:forEach items="${errors}" var="error">
-                                ${error.message}
+                                <span>${error.message}</span>
                                 </c:forEach>
                             </td>
                             </c:if>

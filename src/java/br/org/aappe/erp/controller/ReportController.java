@@ -19,8 +19,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 import br.com.caelum.vraptor.*;
 import br.com.caelum.vraptor.validator.Validations;
 
+import br.org.aappe.erp.annotations.Authorized;
 import br.org.aappe.erp.bean.Doacao;
-import br.org.aappe.erp.bean.Doador;
+import br.org.aappe.erp.enums.Role;
 import br.org.aappe.erp.repository.DoacaoRepository;
 import br.org.aappe.erp.util.Utilities;
 
@@ -28,6 +29,7 @@ import br.org.aappe.erp.util.Utilities;
  * @author Phelipe Melanias
  */
 @Resource
+@Authorized(Role.GERENTE)
 public class ReportController extends MainController {
     private final DoacaoRepository doacaoRepository;
 
@@ -52,7 +54,7 @@ public class ReportController extends MainController {
         //Obter doações de acordo com o período definido pelo usuário
         final List<Doacao> doacoes = doacaoRepository.getDonationsByPeriod(year, Utilities.implode(months, ","));
 
-        //TODO: Verificar se realmente é necessária a verificação abaixo.
+        //TODO: Verificar se realmente é necessário o código abaixo.
         if (doacoes.isEmpty())
             result.redirectTo(this).donationsByPeriod();
 
@@ -131,7 +133,7 @@ public class ReportController extends MainController {
             response.setHeader("Expires", "0");
             response.setHeader("Cache-Control", "must-revalidate, post-check=0, pre-check=0");
             response.setHeader("Pragma", "public");
-            //response.setHeader("Content-Disposition", "attachment;filename=Doações.pdf");
+            response.setHeader("Content-Disposition", "attachment;filename=Doações_por_período.pdf");
             response.setContentLength(baos.size());
 
             OutputStream os = response.getOutputStream();
@@ -141,9 +143,6 @@ public class ReportController extends MainController {
         } catch (DocumentException e) {
             throw new IOException(e.getMessage());
         }
-
-        result.nothing();
-
 
         result.nothing();
     }
