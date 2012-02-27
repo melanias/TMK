@@ -56,8 +56,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <td><label for="dataLigacao">Data da Ligação:</label></td>
+                    <td><input type="text" name="doacao.ligacao" value="" id="dataLigacao" size="18" maxlength="10" alt="data" /></td>
+                </tr>
+                <tr>
                     <td><label for="dataRecebimento">Data de Recebimento*:</label></td>
                     <td><input type="text" name="doacao.recebimento" value="" id="dataRecebimento" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td><label for="isPaga">Doação paga:</label></td>
+                    <td><input type="checkbox" name="doacao.paga" value="true" id="isPaga" /></td>
                 </tr>
                 <tr>
                     <td><label for="descricao">Descrição:</label></td>

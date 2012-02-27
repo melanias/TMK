@@ -46,7 +46,7 @@ input#cep, input#numero { width: 75px; } /* 9-10 */
 
 input#logradouro, input#complemento, input#bairro, input#nome, input#donor, input#razaoSocial, input#nomeFantasia, input#site { width: 280px; } /* 50 */
 
-input#dataAdmissao, input#dataDemissao, input#dataRecebimento, input#dataInicial, input#dataFinal, input#custoReal,
+input#dataCadastro, input#dataAdmissao, input#dataDemissao, input#dataLigacao, input#dataRecebimento, input#dataInicial, input#dataFinal, input#custoReal,
 input#custoPrevisto, input#receitaReal, input#receitaEsperada, input#dataNascimento, input#celular, input#fone, input#fax,
 input#cpfoucnpj, input#cnpj, input#rg, input#cpf, input#valor, input#login, input#senha, input#checkPass { width: 130px; } /* 18-20 */
 

@@ -58,8 +58,16 @@
                             </td>
                         </tr>
                         <tr>
+                            <td><label for="dataLigacao">Data da Ligação:</label></td>
+                            <td><input type="text" name="doacao.ligacao" value="<fmt:formatDate value="${doacao.ligacao}" type="date" pattern="dd/MM/yyyy" />" id="dataLigacao" size="18" maxlength="10" alt="data" /></td>
+                        </tr>
+                        <tr>
                             <td><label for="dataRecebimento">Data de Recebimento*:</label></td>
                             <td><input type="text" name="doacao.recebimento" value="<fmt:formatDate value="${doacao.recebimento}" type="date" pattern="dd/MM/yyyy" />" id="dataRecebimento" size="18" maxlength="10" alt="data" readonly="readonly" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="isPaga">Doação paga:</label></td>
+                            <td><input type="checkbox" name="doacao.paga" value="true" id="isPaga" <c:if test="${doacao.paga}">checked="checked" </c:if>/></td>
                         </tr>
                         <tr>
                             <td><label for="descricao">Descrição:</label></td>

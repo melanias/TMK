@@ -30,6 +30,9 @@
                         <input type="radio" name="doador.tipo" value="${tipo}" <c:if test="${tipo == 'FISICA'}">id="tipo" checked="checked" </c:if>/>&nbsp;<span>${tipo.type}</span>&nbsp;&nbsp;&nbsp;
                     </c:forEach>
                     </td>
+
+                    <td><label for="dataCadastro">Data de Cadastro:</label></td>
+                    <td><input type="text" name="doador.data" value="" id="dataCadastro" size="18" maxlength="10" alt="data" /></td>
                 </tr>
                 <tr>
                     <td><label for="nome">Nome*:</label></td>

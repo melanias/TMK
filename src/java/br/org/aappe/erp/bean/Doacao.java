@@ -20,7 +20,7 @@ public class Doacao implements Serializable {
     private Long id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="dt_ligacao", nullable=false, updatable=false)
+    @Column(name="dt_ligacao", nullable=false, updatable=true)
     private Date ligacao;
 
     @Temporal(TemporalType.DATE)
@@ -29,6 +29,9 @@ public class Doacao implements Serializable {
 
     @Column(nullable=false, precision=12, scale=2)
     private BigDecimal valor;
+
+    @Column(nullable=false)
+    private boolean paga;
 
     @Column(columnDefinition="text")
     private String descricao;
@@ -61,6 +64,9 @@ public class Doacao implements Serializable {
 
     public BigDecimal getValor() { return valor; }
     public void setValor(BigDecimal valor) { this.valor = valor; }
+
+    public boolean isPaga() { return paga; }
+    public void setPaga(boolean paga) { this.paga = paga; }
 
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao.trim(); }

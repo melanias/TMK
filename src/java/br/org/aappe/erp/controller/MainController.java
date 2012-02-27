@@ -1,12 +1,12 @@
 package br.org.aappe.erp.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 
 import br.org.aappe.erp.session.EmployeeSession;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Phelipe Melanias

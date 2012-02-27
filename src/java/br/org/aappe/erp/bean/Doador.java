@@ -27,7 +27,7 @@ public class Doador extends Pessoa implements Serializable {
     private int id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="dt_cadastro", nullable=false, updatable=false)
+    @Column(name="dt_cadastro", nullable=false, updatable=true)
     private Date data;
 
     @Column(length=18)

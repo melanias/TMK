@@ -88,13 +88,15 @@ public class DoadorController extends MainController {
     @Post("/doador/add")
     @Authorized({Role.GERENTE, Role.OPERADOR})
     public void add(final Doador doador) {
+        //Definir   data  de  cadastro
+        //antes de iniciar a validação
+        if (doador.getData() == null)
+            doador.setData(new Date());
+
         List<Message> errors = validate(doador);
 
         validator.addAll(errors);
         validator.onErrorUse(json()).withoutRoot().from(errors).exclude("category").serialize();
-
-        //Definir data de cadastro do doador
-        doador.setData(new Date());
 
         repository.persist(doador);
         result.use(json()).withoutRoot().from("OK").serialize();
@@ -366,9 +368,18 @@ public class DoadorController extends MainController {
 
     private List<Message> validate(final Doador doador) {
         return new Validations(){{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
             //Nome
             if (that(!doador.getNome().isEmpty(), "doador.nome", "nome"))
                 that(repository.isUniqueName(doador), "doador.nome", "nome.unico");
+
+            //Data de cadastro
+            that(sdf.format(doador.getData()).compareTo(sdf.format(new Date())) <= 0, "doador.data", "doador.cadastro");
+
+            //Data de nascimento
+            if (doador.getNascimento() != null)
+                 that(sdf.format(doador.getNascimento()).compareTo(sdf.format(doador.getData())) < 0, "doador.nascimento", "doador.nascimento");
 
             //RG
             if (doador.getRg() != null && that(doador.getRg().toString().length() > 5 && doador.getRg().toString().length() < 14, "doador.rg", "rg.invalido", 6, 13))

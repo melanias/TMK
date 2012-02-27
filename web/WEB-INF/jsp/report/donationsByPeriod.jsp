@@ -21,7 +21,7 @@
                                 </select>
                             </td>
                             <td valign="top">
-                                <input type="submit" value="PDF" />
+                                <input type="submit" value="PDF" <c:if test="${empty years}">disabled="disabled" </c:if>/>
                                 <img src="<c:url value="/images/loader.gif" />" id="busy" alt="Procurando..." title="Procurando..." />
                             </td>
                             <c:if test="${not empty errors}">
