@@ -21,9 +21,7 @@ import br.org.aappe.erp.session.EmployeeSession;
 public class LoginController extends MainController {
     private final FuncionarioRepository repository;
 
-    public LoginController(Result result, Validator validator, HttpServletRequest request,
-                           EmployeeSession employeeSession, FuncionarioRepository repository)
-    {
+    public LoginController(Result result, Validator validator, HttpServletRequest request, EmployeeSession employeeSession, FuncionarioRepository repository) {
         super(result, validator, request, employeeSession);
         this.repository = repository;
     }

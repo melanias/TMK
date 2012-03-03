@@ -26,7 +26,7 @@ public class FuncionarioDAO extends DAO<Funcionario> implements FuncionarioRepos
         try {
             return (Funcionario) manager.createQuery("FROM Funcionario f WHERE f.login = ? AND f.senha = ? AND status = ? AND perfil <> ? AND demissao IS NULL")
                                         .setParameter(1, login)
-                                        .setParameter(2, Utilities.md5(login+senha))
+                                        .setParameter(2, Utilities.md5(senha))
                                         .setParameter(3, Status.ATIVO)
                                         .setParameter(4, Role.REPRESENTANTE)
                                         .getSingleResult();

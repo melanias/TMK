@@ -273,10 +273,6 @@ public class FuncionarioController extends MainController {
             //Unidade
             that(funcionario.getUnidade().getId() > 0, "funcionario.unidade", "unidade_not_selected");
 
-            System.out.println("##LOGIN: "+ funcionario.getLogin());
-            System.out.println("##SENHA: "+ funcionario.getSenha());
-            System.out.println("##CHECK: "+ funcionario.getCheckPass());
-
             //Login
             if (funcionario.getLogin() != null && that(!funcionario.getLogin().isEmpty(), "login", "setup.login"))
                 that(repository.isUniqueLogin(funcionario), "funcionario.login", "login.unico");
@@ -289,12 +285,12 @@ public class FuncionarioController extends MainController {
                     if (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
                         that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
                         that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))
-                        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+                        funcionario.setSenha(Utilities.md5(funcionario.getSenha()));
                 } else {
                     if ((funcionario.getSenha() != null && funcionario.getCheckPass() != null) &&
                         (!funcionario.getSenha().isEmpty() && that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
                          that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente"))) {
-                        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+                        funcionario.setSenha(Utilities.md5(funcionario.getSenha()));
                     } else {
                         funcionario.setSenha(old.getSenha());
                     }
@@ -304,7 +300,7 @@ public class FuncionarioController extends MainController {
                     (that(!funcionario.getSenha().isEmpty(), "funcionario.senha", "senha") &&
                      that(funcionario.getSenha().length() > 5, "funcionario.senha", "senha.invalida") &&
                      that(funcionario.getSenha().equals(funcionario.getCheckPass()), "", "senha.diferente")))
-                    funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+                    funcionario.setSenha(Utilities.md5(funcionario.getSenha()));
             }
 
             //Data de nascimento
