@@ -17,6 +17,7 @@
 
         <!-- jQuery UI -->
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.datepicker-pt-BR.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
     </head>
@@ -60,7 +61,7 @@
                     <td>
                         <select name="doador.status" id="status">
                         <c:forEach items="${status}" var="s">
-                            <option value="${s}"<c:if test="${doador.status == s || (empty doador.status && s == 'NOVO')}"> selected="selected"</c:if>>${s.status}</option>
+                            <option value="${s}"<c:if test="${s == 'NOVO'}"> selected="selected"</c:if>>${s.status}</option>
                         </c:forEach>
                         </select>
                     </td>

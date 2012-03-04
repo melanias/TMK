@@ -17,6 +17,7 @@
 
         <!-- jQuery UI -->
         <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.js" />" charset="utf-8"></script>
+        <script type="text/javascript" src="<c:url value="/js/ui/jquery-ui.datepicker-pt-BR.js" />" charset="utf-8"></script>
 
         <title>${title}</title>
     </head>
@@ -28,9 +29,9 @@
                         <tr>
                             <td><label for="tipo">Tipo*:</label></td>
                             <td>
-                                <c:forEach items="${types}" var="tipo">
-                                    <input type="radio" name="doador.tipo" value="${tipo}" <c:if test="${tipo == doador.tipo}">id="tipo" checked="checked" </c:if>/>&nbsp;<span>${tipo.type}</span>&nbsp;&nbsp;&nbsp;
-                                </c:forEach>
+                            <c:forEach items="${types}" var="tipo">
+                                <input type="radio" name="doador.tipo" value="${tipo}" <c:if test="${tipo == doador.tipo}">id="tipo" checked="checked" </c:if>/>&nbsp;<span>${tipo.type}</span>&nbsp;&nbsp;&nbsp;
+                            </c:forEach>
                             </td>
 
                             <td><label for="dataCadastro">Data de Cadastro:</label></td>
@@ -41,22 +42,21 @@
                             <td><input type="text" name="doador.nome" value="${doador.nome}" id="nome" size="50" maxlength="200" /></td>
 
                             <td><label for="dataNascimento">Data de Nascimento:</label></td>
-                            <td><input type="text" name="doador.nascimento" id="dataNascimento" value="<fmt:formatDate value="${doador.nascimento}" type="date" pattern="dd/MM/yyyy"/>" size="18" maxlength="10" alt="data" /></td>
+                            <td><input type="text" name="doador.nascimento" id="dataNascimento" value="<fmt:formatDate value="${doador.nascimento}" type="date" pattern="dd/MM/yyyy"/>" size="18" maxlength="10" alt="data" <c:if test="${doador.tipo == 'JURIDICA'}">disabled="disabled" </c:if>/></td>
                         </tr>
                         <tr>
                             <td><label for="rg">RG:</label></td>
-                            <td><input type="text" name="doador.rg" value="${doador.rg}" id="rg" size="20" maxlength="20" alt="rg" /></td>
-                            <c:choose>
-                                <c:when test="${doador.tipo == 'FISICA'}">
-                                    <td><label for="cpfoucnpj">CPF:</label></td>
-                                    <td><input type="text" name="doador.cpf" value="${doador.cpf}" id="cpfoucnpj" size="18" maxlength="14" alt="cpf" /></td>
-                                </c:when>
-
-                                <c:otherwise>
-                                    <td><label for="cpfoucnpj">CNPJ:</label></td>
-                                    <td><input type="text" name="doador.cnpj" value="${doador.cnpj}" id="cpfoucnpj" size="18" maxlength="18" alt="cnpj" /></td>
-                                </c:otherwise>
-                            </c:choose>
+                            <td><input type="text" name="doador.rg" value="${doador.rg}" id="rg" size="20" maxlength="20" alt="rg" <c:if test="${doador.tipo == 'JURIDICA'}">disabled="disabled" </c:if>/></td>
+                        <c:choose>
+                            <c:when test="${doador.tipo == 'FISICA'}">
+                            <td><label for="cpfoucnpj">CPF:</label></td>
+                            <td><input type="text" name="doador.cpf" value="${doador.cpf}" id="cpfoucnpj" size="18" maxlength="14" alt="cpf" /></td>
+                            </c:when>
+                            <c:otherwise>
+                            <td><label for="cpfoucnpj">CNPJ:</label></td>
+                            <td><input type="text" name="doador.cnpj" value="${doador.cnpj}" id="cpfoucnpj" size="18" maxlength="18" alt="cnpj" /></td>
+                            </c:otherwise>
+                        </c:choose>
                         </tr>
                         <tr>
                             <td><label for="email">E-mail:</label></td>
@@ -69,9 +69,9 @@
                             <td><label for="status">Situação*:</label></td>
                             <td>
                                 <select name="doador.status" id="status">
-                                    <c:forEach items="${status}" var="s">
-                                        <option value="${s}"<c:if test="${doador.status == s || (empty doador.status && s == 'NOVO')}"> selected="selected"</c:if>>${s.status}</option>
-                                    </c:forEach>
+                                <c:forEach items="${status}" var="s">
+                                    <option value="${s}"<c:if test="${doador.status == s}"> selected="selected"</c:if>>${s.status}</option>
+                                </c:forEach>
                                 </select>
                             </td>
 

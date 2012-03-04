@@ -45,7 +45,7 @@ jQuery(function($){
     });
 
     //Calendário
-    $("[alt='data']").datepicker({
+    $("input[alt='data']").datepicker({
         showOn: "button",
         buttonImage: URLBASE + "/images/calendar.gif",
         buttonImageOnly: true/*,
