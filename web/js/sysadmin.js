@@ -35,12 +35,14 @@ jQuery(function($){
     $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
     $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
 
-    //Botão para fechar os erros de validação
-    //$('<a href="#" title="Fechar">X</a>').insertBefore("blockquote > p:first");
-    //$("blockquote > a").click(function(){$(this).parent().remove();});
-
-    //jQuery UI
-    //$("button, :button, :submit").button();
+    //Reconfigurar os botões assim que uma requisição AJAX for realmente finalizada.
+    $("#main > div.content").ajaxStop(function() {
+        $(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+        $(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
+        $(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+        $(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
+        $(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+    });
 
     //Calendário
     $("[alt='data']").datepicker({
@@ -134,17 +136,24 @@ jQuery(function($){
             type: "POST",
             url: fullurl,
             data: $("form").serialize(),
+            //async: false,
             dataType: "json",
             success: function(response) {
                 if (response.toString() == "OK") {
                     parent.$("#main > div.content").load(refresh, function(r, s) {
 
+
                         //Atualizar botões
-                        parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+                        /*parent.$(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
                         parent.$(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
                         parent.$(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
                         parent.$(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
                         parent.$(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});
+                        body.find(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+                        body.find(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
+                        body.find(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                        body.find(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
+                        body.find(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});*/
 
                         if (s == "error")
                             alert("Ocorreu um erro ao carregar a lista.");
@@ -152,6 +161,13 @@ jQuery(function($){
 
                     //Fechar iframe
                     parent.window.hs.getExpander().close();
+
+                    /*var body = parent.$("body");
+                    body.find(".pdf").button({icons: {primary: "ui-icon-print"}, text: true});
+                    body.find(".delete").button({icons: {primary: "ui-icon-trash"}, text: false});
+                    body.find(".preview").button({icons: {primary: "ui-icon-search"}, text: false});
+                    body.find(".add-form").button({icons: {primary: "ui-icon-plusthick"}, text: true});
+                    body.find(".edit-form").button({icons: {primary: "ui-icon-pencil"}, text: false});*/
                 } else {
                     var errors = new Array();
 
