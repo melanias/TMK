@@ -93,7 +93,7 @@ public class SetupController extends MainController {
         unidade.setData(new Date());
 
         //Criptografar a senha
-        funcionario.setSenha(Utilities.md5(funcionario.getLogin()+funcionario.getSenha()));
+        funcionario.setSenha(Utilities.md5(funcionario.getSenha()));
 
         //Definir relacionamento do funcionário com a Unidade
         funcionario.setUnidade(unidade);
