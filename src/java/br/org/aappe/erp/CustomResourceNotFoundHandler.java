@@ -8,8 +8,6 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.resource.DefaultResourceNotFoundHandler;
 import br.com.caelum.vraptor.resource.HttpMethod;
 
-import br.org.aappe.erp.controller.IndexController;
-
 @Component
 public class CustomResourceNotFoundHandler extends DefaultResourceNotFoundHandler {
     private final Router router;

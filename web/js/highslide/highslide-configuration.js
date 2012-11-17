@@ -1,4 +1,4 @@
-//hs.align            = 'center';
+//hs.align                  = 'center';
 hs.cacheAjax              = false;
 hs.showCredits            = false;
 hs.forceAjaxReload        = true;
